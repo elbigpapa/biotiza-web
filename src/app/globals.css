@@ -1,0 +1,226 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────────────────
+   BIOTIZA DESIGN SYSTEM — Tailwind v4 CSS-based configuration
+   Todos los design tokens se definen aquí con @theme.
+   El archivo tailwind.config.ts existe como referencia / soporte de IDE.
+   ───────────────────────────────────────────────────────────────────────── */
+
+@theme {
+  /* ── Tipografía ────────────────────────────────────────────────────── */
+  --font-sans:  var(--font-dm-sans),   "DM Sans",          ui-sans-serif,  system-ui, sans-serif;
+  --font-serif: var(--font-dm-serif),  "DM Serif Display", ui-serif,       Georgia,   serif;
+  --font-mono:  "JetBrains Mono",      "Fira Code",        ui-monospace,   monospace;
+
+  /* ── Verde — Línea Orgánicos (brand: #22b573) ──────────────────────── */
+  --color-verde-50:  #f0fdf6;
+  --color-verde-100: #dcfaed;
+  --color-verde-200: #b8f4da;
+  --color-verde-300: #82ecc0;
+  --color-verde-400: #43d99e;
+  --color-verde-500: #22b573;
+  --color-verde-600: #18966a;
+  --color-verde-700: #147a57;
+  --color-verde-800: #115e43;
+  --color-verde-900: #0d4d37;
+
+  /* ── Naranja — Bioestimulantes (#e8690f) y Nutrición Líquida (#f28a3d) */
+  --color-naranja-50:  #fef9f3;
+  --color-naranja-100: #fef3ea;
+  --color-naranja-200: #fde0c5;
+  --color-naranja-300: #fbcc9d;
+  --color-naranja-400: #f28a3d;
+  --color-naranja-500: #e8690f;
+  --color-naranja-600: #c4560c;
+  --color-naranja-700: #a23f06;
+
+  /* ── Azul — Zentia (#1189bf) y Especialidades (#0e6e99) ──────────── */
+  --color-azul-100: #e0f2fc;
+  --color-azul-200: #b9e5f8;
+  --color-azul-300: #7dd3f4;
+  --color-azul-400: #38b2e8;
+  --color-azul-500: #1189bf;
+  --color-azul-600: #0e6e99;
+  --color-azul-700: #0a5578;
+
+  /* ── Gris — Escala neutral ─────────────────────────────────────────── */
+  --color-gris-50:  #f8fafc;
+  --color-gris-100: #f1f5f9;
+  --color-gris-200: #e2e8f0;
+  --color-gris-300: #cbd5e1;
+  --color-gris-400: #94a3b8;
+  --color-gris-500: #64748b;
+  --color-gris-600: #475569;
+  --color-gris-700: #334155;
+  --color-gris-800: #1e293b;
+  --color-gris-900: #0f172a;
+
+  /* ── Border Radius extras ──────────────────────────────────────────── */
+  --radius-4xl: 2rem;
+  --radius-5xl: 2.5rem;
+
+  /* ── Box Shadow extras ─────────────────────────────────────────────── */
+  --shadow-brand:    0 4px 24px 0 rgba(34, 181, 115, 0.18);
+  --shadow-brand-lg: 0 8px 40px 0 rgba(34, 181, 115, 0.25);
+  --shadow-card:     0 2px 16px 0 rgba(15, 23, 42, 0.08);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   CSS CUSTOM PROPERTIES — Variables de marca para uso en CSS puro
+   ───────────────────────────────────────────────────────────────────────── */
+:root {
+  /* Colores primarios de marca */
+  --brand-verde:     #22b573;
+  --brand-naranja:   #e8690f;
+  --brand-naranja-lt: #f28a3d;
+  --brand-azul:      #1189bf;
+  --brand-teal:      #0e6e99;
+
+  /* Fondos y superficies */
+  --bg-base:         #ffffff;
+  --bg-subtle:       #f8fafc;
+  --bg-muted:        #f1f5f9;
+  --bg-inverse:      #0f172a;
+
+  /* Texto */
+  --text-primary:    #0f172a;
+  --text-secondary:  #475569;
+  --text-muted:      #94a3b8;
+  --text-inverse:    #ffffff;
+
+  /* Bordes */
+  --border-default:  #e2e8f0;
+  --border-strong:   #cbd5e1;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   BASE STYLES
+   ───────────────────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Tipografía base ─────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+h1 { font-size: clamp(2rem,   5vw, 3.5rem); }
+h2 { font-size: clamp(1.5rem, 4vw, 2.75rem); }
+h3 { font-size: clamp(1.25rem,3vw, 2rem); }
+h4 { font-size: clamp(1.125rem,2.5vw,1.5rem); }
+
+p {
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+a {
+  color: var(--brand-verde);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-verde-600);
+}
+
+/* ── Selección de texto ─────────────────────────────────────────────── */
+::selection {
+  background-color: var(--brand-verde);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background-color: var(--brand-verde);
+  color: #ffffff;
+}
+
+/* ── Focus visible accesible ────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--brand-verde);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   CLASES DE UTILIDAD GLOBAL
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* Wrap elegante para títulos largos */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Contenedor de sección estándar */
+.section-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 640px)  { .section-container { padding-inline: 1.5rem; } }
+@media (min-width: 1024px) { .section-container { padding-inline: 2rem;   } }
+@media (min-width: 1280px) { .section-container { padding-inline: 3rem;   } }
+
+/* Gradiente de marca (verde → azul) */
+.gradient-brand {
+  background: linear-gradient(135deg, var(--brand-verde) 0%, var(--brand-azul) 100%);
+}
+
+/* Texto con gradiente de marca */
+.gradient-text {
+  background: linear-gradient(135deg, var(--brand-verde) 0%, var(--brand-azul) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Composición de producto — fondo oscuro, mono, verde */
+.composition-table {
+  background-color: var(--color-gris-900);
+  font-family: var(--font-mono);
+  color: var(--color-verde-400);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+/* Pill de línea de producto */
+.line-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   SCROLLBAR CUSTOM (webkit)
+   ───────────────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar          { width: 8px; height: 8px; }
+::-webkit-scrollbar-track    { background: var(--bg-subtle); }
+::-webkit-scrollbar-thumb    { background: var(--color-gris-300); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--brand-verde); }
