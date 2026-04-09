@@ -4,20 +4,31 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { CalendarCheck, MessageCircle } from 'lucide-react'
 import { staggerContainer, fadeInUp } from '@/lib/animations'
-import { cn } from '@/lib/utils'
 
 function CTABackground() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-      <svg className="absolute -left-20 -bottom-20 h-80 w-80 text-verde-700 opacity-20" viewBox="0 0 200 200">
+      {/* Mesh gradient */}
+      <div className="absolute inset-0" style={{
+        background: `
+          radial-gradient(ellipse 60% 50% at 20% 50%, rgba(34, 181, 115, 0.15) 0%, transparent 60%),
+          radial-gradient(ellipse 50% 60% at 80% 30%, rgba(17, 137, 191, 0.1) 0%, transparent 60%)
+        `,
+      }} />
+
+      {/* Glow orbs */}
+      <div className="absolute -left-[10%] top-[20%] h-[400px] w-[400px] rounded-full bg-verde-500/10 blur-[100px] animate-float-slow" />
+      <div className="absolute -right-[5%] bottom-[10%] h-[300px] w-[300px] rounded-full bg-azul-500/8 blur-[80px] animate-float-reverse" />
+
+      {/* Dot pattern */}
+      <div className="absolute inset-0 dot-pattern-dark opacity-30" />
+
+      {/* Decorative shapes */}
+      <svg className="absolute -left-20 -bottom-20 h-80 w-80 text-verde-500 opacity-[0.06]" viewBox="0 0 200 200">
         <path d="M100,10 Q190,100 100,190 Q10,100 100,10 Z" fill="currentColor" />
       </svg>
-      <svg className="absolute -right-16 -top-16 h-72 w-72 text-verde-600 opacity-15" viewBox="0 0 384 384">
+      <svg className="absolute -right-16 -top-16 h-72 w-72 text-verde-400 opacity-[0.04]" viewBox="0 0 384 384">
         <circle cx="192" cy="192" r="192" fill="currentColor" />
-      </svg>
-      <svg className="absolute left-0 top-0 h-full w-full text-verde-700 opacity-10" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice">
-        <path d="M0,150 Q360,50 720,150 Q1080,250 1440,150" stroke="currentColor" strokeWidth="1.5" fill="none" />
-        <path d="M0,250 Q400,150 800,250 Q1200,350 1440,250" stroke="currentColor" strokeWidth="1" fill="none" />
       </svg>
     </div>
   )
@@ -25,7 +36,9 @@ function CTABackground() {
 
 export default function CTASection() {
   return (
-    <section className="relative bg-verde-800 py-20 lg:py-28 overflow-hidden">
+    <section className="relative py-24 lg:py-32 overflow-hidden" style={{
+      background: 'linear-gradient(135deg, #115e43 0%, #0d4d37 40%, #082e21 100%)',
+    }}>
       <CTABackground />
 
       <div className="relative z-10 mx-auto max-w-3xl px-4 text-center sm:px-6">
@@ -37,21 +50,22 @@ export default function CTASection() {
         >
           <motion.span
             variants={fadeInUp}
-            className="mb-5 inline-flex items-center rounded-full border border-verde-600/40 bg-verde-700/40 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-verde-300 backdrop-blur-sm"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-verde-500/20 bg-verde-500/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.15em] text-verde-300 backdrop-blur-sm"
           >
+            <span className="h-1.5 w-1.5 rounded-full bg-verde-400" />
             Asesoría sin costo
           </motion.span>
 
           <motion.h2
             variants={fadeInUp}
-            className="font-serif text-3xl font-normal text-white text-balance sm:text-4xl md:text-5xl"
+            className="font-serif text-3xl font-normal text-white text-balance sm:text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.1]"
           >
             ¿No sabes qué producto necesitas?
           </motion.h2>
 
           <motion.p
             variants={fadeInUp}
-            className="mt-5 text-base leading-relaxed text-verde-200 sm:text-lg"
+            className="mt-6 text-base leading-relaxed text-verde-200/80 sm:text-lg"
           >
             Nuestros agrónomos te asesoran sin costo. Cuéntanos sobre tu cultivo
             y te armamos un programa de nutrición a la medida.
@@ -59,19 +73,9 @@ export default function CTASection() {
 
           <motion.div
             variants={fadeInUp}
-            className="mt-10 flex flex-wrap items-center justify-center gap-4"
+            className="mt-12 flex flex-wrap items-center justify-center gap-4"
           >
-            <Link
-              href="/contacto"
-              className={cn(
-                'inline-flex items-center gap-2 rounded-lg',
-                'border-2 border-white px-6 py-3',
-                'text-sm font-semibold text-white',
-                'transition-all duration-200',
-                'hover:bg-white hover:text-verde-800',
-                'active:scale-[0.97]',
-              )}
-            >
+            <Link href="/contacto" className="btn-secondary group">
               <CalendarCheck size={16} />
               Agendar Asesoría
             </Link>
@@ -79,14 +83,7 @@ export default function CTASection() {
               href="https://wa.me/523300000000?text=Hola%20Biotiza%2C%20quiero%20asesor%C3%ADa%20para%20mi%20cultivo"
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(
-                'inline-flex items-center gap-2 rounded-lg',
-                'bg-[#25D366] px-6 py-3',
-                'text-sm font-semibold text-white',
-                'hover:bg-[#1ebe57] active:scale-[0.97]',
-                'shadow-[0_4px_20px_rgba(37,211,102,0.4)]',
-                'transition-all duration-200',
-              )}
+              className="inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-7 py-3 text-sm font-semibold text-white hover:bg-[#1ebe57] active:scale-[0.97] shadow-[0_4px_24px_rgba(37,211,102,0.35)] transition-all duration-300 hover:-translate-y-0.5"
             >
               <MessageCircle size={16} />
               Enviar WhatsApp

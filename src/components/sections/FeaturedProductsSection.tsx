@@ -8,7 +8,7 @@ import SectionHeading from '@/components/ui/SectionHeading'
 import { Container } from '@/components/ui/Container'
 import ProductCard, { type ProductCardData } from '@/components/products/ProductCard'
 
-// ─── Productos destacados (datos estáticos hasta conectar con data layer) ──
+// ─── Productos destacados ─────────────────────────────────────────────────
 
 const FEATURED_PRODUCTS: ProductCardData[] = [
   {
@@ -84,38 +84,41 @@ export default function FeaturedProductsSection() {
 
   const scroll = (dir: 'left' | 'right') => {
     if (!scrollRef.current) return
-    scrollRef.current.scrollBy({ left: dir === 'left' ? -300 : 300, behavior: 'smooth' })
+    scrollRef.current.scrollBy({ left: dir === 'left' ? -320 : 320, behavior: 'smooth' })
   }
 
   return (
-    <section className="bg-verde-50 py-20 lg:py-28 overflow-hidden">
-      <Container>
+    <section className="relative bg-gris-50/50 py-24 lg:py-32 overflow-hidden">
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-verde-50/30 to-transparent pointer-events-none" aria-hidden="true" />
+
+      <Container className="relative z-10">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
         >
-          <motion.div variants={fadeInUp} className="flex items-end justify-between mb-12 flex-wrap gap-4">
+          <motion.div variants={fadeInUp} className="flex items-end justify-between mb-14 flex-wrap gap-4">
             <SectionHeading
               tag="Lo más pedido"
               title="Productos estrella"
               align="left"
               animate={false}
             />
-            {/* Flechas desktop */}
+            {/* Flechas desktop premium */}
             <div className="hidden sm:flex items-center gap-2 shrink-0">
               <button
                 onClick={() => scroll('left')}
                 aria-label="Anterior"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-gris-200 bg-white text-gris-600 shadow-sm transition hover:border-verde-300 hover:text-verde-600"
+                className="flex h-11 w-11 items-center justify-center rounded-xl border border-gris-200 bg-white text-gris-500 shadow-sm transition-all duration-300 hover:border-verde-300 hover:text-verde-600 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
               >
                 <ChevronLeft size={18} />
               </button>
               <button
                 onClick={() => scroll('right')}
                 aria-label="Siguiente"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-gris-200 bg-white text-gris-600 shadow-sm transition hover:border-verde-300 hover:text-verde-600"
+                className="flex h-11 w-11 items-center justify-center rounded-xl border border-gris-200 bg-white text-gris-500 shadow-sm transition-all duration-300 hover:border-verde-300 hover:text-verde-600 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
               >
                 <ChevronRight size={18} />
               </button>
@@ -124,19 +127,19 @@ export default function FeaturedProductsSection() {
         </motion.div>
       </Container>
 
-      {/* Carrusel — sale del container para ir full-width */}
+      {/* Carrusel */}
       <div
         ref={scrollRef}
-        className="flex gap-4 overflow-x-auto pb-4 px-4 sm:px-6 lg:px-8 xl:px-[max(2rem,calc((100vw-1280px)/2+2rem))]"
-        style={{ scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch' }}
+        className="flex gap-5 overflow-x-auto pb-6 px-4 sm:px-6 lg:px-8 xl:px-[max(2rem,calc((100vw-1280px)/2+2rem))]"
+        style={{ scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none' }}
       >
         {FEATURED_PRODUCTS.map((product, i) => (
           <motion.div
             key={product.id}
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.07, duration: 0.5 }}
+            transition={{ delay: i * 0.06, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
             style={{ scrollSnapAlign: 'start' }}
           >
             <ProductCard product={product} />
@@ -147,10 +150,10 @@ export default function FeaturedProductsSection() {
         <div className="w-4 shrink-0" aria-hidden="true" />
       </div>
 
-      {/* Dots mobile */}
-      <div className="mt-5 flex justify-center gap-1.5 sm:hidden">
+      {/* Scroll indicator mobile */}
+      <div className="mt-6 flex justify-center gap-1.5 sm:hidden">
         {Array.from({ length: Math.ceil(FEATURED_PRODUCTS.length / 2) }).map((_, i) => (
-          <span key={i} className="h-1.5 w-1.5 rounded-full bg-gris-300 first:bg-verde-500" />
+          <span key={i} className={`h-1.5 rounded-full transition-all ${i === 0 ? 'w-6 bg-verde-500' : 'w-1.5 bg-gris-300'}`} />
         ))}
       </div>
     </section>

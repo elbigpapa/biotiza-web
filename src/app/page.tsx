@@ -20,11 +20,11 @@ import WaveSeparator          from '@/components/shared/WaveSeparator'
 export default function HomePage() {
   return (
     <>
-      {/* 1 ─ Hero: verde-900 → verde-700 */}
+      {/* 1 ─ Hero: dark mesh gradient */}
       <HeroSection />
 
-      {/* Transición: verde-900 → verde-50 */}
-      <WaveSeparator from="verde-900" to="verde-50" variant="gentle" />
+      {/* Transición: gris-950 → verde-50 */}
+      <WaveSeparator from="gris-950" to="verde-50" variant="gentle" />
 
       {/* 2 ─ ¿Por qué Biotiza? — fondo verde-50 */}
       <WhyBiotizaSection />
@@ -32,7 +32,7 @@ export default function HomePage() {
       {/* Transición: verde-50 → gris-900 */}
       <WaveSeparator from="verde-50" to="gris-900" variant="steep" />
 
-      {/* 3 ─ Asistente IA — fondo gris-900 */}
+      {/* 3 ─ Asistente IA — fondo oscuro */}
       <AssistantPreviewSection />
 
       {/* Transición: gris-900 → white */}
@@ -41,14 +41,14 @@ export default function HomePage() {
       {/* 4 ─ Líneas de producto — fondo blanco */}
       <ProductLinesSection />
 
-      {/* Transición: white → verde-50 */}
-      <WaveSeparator from="white" to="verde-50" variant="gentle" flip />
+      {/* Transición: white → gris-50 */}
+      <WaveSeparator from="white" to="gris-50" variant="gentle" flip />
 
-      {/* 5 ─ Productos destacados (carrusel) — fondo verde-50 */}
+      {/* 5 ─ Productos destacados (carrusel) — fondo gris-50 */}
       <FeaturedProductsSection />
 
-      {/* Transición: verde-50 → white */}
-      <WaveSeparator from="verde-50" to="white" variant="steep" />
+      {/* Transición: gris-50 → white */}
+      <WaveSeparator from="gris-50" to="white" variant="steep" />
 
       {/* 6 ─ Cultivos — fondo blanco */}
       <CropsSection />
@@ -62,7 +62,7 @@ export default function HomePage() {
       {/* Transición: gris-50 → verde-800 */}
       <WaveSeparator from="gris-50" to="verde-800" variant="double" />
 
-      {/* 8 ─ CTA — fondo verde-800 */}
+      {/* 8 ─ CTA — fondo verde oscuro */}
       <CTASection />
 
       {/* Transición: verde-800 → white */}

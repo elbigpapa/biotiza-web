@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { motion } from 'framer-motion'
-import { Mail, MapPin, Phone, CheckCircle } from 'lucide-react'
+import { Mail, MapPin, Phone, CheckCircle, Clock, Send } from 'lucide-react'
 
 // Instagram icon (removed from lucide-react v1.7+)
 function InstagramIcon({ size = 20 }: { size?: number }) {
@@ -37,14 +37,14 @@ type ContactForm = z.infer<typeof contactSchema>
 
 const CROPS = [
   { value: '', label: 'Selecciona tu cultivo (opcional)' },
-  { value: 'tomate',    label: '🍅 Tomate' },
-  { value: 'fresa',     label: '🍓 Fresa' },
-  { value: 'arandano',  label: '🫐 Arándano' },
-  { value: 'frambuesa', label: '🍇 Frambuesa' },
-  { value: 'zarzamora', label: '🫐 Zarzamora' },
-  { value: 'aguacate',  label: '🥑 Aguacate' },
-  { value: 'chile',     label: '🌶️ Chile / Pimiento' },
-  { value: 'citricos',  label: '🍊 Cítricos' },
+  { value: 'tomate',    label: 'Tomate' },
+  { value: 'fresa',     label: 'Fresa' },
+  { value: 'arandano',  label: 'Arándano' },
+  { value: 'frambuesa', label: 'Frambuesa' },
+  { value: 'zarzamora', label: 'Zarzamora' },
+  { value: 'aguacate',  label: 'Aguacate' },
+  { value: 'chile',     label: 'Chile / Pimiento' },
+  { value: 'citricos',  label: 'Cítricos' },
   { value: 'otro',      label: 'Otro cultivo' },
 ]
 
@@ -65,8 +65,10 @@ export default function ContactFormSection() {
   }
 
   return (
-    <section className="bg-verde-50 py-20 lg:py-28">
-      <Container>
+    <section className="relative bg-verde-50/50 py-24 lg:py-32 overflow-hidden">
+      <div className="absolute inset-0 dot-pattern opacity-40" aria-hidden="true" />
+
+      <Container className="relative z-10">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -83,69 +85,44 @@ export default function ContactFormSection() {
               animate={false}
             />
 
-            <ul className="mt-8 space-y-5">
-              <li className="flex items-start gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-verde-100 text-verde-600">
-                  <Mail size={18} />
-                </span>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-gris-500">Email</p>
-                  <a href="mailto:ventas@biotiza.mx" className="text-sm font-medium text-gris-800 hover:text-verde-600 transition-colors">
-                    ventas@biotiza.mx
-                  </a>
-                </div>
-              </li>
-
-              <li className="flex items-start gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-verde-100 text-verde-600">
-                  <Phone size={18} />
-                </span>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-gris-500">WhatsApp</p>
-                  <a
-                    href="https://wa.me/523300000000"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-medium text-gris-800 hover:text-verde-600 transition-colors"
-                  >
-                    +52 330 000 0000
-                  </a>
-                </div>
-              </li>
-
-              <li className="flex items-start gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-verde-100 text-verde-600">
-                  <MapPin size={18} />
-                </span>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-gris-500">Dirección</p>
-                  <p className="text-sm font-medium text-gris-800">Zapopan, Jalisco, México</p>
-                </div>
-              </li>
-
-              <li className="flex items-start gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-verde-100 text-verde-600">
-                  <InstagramIcon size={18} />
-                </span>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-gris-500">Instagram</p>
-                  <a
-                    href="https://instagram.com/biotiza"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-medium text-gris-800 hover:text-verde-600 transition-colors"
-                  >
-                    @biotiza
-                  </a>
-                </div>
-              </li>
+            <ul className="mt-10 space-y-5">
+              {[
+                { icon: Mail,          label: 'Email',     value: 'ventas@biotiza.mx',              href: 'mailto:ventas@biotiza.mx' },
+                { icon: Phone,         label: 'WhatsApp',  value: '+52 330 000 0000',               href: 'https://wa.me/523300000000' },
+                { icon: MapPin,        label: 'Dirección', value: 'Zapopan, Jalisco, México',       href: '' },
+                { icon: InstagramIcon, label: 'Instagram', value: '@biotiza',                       href: 'https://instagram.com/biotiza' },
+              ].map(({ icon: Icon, label, value, href }) => (
+                <li key={label} className="flex items-start gap-4">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-verde-500 to-verde-600 text-white shadow-sm">
+                    <Icon size={18} />
+                  </span>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-gris-400">{label}</p>
+                    {href ? (
+                      <a
+                        href={href}
+                        target={href.startsWith('http') ? '_blank' : undefined}
+                        rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        className="text-sm font-medium text-gris-800 hover:text-verde-600 transition-colors"
+                      >
+                        {value}
+                      </a>
+                    ) : (
+                      <p className="text-sm font-medium text-gris-800">{value}</p>
+                    )}
+                  </div>
+                </li>
+              ))}
             </ul>
 
-            <div className="mt-6 rounded-xl bg-verde-100/60 p-4 text-sm">
-              <p className="font-semibold text-verde-800">⏰ Horario de atención</p>
-              <p className="mt-1 text-verde-700">Lunes a Viernes: 9:00 – 18:00 hrs</p>
-              <p className="text-verde-700">Sábado: 9:00 – 13:00 hrs</p>
-              <p className="mt-2 text-xs text-verde-600">La Asesora IA responde 24/7</p>
+            <div className="mt-8 rounded-2xl bg-white/80 border border-verde-100 p-5 shadow-sm backdrop-blur-sm">
+              <div className="flex items-center gap-2 mb-2">
+                <Clock size={15} className="text-verde-600" />
+                <p className="text-sm font-semibold text-verde-800">Horario de atención</p>
+              </div>
+              <p className="text-sm text-gris-600">Lunes a Viernes: 9:00 – 18:00 hrs</p>
+              <p className="text-sm text-gris-600">Sábado: 9:00 – 13:00 hrs</p>
+              <p className="mt-2 text-xs text-verde-600 font-medium">La Asesora IA responde 24/7</p>
             </div>
           </motion.div>
 
@@ -155,18 +132,18 @@ export default function ContactFormSection() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center gap-4 rounded-2xl bg-white p-10 shadow-card text-center min-h-[360px]"
+                className="flex flex-col items-center justify-center gap-5 rounded-2xl bg-white p-12 shadow-[0_4px_24px_rgba(15,23,42,0.06)] border border-gris-100 text-center min-h-[400px]"
               >
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-verde-100">
-                  <CheckCircle size={32} className="text-verde-600" />
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-verde-400 to-verde-600 shadow-brand">
+                  <CheckCircle size={32} className="text-white" />
                 </div>
                 <h3 className="font-serif text-2xl text-gris-900">¡Mensaje enviado!</h3>
-                <p className="text-sm text-gris-600 max-w-xs">
+                <p className="text-sm text-gris-500 max-w-xs leading-relaxed">
                   Recibimos tu mensaje. Un agrónomo de Biotiza te contactará en menos de 24 horas.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
-                  className="mt-2 text-sm text-verde-600 hover:text-verde-700 font-medium"
+                  className="mt-2 text-sm text-verde-600 hover:text-verde-700 font-semibold transition-colors"
                 >
                   Enviar otro mensaje →
                 </button>
@@ -175,9 +152,12 @@ export default function ContactFormSection() {
               <form
                 onSubmit={handleSubmit(onSubmit)}
                 noValidate
-                className="flex flex-col gap-5 rounded-2xl bg-white p-6 shadow-card sm:p-8"
+                className="flex flex-col gap-5 rounded-2xl bg-white p-7 shadow-[0_4px_24px_rgba(15,23,42,0.06)] border border-gris-100 sm:p-9"
               >
-                <h3 className="font-serif text-xl text-gris-900">Enviar mensaje</h3>
+                <div className="mb-1">
+                  <h3 className="font-serif text-xl text-gris-900">Enviar mensaje</h3>
+                  <p className="text-sm text-gris-400 mt-1">Todos los campos marcados * son obligatorios</p>
+                </div>
 
                 <div className="grid gap-5 sm:grid-cols-2">
                   <Input
@@ -229,12 +209,8 @@ export default function ContactFormSection() {
                   type="submit"
                   disabled={isSubmitting}
                   className={cn(
-                    'inline-flex items-center justify-center gap-2',
-                    'rounded-lg bg-verde-500 py-3 px-6',
-                    'text-sm font-semibold text-white',
-                    'hover:bg-verde-600 disabled:opacity-60',
-                    'transition-all duration-200 active:scale-[0.98]',
-                    'shadow-brand',
+                    'btn-primary w-full',
+                    isSubmitting && 'opacity-60 cursor-not-allowed',
                   )}
                 >
                   {isSubmitting ? (
@@ -242,12 +218,17 @@ export default function ContactFormSection() {
                       <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
                       Enviando...
                     </>
-                  ) : 'Enviar Mensaje'}
+                  ) : (
+                    <>
+                      <Send size={15} />
+                      Enviar Mensaje
+                    </>
+                  )}
                 </button>
 
                 <p className="text-xs text-gris-400 text-center">
                   Al enviar aceptas nuestra{' '}
-                  <a href="/privacidad" className="underline hover:text-verde-600">
+                  <a href="/privacidad" className="underline hover:text-verde-600 transition-colors">
                     Política de Privacidad
                   </a>
                 </p>

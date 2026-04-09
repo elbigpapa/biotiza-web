@@ -1,23 +1,22 @@
 'use client'
 
 /**
- * Header.tsx — Barra de navegación principal de Biotiza
+ * Header.tsx — Barra de navegación premium de Biotiza
  *
- * - Sticky / fixed: bg blanco sólido desde el inicio
- * - Al scroll >50px: backdrop-blur + sombra sutil con transición 300ms
- * - Desktop: Logo | Nav con MegaMenu para Soluciones | CTA naranja
- * - Mobile: Logo | Botón hamburguesa → MobileNav (panel lateral)
+ * - Fixed con glassmorphism al hacer scroll
+ * - Desktop (lg+): Logo | Nav con MegaMenu | CTA premium
+ * - Mobile: Logo | Hamburguesa → MobileNav (panel lateral)
  */
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { AnimatePresence } from 'framer-motion'
-import { Leaf, Menu, ChevronDown } from 'lucide-react'
+import { Leaf, Menu, ChevronDown, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import MegaMenu from './MegaMenu'
 import MobileNav from './MobileNav'
 
-// ─── Links del nav (excluye Soluciones que tiene MegaMenu) ───────────────
+// ─── Links del nav ──────────────────────────────────────────────────────
 
 const NAV_LINKS = [
   { label: 'Cultivos',     href: '/cultivos'     },
@@ -36,7 +35,7 @@ export default function Header() {
 
   // ── Detección de scroll ──────────────────────────────────────────────
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50)
+    const onScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -47,44 +46,39 @@ export default function Header() {
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
+  const isActive = scrolled || megaOpen
+
   return (
     <>
-      {/*
-       * El header es fixed. El MegaMenu se renderiza como hijo absolute (top-full)
-       * dentro del mismo elemento, así el mouse que pasa del botón al menú
-       * nunca "sale" del header → no se cierra prematuramente.
-       *
-       * onMouseLeave en el <header> cierra el mega-menu cuando el cursor
-       * abandona toda el área (barra + menú desplegado).
-       */}
       <header
         onMouseLeave={() => setMegaOpen(false)}
         className={cn(
           'fixed inset-x-0 top-0 z-40',
-          'transition-all duration-300 ease-out',
-          scrolled || megaOpen
-            ? 'bg-white/95 backdrop-blur-lg shadow-[0_1px_20px_rgba(15,23,42,0.08)]'
-            : 'bg-white',
+          'transition-all duration-500 ease-out',
+          isActive
+            ? 'bg-white/80 backdrop-blur-2xl shadow-[0_1px_24px_rgba(15,23,42,0.06)] border-b border-gris-100/50'
+            : 'bg-transparent',
         )}
       >
-        {/* ── Barra principal ──────────────────────────────────────── */}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
+          <div className="flex h-[4.5rem] items-center justify-between">
 
             {/* Logo */}
-            <Link href="/" className="group flex items-center gap-2 shrink-0">
-              <Leaf
-                size={22}
-                className="text-naranja-500 transition-transform duration-300 group-hover:rotate-12"
-              />
-              <span className="font-serif text-xl leading-none text-verde-700">
+            <Link href="/" className="group flex items-center gap-2.5 shrink-0">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-verde-500 to-verde-600 shadow-sm transition-all duration-300 group-hover:shadow-brand group-hover:scale-105">
+                <Leaf size={18} className="text-white" />
+              </div>
+              <span className={cn(
+                'font-serif text-xl leading-none transition-colors duration-300',
+                isActive ? 'text-verde-800' : 'text-white',
+              )}>
                 Biotiza
               </span>
             </Link>
 
             {/* ── Nav desktop ───────────────────────────────────── */}
             <nav
-              className="hidden lg:flex items-center gap-0.5"
+              className="hidden lg:flex items-center gap-1"
               aria-label="Navegación principal"
             >
               {/* Soluciones + MegaMenu trigger */}
@@ -94,16 +88,18 @@ export default function Header() {
                   aria-expanded={megaOpen}
                   aria-haspopup="true"
                   className={cn(
-                    'flex items-center gap-1 rounded-md px-3 py-2',
-                    'text-sm font-medium transition-colors duration-200',
+                    'flex items-center gap-1.5 rounded-lg px-3.5 py-2',
+                    'text-sm font-medium transition-all duration-300',
                     megaOpen
                       ? 'bg-verde-50 text-verde-600'
-                      : 'text-gris-700 hover:bg-gris-50 hover:text-verde-600',
+                      : isActive
+                        ? 'text-gris-700 hover:bg-gris-50 hover:text-verde-600'
+                        : 'text-white/80 hover:text-white hover:bg-white/10',
                   )}
                 >
                   Soluciones
                   <ChevronDown
-                    size={14}
+                    size={13}
                     className={cn(
                       'transition-transform duration-200',
                       megaOpen && 'rotate-180',
@@ -118,10 +114,12 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    'rounded-md px-3 py-2',
-                    'text-sm font-medium text-gris-700',
-                    'transition-colors duration-200',
-                    'hover:bg-gris-50 hover:text-verde-600',
+                    'rounded-lg px-3.5 py-2',
+                    'text-sm font-medium',
+                    'transition-all duration-300',
+                    isActive
+                      ? 'text-gris-600 hover:bg-gris-50 hover:text-verde-600'
+                      : 'text-white/70 hover:text-white hover:bg-white/10',
                   )}
                 >
                   {link.label}
@@ -134,15 +132,18 @@ export default function Header() {
               <Link
                 href="/cotizacion"
                 className={cn(
-                  'inline-flex items-center justify-center',
-                  'h-9 rounded-lg px-4',
+                  'group inline-flex items-center justify-center gap-2',
+                  'h-10 rounded-xl px-5',
                   'text-sm font-semibold text-white',
-                  'bg-naranja-500 hover:bg-naranja-600',
-                  'transition-all duration-200 active:scale-[0.97]',
-                  'shadow-sm hover:shadow-[0_4px_16px_rgba(232,105,15,0.3)]',
+                  'bg-gradient-to-r from-naranja-500 to-naranja-600',
+                  'transition-all duration-300 active:scale-[0.97]',
+                  'shadow-[0_4px_16px_rgba(232,105,15,0.25)]',
+                  'hover:shadow-[0_8px_24px_rgba(232,105,15,0.35)]',
+                  'hover:-translate-y-0.5',
                 )}
               >
-                Solicitar Cotización
+                Cotizar
+                <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
               </Link>
             </div>
 
@@ -153,8 +154,10 @@ export default function Header() {
               aria-expanded={mobileOpen}
               className={cn(
                 'lg:hidden -mr-2 flex h-10 w-10 items-center justify-center',
-                'rounded-lg text-gris-700 transition-colors',
-                'hover:bg-gris-100 hover:text-verde-600',
+                'rounded-xl transition-all duration-300',
+                isActive
+                  ? 'text-gris-700 hover:bg-gris-100 hover:text-verde-600'
+                  : 'text-white/80 hover:text-white hover:bg-white/10',
               )}
             >
               <Menu size={22} />
@@ -162,7 +165,7 @@ export default function Header() {
           </div>
         </div>
 
-        {/* ── MegaMenu (absolute dentro del header) ────────────── */}
+        {/* ── MegaMenu ────────────────────────────────────────── */}
         <AnimatePresence>
           {megaOpen && (
             <MegaMenu onClose={() => setMegaOpen(false)} />
@@ -171,9 +174,9 @@ export default function Header() {
       </header>
 
       {/* Espaciador para compensar el header fixed */}
-      <div className="h-16" aria-hidden="true" />
+      <div className="h-[4.5rem]" aria-hidden="true" />
 
-      {/* ── MobileNav (fuera del header, usa portal implícito via fixed) */}
+      {/* ── MobileNav ──────────────────────────────────────────── */}
       <AnimatePresence>
         {mobileOpen && (
           <MobileNav onClose={() => setMobileOpen(false)} />

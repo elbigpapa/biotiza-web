@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
 import { staggerContainer, scaleIn } from '@/lib/animations'
 import SectionHeading from '@/components/ui/SectionHeading'
 import { Container } from '@/components/ui/Container'
@@ -19,13 +20,16 @@ const CROPS: CropCardData[] = [
 
 export default function CropsSection() {
   return (
-    <section className="bg-white py-20 lg:py-28">
-      <Container>
+    <section className="relative bg-white py-24 lg:py-32 overflow-hidden">
+      {/* Subtle decorative element */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-verde-50/50 blur-[120px] -translate-y-1/2 translate-x-1/4 pointer-events-none" aria-hidden="true" />
+
+      <Container className="relative z-10">
         <SectionHeading
           tag="Por cultivo"
           title="Programas de nutrición por cultivo"
           subtitle="Protocolos diseñados por nuestros agrónomos para maximizar rendimiento y calidad en cada etapa fenológica."
-          className="mb-16"
+          className="mb-20"
         />
 
         <motion.div
@@ -33,7 +37,7 @@ export default function CropsSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:gap-5"
+          className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:gap-5 lg:gap-6"
         >
           {CROPS.map((crop) => (
             <motion.div key={crop.slug} variants={scaleIn}>
@@ -47,13 +51,14 @@ export default function CropsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="mt-10 text-center"
+          className="mt-12 text-center"
         >
           <a
             href="/cultivos"
-            className="inline-flex items-center gap-2 rounded-lg border-2 border-verde-500 px-6 py-2.5 text-sm font-semibold text-verde-600 transition-colors hover:bg-verde-50"
+            className="group inline-flex items-center gap-2 rounded-xl border-2 border-verde-500 px-7 py-3 text-sm font-semibold text-verde-600 transition-all duration-300 hover:bg-verde-500 hover:text-white hover:shadow-brand"
           >
-            Ver todos los cultivos →
+            Ver todos los cultivos
+            <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
           </a>
         </motion.div>
       </Container>

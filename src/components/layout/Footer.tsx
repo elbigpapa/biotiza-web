@@ -1,14 +1,7 @@
 'use client'
 
 /**
- * Footer.tsx — Pie de página completo de Biotiza
- *
- * Estructura:
- *   1. Onda SVG verde (separador decorativo)
- *   2. Sección principal: Logo + tagline + columnas de links + contacto
- *   3. Newsletter inline
- *   4. Badges de certificaciones + redes sociales
- *   5. Barra de copyright
+ * Footer.tsx — Pie de página premium de Biotiza
  */
 
 import { useState, type FormEvent } from 'react'
@@ -19,7 +12,6 @@ import {
   MapPin,
   ArrowRight,
   Send,
-  ExternalLink,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -52,23 +44,15 @@ const COL_EMPRESA = [
   { label: 'Términos de uso',       href: '/politica-privacidad#terminos' },
 ]
 
-// ─── Icono TikTok (no disponible en lucide-react) ─────────────────────────
+// ─── Custom SVG icons ─────────────────────────────────────────────────────
 
 function TikTokIcon({ size = 20 }: { size?: number }) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-    >
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.95a8.16 8.16 0 004.77 1.52V7.02a4.85 4.85 0 01-1-.33z" />
     </svg>
   )
 }
-
-// ─── Iconos de redes sociales (no disponibles en lucide-react v1.7+) ──────
 
 function InstagramIcon({ size = 20 }: { size?: number }) {
   return (
@@ -111,20 +95,11 @@ function FooterWave() {
         viewBox="0 0 1440 80"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="none"
-        className="block h-16 w-full sm:h-20"
+        className="block h-14 w-full sm:h-16 lg:h-20"
       >
-        {/* Fondo blanco que representa el contenido superior */}
-        <rect width="1440" height="80" fill="white" />
-        {/* Ola verde — capa superior (más orgánica) */}
-        <path
-          d="M0,20 C200,65 400,5 600,35 C800,65 1000,10 1200,40 C1320,58 1400,25 1440,32 L1440,80 L0,80 Z"
-          fill="#22b573"
-        />
-        {/* Ola gris-900 — capa inferior (fondo del footer) */}
-        <path
-          d="M0,40 C200,80 450,20 700,55 C900,82 1150,25 1440,52 L1440,80 L0,80 Z"
-          fill="#0f172a"
-        />
+        <rect width="1440" height="80" fill="#f0fdf6" />
+        <path d="M0,20 C200,55 400,8 600,30 C800,55 1000,12 1200,35 C1350,50 1400,28 1440,32 L1440,80 L0,80 Z" fill="#22b573" opacity="0.15" />
+        <path d="M0,40 C200,70 450,20 700,50 C900,72 1150,25 1440,48 L1440,80 L0,80 Z" fill="#0f172a" />
       </svg>
     </div>
   )
@@ -141,24 +116,24 @@ function NewsletterForm() {
     e.preventDefault()
     if (!email) return
     setLoading(true)
-    // TODO: conectar con API route /api/newsletter
     await new Promise((r) => setTimeout(r, 800))
     setSubmitted(true)
     setLoading(false)
   }
 
   return (
-    <div className="rounded-xl bg-gris-800 p-6">
+    <div className="rounded-xl bg-gris-800/60 border border-gris-700/50 p-5 backdrop-blur-sm">
       <p className="mb-1 text-sm font-semibold text-white">
-        Recibe tips agrícolas 🌱
+        Recibe tips agrícolas
       </p>
       <p className="mb-4 text-xs text-gris-400">
         Consejos de nutrición, control biológico y fenología cada 2 semanas.
       </p>
 
       {submitted ? (
-        <p className="flex items-center gap-2 text-sm text-verde-400">
-          <span>✓</span> ¡Suscrito! Revisa tu correo.
+        <p className="flex items-center gap-2 text-sm text-verde-400 font-medium">
+          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-verde-500/20">✓</span>
+          ¡Suscrito! Revisa tu correo.
         </p>
       ) : (
         <form onSubmit={handleSubmit} className="flex gap-2">
@@ -170,11 +145,11 @@ function NewsletterForm() {
             required
             aria-label="Correo electrónico para newsletter"
             className={cn(
-              'min-w-0 flex-1 rounded-lg px-3 py-2',
-              'bg-gris-700 text-sm text-white placeholder:text-gris-500',
-              'border border-gris-600 focus:border-verde-500',
+              'min-w-0 flex-1 rounded-lg px-3.5 py-2.5',
+              'bg-gris-900/60 text-sm text-white placeholder:text-gris-500',
+              'border border-gris-700/50 focus:border-verde-500',
               'focus:outline-none focus:ring-1 focus:ring-verde-500',
-              'transition-colors duration-200',
+              'transition-all duration-300',
             )}
           />
           <button
@@ -182,16 +157,16 @@ function NewsletterForm() {
             disabled={loading}
             aria-label="Suscribirse"
             className={cn(
-              'flex h-9 w-9 shrink-0 items-center justify-center rounded-lg',
-              'bg-verde-500 text-white',
-              'hover:bg-verde-600 disabled:opacity-60',
-              'transition-colors duration-200',
+              'flex h-[42px] w-[42px] shrink-0 items-center justify-center rounded-lg',
+              'bg-gradient-to-br from-verde-500 to-verde-600 text-white',
+              'hover:shadow-brand disabled:opacity-60',
+              'transition-all duration-300',
             )}
           >
             {loading ? (
               <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
             ) : (
-              <Send size={16} />
+              <Send size={15} />
             )}
           </button>
         </form>
@@ -207,51 +182,45 @@ export default function Footer() {
 
   return (
     <>
-      {/* Onda decorativa verde */}
+      {/* Onda decorativa */}
       <FooterWave />
 
       <footer className="bg-gris-900 text-gris-300">
         {/* ── Sección principal ─────────────────────────────────── */}
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 pb-10">
           <div className="grid gap-10 lg:grid-cols-[2fr_1fr_1fr_1fr_1.5fr]">
 
             {/* Col 0: Marca + tagline + newsletter */}
             <div className="space-y-6">
-              {/* Logo */}
-              <Link href="/" className="group inline-flex items-center gap-2">
-                <Leaf size={22} className="text-naranja-500 transition-transform duration-300 group-hover:rotate-12" />
+              <Link href="/" className="group inline-flex items-center gap-2.5">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-verde-500 to-verde-600 shadow-sm transition-all duration-300 group-hover:shadow-brand">
+                  <Leaf size={18} className="text-white" />
+                </div>
                 <span className="font-serif text-xl text-white">Biotiza</span>
               </Link>
 
               <p className="text-sm leading-relaxed text-gris-400">
                 <em className="not-italic font-medium text-verde-400">
-                  "Generamos Vida y Valor al Campo"
+                  Generamos Vida y Valor al Campo
                 </em>
                 <br />
                 Biosoluciones agrícolas para cultivos de exportación.
                 Directo de laboratorio a tu campo, desde Zapopan, Jalisco.
               </p>
 
-              {/* Contacto */}
-              <ul className="space-y-2 text-sm">
-                <li className="flex items-center gap-2">
+              <ul className="space-y-2.5 text-sm">
+                <li className="flex items-center gap-2.5">
                   <Mail size={14} className="text-verde-500 shrink-0" />
-                  <a
-                    href="mailto:ventas@biotiza.mx"
-                    className="text-gris-400 transition-colors hover:text-verde-400"
-                  >
+                  <a href="mailto:ventas@biotiza.mx" className="text-gris-400 transition-colors hover:text-verde-400">
                     ventas@biotiza.mx
                   </a>
                 </li>
-                <li className="flex items-start gap-2">
+                <li className="flex items-start gap-2.5">
                   <MapPin size={14} className="text-verde-500 shrink-0 mt-0.5" />
-                  <span className="text-gris-400">
-                    Zapopan, Jalisco, México
-                  </span>
+                  <span className="text-gris-400">Zapopan, Jalisco, México</span>
                 </li>
               </ul>
 
-              {/* Newsletter */}
               <NewsletterForm />
             </div>
 
@@ -265,8 +234,8 @@ export default function Footer() {
             <FooterColumn title="Empresa" links={COL_EMPRESA} />
 
             {/* Col 4: Contacto directo */}
-            <div className="space-y-4">
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
+            <div className="space-y-5">
+              <h3 className="text-sm font-semibold uppercase tracking-[0.1em] text-white">
                 Contáctanos
               </h3>
 
@@ -276,11 +245,11 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
-                  'flex items-center gap-2 rounded-lg px-4 py-3',
+                  'flex items-center gap-2.5 rounded-xl px-4 py-3.5',
                   'bg-[#25D366]/10 text-[#25D366]',
                   'border border-[#25D366]/20',
-                  'text-sm font-semibold transition-all duration-200',
-                  'hover:bg-[#25D366]/20',
+                  'text-sm font-semibold transition-all duration-300',
+                  'hover:bg-[#25D366]/20 hover:border-[#25D366]/30',
                 )}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -291,7 +260,7 @@ export default function Footer() {
 
               {/* Redes sociales */}
               <div>
-                <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-gris-500">
+                <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.15em] text-gris-500">
                   Síguenos
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -308,10 +277,10 @@ export default function Footer() {
                       rel="noopener noreferrer"
                       aria-label={label}
                       className={cn(
-                        'flex h-9 w-9 items-center justify-center rounded-lg',
-                        'text-gris-400 bg-gris-800',
-                        'transition-all duration-200',
-                        'hover:bg-verde-500 hover:text-white hover:scale-105',
+                        'flex h-10 w-10 items-center justify-center rounded-xl',
+                        'text-gris-400 bg-gris-800/60 border border-gris-700/30',
+                        'transition-all duration-300',
+                        'hover:bg-verde-500 hover:text-white hover:border-verde-500 hover:scale-105 hover:shadow-brand',
                       )}
                     >
                       <Icon size={16} />
@@ -323,10 +292,10 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     aria-label="TikTok"
                     className={cn(
-                      'flex h-9 w-9 items-center justify-center rounded-lg',
-                      'text-gris-400 bg-gris-800',
-                      'transition-all duration-200',
-                      'hover:bg-verde-500 hover:text-white hover:scale-105',
+                      'flex h-10 w-10 items-center justify-center rounded-xl',
+                      'text-gris-400 bg-gris-800/60 border border-gris-700/30',
+                      'transition-all duration-300',
+                      'hover:bg-verde-500 hover:text-white hover:border-verde-500 hover:scale-105 hover:shadow-brand',
                     )}
                   >
                     <TikTokIcon size={16} />
@@ -338,23 +307,23 @@ export default function Footer() {
         </div>
 
         {/* ── Certificaciones ───────────────────────────────────── */}
-        <div className="border-t border-gris-800">
+        <div className="border-t border-gris-800/60">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
               <div className="flex flex-wrap items-center gap-3">
-                <span className="text-xs font-semibold uppercase tracking-wider text-gris-500">
+                <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-gris-500">
                   Certificaciones:
                 </span>
                 {[
-                  { label: '🇲🇽 COFEPRIS',           classes: 'bg-gris-800 text-gris-300 border border-gris-700' },
-                  { label: '✓ OMRI Listed',            classes: 'bg-verde-900/40 text-verde-400 border border-verde-800' },
-                  { label: '🇲🇽 Hecho en México',      classes: 'bg-gris-800 text-gris-300 border border-gris-700' },
+                  { label: 'COFEPRIS',           classes: 'bg-gris-800/60 text-gris-300 border border-gris-700/50' },
+                  { label: 'OMRI Listed',         classes: 'bg-verde-900/30 text-verde-400 border border-verde-800/50' },
+                  { label: 'Hecho en México',     classes: 'bg-gris-800/60 text-gris-300 border border-gris-700/50' },
                 ].map(({ label, classes }) => (
                   <span
                     key={label}
                     className={cn(
                       'inline-flex items-center rounded-full px-3 py-1',
-                      'text-[11px] font-semibold uppercase tracking-wide',
+                      'text-[10px] font-semibold uppercase tracking-wide',
                       classes,
                     )}
                   >
@@ -365,38 +334,28 @@ export default function Footer() {
 
               <Link
                 href="/cotizacion"
-                className={cn(
-                  'inline-flex items-center gap-1.5',
-                  'rounded-full px-4 py-1.5',
-                  'bg-verde-500 text-sm font-semibold text-white',
-                  'hover:bg-verde-600 transition-colors',
-                )}
+                className="group inline-flex items-center gap-2 rounded-xl px-5 py-2 bg-gradient-to-r from-verde-500 to-verde-600 text-sm font-semibold text-white hover:shadow-brand transition-all duration-300 hover:-translate-y-0.5"
               >
                 Solicitar cotización
-                <ArrowRight size={14} />
+                <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
               </Link>
             </div>
           </div>
         </div>
 
         {/* ── Copyright ─────────────────────────────────────────── */}
-        <div className="border-t border-gris-800">
+        <div className="border-t border-gris-800/40">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5">
             <div className="flex flex-col items-center justify-between gap-2 text-xs text-gris-600 sm:flex-row">
-              <p>
-                © {currentYear} Biotiza. Todos los derechos reservados.
-              </p>
+              <p>© {currentYear} Biotiza. Todos los derechos reservados.</p>
               <div className="flex items-center gap-4">
                 <Link href="/politica-privacidad" className="hover:text-gris-400 transition-colors">
                   Política de Privacidad
                 </Link>
-                <Link href="/politica-privacidad" className="hover:text-gris-400 transition-colors">
+                <Link href="/politica-privacidad#terminos" className="hover:text-gris-400 transition-colors">
                   Términos de Uso
                 </Link>
-                <a
-                  href="https://biotiza.mx"
-                  className="hover:text-verde-500 transition-colors"
-                >
+                <a href="https://biotiza.mx" className="hover:text-verde-500 transition-colors">
                   biotiza.mx
                 </a>
               </div>
@@ -419,17 +378,17 @@ function FooterColumn({
 }) {
   return (
     <div className="space-y-4">
-      <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
+      <h3 className="text-sm font-semibold uppercase tracking-[0.1em] text-white">
         {title}
       </h3>
-      <ul className="space-y-2">
+      <ul className="space-y-2.5">
         {links.map(({ label, href }) => (
           <li key={href}>
             <Link
               href={href}
               className={cn(
-                'text-sm text-gris-400 transition-colors duration-200',
-                'hover:text-verde-400',
+                'text-sm text-gris-400 transition-all duration-300',
+                'hover:text-verde-400 hover:translate-x-0.5 inline-block',
               )}
             >
               {label}
