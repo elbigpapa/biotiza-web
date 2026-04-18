@@ -389,7 +389,7 @@ export default function CalculadoraROIPage() {
                     Solicitar programa personalizado →
                   </Link>
                   <a
-                    href={`https://wa.me/523300000000?text=${waText}`}
+                    href={`https://wa.me/523316022708?text=${waText}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-verde-300 bg-white px-6 py-3 text-sm font-semibold text-verde-700 transition-colors hover:bg-verde-50"

@@ -125,7 +125,7 @@ export default function AssistantPreviewSection() {
                 Prueba la Asesora
               </Link>
               <a
-                href="https://wa.me/523300000000?text=Hola%20Asesora%20Biotiza"
+                href="https://wa.me/523316022708?text=Hola%20Asesora%20Biotiza"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(

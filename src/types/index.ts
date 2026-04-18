@@ -24,6 +24,16 @@ export type ProductLine =
   | 'nutricion'
   | 'zentia'
 
+// ─── Marcas de Proveedor ──────────────────────────────────────────────────
+
+/**
+ * Marcas de los tres proveedores cuyos productos distribuye Biotiza.
+ * bioproductos → Bioproductos Agrícolas (líneas originales: BP / Zentia / ULTRA)
+ * agrobionsa   → Agrobiológicos del Noroeste (control biológico microbiano)
+ * veganic      → Veganic® (fabricados en España, tecnologías NeoDuo / NeoPrime / MicroGea)
+ */
+export type ProductBrand = 'bioproductos' | 'agrobionsa' | 'veganic'
+
 // ─── Certificaciones ─────────────────────────────────────────────────────
 
 export type Certification = 'COFEPRIS' | 'OMRI' | 'Hecho en México' | string
@@ -76,6 +86,51 @@ export interface RecommendedDose {
   [method: string]: string | undefined
 }
 
+// ─── Dosis por Sistema de Producción ─────────────────────────────────────
+
+export interface DosageBySystem {
+  /** Sistema de producción: extensivo, intensivo, hidropónico */
+  system: 'extensivo' | 'intensivo' | 'hidropónico' | string
+  /** Dosis, ej: "2-3 L/ha" */
+  dose: string
+  /** Método de aplicación */
+  method: string
+  /** Frecuencia */
+  frequency: string
+}
+
+// ─── Dosis por Cultivo ───────────────────────────────────────────────────
+
+export interface DosageByCrop {
+  /** Slug del cultivo */
+  crop: string
+  /** Nombre visible del cultivo */
+  cropName: string
+  /** Etapas fenológicas recomendadas */
+  stages: string[]
+  /** Dosis */
+  dose: string
+  /** Método de aplicación */
+  method: string
+  /** Frecuencia */
+  frequency: string
+  /** Notas técnicas */
+  notes?: string
+}
+
+// ─── Documentos del Producto ─────────────────────────────────────────────
+
+export interface ProductDocuments {
+  /** Ruta a ficha técnica PDF */
+  datasheet?: string
+  /** Ruta a hoja de seguridad PDF */
+  safety_sheet?: string
+  /** Ruta a certificación OMRI PDF */
+  omri_cert?: string
+  /** Ruta a registro COFEPRIS PDF */
+  cofepris_cert?: string
+}
+
 // ─── Compatibilidad ──────────────────────────────────────────────────────
 
 export interface ProductCompatibility {
@@ -100,6 +155,8 @@ export interface Product {
   full_name: string
   /** Línea de producto */
   line: ProductLine
+  /** Marca del proveedor (distribuimos 3 marcas) */
+  brand: ProductBrand
   /** Categoría dentro de la línea, ej: "Enraizadores", "Bioprotección foliar" */
   category: string
   /** Descripción de marketing (1-3 oraciones) */
@@ -138,6 +195,14 @@ export interface Product {
   datasheet_url?: string
   /** Fecha de última actualización del registro */
   updated_at?: string
+  /** Tabla de dosis por sistema de producción */
+  dosage_table?: DosageBySystem[]
+  /** Dosis específica por cultivo */
+  dosage_by_crop?: DosageByCrop[]
+  /** Documentos descargables */
+  documents?: ProductDocuments
+  /** IDs de casos de éxito relacionados */
+  case_studies?: string[]
 }
 
 // ─── Etapa Fenológica ─────────────────────────────────────────────────────
@@ -311,4 +376,54 @@ export interface DoseCalculatorResult {
   unit: string
   concentration?: string
   notes?: string
+}
+
+// ─── Caso de Éxito ───────────────────────────────────────────────────────
+
+export interface ProductUsed {
+  productId: string
+  productName: string
+  dose: string
+  method: string
+  frequency: string
+}
+
+export interface CaseStudyResult {
+  /** Métrica medida, ej: "Peso de raíz", "Rendimiento" */
+  metric: string
+  /** Valor antes/testigo */
+  before?: string
+  /** Valor después/tratamiento */
+  after: string
+  /** Mejora, ej: "↑ 34%", "↑ 2.1 °Brix" */
+  improvement?: string
+}
+
+export interface CaseStudy {
+  id: string
+  slug: string
+  /** Título descriptivo anonimizado */
+  title: string
+  /** Slug del cultivo */
+  crop: string
+  /** Nombre visible del cultivo */
+  cropName: string
+  /** Región/estado */
+  region: string
+  /** Temporada, ej: "Otoño-Invierno 2024" */
+  season: string
+  /** Productos utilizados */
+  products_used: ProductUsed[]
+  /** Desafío que enfrentaba el productor */
+  challenge: string
+  /** Protocolo aplicado (anonimizado) */
+  protocol: string
+  /** Resultados medibles */
+  results: CaseStudyResult[]
+  /** Conclusión */
+  conclusion: string
+  /** Imágenes de campo */
+  images?: string[]
+  /** Ruta al PDF original (si no contiene info confidencial) */
+  pdf_source?: string
 }

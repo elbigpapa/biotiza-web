@@ -521,7 +521,7 @@ export default function CalculadoraDosisPage() {
             {/* CTAs */}
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
               <a
-                href={`https://wa.me/523300000000?text=${waText}`}
+                href={`https://wa.me/523316022708?text=${waText}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-verde-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-verde-600"

@@ -67,7 +67,7 @@ export default function CultivosPage() {
               personalizado para tus condiciones específicas.
             </p>
             <a
-              href="https://wa.me/523300000000?text=Hola%2C%20necesito%20un%20programa%20de%20nutrici%C3%B3n%20personalizado"
+              href="https://wa.me/523316022708?text=Hola%2C%20necesito%20un%20programa%20de%20nutrici%C3%B3n%20personalizado"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-verde-600 px-6 py-3 text-white font-semibold hover:bg-verde-700 transition-colors"

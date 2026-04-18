@@ -65,8 +65,8 @@ const contactItems = [
   {
     icon: MessageCircle,
     label: 'WhatsApp / Llamadas',
-    value: '+52 33 0000 0000',
-    href: 'https://wa.me/523300000000',
+    value: '+52 33 1602 2708',
+    href: 'https://wa.me/523316022708',
   },
   {
     icon: MapPin,
@@ -87,6 +87,7 @@ const contactItems = [
 // ---------------------------------------------------------------------------
 export default function ContactoPage() {
   const [submitted, setSubmitted] = useState(false)
+  const [serverError, setServerError] = useState<string | null>(null)
 
   const {
     register,
@@ -99,14 +100,23 @@ export default function ContactoPage() {
     },
   })
 
-  const onSubmit = (data: FormData) => {
-    console.log('Form data:', data)
-    return new Promise<void>((resolve) => {
-      setTimeout(() => {
-        setSubmitted(true)
-        resolve()
-      }, 1000)
-    })
+  const onSubmit = async (data: FormData) => {
+    setServerError(null)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      if (!res.ok) {
+        const json = await res.json().catch(() => ({}))
+        setServerError(json?.error ?? 'No pudimos enviar tu mensaje.')
+        return
+      }
+      setSubmitted(true)
+    } catch {
+      setServerError('Error de red. Intenta de nuevo.')
+    }
   }
 
   return (
@@ -346,6 +356,12 @@ export default function ContactoPage() {
                       </>
                     )}
                   </button>
+
+                  {serverError && (
+                    <p className="text-center text-sm text-red-500" role="alert">
+                      {serverError}
+                    </p>
+                  )}
                 </form>
               )}
             </div>

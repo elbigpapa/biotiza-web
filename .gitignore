@@ -36,6 +36,13 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Claude local helpers (preview server config, not for deploy)
+.claude/
+
+# Windows PowerShell helpers (local only)
+run-build.ps1
+*.ps1
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
@@ -50,3 +57,13 @@ node-ver.txt
 git-check.txt
 git-check2.txt
 vercel-check.txt
+__build*.txt
+__typecheck*.txt
+__npm*.txt
+__bash*.txt
+__cleanup*.txt
+__after*.txt
+__crops*.txt
+__data*.txt
+__outdated*.txt
+__whatsapp*.txt

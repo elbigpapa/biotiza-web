@@ -153,7 +153,7 @@ export default function HeroSection() {
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </Link>
           <Link
-            href="https://wa.me/523300000000?text=Hola%20Biotiza%2C%20quiero%20hablar%20con%20un%20asesor"
+            href="https://wa.me/523316022708?text=Hola%20Biotiza%2C%20quiero%20hablar%20con%20un%20asesor"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-accent"

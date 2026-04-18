@@ -52,16 +52,35 @@ const CROPS = [
 
 export default function ContactFormSection() {
   const [submitted, setSubmitted] = useState(false)
+  const [serverError, setServerError] = useState<string | null>(null)
 
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<ContactForm>({
     resolver: zodResolver(contactSchema),
   })
 
   const onSubmit = async (data: ContactForm) => {
-    // TODO: conectar con API route /api/contact
-    await new Promise((r) => setTimeout(r, 800))
-    console.log('Formulario enviado:', data)
-    setSubmitted(true)
+    setServerError(null)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          nombre: data.name,
+          email: data.email,
+          telefono: data.phone,
+          cultivo: data.crop,
+          mensaje: data.message,
+        }),
+      })
+      if (!res.ok) {
+        const json = await res.json().catch(() => ({}))
+        setServerError(json?.error ?? 'No pudimos enviar tu mensaje. Intenta de nuevo.')
+        return
+      }
+      setSubmitted(true)
+    } catch {
+      setServerError('Error de red. Intenta de nuevo.')
+    }
   }
 
   return (
@@ -88,7 +107,7 @@ export default function ContactFormSection() {
             <ul className="mt-10 space-y-5">
               {[
                 { icon: Mail,          label: 'Email',     value: 'ventas@biotiza.mx',              href: 'mailto:ventas@biotiza.mx' },
-                { icon: Phone,         label: 'WhatsApp',  value: '+52 330 000 0000',               href: 'https://wa.me/523300000000' },
+                { icon: Phone,         label: 'WhatsApp',  value: '+52 33 1602 2708',               href: 'https://wa.me/523316022708' },
                 { icon: MapPin,        label: 'Dirección', value: 'Zapopan, Jalisco, México',       href: '' },
                 { icon: InstagramIcon, label: 'Instagram', value: '@biotiza',                       href: 'https://instagram.com/biotiza' },
               ].map(({ icon: Icon, label, value, href }) => (
@@ -181,7 +200,7 @@ export default function ContactFormSection() {
                   <Input
                     label="Teléfono"
                     type="tel"
-                    placeholder="+52 33 0000 0000"
+                    placeholder="+52 33 1602 2708"
                     error={errors.phone}
                     {...register('phone')}
                   />
@@ -225,6 +244,12 @@ export default function ContactFormSection() {
                     </>
                   )}
                 </button>
+
+                {serverError && (
+                  <p className="text-center text-sm text-red-500" role="alert">
+                    {serverError}
+                  </p>
+                )}
 
                 <p className="text-xs text-gris-400 text-center">
                   Al enviar aceptas nuestra{' '}

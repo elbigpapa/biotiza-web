@@ -15,7 +15,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { MessageCircle } from 'lucide-react'
 
 const WA_URL =
-  'https://wa.me/523300000000?text=Hola%20Biotiza%2C%20necesito%20asesor%C3%ADa%20sobre%20sus%20productos%20%F0%9F%8C%B1'
+  'https://wa.me/523316022708?text=Hola%20Biotiza%2C%20necesito%20asesor%C3%ADa%20sobre%20sus%20productos%20%F0%9F%8C%B1'
 
 export default function WhatsAppFloat() {
   const [hovered, setHovered] = useState(false)

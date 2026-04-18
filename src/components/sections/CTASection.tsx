@@ -80,7 +80,7 @@ export default function CTASection() {
               Agendar Asesoría
             </Link>
             <a
-              href="https://wa.me/523300000000?text=Hola%20Biotiza%2C%20quiero%20asesor%C3%ADa%20para%20mi%20cultivo"
+              href="https://wa.me/523316022708?text=Hola%20Biotiza%2C%20quiero%20asesor%C3%ADa%20para%20mi%20cultivo"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-7 py-3 text-sm font-semibold text-white hover:bg-[#1ebe57] active:scale-[0.97] shadow-[0_4px_24px_rgba(37,211,102,0.35)] transition-all duration-300 hover:-translate-y-0.5"

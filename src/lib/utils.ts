@@ -140,6 +140,6 @@ export function isValidMexPhone(phone: string): boolean {
  * @example
  *   whatsappLink('Hola, quiero cotizar Biotiza Root')
  */
-export function whatsappLink(message: string, phone = '523300000000'): string {
+export function whatsappLink(message: string, phone = '523316022708'): string {
   return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
 }

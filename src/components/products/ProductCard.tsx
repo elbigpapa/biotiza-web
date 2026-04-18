@@ -6,13 +6,14 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import Badge from '@/components/ui/Badge'
-import type { ProductLine } from '@/types'
+import type { ProductLine, ProductBrand } from '@/types'
 
 export interface ProductCardData {
   id: string
   slug: string
   name: string
   line: ProductLine
+  brand?: ProductBrand
   tagline: string
   icon?: string
   href?: string
@@ -49,7 +50,7 @@ const LINE_GLOW: Record<ProductLine, string> = {
 }
 
 export default function ProductCard({ product, className }: ProductCardProps) {
-  const { slug, name, line, tagline, icon, href } = product
+  const { slug, name, line, brand, tagline, icon, href } = product
   const productHref = href ?? `/soluciones/${line}/${slug}`
   const gradient    = LINE_GRADIENTS[line]
   const lineIcon    = icon ?? LINE_ICONS[line]
@@ -86,6 +87,12 @@ export default function ProductCard({ product, className }: ProductCardProps) {
         <div className="absolute top-3 left-3">
           <Badge line={line} size="sm" />
         </div>
+        {/* Badge de marca */}
+        {brand && (
+          <div className="absolute top-3 right-3">
+            <Badge brand={brand} size="sm" showDot={false} className="bg-white/95 backdrop-blur-sm" />
+          </div>
+        )}
       </div>
 
       {/* Contenido */}

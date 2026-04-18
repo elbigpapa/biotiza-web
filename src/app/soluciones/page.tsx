@@ -8,14 +8,14 @@ import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Search, X, Filter, Leaf, FlaskConical, Sparkles, Droplets, Shield } from 'lucide-react'
-import { PRODUCTS, getProductsByLine } from '@/data/products'
-import { PRODUCT_LINES } from '@/data/constants'
+import { PRODUCTS, getProductsByLine, getProductsByBrand } from '@/data/products'
+import { PRODUCT_LINES, BRANDS } from '@/data/constants'
 import { cn } from '@/lib/utils'
 import { staggerContainer, fadeInUp } from '@/lib/animations'
 import Badge from '@/components/ui/Badge'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Container from '@/components/ui/Container'
-import type { ProductLine } from '@/types'
+import type { ProductLine, ProductBrand } from '@/types'
 
 // ─── Icono por línea ──────────────────────────────────────────────────────
 const LINE_ICONS: Record<ProductLine, React.ElementType> = {
@@ -57,6 +57,7 @@ function CatalogCard({ product }: { product: typeof PRODUCTS[0] }) {
             <span className="rounded-full bg-naranja-100 px-2 py-0.5 text-[10px] font-bold text-naranja-600 uppercase">⭐ Top</span>
           )}
         </div>
+        <Badge brand={product.brand} size="sm" showDot={false} className="self-start" />
         <h3 className="text-sm font-semibold text-gris-900 leading-tight group-hover:text-verde-700 transition-colors">
           {product.name}
         </h3>
@@ -77,11 +78,18 @@ const LINE_TABS: { id: ProductLine | 'all'; label: string; count: number }[] = [
   ...PRODUCT_LINES.map(l => ({ id: l.id, label: l.name, count: getProductsByLine(l.id).length })),
 ]
 
+// ─── Tabs de marcas ───────────────────────────────────────────────────────
+const BRAND_TABS: { id: ProductBrand | 'all'; label: string; count: number }[] = [
+  { id: 'all', label: 'Todas las marcas', count: PRODUCTS.length },
+  ...BRANDS.map(b => ({ id: b.id, label: b.name, count: getProductsByBrand(b.id).length })),
+]
+
 // ─── Componente ───────────────────────────────────────────────────────────
 
 export default function SolucionesPage() {
   const [query,      setQuery]      = useState('')
   const [activeLine, setActiveLine] = useState<ProductLine | 'all'>('all')
+  const [activeBrand, setActiveBrand] = useState<ProductBrand | 'all'>('all')
   const [activeCert, setActiveCert] = useState<string>('all')
   const [activeMethod, setActiveMethod] = useState<string>('all')
   const [showFilters, setShowFilters] = useState(false)
@@ -89,6 +97,7 @@ export default function SolucionesPage() {
   const filtered = useMemo(() => {
     return PRODUCTS.filter(p => {
       const matchLine   = activeLine === 'all' || p.line === activeLine
+      const matchBrand  = activeBrand === 'all' || p.brand === activeBrand
       const matchCert   = activeCert === 'all' || p.certifications.includes(activeCert)
       const matchMethod = activeMethod === 'all' || p.application_methods.includes(activeMethod)
       const matchQuery  = !query || (
@@ -96,11 +105,11 @@ export default function SolucionesPage() {
         p.description.toLowerCase().includes(query.toLowerCase()) ||
         p.solves_problems.some(s => s.toLowerCase().includes(query.toLowerCase()))
       )
-      return matchLine && matchCert && matchMethod && matchQuery
+      return matchLine && matchBrand && matchCert && matchMethod && matchQuery
     })
-  }, [query, activeLine, activeCert, activeMethod])
+  }, [query, activeLine, activeBrand, activeCert, activeMethod])
 
-  const hasFilters = activeLine !== 'all' || activeCert !== 'all' || activeMethod !== 'all' || query
+  const hasFilters = activeLine !== 'all' || activeBrand !== 'all' || activeCert !== 'all' || activeMethod !== 'all' || query
 
   return (
     <div className="bg-white">
@@ -110,7 +119,7 @@ export default function SolucionesPage() {
           <SectionHeading
             tag="Portafolio completo"
             title="Nuestras Soluciones"
-            subtitle="41 productos en 5 líneas especializadas. Nutrición, estimulación y bioprotección para cada etapa de tu cultivo."
+            subtitle={`${PRODUCTS.length} productos · 3 marcas (Bioproductos, Agrobionsa, Veganic) · 5 líneas especializadas. Nutrición, estimulación y bioprotección para cada etapa de tu cultivo.`}
             titleClassName="text-white"
             className="[&_p]:text-verde-200 [&_span]:text-verde-300 [&_span]:bg-verde-800/50"
             animate={false}
@@ -154,7 +163,7 @@ export default function SolucionesPage() {
             </button>
             {hasFilters && (
               <button
-                onClick={() => { setQuery(''); setActiveLine('all'); setActiveCert('all'); setActiveMethod('all') }}
+                onClick={() => { setQuery(''); setActiveLine('all'); setActiveBrand('all'); setActiveCert('all'); setActiveMethod('all') }}
                 className="text-xs text-gris-500 hover:text-red-500 transition-colors"
               >
                 Limpiar
@@ -208,40 +217,74 @@ export default function SolucionesPage() {
           </motion.div>
         )}
 
+        {/* Tabs de marca (proveedor) */}
+        <div className="mb-3 flex items-center gap-3">
+          <span className="hidden text-xs font-semibold uppercase tracking-wider text-gris-500 sm:inline">Marca</span>
+          <div className="flex gap-2 overflow-x-auto pb-1">
+            {BRAND_TABS.map(tab => {
+              const brandColor = tab.id !== 'all' ? BRANDS.find(b => b.id === tab.id)?.color : undefined
+              const isActive = activeBrand === tab.id
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveBrand(tab.id)}
+                  className={cn(
+                    'flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors border',
+                    isActive
+                      ? 'text-white border-transparent'
+                      : 'bg-white text-gris-600 border-gris-200 hover:border-gris-300',
+                  )}
+                  style={isActive && brandColor ? { backgroundColor: brandColor } : undefined}
+                >
+                  {tab.label}
+                  <span className={cn('rounded-full px-1.5 py-0.5 text-[10px] font-bold',
+                    isActive ? 'bg-white/25 text-white' : 'bg-gris-100 text-gris-600'
+                  )}>
+                    {tab.count}
+                  </span>
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
         {/* Tabs de línea */}
-        <div className="mb-8 flex gap-2 overflow-x-auto pb-2">
-          {LINE_TABS.map(tab => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveLine(tab.id)}
-              className={cn(
-                'flex shrink-0 items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-colors',
-                activeLine === tab.id
-                  ? 'bg-verde-500 text-white shadow-brand'
-                  : 'bg-gris-100 text-gris-600 hover:bg-gris-200',
-              )}
-            >
-              {tab.label}
-              <span className={cn('rounded-full px-1.5 py-0.5 text-[10px] font-bold',
-                activeLine === tab.id ? 'bg-white/20 text-white' : 'bg-white text-gris-600'
-              )}>
-                {tab.count}
-              </span>
-            </button>
-          ))}
+        <div className="mb-8 flex items-center gap-3">
+          <span className="hidden text-xs font-semibold uppercase tracking-wider text-gris-500 sm:inline">Línea</span>
+          <div className="flex gap-2 overflow-x-auto pb-2">
+            {LINE_TABS.map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveLine(tab.id)}
+                className={cn(
+                  'flex shrink-0 items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-colors',
+                  activeLine === tab.id
+                    ? 'bg-verde-500 text-white shadow-brand'
+                    : 'bg-gris-100 text-gris-600 hover:bg-gris-200',
+                )}
+              >
+                {tab.label}
+                <span className={cn('rounded-full px-1.5 py-0.5 text-[10px] font-bold',
+                  activeLine === tab.id ? 'bg-white/20 text-white' : 'bg-white text-gris-600'
+                )}>
+                  {tab.count}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Grid de productos */}
         {filtered.length === 0 ? (
           <div className="py-20 text-center">
             <p className="text-gris-500">No encontramos productos con esos filtros.</p>
-            <button onClick={() => { setQuery(''); setActiveLine('all'); setActiveCert('all'); setActiveMethod('all') }} className="mt-3 text-sm text-verde-600 hover:underline">
+            <button onClick={() => { setQuery(''); setActiveLine('all'); setActiveBrand('all'); setActiveCert('all'); setActiveMethod('all') }} className="mt-3 text-sm text-verde-600 hover:underline">
               Limpiar filtros →
             </button>
           </div>
         ) : (
           <motion.div
-            key={`${activeLine}-${query}-${activeCert}-${activeMethod}`}
+            key={`${activeLine}-${activeBrand}-${query}-${activeCert}-${activeMethod}`}
             variants={staggerContainer}
             initial="hidden"
             animate="visible"

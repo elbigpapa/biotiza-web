@@ -241,7 +241,7 @@ export default function Footer() {
 
               {/* WhatsApp CTA */}
               <a
-                href="https://wa.me/523300000000?text=Hola%20Biotiza%2C%20quiero%20informaci%C3%B3n"
+                href="https://wa.me/523316022708?text=Hola%20Biotiza%2C%20quiero%20informaci%C3%B3n"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(

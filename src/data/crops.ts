@@ -72,6 +72,7 @@ const TOMATE: FullCropProtocol = {
         { productId: 'bp-nutri', productName: 'BP Nutri', line: 'organicos', dose: '1.5 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'Las algas aportan citoquininas y auxinas naturales' },
         { productId: 'mg-ultra', productName: 'Mg-Ultra', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Semanal', notes: 'Clave para la síntesis de clorofila' },
         { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '1 L/ha', method: 'Fertirrigación', frequency: 'Cada 14 días', notes: 'Paquete completo de microelementos' },
+        { productId: 'vgn-brotanic', productName: 'Brotanic', line: 'nutricion', dose: '1.0 → 1.5 → 2.0 L / 200 L agua (foliar) · 1–3 L/ha (riego)', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas en el ciclo vegetativo y reproductivo', notes: 'Veganic · Cu 1.66 % + Mn 0.90 % + Zn 0.59 %. Previene clorosis y deficiencias de micros. Grupo hortalizas.' },
         { productId: 'zen-fungi', productName: 'Zen-Fungi', line: 'zentia', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 10 días', notes: 'Prevención de Botrytis y Alternaria', isProtection: true },
       ],
     },
@@ -154,6 +155,7 @@ const FRESA: FullCropProtocol = {
         { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '4 L/ha', method: 'Fertirrigación', frequency: 'Según CE objetivo', notes: 'Mantener CE 1.2–1.8 mS/cm en esta etapa' },
         { productId: 'bp-nitro-fx', productName: 'BP Nitro FX', line: 'organicos', dose: '1.5 mL/L', method: 'Foliar', frequency: 'Cada 14 días', notes: 'Los aminoácidos aceleran la construcción de tejido' },
         { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '1 L/ha', method: 'Fertirrigación', frequency: 'Cada 14 días', notes: 'Microelementos para hojas sanas y oscuras' },
+        { productId: 'vgn-brotanic', productName: 'Brotanic', line: 'nutricion', dose: '1.5 → 2.0 → 2.5 L / 200 L agua (foliar) · 2–3 L/ha (riego)', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Veganic · Cu + Mn + Zn para vigor foliar y prevención de deficiencias en sustrato ácido. Grupo frutales.' },
         { productId: 'zen-can', productName: 'Zen-Can', line: 'zentia', dose: '1.5 mL/L', method: 'Aspersión', frequency: 'Cada 10 días', notes: 'Prevención de oídio y trips desde inicio', isProtection: true },
       ],
     },
@@ -226,6 +228,7 @@ const ARANDANO: FullCropProtocol = {
         { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '3 L/ha', method: 'Fertirrigación', frequency: '2 veces/semana', notes: 'Usar fuentes amoniacales para mantener pH bajo' },
         { productId: 'bp-zinc', productName: 'BP Zinc', line: 'nutricion', dose: '0.5 L/ha', method: 'Fertirrigación', frequency: 'Cada 14 días', notes: 'El Zn activa la síntesis de auxinas para crecimiento de canes' },
         { productId: 'mg-ultra', productName: 'Mg-Ultra', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Semanal', notes: 'Frecuente deficiencia de Mg en sustratos ácidos' },
+        { productId: 'vgn-brotanic', productName: 'Brotanic', line: 'nutricion', dose: '1.5 → 2.0 → 2.5 L / 200 L agua (foliar) · 2–3 L/ha (riego)', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Veganic · pH 2.73 favorece asimilación de Cu, Mn y Zn en pH de suelo bajo. Grupo frutales.' },
         { productId: 'zen-chrys', productName: 'Zen-Chrys', line: 'zentia', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 7 días', notes: 'Trips californiano es el mayor problema en arándano', isProtection: true },
       ],
     },
@@ -285,6 +288,7 @@ const AGUACATE: FullCropProtocol = {
         { productId: 'bontera-sa10', productName: 'Bontera SA-10', line: 'nutricion', dose: '1.5 L/ha', method: 'Fertirrigación', frequency: 'Cada 21 días', notes: 'Mejora la CIC en suelos volcánicos de Michoacán' },
         { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '4 L/ha', method: 'Fertirrigación', frequency: 'En flujos activos', notes: 'Alta N en cada flujo de crecimiento' },
         { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '1.5 L/ha', method: 'Fertirrigación', frequency: 'Cada 21 días', notes: 'Microelementos para hojas de exportación' },
+        { productId: 'vgn-brotanic', productName: 'Brotanic', line: 'nutricion', dose: '1.5 → 2.0 → 2.5 L / 200 L agua (foliar) · 2–3 L/ha (riego)', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas por flujo vegetativo', notes: 'Veganic · refuerza Cu + Mn + Zn antes de inducción floral; mejora viabilidad de polen. Grupo frutales.' },
         { productId: 'bp-oxyagro', productName: 'BP Oxyagro', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Cada 21 días', notes: 'Prevención y control de Phytophthora cinnamomi', isProtection: true },
       ],
     },
@@ -364,6 +368,7 @@ const CHILE: FullCropProtocol = {
         { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '5 L/ha', method: 'Fertirrigación', frequency: '2 veces/semana', notes: 'Alta demanda de N en crecimiento vegetativo' },
         { productId: 'mg-ultra', productName: 'Mg-Ultra', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Semanal', notes: 'Frecuente deficiencia en suelos arenosos del norte' },
         { productId: 'bp-nutri', productName: 'BP Nutri', line: 'organicos', dose: '1.5 mL/L', method: 'Foliar', frequency: 'Cada 14 días', notes: 'Vigor y resistencia al estrés térmico' },
+        { productId: 'vgn-brotanic', productName: 'Brotanic', line: 'nutricion', dose: '1.0 → 1.5 → 2.0 L / 200 L agua (foliar) · 1–3 L/ha (riego)', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Veganic · corrige clorosis y BER incipiente en chile por deficiencia de Mn/Zn. Grupo hortalizas.' },
       ],
     },
     {
@@ -430,6 +435,7 @@ const FRAMBUESA: FullCropProtocol = {
       products: [
         { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '3 L/ha', method: 'Fertirrigación', frequency: 'Alta en crecimiento', notes: 'N para elongación de canes' },
         { productId: 'bp-nutri', productName: 'BP Nutri', line: 'organicos', dose: '1.5 mL/L', method: 'Foliar', frequency: 'Cada 14 días', notes: 'Vigor y respuesta al estrés' },
+        { productId: 'vgn-brotanic', productName: 'Brotanic', line: 'nutricion', dose: '1.5 → 2.0 → 2.5 L / 200 L agua (foliar) · 2–3 L/ha (riego)', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Veganic · Cu + Mn + Zn para elongación homogénea de canes y prevención de micros. Grupo frutales.' },
         { productId: 'zen-fungi', productName: 'Zen-Fungi', line: 'zentia', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 10 días', notes: 'Oídio y Botrytis desde inicio de crecimiento', isProtection: true },
       ],
     },
@@ -474,6 +480,7 @@ const ZARZAMORA: FullCropProtocol = {
       products: [
         { productId: 'bp-moots', productName: 'BP Moots', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Al inicio de brotación', notes: 'Estimular la brotación homogénea de yemas' },
         { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '4 L/ha', method: 'Fertirrigación', frequency: 'Alta en brotación', notes: 'N para elongación vigorosa de canes' },
+        { productId: 'vgn-brotanic', productName: 'Brotanic', line: 'nutricion', dose: '1.5 → 2.0 → 2.5 L / 200 L agua (foliar) · 2–3 L/ha (riego)', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Veganic · activa enzimas fotosintéticas y viabilidad de polen en nuevos brotes. Grupo frutales.' },
         { productId: 'zen-can', productName: 'Zen-Can', line: 'zentia', dose: '1.5 mL/L', method: 'Aspersión', frequency: 'Cada 10 días', notes: 'Antracnosis y oídio desde brotación', isProtection: true },
       ],
     },
@@ -540,6 +547,7 @@ const CITRICOS: FullCropProtocol = {
         { productId: 'bp-calcio', productName: 'BP Calcio', line: 'organicos', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Cada 14 días', notes: 'Esencial para el desarrollo del fruto en cítricos' },
         { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '1.5 L/ha', method: 'Fertirrigación', frequency: 'Cada 21 días', notes: 'Microelementos para follaje sano y fruto de exportación' },
         { productId: 'bp-ferrum', productName: 'BP Ferrum', line: 'nutricion', dose: '1 L/ha', method: 'Fertirrigación', frequency: 'Cada 21 días', notes: 'Corrección de clorosis férrica en suelos calizos' },
+        { productId: 'vgn-brotanic', productName: 'Brotanic', line: 'nutricion', dose: '1.5 → 2.0 → 2.5 L / 200 L agua (foliar) · 2–3 L/ha (riego)', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Veganic · complementa Zn y Mn (deficiencia típica en cítricos) y refuerza inmunidad por Cu. Grupo frutales.' },
         { productId: 'bp-oxyagro', productName: 'BP Oxyagro', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Cada 30 días', notes: 'Prevención de Phytophthora en suelos pesados', isProtection: true },
       ],
     },
@@ -555,10 +563,454 @@ const CITRICOS: FullCropProtocol = {
   ],
 }
 
+// ─────────────────────────────────────────────────────────────────────────
+// TOMATE CHERRY
+// ─────────────────────────────────────────────────────────────────────────
+
+const TOMATE_CHERRY: FullCropProtocol = {
+  id: 'tomate-cherry', slug: 'tomate-cherry', name: 'Tomate Cherry', scientific_name: 'Solanum lycopersicum var. cerasiforme',
+  emoji: '🍒', gradient: 'from-red-600 to-red-400', accentColor: '#dc2626',
+  description: 'Especialidad de alto valor para exportación premium a Estados Unidos, Canadá y Europa. El programa se centra en maximizar Brix (8–10 °Bx), firmeza y uniformidad de calibre en racimos completos — parámetros críticos de rechazo en retail de alta gama.',
+  cycle_days: 130,
+  season: 'Producción continua bajo invernadero; 3–4 ciclos cortos al año',
+  regions: ['Sinaloa', 'Baja California', 'Jalisco', 'Querétaro', 'San Luis Potosí'],
+  featured_products: ['bp-calcio', 'bp-gross', 'bp-potasio', 'k-ultra', 'ae-calcium', 'zen-chrys'],
+  common_challenges: ['Rajadura de fruto por desbalance hídrico', 'Botrytis en racimos densos', 'Mosca blanca vectora de virosis', 'Pérdida de Brix por sobre-riego', 'Caída de racimos completos'],
+  stages: [
+    {
+      id: 'trasplante', name: 'Trasplante y Enraizamiento', emoji: '🌱',
+      durationDays: 14, objective: 'Lograr un arraigo uniforme en todo el lote para que las cosechas escalonadas sean predecibles.',
+      color: 'bg-emerald-100', textColor: 'text-emerald-700',
+      products: [
+        { productId: 'bp-moots', productName: 'BP Moots', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Días 1, 7, 14', notes: 'En cherry el arraigo debe ser homogéneo para evitar racimos desfasados' },
+        { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '1.5 L/ha', method: 'Fertirrigación', frequency: 'Primeros 14 días', notes: 'El P es clave para raíces finas exploradoras que definen Brix futuro' },
+        { productId: 'bontera-sa10', productName: 'Bontera SA-10', line: 'nutricion', dose: '1 L/ha', method: 'Fertirrigación', frequency: 'Semanal', notes: 'CIC alta libera micros para color y Brix más adelante' },
+        { productId: 'agb-elicitor-sin', productName: 'ELICITOR-SIN® (Trichoderma)', line: 'zentia', dose: '240 g/ha', method: 'Drench', frequency: 'Día 1 y día 14', notes: 'Colonización rizosférica para prevenir Fusarium y Pythium', isProtection: true },
+      ],
+    },
+    {
+      id: 'vegetativo', name: 'Crecimiento Vegetativo', emoji: '🌿',
+      durationDays: 25, objective: 'Construir dosel foliar controlado — en cherry se evita exceso de N para no perder Brix.',
+      color: 'bg-green-100', textColor: 'text-green-700',
+      products: [
+        { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '4 L/ha', method: 'Fertirrigación', frequency: '2 veces/semana', notes: 'Dosis moderada — exceso de N reduce Brix hasta 2 puntos' },
+        { productId: 'mg-ultra', productName: 'Mg-Ultra', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Semanal', notes: 'Clorofila activa = mayor tasa fotosintética = más Brix' },
+        { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '1 L/ha', method: 'Fertirrigación', frequency: 'Cada 14 días', notes: 'Micros completos para metabolismo de azúcares' },
+        { productId: 'vgn-brotanic', productName: 'Brotanic', line: 'nutricion', dose: '1.0 → 1.5 → 2.0 L / 200 L agua', method: 'Foliar', frequency: '3 aplicaciones escalonadas', notes: 'Veganic · Cu + Mn + Zn para fortaleza foliar y viabilidad de polen en racimos múltiples' },
+      ],
+    },
+    {
+      id: 'floracion', name: 'Floración Continua', emoji: '🌸',
+      durationDays: 21, objective: 'Homogeneizar la apertura floral de los primeros 5–7 racimos para uniformidad en cosecha.',
+      color: 'bg-pink-100', textColor: 'text-pink-700',
+      products: [
+        { productId: 'bp-fiore', productName: 'BP Fioré', line: 'bioestimulantes', dose: '0.8 g/L', method: 'Foliar', frequency: 'Pre-flor y plena flor de 3er racimo', notes: 'Homogeneiza la apertura simultánea de múltiples racimos' },
+        { productId: 'biotiza-calcio-boro', productName: 'Calcio Boro', line: 'especialidades', dose: '2 mL/L', method: 'Foliar', frequency: 'Plena flor', notes: 'Boro crítico para viabilidad de polen en racimos largos' },
+        { productId: 'bp-cuaje', productName: 'BP Cuaje', line: 'bioestimulantes', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 10 días en flor', notes: 'Reducir aborto floral — en cherry cada flor cuenta por el alto número por planta' },
+        { productId: 'zen-chrys', productName: 'Zen-Chrys', line: 'zentia', dose: '1.5 mL/L', method: 'Aspersión', frequency: 'Preventivo cada 7 días', notes: 'Mosca blanca vectora de TYLCV — crítico en invernaderos', isProtection: true },
+      ],
+    },
+    {
+      id: 'cuaje-engorde', name: 'Cuaje y Engorde', emoji: '🍒',
+      durationDays: 28, objective: 'Maximizar número de frutos por racimo y uniformidad de calibre (18–22 mm estándar cherry).',
+      color: 'bg-orange-100', textColor: 'text-orange-700',
+      products: [
+        { productId: 'bp-cuaje', productName: 'BP Cuaje', line: 'bioestimulantes', dose: '2 mL/L', method: 'Foliar', frequency: 'Cuaje y +5 días', notes: 'Esencial retener flor distal del racimo (la más tardía)' },
+        { productId: 'ca-ultra', productName: 'Ca-Ultra', line: 'nutricion', dose: '3 L/ha', method: 'Fertirrigación', frequency: 'Desde cuaje', notes: 'Prevención temprana de rajadura — el cherry es hipersensible a estrés hídrico' },
+        { productId: 'ae-calcium', productName: 'AE Calcium', line: 'organicos', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Cada 7 días', notes: 'Máxima absorción de Ca para firmeza y vida de anaquel' },
+        { productId: 'bp-gross', productName: 'BP Gross', line: 'bioestimulantes', dose: '0.8 g/L', method: 'Foliar', frequency: 'Inicio engorde', notes: 'Expansinas para calibre uniforme en todo el racimo' },
+        { productId: 'bp-acua', productName: 'BP Acua', line: 'bioestimulantes', dose: '0.8 mL/L en agua de riego', method: 'Fertirrigación', frequency: 'Cada 21 días', notes: 'Limpieza de biofilm para uniformidad de riego — en cherry un gotero tapado genera rajadura', isProtection: true },
+      ],
+    },
+    {
+      id: 'maduracion-cosecha', name: 'Maduración y Cosecha Continua', emoji: '🏆',
+      durationDays: 42, objective: 'Alcanzar 8–10 °Bx, color rojo intenso uniforme y vida de anaquel de 14+ días para exportación aérea.',
+      color: 'bg-red-100', textColor: 'text-red-700',
+      products: [
+        { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '6 L/ha', method: 'Fertirrigación', frequency: 'Máxima en pre-cosecha', notes: 'K eleva Brix directamente — meta 8+ °Bx para cherry premium' },
+        { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Cada 7 días', notes: 'Vía foliar potencia color rojo uniforme del fruto' },
+        { productId: 'bp-calcio', productName: 'BP Calcio', line: 'organicos', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Cada 7 días', notes: 'Firmeza — el cherry viaja largas distancias en clamshell' },
+        { productId: 'zen-fungi', productName: 'Zen-Fungi', line: 'zentia', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 7–10 días', notes: 'Botrytis en racimos densos post-deshoje', isProtection: true },
+        { productId: 'healex', productName: 'Healex', line: 'zentia', dose: '1.5 mL/L', method: 'Aspersión', frequency: 'Post-deshoje', notes: 'Cicatrizar heridas que son puerta de entrada de Botrytis', isProtection: true },
+      ],
+    },
+  ],
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// BRÓCOLI
+// ─────────────────────────────────────────────────────────────────────────
+
+const BROCOLI: FullCropProtocol = {
+  id: 'brocoli', slug: 'brocoli', name: 'Brócoli', scientific_name: 'Brassica oleracea var. italica',
+  emoji: '🥦', gradient: 'from-green-700 to-green-500', accentColor: '#15803d',
+  description: 'Principal hortaliza de exportación de Guanajuato y Bajío con destino EUA y Japón. Alta demanda de microelementos — especialmente Zn, B y Mo — que definen la compactación y uniformidad de la pella. Deficiencias en estos micros generan "hollow stem" (tallo hueco) y "browning" (pardeamiento), los dos mayores factores de rechazo.',
+  cycle_days: 110,
+  season: 'Siembra agosto-enero; ciclo corto otoño-invierno en Bajío',
+  regions: ['Guanajuato', 'Querétaro', 'Michoacán', 'Estado de México', 'Puebla'],
+  featured_products: ['bp-mol', 'bp-boro', 'bp-zinc', 'bp-mix', 'ae-calcium', 'n-ultra'],
+  common_challenges: ['Hollow stem por deficiencia de boro', 'Pardeamiento interno por bajo Ca', 'Alternaria brassicicola', 'Mildiu (Peronospora parasitica)', 'Palomilla dorso-diamante (Plutella)', 'Oruga importada'],
+  stages: [
+    {
+      id: 'siembra', name: 'Siembra y Establecimiento', emoji: '🌱',
+      durationDays: 18, objective: 'Lograr prendimiento uniforme de trasplante y raíz vigorosa en los primeros 15 días críticos.',
+      color: 'bg-emerald-100', textColor: 'text-emerald-700',
+      products: [
+        { productId: 'bp-moots', productName: 'BP Moots', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Días 1 y 10', notes: 'AIB + extracto de algas reducen estrés de trasplante' },
+        { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Primera quincena', notes: 'P alto para raíz — crítico en ciclo corto de 110 días' },
+        { productId: 'bontera-sa10', productName: 'Bontera SA-10', line: 'nutricion', dose: '1.5 L/ha', method: 'Fertirrigación', frequency: 'Cada 10 días', notes: 'Mejora CIC en suelos Vertisoles del Bajío' },
+        { productId: 'agb-elicitor-sin', productName: 'ELICITOR-SIN® (Trichoderma)', line: 'zentia', dose: '240 g/ha', method: 'Drench', frequency: 'Al trasplante', notes: 'Previene damping-off y Rhizoctonia en siembras densas', isProtection: true },
+      ],
+    },
+    {
+      id: 'vegetativo', name: 'Desarrollo Vegetativo', emoji: '🌿',
+      durationDays: 45, objective: 'Desarrollar 16–18 hojas verdaderas sanas — la biomasa foliar determina directamente el tamaño final de la pella.',
+      color: 'bg-green-100', textColor: 'text-green-700',
+      products: [
+        { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '6 L/ha', method: 'Fertirrigación', frequency: '3 veces/semana', notes: 'Brócoli es uno de los cultivos más exigentes en N — hasta 280 kg/ha/ciclo' },
+        { productId: 'mg-ultra', productName: 'Mg-Ultra', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Semanal', notes: 'Deficiencia frecuente en Bajío — genera amarillamiento intervenal' },
+        { productId: 'bp-zinc', productName: 'BP Zinc', line: 'nutricion', dose: '0.5 L/ha', method: 'Fertirrigación', frequency: 'Cada 14 días', notes: 'Zn activa auxinas para elongación de tallo principal' },
+        { productId: 'vgn-brotanic', productName: 'Brotanic', line: 'nutricion', dose: '1.0 → 1.5 → 2.0 L / 200 L agua', method: 'Foliar', frequency: '3 aplicaciones escalonadas', notes: 'Veganic · Cu + Mn + Zn — Brassica es hipersensible a deficiencia de Mn' },
+        { productId: 'bp-nutri', productName: 'BP Nutri', line: 'organicos', dose: '1.5 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'Extracto de algas acelera la biomasa foliar' },
+        { productId: 'max-kill-plus', productName: 'Max-Kill Plus', line: 'zentia', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Al detectar Plutella', notes: 'Palomilla dorso-diamante es la plaga #1 en brócoli — neem + piretro rompen resistencia', isProtection: true },
+      ],
+    },
+    {
+      id: 'induccion', name: 'Inducción a Pella', emoji: '💎',
+      durationDays: 14, objective: 'Activar la transición a órgano floral con micros completos — Mo, B y Zn son decisivos para la compactación.',
+      color: 'bg-lime-100', textColor: 'text-lime-700',
+      products: [
+        { productId: 'bp-mol', productName: 'BP Mol', line: 'especialidades', dose: '0.8 g/L', method: 'Foliar', frequency: '2 aplicaciones pre-inducción', notes: 'Mo + B activan la nitrato-reductasa — sin Mo la pella queda suelta y amarilla' },
+        { productId: 'bp-boro', productName: 'BP Boro', line: 'especialidades', dose: '0.5 mL/L', method: 'Foliar', frequency: 'Inicio inducción y +7 días', notes: 'Deficiencia de B = hollow stem (tallo hueco) = rechazo automático en exportación' },
+        { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '1.5 L/ha', method: 'Fertirrigación', frequency: 'Cada 10 días', notes: 'Paquete completo de micros durante inducción' },
+        { productId: 'bp-vit', productName: 'BP Vit', line: 'especialidades', dose: '1.2 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'Activa enzimas de diferenciación floral' },
+      ],
+    },
+    {
+      id: 'formacion-pella', name: 'Formación de Pella', emoji: '🥦',
+      durationDays: 21, objective: 'Maximizar compactación, uniformidad de gránulo floral y color verde azulado intenso.',
+      color: 'bg-emerald-100', textColor: 'text-emerald-700',
+      products: [
+        { productId: 'ae-calcium', productName: 'AE Calcium', line: 'organicos', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Cada 7 días', notes: 'Previene pardeamiento interno (browning) — primer factor de rechazo en retail' },
+        { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '4 L/ha', method: 'Fertirrigación', frequency: 'Alta en formación', notes: 'K da firmeza de pella y resistencia al transporte refrigerado' },
+        { productId: 'bp-gross', productName: 'BP Gross', line: 'bioestimulantes', dose: '0.8 g/L', method: 'Foliar', frequency: 'Inicio formación', notes: 'Expansinas aumentan calibre de pella comercial' },
+        { productId: 'zen-cu', productName: 'Zen-Cu', line: 'zentia', dose: '2 mL/L', method: 'Aspersión', frequency: 'Preventivo cada 10 días', notes: 'Mildiu (Peronospora) en clima fresco-húmedo del Bajío', isProtection: true },
+        { productId: 'bp-fresh', productName: 'BP Fresh', line: 'bioestimulantes', dose: '1 mL/L', method: 'Foliar', frequency: 'Cada 14 días', notes: 'Reduce carga bacteriana superficial previa a cosecha — crítico para inocuidad en exportación', isProtection: true },
+      ],
+    },
+    {
+      id: 'cosecha', name: 'Pre-cosecha y Cosecha', emoji: '🏆',
+      durationDays: 12, objective: 'Fijar firmeza, color y vida de anaquel; garantizar parámetros microbiológicos para exportación.',
+      color: 'bg-green-100', textColor: 'text-green-700',
+      products: [
+        { productId: 'bp-calcio', productName: 'BP Calcio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Últimas 2 aplicaciones', notes: 'Ca foliar previo a corte mantiene firmeza 7 días más en cadena fría' },
+        { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Última aplicación', notes: 'K final intensifica el color verde azulado característico' },
+        { productId: 'bp-fresh', productName: 'BP Fresh', line: 'bioestimulantes', dose: '1 mL/L', method: 'Foliar', frequency: '7 días pre-cosecha', notes: 'Baja carga bacteriana superficial para cumplir auditorías de inocuidad USDA', isProtection: true },
+      ],
+    },
+  ],
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// APIO
+// ─────────────────────────────────────────────────────────────────────────
+
+const APIO: FullCropProtocol = {
+  id: 'apio', slug: 'apio', name: 'Apio', scientific_name: 'Apium graveolens',
+  emoji: '🥬', gradient: 'from-emerald-700 to-emerald-500', accentColor: '#059669',
+  description: 'Cultivo hortícola de ciclo largo con fuerte demanda continua de calcio — la deficiencia genera "black heart" (corazón negro) y agrietamiento del pecíolo, los dos defectos que más rechaza el mercado de EUA. Post-cosecha Botrytis cinerea es el patógeno más agresivo durante el transporte refrigerado.',
+  cycle_days: 140,
+  season: 'Ciclo otoño-invierno-primavera; prefiere temperaturas 15–22 °C',
+  regions: ['Guanajuato', 'Querétaro', 'Puebla', 'Estado de México', 'Baja California'],
+  featured_products: ['bp-calcio', 'ae-calcium', 'ca-ultra', 'zen-fungi', 'bp-boro', 'bp-mix'],
+  common_challenges: ['Black heart (corazón negro) por déficit de calcio', 'Agrietamiento del pecíolo', 'Botrytis cinerea post-cosecha', 'Septoriosis (Septoria apiicola)', 'Mosca minadora', 'Bacteriosis en alta humedad'],
+  stages: [
+    {
+      id: 'trasplante', name: 'Trasplante', emoji: '🌱',
+      durationDays: 21, objective: 'Establecer plantas uniformes y raíces absorbentes capaces de sostener un ciclo de 140 días con alta demanda de Ca.',
+      color: 'bg-emerald-100', textColor: 'text-emerald-700',
+      products: [
+        { productId: 'bp-moots', productName: 'BP Moots', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Días 1, 10, 21', notes: 'Arraigo rápido es clave — en apio la raíz define la capacidad de absorber Ca luego' },
+        { productId: 'biotiza-lactobacillus', productName: 'Lactobacillus', line: 'especialidades', dose: '1 g/L', method: 'Drench', frequency: 'Días 1 y 14', notes: 'Competencia contra bacteriosis del suelo en camas densas' },
+        { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '1.5 L/ha', method: 'Fertirrigación', frequency: 'Primera quincena', notes: 'P para raíz exploradora' },
+        { productId: 'agb-elicitor-sin', productName: 'ELICITOR-SIN® (Trichoderma)', line: 'zentia', dose: '240 g/ha', method: 'Drench', frequency: 'Al trasplante y +14 días', notes: 'Barrera rizosférica contra Fusarium oxysporum f.sp. apii', isProtection: true },
+      ],
+    },
+    {
+      id: 'vegetativo-temprano', name: 'Crecimiento Vegetativo Temprano', emoji: '🌿',
+      durationDays: 35, objective: 'Desarrollar roseta foliar vigorosa de 8–10 hojas antes del inicio del llenado de pecíolos.',
+      color: 'bg-green-100', textColor: 'text-green-700',
+      products: [
+        { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '5 L/ha', method: 'Fertirrigación', frequency: '2 veces/semana', notes: 'N alto en vegetativo — pero reducir antes de llenado para evitar agrietamiento' },
+        { productId: 'mg-ultra', productName: 'Mg-Ultra', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Semanal', notes: 'Mg mantiene el verde intenso del follaje — parámetro visual de calidad' },
+        { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '1.5 L/ha', method: 'Fertirrigación', frequency: 'Cada 14 días', notes: 'Micros completos — apio responde especialmente a Mn y Zn' },
+        { productId: 'vgn-brotanic', productName: 'Brotanic', line: 'nutricion', dose: '1.0 → 1.5 → 2.0 L / 200 L agua', method: 'Foliar', frequency: '3 aplicaciones escalonadas', notes: 'Veganic · previene clorosis intervenal por Mn en suelos alcalinos' },
+        { productId: 'bp-nutri', productName: 'BP Nutri', line: 'organicos', dose: '1.5 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'Algas aportan citoquininas para más ramificación foliar' },
+      ],
+    },
+    {
+      id: 'llenado-peciolo', name: 'Llenado de Pecíolo', emoji: '🥬',
+      durationDays: 50, objective: 'Maximizar longitud y grosor de pecíolos manteniendo firmeza — aquí se define 70% del valor comercial.',
+      color: 'bg-lime-100', textColor: 'text-lime-700',
+      products: [
+        { productId: 'ca-ultra', productName: 'Ca-Ultra', line: 'nutricion', dose: '5 L/ha', method: 'Fertirrigación', frequency: '2 veces/semana', notes: 'Máxima demanda del ciclo — prevenir black heart exige Ca continuo' },
+        { productId: 'bp-calcio', productName: 'BP Calcio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Cada 7 días', notes: 'Vía foliar complementa fertirrigación — llega a meristemo apical donde se forma el corazón' },
+        { productId: 'ae-calcium', productName: 'AE Calcium', line: 'organicos', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Cada 7 días (alternar con BP Calcio)', notes: 'Máxima asimilación de Ca — el apio es el cultivo más demandante del catálogo' },
+        { productId: 'bp-boro', productName: 'BP Boro', line: 'especialidades', dose: '0.4 mL/L', method: 'Foliar', frequency: 'Cada 14 días', notes: 'B complementa Ca en la fortaleza de la pared celular' },
+        { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '4 L/ha', method: 'Fertirrigación', frequency: 'Alta en llenado', notes: 'K mantiene turgencia y firmeza de pecíolo' },
+        { productId: 'zen-fungi', productName: 'Zen-Fungi', line: 'zentia', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 7 días preventivo', notes: 'Botrytis es el principal patógeno post-cosecha — prevenir desde campo', isProtection: true },
+      ],
+    },
+    {
+      id: 'blanqueamiento', name: 'Blanqueo y Finalización', emoji: '✨',
+      durationDays: 21, objective: 'Lograr pecíolos firmes de color verde claro a blanco-crema según mercado destino, sin fibrosidad.',
+      color: 'bg-emerald-100', textColor: 'text-emerald-700',
+      products: [
+        { productId: 'bp-calcio', productName: 'BP Calcio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Cada 7 días', notes: 'Ca hasta la cosecha — un solo día sin Ca puede generar corazón negro' },
+        { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'K final para firmeza y vida de anaquel refrigerado' },
+        { productId: 'max-kill-plus', productName: 'Max-Kill Plus', line: 'zentia', dose: '2 mL/L', method: 'Foliar', frequency: 'En presión de mosca minadora', notes: 'Piretro + neem rompen ciclo de Liriomyza spp. sin residuos', isProtection: true },
+      ],
+    },
+    {
+      id: 'cosecha', name: 'Cosecha y Post-cosecha', emoji: '🏆',
+      durationDays: 13, objective: 'Asegurar firmeza, bajo recuento bacteriano y resistencia a Botrytis durante la cadena fría.',
+      color: 'bg-green-100', textColor: 'text-green-700',
+      products: [
+        { productId: 'bp-calcio', productName: 'BP Calcio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: '5 y 2 días pre-cosecha', notes: 'Últimas aplicaciones de Ca prolongan vida útil en anaquel 5+ días' },
+        { productId: 'zen-fungi', productName: 'Zen-Fungi', line: 'zentia', dose: '2 mL/L', method: 'Aspersión', frequency: '7 y 3 días pre-cosecha', notes: 'Reduce inóculo de Botrytis que se activa en refrigeración', isProtection: true },
+        { productId: 'bp-fresh', productName: 'BP Fresh', line: 'bioestimulantes', dose: '1 mL/L', method: 'Foliar', frequency: '3 días pre-cosecha', notes: 'Sanitizante foliar — cumple estándares de inocuidad para mercado USA', isProtection: true },
+      ],
+    },
+  ],
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// MAÍZ
+// ─────────────────────────────────────────────────────────────────────────
+
+const MAIZ: FullCropProtocol = {
+  id: 'maiz', slug: 'maiz', name: 'Maíz', scientific_name: 'Zea mays',
+  emoji: '🌽', gradient: 'from-yellow-600 to-yellow-400', accentColor: '#ca8a04',
+  description: 'Grano básico de mayor superficie en México. Programa de nutrición enfocado en NPK de alto volumen con corrección puntual de Zn (deficiencia crónica en más del 60% de los suelos maiceros mexicanos). El período crítico es V6–V12 (floración pre-jilote) donde se define el número de hileras y granos por mazorca.',
+  cycle_days: 140,
+  season: 'Primavera-verano temporal; otoño-invierno bajo riego en Sinaloa',
+  regions: ['Sinaloa', 'Jalisco', 'Chiapas', 'Guanajuato', 'Michoacán', 'Estado de México'],
+  featured_products: ['n-ultra', 'p-ultra', 'k-ultra', 'bp-zinc', 'bp-mol', 'bontera-sa10'],
+  common_challenges: ['Deficiencia de Zn (hoja blanca / roseta)', 'Gusano cogollero (Spodoptera frugiperda)', 'Mancha de asfalto (Phyllachora maydis)', 'Tizón foliar por Exserohilum', 'Acame por déficit de K', 'Achaparramiento viral'],
+  stages: [
+    {
+      id: 'siembra', name: 'Siembra y Emergencia', emoji: '🌱',
+      durationDays: 14, objective: 'Lograr germinación uniforme y emergencia vigorosa para establecer el stand (plantas/ha) objetivo.',
+      color: 'bg-emerald-100', textColor: 'text-emerald-700',
+      products: [
+        { productId: 'biotiza-lactobacillus', productName: 'Lactobacillus', line: 'especialidades', dose: '1 kg/ha', method: 'Fertirrigación', frequency: 'En primer riego', notes: 'Solubiliza P y Zn del suelo — reduce hasta 25% la dosis de arranque' },
+        { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '3 L/ha', method: 'Fertirrigación', frequency: 'Pre-siembra y V1', notes: 'P de arranque clave en suelos fríos del Bajío temporal' },
+        { productId: 'bontera-sa10', productName: 'Bontera SA-10', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Primer riego', notes: 'Ácidos húmicos activan microbiota que libera P fijado en Vertisoles' },
+      ],
+    },
+    {
+      id: 'vegetativo-temprano', name: 'V3 – V6 Vegetativo Temprano', emoji: '🌿',
+      durationDays: 28, objective: 'Construir sistema radicular secundario y corregir deficiencia temprana de Zn antes de V6 (punto crítico).',
+      color: 'bg-green-100', textColor: 'text-green-700',
+      products: [
+        { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '8 L/ha', method: 'Fertirrigación', frequency: 'Semanal', notes: 'N intensivo — maíz absorbe 180–250 kg N/ha/ciclo de grano' },
+        { productId: 'bp-zinc', productName: 'BP Zinc', line: 'nutricion', dose: '1 L/ha', method: 'Fertirrigación', frequency: 'V3 y V5', notes: 'Zn en V3–V5 previene "hoja blanca" — deficiencia más frecuente en maíz mexicano' },
+        { productId: 'vgn-brotanic', productName: 'Brotanic', line: 'nutricion', dose: '0.5 → 1.0 → 1.5 L / 200 L agua', method: 'Foliar', frequency: '3 aplicaciones escalonadas desde V3', notes: 'Veganic · Cu + Mn + Zn — el Mn activa cloroplastos y previene veteado clorótico' },
+        { productId: 'max-kill-plus', productName: 'Max-Kill Plus', line: 'zentia', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Al detectar Spodoptera L1–L2', notes: 'Cogollero controlado antes de L3 — piretro + neem rompen resistencia a Bt', isProtection: true },
+      ],
+    },
+    {
+      id: 'pre-floracion', name: 'V8 – VT Pre-floración', emoji: '🌾',
+      durationDays: 21, objective: 'Maximizar número de hileras y granos por mazorca — aquí se define 60% del rendimiento final.',
+      color: 'bg-lime-100', textColor: 'text-lime-700',
+      products: [
+        { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '10 L/ha', method: 'Fertirrigación', frequency: 'Máxima en V8–V12', notes: 'Pico de demanda de N — definición de hileras en la mazorca' },
+        { productId: 'bp-mol', productName: 'BP Mol', line: 'especialidades', dose: '0.8 g/L', method: 'Foliar', frequency: '2 aplicaciones V8 y V10', notes: 'Mo activa nitrato-reductasa — traduce N absorbido en proteína de grano' },
+        { productId: 'bp-boro', productName: 'BP Boro', line: 'especialidades', dose: '0.4 mL/L', method: 'Foliar', frequency: 'V10 y VT', notes: 'B es crítico para viabilidad de polen — una deficiencia en floración reduce 30% los granos' },
+        { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '1.5 L/ha', method: 'Fertirrigación', frequency: 'V10', notes: 'Micros completos antes de floración' },
+      ],
+    },
+    {
+      id: 'floracion', name: 'VT – R1 Floración y Jiloteo', emoji: '🌸',
+      durationDays: 14, objective: 'Lograr polinización completa y cuaje uniforme de todos los óvulos de la mazorca.',
+      color: 'bg-yellow-100', textColor: 'text-yellow-700',
+      products: [
+        { productId: 'bp-fiore', productName: 'BP Fioré', line: 'bioestimulantes', dose: '1 g/L', method: 'Foliar', frequency: 'Pre-floración y plena flor', notes: 'Homogeneiza emergencia de espiga y sedas (sincronización es crítica)' },
+        { productId: 'bp-cuaje', productName: 'BP Cuaje', line: 'bioestimulantes', dose: '2 mL/L', method: 'Foliar', frequency: 'En R1 (sedas visibles)', notes: 'Reduce aborto de granos en punta de mazorca ante estrés térmico' },
+        { productId: 'ca-ultra', productName: 'Ca-Ultra', line: 'nutricion', dose: '3 L/ha', method: 'Fertirrigación', frequency: 'R1', notes: 'Ca para fortaleza de olote y prevención de acame' },
+        { productId: 'max-kill-plus', productName: 'Max-Kill Plus', line: 'zentia', dose: '2.5 mL/L', method: 'Foliar', frequency: 'En gusano elotero', notes: 'Helicoverpa zea ataca sedas y granos jóvenes — crítico no perder polinización', isProtection: true },
+      ],
+    },
+    {
+      id: 'llenado-grano', name: 'R2 – R5 Llenado de Grano', emoji: '🌽',
+      durationDays: 42, objective: 'Maximizar peso de mil granos (PMG) y llenado hasta la punta — K es el motor de traslocación de azúcares.',
+      color: 'bg-amber-100', textColor: 'text-amber-700',
+      products: [
+        { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '5 L/ha', method: 'Fertirrigación', frequency: 'Semanal en R3–R5', notes: 'K mueve azúcares al grano — reduce acame y eleva PMG hasta 15%' },
+        { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'K foliar complementa fertirrigación en etapa de máxima demanda' },
+        { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '5 L/ha', method: 'Fertirrigación', frequency: 'R2–R3', notes: 'N residual para traslocación de proteína al grano' },
+        { productId: 'funbac-plus', productName: 'Funbac Plus', line: 'zentia', dose: '1.5 mL/L', method: 'Aspersión', frequency: 'En presión de mancha de asfalto', notes: 'Phyllachora maydis puede defoliar 40% del dosel en llenado', isProtection: true },
+      ],
+    },
+    {
+      id: 'madurez', name: 'R6 Madurez Fisiológica', emoji: '🏆',
+      durationDays: 21, objective: 'Alcanzar humedad de cosecha (14–18%) manteniendo calidad de grano para comercialización.',
+      color: 'bg-yellow-100', textColor: 'text-yellow-700',
+      products: [
+        { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Últimas 2 aplicaciones', notes: 'K final acelera llenado terminal y reduce riesgo de acame pre-cosecha' },
+      ],
+    },
+  ],
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// CAÑA DE AZÚCAR
+// ─────────────────────────────────────────────────────────────────────────
+
+const CANA_AZUCAR: FullCropProtocol = {
+  id: 'cana-azucar', slug: 'cana-azucar', name: 'Caña de Azúcar', scientific_name: 'Saccharum officinarum',
+  emoji: '🎋', gradient: 'from-lime-700 to-lime-500', accentColor: '#65a30d',
+  description: 'Cultivo industrial de ciclo largo (plantilla 12–18 meses, socas subsecuentes) con la mayor demanda de potasio del catálogo — hasta 400 kg K₂O/ha. El programa se enfoca en macollamiento temprano, acumulación de sacarosa en maduración y manejo de soca (rebrote) para 4–6 años productivos por plantación.',
+  cycle_days: 400,
+  season: 'Plantilla siembra agosto-noviembre; zafra noviembre-mayo',
+  regions: ['Veracruz', 'Jalisco', 'San Luis Potosí', 'Oaxaca', 'Chiapas', 'Tamaulipas'],
+  featured_products: ['k-ultra', 'n-ultra', 'bontera-sa10', 'bp-mix', 'bp-moots', 'bp-potasio'],
+  common_challenges: ['Roya naranja (Puccinia kuehnii)', 'Carbón de la caña (Sporisorium scitamineum)', 'Barrenador del tallo (Diatraea saccharalis)', 'Chinche salivosa', 'Escaldadura bacteriana', 'Bajo Pol por deficiencia de K'],
+  stages: [
+    {
+      id: 'plantacion', name: 'Plantación y Brotación', emoji: '🌱',
+      durationDays: 45, objective: 'Establecer brotación uniforme de yemas de la cepa — cada yema perdida reduce proporcionalmente el macollo final.',
+      color: 'bg-emerald-100', textColor: 'text-emerald-700',
+      products: [
+        { productId: 'bp-moots', productName: 'BP Moots', line: 'organicos', dose: '3 L/ha', method: 'Drench', frequency: 'Al momento de la plantación', notes: 'AIB estimula brotación uniforme de yemas de la cepa' },
+        { productId: 'bontera-sa10', productName: 'Bontera SA-10', line: 'nutricion', dose: '3 L/ha', method: 'Fertirrigación', frequency: 'Mensual los primeros 3 meses', notes: 'Ácidos húmicos son esenciales en suelos cañeros compactados y con bajo C orgánico' },
+        { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '3 L/ha', method: 'Fertirrigación', frequency: 'Primer mes', notes: 'P para desarrollo de raíces adventicias de la cepa' },
+        { productId: 'biotiza-lactobacillus', productName: 'Lactobacillus', line: 'especialidades', dose: '1 kg/ha', method: 'Fertirrigación', frequency: 'Al sembrar y a los 30 días', notes: 'Coloniza rizósfera y mejora solubilización de P y Zn en suelos pesados' },
+      ],
+    },
+    {
+      id: 'macollamiento', name: 'Macollamiento', emoji: '🌿',
+      durationDays: 90, objective: 'Maximizar número de tallos industriales por metro lineal (meta 10–14 tallos/m) — el macollo define el tonelaje final.',
+      color: 'bg-green-100', textColor: 'text-green-700',
+      products: [
+        { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '10 L/ha', method: 'Fertirrigación', frequency: 'Quincenal durante macollo', notes: 'N intensivo — caña absorbe 200–300 kg N/ha para ciclo completo' },
+        { productId: 'mg-ultra', productName: 'Mg-Ultra', line: 'nutricion', dose: '3 L/ha', method: 'Fertirrigación', frequency: 'Mensual', notes: 'Mg para biomasa fotosintética — follaje verde intenso = más sacarosa futura' },
+        { productId: 'bp-nutri', productName: 'BP Nutri', line: 'organicos', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Cada 21 días', notes: 'Algas aportan citoquininas que estimulan formación de tallos secundarios' },
+        { productId: 'vgn-brotanic', productName: 'Brotanic', line: 'nutricion', dose: '0.5 → 1.0 → 1.5 L / 200 L agua', method: 'Foliar', frequency: '3 aplicaciones escalonadas durante macollo', notes: 'Veganic · Cu + Mn + Zn — Mn activa cloroplastos en follaje denso' },
+      ],
+    },
+    {
+      id: 'gran-crecimiento', name: 'Gran Crecimiento', emoji: '🎋',
+      durationDays: 150, objective: 'Elongación de entrenudos e incremento de biomasa — caña puede crecer 3 cm/día en esta etapa con manejo adecuado.',
+      color: 'bg-lime-100', textColor: 'text-lime-700',
+      products: [
+        { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '8 L/ha', method: 'Fertirrigación', frequency: 'Mensual', notes: 'Reducir gradualmente hacia el final para no retrasar maduración' },
+        { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '8 L/ha', method: 'Fertirrigación', frequency: 'Quincenal', notes: 'Iniciar carga alta de K — caña es el cultivo con mayor demanda de K del catálogo (400 kg K₂O/ha)' },
+        { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Mensual', notes: 'Micros completos — Fe y Mn sostienen la tasa fotosintética alta' },
+        { productId: 'bp-zinc', productName: 'BP Zinc', line: 'nutricion', dose: '1 L/ha', method: 'Fertirrigación', frequency: 'Cada 45 días', notes: 'Zn activa auxinas que elongan entrenudos — entrenudos largos = más peso por tallo' },
+        { productId: 'funbac-plus', productName: 'Funbac Plus', line: 'zentia', dose: '2 mL/L', method: 'Aspersión', frequency: 'En presión de roya', notes: 'Puccinia melanocephala puede defoliar 50% del dosel en variedades susceptibles', isProtection: true },
+        { productId: 'max-kill-plus', productName: 'Max-Kill Plus', line: 'zentia', dose: '3 mL/L', method: 'Foliar', frequency: 'En presencia de chinche salivosa', notes: 'Aeneolamia postica reduce Pol hasta 30% — neem + piretro para control', isProtection: true },
+      ],
+    },
+    {
+      id: 'maduracion', name: 'Maduración y Acumulación de Sacarosa', emoji: '🍯',
+      durationDays: 90, objective: 'Inducir el cese del crecimiento vegetativo y traslocar máxima sacarosa al tallo — meta Pol 13–15% y Brix 18–22%.',
+      color: 'bg-yellow-100', textColor: 'text-yellow-700',
+      products: [
+        { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '10 L/ha', method: 'Fertirrigación', frequency: 'Semanal en maduración', notes: 'Máxima K del ciclo — K es el motor de traslocación de sacarosa al tallo, eleva Pol 1–2 puntos' },
+        { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Cada 15 días', notes: 'K foliar refuerza traslocación en etapa crítica de acumulación' },
+        { productId: 'mg-ultra', productName: 'Mg-Ultra', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Mensual', notes: 'Mg mantiene cloroplastos activos produciendo azúcares hasta el último día' },
+      ],
+    },
+    {
+      id: 'pre-zafra', name: 'Pre-zafra', emoji: '🏆',
+      durationDays: 25, objective: 'Fijar Pol máximo y preparar la cepa para una soca vigorosa en el siguiente ciclo.',
+      color: 'bg-amber-100', textColor: 'text-amber-700',
+      products: [
+        { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Última aplicación 15 días pre-corte', notes: 'Último empuje de K para maximizar Pol al momento del corte industrial' },
+        { productId: 'bp-moots', productName: 'BP Moots', line: 'organicos', dose: '2 L/ha', method: 'Drench', frequency: 'Post-corte en el socado', notes: 'AIB estimula rebrote de yemas basales para una soca productiva' },
+      ],
+    },
+  ],
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// FRIJOL
+// ─────────────────────────────────────────────────────────────────────────
+
+const FRIJOL: FullCropProtocol = {
+  id: 'frijol', slug: 'frijol', name: 'Frijol', scientific_name: 'Phaseolus vulgaris',
+  emoji: '🫘', gradient: 'from-amber-800 to-amber-600', accentColor: '#92400e',
+  description: 'Leguminosa de consumo masivo en México con ciclo corto (85–110 días). La planta fija 40–60 kg N/ha vía simbiosis con Rhizobium — los activadores Mo y Zn son decisivos para que el proceso opere al 100% y se reduzca la dosis de N de síntesis hasta en 40%. Programa centrado en nutrición microbiana del suelo y control de Mosaico Dorado (BGYMV).',
+  cycle_days: 95,
+  season: 'Primavera-verano temporal (P-V); otoño-invierno bajo riego en Sinaloa',
+  regions: ['Zacatecas', 'Sinaloa', 'Durango', 'Nayarit', 'Chihuahua', 'San Luis Potosí'],
+  featured_products: ['biotiza-lactobacillus', 'bp-mol', 'bp-zinc', 'bp-boro', 'p-ultra', 'zen-chrys'],
+  common_challenges: ['Mosaico Dorado (BGYMV, vector Bemisia)', 'Antracnosis (Colletotrichum lindemuthianum)', 'Roya (Uromyces appendiculatus)', 'Mustia hilachosa', 'Picudo del ejote', 'Baja fijación de N en suelos sin historial de Rhizobium'],
+  stages: [
+    {
+      id: 'siembra', name: 'Siembra e Inoculación', emoji: '🌱',
+      durationDays: 10, objective: 'Establecer simbiosis con Rhizobium en las primeras raíces antes de V2 — cada día sin nódulos activos significa más dependencia de N químico.',
+      color: 'bg-emerald-100', textColor: 'text-emerald-700',
+      products: [
+        { productId: 'biotiza-lactobacillus', productName: 'Lactobacillus', line: 'especialidades', dose: '1 kg/ha', method: 'Fertirrigación', frequency: 'Al primer riego', notes: 'En suelos sin Rhizobium específico, el Lactobacillus actúa como inoculante base y solubiliza P + Zn para acelerar arraigo' },
+        { productId: 'bp-moots', productName: 'BP Moots', line: 'organicos', dose: '2 L/ha', method: 'Drench', frequency: 'Al primer riego', notes: 'AIB estimula raíz principal antes de ramificación lateral — raíz fuerte = más nódulos' },
+        { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '3 L/ha', method: 'Fertirrigación', frequency: 'Primer y segundo riego', notes: 'P es clave en leguminosas — los nódulos consumen 3× más P que el tejido vegetativo' },
+        { productId: 'bontera-sa10', productName: 'Bontera SA-10', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Primer riego', notes: 'Ácidos húmicos activan microbiota benéfica — clave en suelos degradados de Zacatecas' },
+      ],
+    },
+    {
+      id: 'vegetativo', name: 'V3 – V4 Vegetativo y Activación de Nódulos', emoji: '🌿',
+      durationDays: 25, objective: 'Activar plenamente la fijación biológica de N — aportar Mo y Zn como cofactores enzimáticos de la nitrogenasa y leghemoglobina.',
+      color: 'bg-green-100', textColor: 'text-green-700',
+      products: [
+        { productId: 'bp-mol', productName: 'BP Mol', line: 'especialidades', dose: '0.8 g/L', method: 'Foliar', frequency: 'V3 y V5', notes: 'Mo es el cofactor de la nitrogenasa — sin Mo los nódulos forman pero no fijan N (reducción hasta 40% en rendimiento)' },
+        { productId: 'bp-zinc', productName: 'BP Zinc', line: 'nutricion', dose: '0.5 L/ha', method: 'Fertirrigación', frequency: 'V3 y V5', notes: 'Zn activa enzimas de síntesis de triptófano y leghemoglobina (el pigmento rojo del nódulo activo)' },
+        { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'V3 únicamente', notes: 'Dosis baja de arranque — exceso de N apaga la fijación biológica por Rhizobium' },
+        { productId: 'vgn-brotanic', productName: 'Brotanic', line: 'nutricion', dose: '0.5 → 1.0 → 1.5 L / 200 L agua', method: 'Foliar', frequency: '3 aplicaciones escalonadas desde V3', notes: 'Veganic · Cu + Mn + Zn — el Cu activa enzimas de la fijación simbiótica' },
+        { productId: 'zen-chrys', productName: 'Zen-Chrys', line: 'zentia', dose: '2 mL/L', method: 'Aspersión', frequency: 'Preventivo cada 7 días', notes: 'Bemisia tabaci vectora BGYMV (Mosaico Dorado) — una planta infectada en V4 es pérdida total', isProtection: true },
+      ],
+    },
+    {
+      id: 'floracion', name: 'R5 – R6 Floración', emoji: '🌸',
+      durationDays: 14, objective: 'Maximizar número de flores y reducir el aborto floral por estrés — en frijol se aborta hasta 70% de las flores naturalmente.',
+      color: 'bg-pink-100', textColor: 'text-pink-700',
+      products: [
+        { productId: 'bp-fiore', productName: 'BP Fioré', line: 'bioestimulantes', dose: '0.8 g/L', method: 'Foliar', frequency: 'Pre-flor y plena flor', notes: 'Homogeneiza la apertura floral en todo el lote para madurez uniforme' },
+        { productId: 'bp-boro', productName: 'BP Boro', line: 'especialidades', dose: '0.4 mL/L', method: 'Foliar', frequency: 'Inicio flor', notes: 'B mejora viabilidad de polen — frijol auto-polinizante pero requiere B funcional' },
+        { productId: 'bp-cuaje', productName: 'BP Cuaje', line: 'bioestimulantes', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 7 días en flor', notes: 'Reducir aborto floral en altas temperaturas del verano zacatecano' },
+        { productId: 'funbac-plus', productName: 'Funbac Plus', line: 'zentia', dose: '1.5 mL/L', method: 'Aspersión', frequency: 'Cada 10 días', notes: 'Antracnosis (Colletotrichum) y Roya son críticas en floración húmeda', isProtection: true },
+      ],
+    },
+    {
+      id: 'llenado-vaina', name: 'R7 – R8 Llenado de Vaina', emoji: '🫛',
+      durationDays: 28, objective: 'Maximizar número de granos por vaina y peso de grano individual — periodo de mayor demanda nutricional del ciclo.',
+      color: 'bg-lime-100', textColor: 'text-lime-700',
+      products: [
+        { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '4 L/ha', method: 'Fertirrigación', frequency: 'Semanal', notes: 'K es el motor de traslocación de fotosintatos a la vaina — define peso de mil granos' },
+        { productId: 'ca-ultra', productName: 'Ca-Ultra', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Cada 10 días', notes: 'Ca da firmeza al grano y resistencia a la deshidratación terminal' },
+        { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '1.5 L/ha', method: 'Fertirrigación', frequency: 'R7', notes: 'Micros completos para el metabolismo de proteínas de reserva del grano' },
+        { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'K foliar complementa llenado en etapa crítica' },
+        { productId: 'max-kill-plus', productName: 'Max-Kill Plus', line: 'zentia', dose: '2.5 mL/L', method: 'Foliar', frequency: 'En picudo del ejote', notes: 'Apion godmani perfora vaina y deposita larvas — control en R6–R7 evita daño visible en grano', isProtection: true },
+      ],
+    },
+    {
+      id: 'madurez', name: 'R9 Madurez Fisiológica', emoji: '🏆',
+      durationDays: 18, objective: 'Alcanzar humedad de cosecha (14–16%) con grano brillante, sin manchado y con buena prueba de cocción.',
+      color: 'bg-amber-100', textColor: 'text-amber-700',
+      products: [
+        { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Última aplicación', notes: 'K final mejora brillo de testa del grano — primer factor visual de calidad en mercado' },
+        { productId: 'bp-fresh', productName: 'BP Fresh', line: 'bioestimulantes', dose: '1 mL/L', method: 'Foliar', frequency: '10 días pre-cosecha', notes: 'Reduce carga bacteriana en vainas — menor incidencia de manchado de grano durante secado', isProtection: true },
+      ],
+    },
+  ],
+}
+
 // ─── Export principal ─────────────────────────────────────────────────────
 
 export const CROP_PROTOCOLS: FullCropProtocol[] = [
   TOMATE, FRESA, ARANDANO, FRAMBUESA, ZARZAMORA, AGUACATE, CHILE, CITRICOS,
+  TOMATE_CHERRY, BROCOLI, APIO, MAIZ, CANA_AZUCAR, FRIJOL,
 ]
 
 export function getCropBySlug(slug: string): FullCropProtocol | undefined {

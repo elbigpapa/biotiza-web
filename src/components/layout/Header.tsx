@@ -19,11 +19,11 @@ import MobileNav from './MobileNav'
 // ─── Links del nav ──────────────────────────────────────────────────────
 
 const NAV_LINKS = [
-  { label: 'Cultivos',     href: '/cultivos'     },
-  { label: 'Herramientas', href: '/herramientas' },
-  { label: 'Academia',     href: '/academia'     },
-  { label: 'Nosotros',     href: '/nosotros'     },
-  { label: 'Contacto',     href: '/contacto'     },
+  { label: 'Cultivos',      href: '/cultivos'     },
+  { label: 'Casa y Jardín', href: '/casa-jardin'  },
+  { label: 'Herramientas',  href: '/herramientas' },
+  { label: 'Academia',      href: '/academia'     },
+  { label: 'Nosotros',      href: '/nosotros'     },
 ]
 
 // ─── Componente ───────────────────────────────────────────────────────────

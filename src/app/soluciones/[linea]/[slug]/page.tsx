@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, MessageCircle, ShoppingCart, CheckCircle, Target, Droplets, Leaf, FlaskConical, Sparkles, Shield, ChevronRight } from 'lucide-react'
 import { PRODUCTS, getProductBySlug, getRelatedProducts } from '@/data/products'
-import { PRODUCT_LINES } from '@/data/constants'
+import { PRODUCT_LINES, BRANDS } from '@/data/constants'
 import { cn } from '@/lib/utils'
 import Badge from '@/components/ui/Badge'
 import Container from '@/components/ui/Container'
@@ -45,32 +45,60 @@ export async function generateMetadata({
   }
 }
 
-// ─── JSON-LD: Product Schema ─────────────────────────────────────────────
-function ProductJsonLd({ product }: { product: { name: string; full_name: string; description: string; line: string; slug: string } }) {
-  const schema = {
+// ─── JSON-LD: Product + BreadcrumbList ─────────────────────────────────
+function ProductJsonLd({
+  product,
+  brandName,
+  lineName,
+}: {
+  product: { name: string; full_name: string; description: string; line: string; slug: string; certifications: string[] }
+  brandName: string
+  lineName: string
+}) {
+  const productSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.full_name,
+    alternateName: product.name,
     description: product.description,
     url: `https://biotiza.mx/soluciones/${product.line}/${product.slug}`,
-    brand: { '@type': 'Brand', name: 'Biotiza' },
-    manufacturer: {
-      '@type': 'Organization',
-      name: 'Biotiza',
-      url: 'https://biotiza.mx',
-    },
-    category: product.line,
+    brand: { '@type': 'Brand', name: brandName },
+    manufacturer: { '@type': 'Organization', name: brandName },
+    category: lineName,
+    hasCertification: product.certifications.map((cert) => ({
+      '@type': 'Certification',
+      name: cert,
+    })),
     offers: {
       '@type': 'Offer',
       availability: 'https://schema.org/InStock',
-      seller: { '@type': 'Organization', name: 'Biotiza' },
+      seller: { '@type': 'Organization', name: 'Biotiza', url: 'https://biotiza.mx' },
+      priceCurrency: 'MXN',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        price: 0,
+        priceCurrency: 'MXN',
+        description: 'Precio bajo cotización',
+      },
     },
   }
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio',     item: 'https://biotiza.mx' },
+      { '@type': 'ListItem', position: 2, name: 'Soluciones', item: 'https://biotiza.mx/soluciones' },
+      { '@type': 'ListItem', position: 3, name: lineName,     item: `https://biotiza.mx/soluciones/${product.line}` },
+      { '@type': 'ListItem', position: 4, name: product.name, item: `https://biotiza.mx/soluciones/${product.line}/${product.slug}` },
+    ],
+  }
+
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+    </>
   )
 }
 
@@ -91,9 +119,10 @@ export default async function ProductDetailPage({
   const product = getProductBySlug(slug)
   if (!product || product.line !== linea) notFound()
 
-  const lineConfig = PRODUCT_LINES.find(l => l.id === product.line)!
-  const related    = getRelatedProducts(product, 4)
-  const Icon       = LINE_ICONS[product.line]
+  const lineConfig  = PRODUCT_LINES.find(l => l.id === product.line)!
+  const brandConfig = BRANDS.find(b => b.id === product.brand)!
+  const related     = getRelatedProducts(product, 4)
+  const Icon        = LINE_ICONS[product.line]
 
   const waText = encodeURIComponent(
     `Hola Biotiza, quiero información sobre ${product.name}. ¿Cuál es la dosis para mi cultivo?`
@@ -166,7 +195,7 @@ export default async function ProductDetailPage({
                 Solicitar Cotización
               </Link>
               <a
-                href={`https://wa.me/523300000000?text=${waText}`}
+                href={`https://wa.me/523316022708?text=${waText}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 rounded-lg bg-[#25D366] py-3 px-5 text-sm font-semibold text-white hover:bg-[#1ebe57] transition-colors"
@@ -183,6 +212,7 @@ export default async function ProductDetailPage({
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-2">
                 <Badge line={product.line} size="md" />
+                <Badge brand={product.brand} size="md" showDot />
                 <span className="text-xs font-semibold uppercase tracking-wider text-gris-400">
                   {product.category}
                 </span>
@@ -191,6 +221,15 @@ export default async function ProductDetailPage({
                 {product.name}
               </h1>
               <p className="mt-1 text-sm font-medium text-gris-500">{product.full_name}</p>
+              <Link
+                href={`/marcas/${brandConfig.slug}`}
+                className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-gris-500 hover:text-gris-800 transition-colors"
+                style={{ color: brandConfig.color }}
+              >
+                <span className="h-2 w-2 rounded-full" style={{ backgroundColor: brandConfig.color }} />
+                Producto de la marca {brandConfig.name}
+                <ChevronRight size={12} />
+              </Link>
               <p className="mt-4 text-base leading-relaxed text-gris-700">
                 {product.description}
               </p>
@@ -368,8 +407,8 @@ export default async function ProductDetailPage({
         </div>
       </Container>
 
-      {/* SEO: Product JSON-LD */}
-      <ProductJsonLd product={product} />
+      {/* SEO: Product + Breadcrumb JSON-LD */}
+      <ProductJsonLd product={product} brandName={brandConfig.name} lineName={lineConfig.name} />
     </div>
   )
 }

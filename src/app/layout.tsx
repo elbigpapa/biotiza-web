@@ -5,6 +5,8 @@ import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import WhatsAppFloat from '@/components/shared/WhatsAppFloat'
+import CookieConsent from '@/components/shared/CookieConsent'
+import ChatWidget from '@/components/chat/ChatWidget'
 
 // ─── Organization JSON-LD ─────────────────────────────────────────────────
 function OrganizationJsonLd() {
@@ -117,6 +119,8 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppFloat />
+        <ChatWidget />
+        <CookieConsent />
       </body>
     </html>
   )

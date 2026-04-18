@@ -10,7 +10,7 @@
  */
 
 import { cn } from '@/lib/utils'
-import type { ProductLine, Certification } from '@/types'
+import type { ProductLine, ProductBrand, Certification } from '@/types'
 
 // ─── Tipos ────────────────────────────────────────────────────────────────
 
@@ -20,6 +20,13 @@ export type CertBadge = 'cofepris' | 'omri' | 'hecho-en-mexico'
 
 interface LineBadgeProps {
   line: ProductLine
+  size?: BadgeSize
+  showDot?: boolean
+  className?: string
+}
+
+interface BrandBadgeProps {
+  brand: ProductBrand
   size?: BadgeSize
   showDot?: boolean
   className?: string
@@ -38,7 +45,7 @@ interface CustomBadgeProps {
   className?: string
 }
 
-export type BadgeProps = LineBadgeProps | CertBadgeProps | CustomBadgeProps
+export type BadgeProps = LineBadgeProps | BrandBadgeProps | CertBadgeProps | CustomBadgeProps
 
 // ─── Configuración de líneas ──────────────────────────────────────────────
 
@@ -73,6 +80,26 @@ const LINE_CONFIG: Record<ProductLine, LineConfig> = {
     label: 'Línea Zentia',
     dot:   'bg-azul-500',
     badge: 'bg-azul-100 text-azul-600 ring-1 ring-azul-200',
+  },
+}
+
+// ─── Configuración de marcas ──────────────────────────────────────────────
+
+const BRAND_CONFIG: Record<ProductBrand, LineConfig> = {
+  bioproductos: {
+    label: 'Bioproductos',
+    dot:   'bg-emerald-600',
+    badge: 'bg-emerald-50 text-emerald-800 ring-1 ring-emerald-200',
+  },
+  agrobionsa: {
+    label: 'Agrobionsa',
+    dot:   'bg-cyan-700',
+    badge: 'bg-cyan-50 text-cyan-800 ring-1 ring-cyan-200',
+  },
+  veganic: {
+    label: 'Veganic',
+    dot:   'bg-violet-600',
+    badge: 'bg-violet-50 text-violet-800 ring-1 ring-violet-200',
   },
 }
 
@@ -130,6 +157,27 @@ export default function Badge(props: BadgeProps) {
       <span
         className={cn(baseBadge, sizeStyles[size], config.badge, className)}
         aria-label={`Línea ${config.label}`}
+      >
+        {showDot && (
+          <span
+            className={cn('rounded-full shrink-0', config.dot, dotSizeStyles[size])}
+            aria-hidden="true"
+          />
+        )}
+        {config.label}
+      </span>
+    )
+  }
+
+  // ── Badge de marca ─────────────────────────────────────────────────
+  if ('brand' in props) {
+    const { brand, showDot = true, className } = props
+    const config = BRAND_CONFIG[brand]
+
+    return (
+      <span
+        className={cn(baseBadge, sizeStyles[size], config.badge, className)}
+        aria-label={`Marca ${config.label}`}
       >
         {showDot && (
           <span

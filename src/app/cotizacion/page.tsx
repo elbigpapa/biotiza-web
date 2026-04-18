@@ -97,6 +97,8 @@ function QuotationPageContent() {
   const { items, removeItem, updateQuantity, clearCart, totalItems } =
     useQuotationCart()
   const [submitted, setSubmitted] = useState(false)
+  const [serverError, setServerError] = useState<string | null>(null)
+  const [reference, setReference] = useState<string | null>(null)
 
   const {
     register,
@@ -109,14 +111,34 @@ function QuotationPageContent() {
   // ── Submit ─────────────────────────────────────────────────────────────────
 
   const onSubmit = async (data: FormData) => {
-    const cartSummary = items
-      .map((i) => `${i.productName} (${i.quantity} ${i.unit})`)
-      .join(', ')
-    console.log('Cotización enviada:', { ...data, productos: cartSummary })
-    // Simular llamada a API
-    await new Promise((r) => setTimeout(r, 1000))
-    setSubmitted(true)
-    clearCart()
+    setServerError(null)
+    try {
+      const res = await fetch('/api/cotizacion', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          ...data,
+          items: items.map((i) => ({
+            productId: i.productId,
+            name: i.productName,
+            line: i.productLine,
+            quantity: i.quantity,
+            unit: i.unit,
+          })),
+        }),
+      })
+      if (!res.ok) {
+        const json = await res.json().catch(() => ({}))
+        setServerError(json?.error ?? 'No pudimos enviar tu cotización.')
+        return
+      }
+      const json = await res.json()
+      if (json?.reference) setReference(json.reference)
+      setSubmitted(true)
+      clearCart()
+    } catch {
+      setServerError('Error de red. Intenta de nuevo.')
+    }
   }
 
   // ── Mensaje de WhatsApp pre-llenado ────────────────────────────────────────
@@ -153,10 +175,15 @@ function QuotationPageContent() {
             Nuestro equipo se pondrá en contacto contigo en menos de 24 horas
             hábiles.
           </p>
-          <p className="text-gris-500 text-sm mb-8">
+          <p className="text-gris-500 text-sm mb-3">
             También puedes escribirnos directamente por WhatsApp para una
             respuesta inmediata.
           </p>
+          {reference && (
+            <p className="mb-6 inline-block rounded-lg bg-verde-50 px-4 py-2 text-xs font-mono font-semibold text-verde-700">
+              Folio: {reference}
+            </p>
+          )}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href={whatsappUrl}
@@ -404,6 +431,12 @@ function QuotationPageContent() {
                 🔒 Tu información está protegida. No compartimos tus datos con
                 terceros.
               </p>
+
+              {serverError && (
+                <p className="text-center text-sm text-red-500" role="alert">
+                  {serverError}
+                </p>
+              )}
             </form>
           </div>
 

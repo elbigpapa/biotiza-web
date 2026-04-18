@@ -2,7 +2,7 @@
  * constants.ts — Configuración global y datos estáticos de referencia
  */
 
-import type { ProductLine } from '@/types'
+import type { ProductBrand, ProductLine } from '@/types'
 
 // ─── Líneas de Producto ───────────────────────────────────────────────────
 
@@ -88,6 +88,83 @@ export const PRODUCT_LINES: ProductLineConfig[] = [
   },
 ]
 
+// ─── Marcas ───────────────────────────────────────────────────────────────
+
+/**
+ * Biotiza distribuye tres marcas líderes de biosoluciones agrícolas.
+ * Cada marca tiene un color identificatorio que se usa en badges, filtros
+ * y la página /marcas. Este eje es ortogonal al de líneas de producto.
+ */
+export interface BrandConfig {
+  id: ProductBrand
+  name: string
+  slug: string
+  tagline: string
+  description: string
+  origin: string
+  color: string
+  iconName: string
+  strengths: string[]
+  website?: string
+  logo?: string
+}
+
+export const BRANDS: BrandConfig[] = [
+  {
+    id:          'bioproductos',
+    name:        'Bioproductos Agrícolas',
+    slug:        'bioproductos',
+    tagline:     'Nutrición y bioprotección hecha en México',
+    description:
+      'Bioproductos Agrícolas fabrica en México la familia BP / ULTRA / Zentia con más de 25 registros COFEPRIS y certificación OMRI. Su enfoque combina quelatos orgánicos, microorganismos y extractos botánicos formulados para la agricultura intensiva mexicana de exportación.',
+    origin:      'Zapopan, Jalisco · México',
+    color:       '#166534',
+    iconName:    'Leaf',
+    strengths:   [
+      'Quelatos orgánicos de alta asimilación',
+      'Línea Zentia de bioprotección COFEPRIS + OMRI',
+      'Nutrición líquida 100 % soluble',
+      'Especialización en cultivos de exportación',
+    ],
+  },
+  {
+    id:          'agrobionsa',
+    name:        'Agrobionsa',
+    slug:        'agrobionsa',
+    tagline:     'Control biológico microbiano de precisión',
+    description:
+      'Agrobiológicos del Noroeste, S.A. de C.V., referente mexicano en agentes microbianos de control biológico (AMCB) con más de 25 años de I+D, certificación ISO 9001:2015 y OMRI Listed. Sus hongos entomopatógenos y antagonistas controlan nematodos, mosquita blanca, paratrioza, picudo y damping-off sin residuos ni impacto ambiental.',
+    origin:      'Culiacán, Sinaloa · México',
+    color:       '#0e7490',
+    iconName:    'Microscope',
+    strengths:   [
+      'Hongos entomopatógenos de alta concentración (1.2×10¹² conidios)',
+      'OMRI Listed + COFEPRIS + ISO 9001:2015',
+      '25+ años en control biológico',
+      'Sin intervalo de seguridad · Sin residuos',
+    ],
+    website:     'www.agrobionsa.com',
+  },
+  {
+    id:          'veganic',
+    name:        'Veganic',
+    slug:        'veganic',
+    tagline:     'Grow different — biotecnología vegetal desde España',
+    description:
+      'Veganic® desarrolla biosoluciones de última generación fabricadas en España con tecnologías propias NeoDuo®, NeoPrime® y MicroGea®. Su catálogo combina biocontrol, bioestimulación y nutrición orgánica con dosis reducidas, alta asimilación y certificaciones Vegan, Cruelty Free, GLOBALG.A.P. y UN Global Compact.',
+    origin:      'Fabricado en España · Distribuido desde Guadalajara',
+    color:       '#6d28d9',
+    iconName:    'Sparkles',
+    strengths:   [
+      'Tecnologías patentadas NeoDuo / NeoPrime / MicroGea',
+      'Dosis reducidas y alta especificidad molecular',
+      'Certificaciones Vegan · Cruelty Free · GLOBALG.A.P.',
+      '20+ años de I+D en agricultura regenerativa',
+    ],
+    website:     'veganic.bio',
+  },
+]
+
 // ─── Cultivos ─────────────────────────────────────────────────────────────
 
 export interface CropConfig {
@@ -109,6 +186,12 @@ export const CROPS_DATA: CropConfig[] = [
   { id: 'aguacate',  name: 'Aguacate',   slug: 'aguacate',  emoji: '🥑', gradientFrom: 'from-green-800',  gradientTo: 'to-green-600',  description: 'Persea americana' },
   { id: 'chile',     name: 'Chile',      slug: 'chile',     emoji: '🌶️', gradientFrom: 'from-orange-700', gradientTo: 'to-orange-500', description: 'Capsicum annuum' },
   { id: 'citricos',  name: 'Cítricos',   slug: 'citricos',  emoji: '🍊', gradientFrom: 'from-amber-600',  gradientTo: 'to-amber-400',  description: 'Citrus spp.' },
+  { id: 'apio',         name: 'Apio',            slug: 'apio',         emoji: '🥬', gradientFrom: 'from-emerald-700', gradientTo: 'to-emerald-500', description: 'Apium graveolens' },
+  { id: 'brocoli',      name: 'Brócoli',         slug: 'brocoli',      emoji: '🥦', gradientFrom: 'from-green-700',   gradientTo: 'to-green-500',   description: 'Brassica oleracea var. italica' },
+  { id: 'tomate-cherry',name: 'Tomate Cherry',   slug: 'tomate-cherry',emoji: '🍒', gradientFrom: 'from-red-600',     gradientTo: 'to-red-400',     description: 'Solanum lycopersicum var. cerasiforme' },
+  { id: 'maiz',         name: 'Maíz',            slug: 'maiz',         emoji: '🌽', gradientFrom: 'from-yellow-600',  gradientTo: 'to-yellow-400',  description: 'Zea mays' },
+  { id: 'cana-azucar',  name: 'Caña de Azúcar',  slug: 'cana-azucar',  emoji: '🎋', gradientFrom: 'from-lime-700',    gradientTo: 'to-lime-500',    description: 'Saccharum officinarum' },
+  { id: 'frijol',       name: 'Frijol',          slug: 'frijol',       emoji: '🫘', gradientFrom: 'from-amber-800',   gradientTo: 'to-amber-600',   description: 'Phaseolus vulgaris' },
 ]
 
 // ─── Certificaciones ──────────────────────────────────────────────────────
@@ -132,8 +215,8 @@ export const APPLICATION_METHODS = [
 
 export const CONTACT_INFO = {
   email:      'ventas@biotiza.mx',
-  whatsapp:   '523300000000',
-  whatsappUrl: 'https://wa.me/523300000000',
+  whatsapp:   '523316022708',
+  whatsappUrl: 'https://wa.me/523316022708',
   instagram:  '@biotiza',
   instagramUrl: 'https://instagram.com/biotiza',
   address:    'Zapopan, Jalisco, México',
@@ -148,10 +231,12 @@ export const CONTACT_INFO = {
 // ─── Navegación ───────────────────────────────────────────────────────────
 
 export const NAV_LINKS = [
-  { label: 'Soluciones',   href: '/soluciones'   },
-  { label: 'Cultivos',     href: '/cultivos'     },
-  { label: 'Herramientas', href: '/herramientas' },
-  { label: 'Academia',     href: '/academia'     },
-  { label: 'Nosotros',     href: '/nosotros'     },
-  { label: 'Contacto',     href: '/contacto'     },
+  { label: 'Soluciones',     href: '/soluciones'     },
+  { label: 'Marcas',         href: '/marcas'         },
+  { label: 'Cultivos',       href: '/cultivos'       },
+  { label: 'Herramientas',   href: '/herramientas'   },
+  { label: 'Casos de Éxito', href: '/casos-de-exito' },
+  { label: 'Academia',       href: '/academia'       },
+  { label: 'Nosotros',       href: '/nosotros'       },
+  { label: 'Contacto',       href: '/contacto'       },
 ] as const

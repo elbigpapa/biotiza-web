@@ -623,7 +623,7 @@ export default async function CultivoPage({
                   Para tu {crop.name} específico
                 </p>
                 <a
-                  href={`https://wa.me/523300000000?text=Hola%2C%20necesito%20un%20programa%20de%20nutrici%C3%B3n%20para%20mi%20cultivo%20de%20${encodeURIComponent(crop.name)}`}
+                  href={`https://wa.me/523316022708?text=Hola%2C%20necesito%20un%20programa%20de%20nutrici%C3%B3n%20para%20mi%20cultivo%20de%20${encodeURIComponent(crop.name)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-white/20 border border-white/30 px-4 py-2.5 text-sm font-semibold text-white hover:bg-white/30 transition-colors"
@@ -659,7 +659,7 @@ export default async function CultivoPage({
                 Solicitar cotización
               </Link>
               <a
-                href={`https://wa.me/523300000000?text=Hola%2C%20quiero%20hablar%20con%20un%20agr%C3%B3nomo%20sobre%20mi%20cultivo%20de%20${encodeURIComponent(crop.name)}`}
+                href={`https://wa.me/523316022708?text=Hola%2C%20quiero%20hablar%20con%20un%20agr%C3%B3nomo%20sobre%20mi%20cultivo%20de%20${encodeURIComponent(crop.name)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-verde-600 px-6 py-3 text-verde-700 font-semibold hover:bg-verde-50 transition-colors"

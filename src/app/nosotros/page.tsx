@@ -15,6 +15,7 @@ import {
 import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Badge from '@/components/ui/Badge'
+import { PRODUCTS } from '@/data/products'
 
 // ---------------------------------------------------------------------------
 // Metadata
@@ -124,7 +125,7 @@ export default function NosotrosPage() {
             {/* Stats pills */}
             <div className="flex flex-wrap gap-3 mt-8">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-5 py-2 text-sm font-semibold text-white">
-                41 productos
+                {PRODUCTS.length} productos
               </span>
               <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-5 py-2 text-sm font-semibold text-white">
                 5 líneas especializadas
@@ -163,7 +164,7 @@ export default function NosotrosPage() {
                   Biotiza nació en Zapopan, Jalisco, con una convicción clara: los productores
                   mexicanos merecen acceso a las mismas soluciones biológicas de vanguardia que
                   utilizan los agricultores más competitivos del mundo. Desde nuestra fundación
-                  en 2018, hemos construido un portafolio de más de 41 productos orientado
+                  en 2018, hemos construido un portafolio de más de {PRODUCTS.length} productos orientado
                   exclusivamente a resultados medibles en campo.
                 </p>
                 <p>

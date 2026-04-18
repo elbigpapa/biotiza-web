@@ -1,6 +1,6 @@
 /**
  * products.ts — Base de datos completa de productos Biotiza
- * 41 productos · 5 líneas · Interfaz Product de src/types/index.ts
+ * 49 productos · 5 líneas · 3 marcas · Interfaz Product de src/types/index.ts
  */
 
 import type { Product } from '@/types'
@@ -16,6 +16,7 @@ const ORGANICOS: Product[] = [
     name: 'BP Calcio',
     full_name: 'BP Calcio — Calcio Orgánico Quelatado',
     line: 'organicos',
+    brand: 'bioproductos',
     category: 'Macronutrientes',
     description: 'Fuente orgánica de calcio de alta biodisponibilidad para fortalecer la pared celular, prevenir el bitter pit en manzana y blossom end rot en tomate.',
     technical_description: 'Formulación líquida de calcio orgánico quelatado con ácidos orgánicos de bajo peso molecular que garantizan absorción foliar y radicular de alta eficiencia. Ideal para cultivos con alta demanda de calcio en etapas de engorde y maduración.',
@@ -41,7 +42,7 @@ const ORGANICOS: Product[] = [
       'Mejora vida de anaquel y firmeza',
       'Alta biodisponibilidad por quelación orgánica',
     ],
-    crops: ['tomate', 'fresa', 'arandano', 'frambuesa', 'aguacate', 'chile'],
+    crops: ['tomate', 'tomate-cherry', 'fresa', 'arandano', 'frambuesa', 'aguacate', 'chile', 'brocoli', 'apio', 'frijol'],
     compatibility: {
       compatible:   ['bp-magnesio', 'bp-potasio', 'bp-nutri', 'n-ultra'],
       incompatible: ['bp-boro', 'biotiza-calcio-boro'],
@@ -57,6 +58,7 @@ const ORGANICOS: Product[] = [
     name: 'BP Magnesio',
     full_name: 'BP Magnesio — Magnesio Orgánico Quelatado',
     line: 'organicos',
+    brand: 'bioproductos',
     category: 'Macronutrientes',
     description: 'Magnesio orgánico quelatado para corregir clorosis intervenal, activar la fotosíntesis y potenciar la absorción de fósforo.',
     technical_description: 'El magnesio es el átomo central de la clorofila y cofactor de más de 300 enzimas. Esta formulación líquida quelada con ácidos orgánicos garantiza asimilación foliar rápida y corrección de deficiencias en 5–7 días.',
@@ -81,7 +83,7 @@ const ORGANICOS: Product[] = [
       'Mejora la translocación de fósforo',
       'Aumenta la calidad del fruto',
     ],
-    crops: ['tomate', 'chile', 'citricos', 'aguacate', 'fresa'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'citricos', 'aguacate', 'fresa', 'brocoli', 'apio', 'cana-azucar'],
     compatibility: {
       compatible:   ['bp-calcio', 'bp-potasio', 'n-ultra', 'bontera-sa10'],
       incompatible: [],
@@ -96,6 +98,7 @@ const ORGANICOS: Product[] = [
     name: 'BP Potasio',
     full_name: 'BP Potasio — Potasio Orgánico Quelatado',
     line: 'organicos',
+    brand: 'bioproductos',
     category: 'Macronutrientes',
     description: 'Potasio orgánico de alta concentración para activar la síntesis de azúcares, mejorar calibre y brix, y fortalecer la resistencia al estrés hídrico.',
     technical_description: 'El potasio regula la apertura y cierre estomático, la translocación de fotosintatos y la síntesis de proteínas. Fundamental en la etapa de llenado y maduración de frutos.',
@@ -120,7 +123,7 @@ const ORGANICOS: Product[] = [
       'Fortalece resistencia al estrés hídrico',
       'Mejora la coloración del fruto',
     ],
-    crops: ['tomate', 'fresa', 'arandano', 'citricos', 'chile'],
+    crops: ['tomate', 'tomate-cherry', 'fresa', 'arandano', 'citricos', 'chile', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol'],
     compatibility: {
       compatible:   ['bp-calcio', 'bp-magnesio', 'bp-gross', 'k-ultra'],
       incompatible: [],
@@ -135,6 +138,7 @@ const ORGANICOS: Product[] = [
     name: 'BP Moots',
     full_name: 'BP Moots — Enraizador Orgánico Premium',
     line: 'organicos',
+    brand: 'bioproductos',
     category: 'Enraizadores',
     description: 'Enraizador orgánico de alta performance con ácido indolbutírico, aminoácidos libres y microorganismos promotores para un sistema radicular potente desde el primer día.',
     technical_description: 'Combina el poder de las auxinas naturales (AIB), los ácidos húmicos y fúlvicos como quelantes y mejoradores de suelo, y aminoácidos libres como bioestimulantes de la rizogénesis. Resultados visibles en 7–10 días.',
@@ -162,7 +166,7 @@ const ORGANICOS: Product[] = [
       'Reduce el estrés de trasplante',
       'Mejora el prendimiento en hasta 95%',
     ],
-    crops: ['tomate', 'fresa', 'chile', 'arandano', 'aguacate', 'citricos'],
+    crops: ['tomate', 'tomate-cherry', 'fresa', 'chile', 'arandano', 'aguacate', 'citricos', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol'],
     compatibility: {
       compatible:   ['biotiza-lactobacillus', 'bontera-sa10', 'bp-nutri'],
       incompatible: [],
@@ -177,6 +181,7 @@ const ORGANICOS: Product[] = [
     name: 'BP Koren',
     full_name: 'BP Koren — Enraizador de Alta Concentración',
     line: 'organicos',
+    brand: 'bioproductos',
     category: 'Enraizadores',
     description: 'Enraizador de máxima concentración (5000 ppm AIB) para transplantes exigentes y recuperación de sistemas radiculares dañados.',
     composition: [
@@ -212,6 +217,7 @@ const ORGANICOS: Product[] = [
     name: 'BP Nitro FX',
     full_name: 'BP Nitro FX — Nitrógeno Orgánico + Aminoácidos',
     line: 'organicos',
+    brand: 'bioproductos',
     category: 'Nitrógeno orgánico',
     description: 'Fuente de nitrógeno orgánico con alto contenido de aminoácidos libres. Activa el metabolismo de la planta y promueve el crecimiento vegetativo de forma natural.',
     composition: [
@@ -249,6 +255,7 @@ const ORGANICOS: Product[] = [
     name: 'BP Oxyagro',
     full_name: 'BP Oxyagro — Peróxido de Hidrógeno Agrícola',
     line: 'organicos',
+    brand: 'bioproductos',
     category: 'Sanitizantes de suelo',
     description: 'Peróxido de hidrógeno al 35% de grado agrícola para desinfección de suelo, control de Pythium, Phytophthora y Fusarium, y oxigenación de la zona radicular.',
     composition: [
@@ -284,6 +291,7 @@ const ORGANICOS: Product[] = [
     name: 'BP Cu Agro Organic',
     full_name: 'BP Cu Agro Organic — Cobre Orgánico Quelatado',
     line: 'organicos',
+    brand: 'bioproductos',
     category: 'Micronutrientes',
     description: 'Cobre orgánico quelado para corrección de deficiencias y como fungicida-bactericida preventivo de origen orgánico certificado.',
     composition: [
@@ -304,7 +312,7 @@ const ORGANICOS: Product[] = [
       'Quelación orgánica de alta absorción',
       'Compatible con programas OMRI',
     ],
-    crops: ['tomate', 'chile', 'aguacate', 'citricos', 'arandano'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'aguacate', 'citricos', 'arandano', 'brocoli'],
     compatibility: {
       compatible:   ['bp-calcio', 'bp-magnesio', 'zen-fungi'],
       incompatible: ['zen-cu'],
@@ -319,6 +327,7 @@ const ORGANICOS: Product[] = [
     name: 'BP Nutri',
     full_name: 'BP Nutri — Algas Marinas + NPK Orgánico',
     line: 'organicos',
+    brand: 'bioproductos',
     category: 'Bioestimulantes orgánicos',
     description: 'Extracto de algas marinas (Ascophyllum nodosum) enriquecido con NPK orgánico para estimulación del crecimiento, resistencia al estrés y mejora de la calidad del fruto.',
     composition: [
@@ -343,7 +352,7 @@ const ORGANICOS: Product[] = [
       'Aporta citoquininas, auxinas y giberelinas naturales',
       'Mejora calidad y uniformidad del fruto',
     ],
-    crops: ['tomate', 'fresa', 'arandano', 'chile', 'aguacate', 'citricos'],
+    crops: ['tomate', 'tomate-cherry', 'fresa', 'arandano', 'chile', 'aguacate', 'citricos', 'brocoli', 'apio', 'cana-azucar'],
     compatibility: {
       compatible:   ['bp-calcio', 'bp-moots', 'bp-nitro-fx', 'bontera-sa10'],
       incompatible: [],
@@ -358,6 +367,7 @@ const ORGANICOS: Product[] = [
     name: 'AE Calcium',
     full_name: 'AE Calcium — Calcio Premium con Ácidos Polihidroxicarboxílicos',
     line: 'organicos',
+    brand: 'bioproductos',
     category: 'Macronutrientes premium',
     description: 'Calcio de máxima biodisponibilidad formulado con ácidos polihidroxicarboxílicos y ácidos húmicos/fúlvicos para una absorción foliar excepcional y efecto mejorador de suelo simultáneo.',
     composition: [
@@ -380,7 +390,7 @@ const ORGANICOS: Product[] = [
       'Mejora estructura del suelo y CIC',
       'Ideal donde la calidad premium es exigida por el mercado de exportación',
     ],
-    crops: ['tomate', 'fresa', 'arandano', 'frambuesa', 'aguacate'],
+    crops: ['tomate', 'tomate-cherry', 'fresa', 'arandano', 'frambuesa', 'aguacate', 'brocoli', 'apio'],
     compatibility: {
       compatible:   ['bp-magnesio', 'bp-potasio', 'bontera-sa10'],
       incompatible: ['bp-calcio'],
@@ -402,6 +412,7 @@ const ESPECIALIDADES: Product[] = [
     name: 'BP Mol',
     full_name: 'BP Mol — Molibdeno + Boro + Fósforo (Polvo)',
     line: 'especialidades',
+    brand: 'bioproductos',
     category: 'Micronutrientes',
     description: 'Corrector en polvo soluble de molibdeno y boro con soporte de fósforo y potasio. Esencial para la fijación de nitrógeno, síntesis de enzimas nitrato-reductasa y desarrollo de la floración.',
     composition: [
@@ -425,7 +436,7 @@ const ESPECIALIDADES: Product[] = [
       'El boro favorece la germinación del pólen',
       'Corrección rápida de deficiencias múltiples',
     ],
-    crops: ['tomate', 'chile', 'aguacate', 'fresa', 'citricos'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'aguacate', 'fresa', 'citricos', 'brocoli', 'maiz', 'frijol'],
     compatibility: {
       compatible:   ['bp-vit', 'bp-cuaje', 'n-ultra'],
       incompatible: [],
@@ -440,6 +451,7 @@ const ESPECIALIDADES: Product[] = [
     name: 'BP Boro',
     full_name: 'BP Boro — Boro Líquido de Alta Concentración',
     line: 'especialidades',
+    brand: 'bioproductos',
     category: 'Micronutrientes',
     description: 'Boro líquido de alta concentración con nitrógeno vehiculizador para máxima movilidad en la planta. Fundamental en floración, cuajado y desarrollo de la pared celular.',
     composition: [
@@ -461,7 +473,7 @@ const ESPECIALIDADES: Product[] = [
       'Fortalece la pared celular',
       'Previene corcho interno en manzana y aguacate',
     ],
-    crops: ['tomate', 'aguacate', 'citricos', 'chile', 'fresa'],
+    crops: ['tomate', 'tomate-cherry', 'aguacate', 'citricos', 'chile', 'fresa', 'brocoli', 'apio', 'maiz', 'frijol'],
     compatibility: {
       compatible:   ['bp-cuaje', 'bp-fiore', 'bp-vit'],
       incompatible: ['bp-calcio', 'ae-calcium'],
@@ -476,6 +488,7 @@ const ESPECIALIDADES: Product[] = [
     name: 'BP Vit',
     full_name: 'BP Vit — Vitaminas + Molibdeno + Cisteína',
     line: 'especialidades',
+    brand: 'bioproductos',
     category: 'Bioestimulantes vitamínicos',
     description: 'Complejo vitamínico agrícola con molibdeno, L-cisteína y ácido fólico para activar el metabolismo enzimático, mejorar la resistencia al estrés y estimular la floración.',
     composition: [
@@ -498,7 +511,7 @@ const ESPECIALIDADES: Product[] = [
       'Mejora la eficiencia en la absorción de nutrientes',
       'Estimula el metabolismo energético de la planta',
     ],
-    crops: ['tomate', 'chile', 'fresa', 'arandano', 'citricos'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'citricos', 'brocoli'],
     compatibility: {
       compatible:   ['bp-boro', 'bp-mol', 'bp-cuaje'],
       incompatible: [],
@@ -513,6 +526,7 @@ const ESPECIALIDADES: Product[] = [
     name: 'Biotiza Coadyuvante',
     full_name: 'Biotiza Coadyuvante — Aceite Parafinado Agrícola',
     line: 'especialidades',
+    brand: 'bioproductos',
     category: 'Coadyuvantes',
     description: 'Aceite parafinado de alta pureza como coadyuvante-surfactante para mejorar la adherencia, penetración y distribución de cualquier agroquímico o biosolución.',
     composition: [
@@ -547,6 +561,7 @@ const ESPECIALIDADES: Product[] = [
     name: 'Biotiza Lactobacillus',
     full_name: 'Biotiza Lactobacillus — Inoculante Probiótico Agrícola',
     line: 'especialidades',
+    brand: 'bioproductos',
     category: 'Inoculantes microbianos',
     description: 'Inoculante probiótico con dos cepas de Lactobacillus de alta concentración para mejorar la microbiota del suelo, competir con patógenos y solubilizar fósforo y zinc.',
     composition: [
@@ -568,7 +583,7 @@ const ESPECIALIDADES: Product[] = [
       'Solubiliza fósforo y zinc no disponibles',
       'Mejora la estructura y salud del suelo a largo plazo',
     ],
-    crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol'],
     compatibility: {
       compatible:   ['bp-moots', 'bontera-sa10', 'bp-nutri'],
       incompatible: ['bp-oxyagro', 'zen-cu'],
@@ -583,6 +598,7 @@ const ESPECIALIDADES: Product[] = [
     name: 'Biotiza Calcio Boro',
     full_name: 'Biotiza Calcio Boro — Calcio + Boro Premium',
     line: 'especialidades',
+    brand: 'bioproductos',
     category: 'Macronutrientes + Micronutrientes',
     description: 'Formulación combinada de calcio y boro en una sola aplicación. Optimiza la translocación de calcio al fruto y activa simultáneamente la germinación del tubo polínico.',
     composition: [
@@ -604,7 +620,7 @@ const ESPECIALIDADES: Product[] = [
       'Previene blossom end rot y corcho interno',
       'Optimiza la logística de aplicaciones',
     ],
-    crops: ['tomate', 'aguacate', 'citricos', 'chile', 'fresa'],
+    crops: ['tomate', 'tomate-cherry', 'aguacate', 'citricos', 'chile', 'fresa'],
     compatibility: {
       compatible:   ['bp-potasio', 'bp-gross'],
       incompatible: ['bp-calcio', 'bp-boro', 'ae-calcium'],
@@ -626,6 +642,7 @@ const BIOESTIMULANTES: Product[] = [
     name: 'BP Fioré',
     full_name: 'BP Fioré — Inductor de Floración (Polvo)',
     line: 'bioestimulantes',
+    brand: 'bioproductos',
     category: 'Inductores de floración',
     description: 'Bioestimulante de floración en polvo con auxinas naturales, aminoácidos y azufre. Homogeneiza la apertura floral, aumenta la densidad de flores y mejora la receptividad del estigma.',
     composition: [
@@ -647,7 +664,7 @@ const BIOESTIMULANTES: Product[] = [
       'Mejora la receptividad del estigma y germinación del pólen',
       'El azufre actúa como fungistático natural',
     ],
-    crops: ['tomate', 'fresa', 'chile', 'aguacate', 'arandano', 'frambuesa', 'zarzamora'],
+    crops: ['tomate', 'tomate-cherry', 'fresa', 'chile', 'aguacate', 'arandano', 'frambuesa', 'zarzamora', 'maiz', 'frijol'],
     compatibility: {
       compatible:   ['bp-boro', 'bp-cuaje', 'bp-vit'],
       incompatible: [],
@@ -662,6 +679,7 @@ const BIOESTIMULANTES: Product[] = [
     name: 'BP Gibb',
     full_name: 'BP Gibb — Giberelina AG3 10%',
     line: 'bioestimulantes',
+    brand: 'bioproductos',
     category: 'Reguladores de crecimiento',
     description: 'Giberelina AG3 de alta pureza al 10% para elongación de entrenudos, ruptura de dormancia, inducción de partenocarpia y aumento de calibre en uva y bayas.',
     composition: [
@@ -696,6 +714,7 @@ const BIOESTIMULANTES: Product[] = [
     name: 'BP Cuaje',
     full_name: 'BP Cuaje — Bioestimulante de Cuajado de Frutos',
     line: 'bioestimulantes',
+    brand: 'bioproductos',
     category: 'Cuajado de frutos',
     description: 'Bioestimulante de cuajado con NPK equilibrado, molibdeno y cofactores enzimáticos. Reduce el aborto floral y aumenta el porcentaje de cuaje en condiciones adversas.',
     composition: [
@@ -718,7 +737,7 @@ const BIOESTIMULANTES: Product[] = [
       'El molibdeno optimiza la enzima nitrato-reductasa',
       'Mejora la uniformidad del calibre del lote',
     ],
-    crops: ['tomate', 'chile', 'fresa', 'aguacate', 'arandano'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'aguacate', 'arandano', 'maiz', 'frijol'],
     compatibility: {
       compatible:   ['bp-fiore', 'bp-boro', 'bp-vit', 'bp-gibb'],
       incompatible: [],
@@ -733,6 +752,7 @@ const BIOESTIMULANTES: Product[] = [
     name: 'BP Gross',
     full_name: 'BP Gross — Engordador de Fruto (Polvo)',
     line: 'bioestimulantes',
+    brand: 'bioproductos',
     category: 'Engorde de fruto',
     description: 'Engordador de fruto en polvo con boro, molibdeno, potasio y expansinas vegetales. Promueve la división y expansión celular del fruto para maximizar calibre y peso.',
     composition: [
@@ -755,7 +775,7 @@ const BIOESTIMULANTES: Product[] = [
       'Aumenta el calibre comercial hasta una categoría superior',
       'Mejora el peso promedio del fruto',
     ],
-    crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'aguacate'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'aguacate', 'brocoli'],
     compatibility: {
       compatible:   ['bp-potasio', 'bp-cuaje', 'k-ultra'],
       incompatible: [],
@@ -770,6 +790,7 @@ const BIOESTIMULANTES: Product[] = [
     name: 'BP Acua',
     full_name: 'BP Acua — Sanitizante de Agua con Sal Amonio',
     line: 'bioestimulantes',
+    brand: 'bioproductos',
     category: 'Sanitizantes',
     description: 'Sanitizante de agua de riego a base de sal de amonio cuaternario al 50% para eliminar bacterias, algas y biofilm en sistemas de riego por goteo.',
     composition: [
@@ -789,7 +810,7 @@ const BIOESTIMULANTES: Product[] = [
       'Previene obstrucción de goteros',
       'Mejora la uniformidad del riego y la fertirrigación',
     ],
-    crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'brocoli', 'apio', 'cana-azucar'],
     compatibility: {
       compatible:   [],
       incompatible: ['biotiza-lactobacillus'],
@@ -804,6 +825,7 @@ const BIOESTIMULANTES: Product[] = [
     name: 'BP Fresh',
     full_name: 'BP Fresh — Sanitizante Foliar Premium',
     line: 'bioestimulantes',
+    brand: 'bioproductos',
     category: 'Sanitizantes',
     description: 'Sanitizante foliar con sal de amonio y povidona para limpieza de herramientas, superficies y follaje. Reduce la carga bacteriana superficial y previene la diseminación de enfermedades.',
     composition: [
@@ -825,7 +847,7 @@ const BIOESTIMULANTES: Product[] = [
       'La povidona potencia la acción bactericida',
       'Compatible con protocolos de inocuidad alimentaria',
     ],
-    crops: ['tomate', 'chile', 'fresa', 'arandano'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'brocoli', 'apio', 'frijol'],
     compatibility: {
       compatible:   [],
       incompatible: ['biotiza-lactobacillus'],
@@ -847,6 +869,7 @@ const NUTRICION: Product[] = [
     name: 'N-Ultra',
     full_name: 'N-Ultra — Nitrógeno Líquido 30%',
     line: 'nutricion',
+    brand: 'bioproductos',
     category: 'Macronutrientes',
     description: 'Nitrógeno líquido de alta concentración (30% N total) para fertirrigación intensiva. Ideal para etapas de máxima demanda nitrogenada.',
     composition: [
@@ -866,7 +889,7 @@ const NUTRICION: Product[] = [
       'Sin sólidos: no tapa goteros',
       'Compatible con todos los sistemas de fertirrigación',
     ],
-    crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'aguacate', 'citricos'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'aguacate', 'citricos', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol'],
     compatibility: {
       compatible:   ['p-ultra', 'k-ultra', 'ca-ultra', 'mg-ultra', 'bp-mix'],
       incompatible: [],
@@ -881,6 +904,7 @@ const NUTRICION: Product[] = [
     name: 'P-Ultra',
     full_name: 'P-Ultra — Fósforo Líquido P₂O₅ 52%',
     line: 'nutricion',
+    brand: 'bioproductos',
     category: 'Macronutrientes',
     description: 'Fuente líquida de fósforo de máxima concentración (52% P₂O₅) para estimular el desarrollo radicular, la floración y la energía celular (ATP).',
     composition: [
@@ -900,7 +924,7 @@ const NUTRICION: Product[] = [
       'Activa la energía celular (ATP/ADP)',
       'Mejora la translocación de azúcares',
     ],
-    crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'aguacate'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'aguacate', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol'],
     compatibility: {
       compatible:   ['n-ultra', 'k-ultra', 'ca-ultra', 'mg-ultra'],
       incompatible: [],
@@ -915,6 +939,7 @@ const NUTRICION: Product[] = [
     name: 'K-Ultra',
     full_name: 'K-Ultra — Potasio Líquido K₂O 40%',
     line: 'nutricion',
+    brand: 'bioproductos',
     category: 'Macronutrientes',
     description: 'Potasio líquido de alta concentración (40% K₂O) sin cloro para llenado de fruto, grados Brix y resistencia al estrés hídrico.',
     composition: [
@@ -934,7 +959,7 @@ const NUTRICION: Product[] = [
       'Mejora color y vida de anaquel',
       'Fortalece la resistencia al estrés hídrico',
     ],
-    crops: ['tomate', 'fresa', 'arandano', 'frambuesa', 'chile', 'citricos'],
+    crops: ['tomate', 'tomate-cherry', 'fresa', 'arandano', 'frambuesa', 'chile', 'citricos', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol'],
     compatibility: {
       compatible:   ['n-ultra', 'p-ultra', 'ca-ultra', 'mg-ultra', 'bp-mix'],
       incompatible: [],
@@ -949,6 +974,7 @@ const NUTRICION: Product[] = [
     name: 'Ca-Ultra',
     full_name: 'Ca-Ultra — Calcio + Nitrógeno Premium',
     line: 'nutricion',
+    brand: 'bioproductos',
     category: 'Macronutrientes',
     description: 'Calcio en solución con nitrógeno vehiculizador para maximizar la translocación de calcio al fruto y tejidos en crecimiento activo.',
     composition: [
@@ -970,7 +996,7 @@ const NUTRICION: Product[] = [
       'Fortalece meristemos y tejidos nuevos',
       'Compatible con todo el programa de fertirrigación',
     ],
-    crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'brocoli', 'apio', 'maiz', 'frijol'],
     compatibility: {
       compatible:   ['n-ultra', 'k-ultra', 'mg-ultra', 'bp-mix'],
       incompatible: [],
@@ -985,6 +1011,7 @@ const NUTRICION: Product[] = [
     name: 'Mg-Ultra',
     full_name: 'Mg-Ultra — Magnesio + Azufre',
     line: 'nutricion',
+    brand: 'bioproductos',
     category: 'Macronutrientes secundarios',
     description: 'Fuente líquida de magnesio y azufre para corrección de deficiencias, activación de la fotosíntesis y síntesis de aminoácidos azufrados.',
     composition: [
@@ -1006,7 +1033,7 @@ const NUTRICION: Product[] = [
       'Doble corrección en una sola aplicación',
       'Mejora la eficiencia de conversión lumínica',
     ],
-    crops: ['tomate', 'chile', 'fresa', 'arandano', 'aguacate', 'citricos'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'aguacate', 'citricos', 'brocoli', 'apio', 'cana-azucar'],
     compatibility: {
       compatible:   ['n-ultra', 'k-ultra', 'ca-ultra', 'bp-mix'],
       incompatible: [],
@@ -1021,6 +1048,7 @@ const NUTRICION: Product[] = [
     name: 'BP Ferrum',
     full_name: 'BP Ferrum — Hierro Quelatado EDDHA/EDTA 9%',
     line: 'nutricion',
+    brand: 'bioproductos',
     category: 'Micronutrientes',
     description: 'Hierro quelatado de alta estabilidad al 9% para corrección de clorosis férrica en suelos calcáreos o con pH alto. Estable hasta pH 9.',
     composition: [
@@ -1056,6 +1084,7 @@ const NUTRICION: Product[] = [
     name: 'BP Zinc',
     full_name: 'BP Zinc — Zinc Quelatado 8%',
     line: 'nutricion',
+    brand: 'bioproductos',
     category: 'Micronutrientes',
     description: 'Zinc quelatado al 8% para activar la síntesis de auxinas, mejorar la elongación celular y prevenir la "hoja pequeña" o roseta en frutales y tomate.',
     composition: [
@@ -1076,7 +1105,7 @@ const NUTRICION: Product[] = [
       'Mejora la elongación de entrenudos',
       'Cofactor de más de 300 enzimas',
     ],
-    crops: ['tomate', 'chile', 'aguacate', 'citricos', 'arandano'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'aguacate', 'citricos', 'arandano', 'brocoli', 'maiz', 'cana-azucar', 'frijol'],
     compatibility: {
       compatible:   ['bp-mix', 'bp-ferrum', 'n-ultra'],
       incompatible: [],
@@ -1091,6 +1120,7 @@ const NUTRICION: Product[] = [
     name: 'BP Mix',
     full_name: 'BP Mix — Paquete Completo de Micronutrientes',
     line: 'nutricion',
+    brand: 'bioproductos',
     category: 'Micronutrientes',
     description: 'Solución completa de microelementos quelatados con azufre, boro, cobre, hierro, manganeso, molibdeno y zinc. Una sola aplicación para corregir o prevenir deficiencias múltiples.',
     composition: [
@@ -1117,7 +1147,7 @@ const NUTRICION: Product[] = [
       'Ahorra tiempo y costo de aplicaciones individuales',
       'Fórmula equilibrada para todo el ciclo del cultivo',
     ],
-    crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'aguacate', 'citricos'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'aguacate', 'citricos', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol'],
     compatibility: {
       compatible:   ['n-ultra', 'k-ultra', 'ca-ultra', 'mg-ultra'],
       incompatible: [],
@@ -1132,6 +1162,7 @@ const NUTRICION: Product[] = [
     name: 'Bontera SA-10',
     full_name: 'Bontera SA-10 — Ácidos Húmicos y Fúlvicos de Alta Concentración',
     line: 'nutricion',
+    brand: 'bioproductos',
     category: 'Bioestimulantes de suelo',
     description: 'Concentrado de ácidos húmicos y fúlvicos de máxima concentración para mejorar la estructura del suelo, aumentar la CIC y potenciar la absorción de nutrientes.',
     composition: [
@@ -1153,7 +1184,7 @@ const NUTRICION: Product[] = [
       'Mejora la estructura de suelos arcillosos y arenosos',
       'Compatible con cualquier programa de fertirrigación',
     ],
-    crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'aguacate', 'citricos'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'aguacate', 'citricos', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol'],
     compatibility: {
       compatible:   ['bp-moots', 'biotiza-lactobacillus', 'bp-nutri', 'n-ultra'],
       incompatible: [],
@@ -1175,6 +1206,7 @@ const ZENTIA: Product[] = [
     name: 'Zen-Chrys',
     full_name: 'Zen-Chrys — Bioinsecticida de Piretrinas Naturales',
     line: 'zentia',
+    brand: 'bioproductos',
     category: 'Bioinsecticidas',
     description: 'Bioinsecticida de piretrinas naturales al 2.5% para control de trips, mosca blanca, áfidos y ácaros por contacto e ingestión. Rápida acción y baja residualidad.',
     composition: [
@@ -1195,7 +1227,7 @@ const ZENTIA: Product[] = [
       'Baja residualidad: ICP corto',
       'Compatible con liberaciones de depredadores',
     ],
-    crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'brocoli', 'frijol'],
     compatibility: {
       compatible:   ['biotiza-coadyuvante', 'zen-can', 'zen-fungi'],
       incompatible: [],
@@ -1210,6 +1242,7 @@ const ZENTIA: Product[] = [
     name: 'Zen-Can',
     full_name: 'Zen-Can — Bioinsecticida de Canela 25%',
     line: 'zentia',
+    brand: 'bioproductos',
     category: 'Bioinsecticidas',
     description: 'Bioinsecticida-funguicida basado en aceite de canela al 25%. Controla trips, araña roja y hongos superficiales (oídio, botrytis) por acción de contacto.',
     composition: [
@@ -1244,6 +1277,7 @@ const ZENTIA: Product[] = [
     name: 'Max-Kill Plus',
     full_name: 'Max-Kill Plus — Bioinsecticida Multiacción',
     line: 'zentia',
+    brand: 'bioproductos',
     category: 'Bioinsecticidas',
     description: 'Bioinsecticida de amplio espectro con sinergia de 5 activos naturales: piretro, ajo, canela, neem y mostaza. Para presiones altas y rotación de modos de acción.',
     composition: [
@@ -1267,7 +1301,7 @@ const ZENTIA: Product[] = [
       'La azadiractina actúa como IGR (regulador de crecimiento de insectos)',
       'Ideal para rotaciones en programas de MIP',
     ],
-    crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol'],
     compatibility: {
       compatible:   ['biotiza-coadyuvante'],
       incompatible: [],
@@ -1282,6 +1316,7 @@ const ZENTIA: Product[] = [
     name: 'Zen-Spider',
     full_name: 'Zen-Spider — Acaricida Biológico D-Limoneno',
     line: 'zentia',
+    brand: 'bioproductos',
     category: 'Acaricidas biológicos',
     description: 'Acaricida biológico a base de D-Limoneno (extracto de cítricos) al 2.80% para control de araña roja, araña bimaculada y ácaro del bronceado.',
     composition: [
@@ -1316,6 +1351,7 @@ const ZENTIA: Product[] = [
     name: 'Zen-Cu',
     full_name: 'Zen-Cu — Fungicida-Bactericida de Gluconato de Cobre',
     line: 'zentia',
+    brand: 'bioproductos',
     category: 'Fungicidas biológicos',
     description: 'Fungicida y bactericida de cobre quelado con gluconato para máxima adherencia foliar y acción sistémica local. Compatible con programas de residuos cero.',
     composition: [
@@ -1335,7 +1371,7 @@ const ZENTIA: Product[] = [
       'Sin residuos en fruta en dosis preventiva',
       'Compatible con protocolos Primus/GlobalG.A.P.',
     ],
-    crops: ['tomate', 'chile', 'aguacate', 'citricos', 'arandano'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'aguacate', 'citricos', 'arandano', 'brocoli'],
     compatibility: {
       compatible:   ['zen-fungi', 'biotiza-coadyuvante'],
       incompatible: ['bp-cu-agro', 'biotiza-lactobacillus'],
@@ -1350,6 +1386,7 @@ const ZENTIA: Product[] = [
     name: 'Healex',
     full_name: 'Healex — Cicatrizante y Fungicida de Terpenos de Toronja',
     line: 'zentia',
+    brand: 'bioproductos',
     category: 'Cicatrizantes-fungicidas',
     description: 'Terpenos de extracto de semilla de toronja al 95% para cicatrización de heridas de poda, control de botrytis en cicatrices y desinfección de tejidos dañados.',
     composition: [
@@ -1370,7 +1407,7 @@ const ZENTIA: Product[] = [
       'Los terpenos actúan como antiséptico natural',
       'Sin fitotoxicidad en dosis recomendada',
     ],
-    crops: ['arandano', 'frambuesa', 'zarzamora', 'fresa', 'aguacate', 'tomate'],
+    crops: ['arandano', 'frambuesa', 'zarzamora', 'fresa', 'aguacate', 'tomate', 'tomate-cherry'],
     compatibility: {
       compatible:   ['zen-fungi', 'biotiza-coadyuvante'],
       incompatible: [],
@@ -1385,6 +1422,7 @@ const ZENTIA: Product[] = [
     name: 'Zen-Fungi',
     full_name: 'Zen-Fungi — Biofungicida de Gobernadora',
     line: 'zentia',
+    brand: 'bioproductos',
     category: 'Biofungicidas',
     description: 'Biofungicida de extracto de gobernadora (Larrea tridentata) al 90% con potente acción contra hongos fitopatógenos de hoja y fruto.',
     composition: [
@@ -1404,7 +1442,7 @@ const ZENTIA: Product[] = [
       'Compatible con liberaciones de abejorros y abejas',
       'No genera resistencias',
     ],
-    crops: ['fresa', 'arandano', 'frambuesa', 'zarzamora', 'tomate', 'chile'],
+    crops: ['fresa', 'arandano', 'frambuesa', 'zarzamora', 'tomate', 'tomate-cherry', 'chile', 'apio'],
     compatibility: {
       compatible:   ['zen-cu', 'zen-chrys', 'biotiza-coadyuvante', 'bp-cu-agro'],
       incompatible: [],
@@ -1419,6 +1457,7 @@ const ZENTIA: Product[] = [
     name: 'Funbac Plus',
     full_name: 'Funbac Plus — Fungicida-Bactericida de Aceites Esenciales',
     line: 'zentia',
+    brand: 'bioproductos',
     category: 'Fungicidas-bactericidas biológicos',
     description: 'Biofungicida y bactericida sinérgico con aceites esenciales de té, cedro y eucalipto para control preventivo y curativo de hongos y bacterias de hoja y fruto.',
     composition: [
@@ -1440,7 +1479,7 @@ const ZENTIA: Product[] = [
       'El aceite de árbol de té actúa contra el biofilm bacteriano',
       'Refuerza el efecto de los cúpricos',
     ],
-    crops: ['tomate', 'chile', 'fresa', 'arandano', 'aguacate'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'aguacate', 'maiz', 'cana-azucar', 'frijol'],
     compatibility: {
       compatible:   ['zen-cu', 'zen-fungi', 'biotiza-coadyuvante'],
       incompatible: [],
@@ -1455,6 +1494,7 @@ const ZENTIA: Product[] = [
     name: 'Nemapro',
     full_name: 'Nemapro — Control Biológico de Nematodos',
     line: 'zentia',
+    brand: 'bioproductos',
     category: 'Control de nematodos',
     description: 'Producto biológico para manejo integrado de nematodos fitoparásitos en suelo. Formulación en desarrollo — contactar a Biotiza para disponibilidad y ficha técnica completa.',
     composition: [
@@ -1488,6 +1528,7 @@ const ZENTIA: Product[] = [
     name: 'Enhancer',
     full_name: 'Enhancer — Potenciador de Insecticidas con Sulfonatos',
     line: 'zentia',
+    brand: 'bioproductos',
     category: 'Potenciadores',
     description: 'Potenciador de insecticidas y fungicidas a base de sulfonatos al 26% para aumentar la eficiencia de los productos de bioprotección hasta 3×.',
     composition: [
@@ -1518,6 +1559,390 @@ const ZENTIA: Product[] = [
   },
 ]
 
+// ─────────────────────────────────────────────────────────────────────────
+// MARCA AGROBIONSA (7 productos) · Control biológico microbiano
+// ─────────────────────────────────────────────────────────────────────────
+
+const AGROBIONSA: Product[] = [
+  {
+    id: 'agb-lilac',
+    slug: 'lilac',
+    name: 'LILAC®',
+    full_name: 'LILAC® — Bionematicida a base de Paecilomyces lilacinus',
+    line: 'zentia',
+    brand: 'agrobionsa',
+    category: 'Bionematicidas',
+    description: 'Hongo nematófago que parasita huevos y hembras de nemátodos fitoparásitos. Reduce la eclosión y el parasitismo de Meloidogyne en cultivos de exportación, sin residuos y sin intervalo de seguridad.',
+    technical_description: 'Polvo humectable con 1.2 × 10¹² conidios de Paecilomyces lilacinus en 240 g. Actúa produciendo toxinas y parasitando huevos y hembras de nemátodos agalladores en suelos ácidos. Registro COFEPRIS: RSCO-NEMA-0907-X0011-002-3.0.',
+    composition: [
+      { ingredient: 'Paecilomyces lilacinus', value: '1.2 × 10¹² conidios / 240 g', unit: 'conidios' },
+    ],
+    presentations: [
+      { size: '240 g', unit: 'g' },
+    ],
+    certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
+    application_methods: ['drench', 'fertirrigación', 'drench radicular'],
+    recommended_dose: {
+      drench:         '240–480 g/ha',
+      fertirrigacion: '240–480 g/ha',
+    },
+    frequency: '2 aplicaciones a intervalo de 14–28 días según cultivo',
+    best_stages: ['trasplante', 'pre-siembra', 'crecimiento vegetativo'],
+    benefits: [
+      'Parasita huevos y hembras de nemátodos',
+      'Sin intervalo de seguridad · Sin residuos',
+      'Compatible con programas orgánicos OMRI',
+      'Efecto curativo y preventivo',
+    ],
+    crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora'],
+    compatibility: {
+      compatible:   ['agb-elicitor-sin', 'bp-moots'],
+      incompatible: [],
+      conditional:  [],
+    },
+    solves_problems: ['Meloidogyne incognita', 'nematodos agalladores', 'nódulos radiculares'],
+    featured: true,
+  },
+  {
+    id: 'agb-elicitor-sin',
+    slug: 'elicitor-sin',
+    name: 'ELICITOR-SIN®',
+    full_name: 'ELICITOR-SIN® — Biofungicida a base de Trichoderma harzianum',
+    line: 'zentia',
+    brand: 'agrobionsa',
+    category: 'Biofungicidas',
+    description: 'Trichoderma harzianum que forma una barrera de micoparasitismo alrededor de la raíz, previniendo damping-off y hongos fitopatógenos del suelo mediante competencia y antibiosis.',
+    technical_description: 'Polvo humectable con 1.2 × 10¹² conidios de Trichoderma harzianum en 240 g. Modo de acción: competencia, micoparasitismo y producción de enzimas antibióticas. Registro COFEPRIS: RSCO-FUNG-0301B-0287-002-3.0.',
+    composition: [
+      { ingredient: 'Trichoderma harzianum', value: '1.2 × 10¹² conidios / 240 g', unit: 'conidios' },
+    ],
+    presentations: [
+      { size: '240 g', unit: 'g' },
+    ],
+    certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
+    application_methods: ['drench', 'fertirrigación'],
+    recommended_dose: {
+      drench:         '240–480 g/ha',
+      fertirrigacion: '240–480 g/ha',
+    },
+    frequency: '2–3 aplicaciones a intervalos de 7–11 días',
+    best_stages: ['trasplante', 'pre-siembra', 'crecimiento vegetativo'],
+    benefits: [
+      'Previene damping-off y Fusarium',
+      'Coloniza rizósfera · barrera biológica',
+      'Estimula defensas naturales de la planta',
+      'OMRI · compatible con orgánicos',
+    ],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'brocoli', 'apio'],
+    compatibility: {
+      compatible:   ['agb-lilac', 'bp-moots'],
+      incompatible: [],
+      conditional:  [],
+    },
+    solves_problems: ['damping-off', 'Fusarium sp.', 'Phytophthora sp.', 'marchitez vascular'],
+    featured: true,
+  },
+  {
+    id: 'agb-entomotri',
+    slug: 'entomotri',
+    name: 'ENTOMOTRI®',
+    full_name: 'ENTOMOTRI® — Bioinsecticida multi-cepa contra Paratrioza',
+    line: 'zentia',
+    brand: 'agrobionsa',
+    category: 'Bioinsecticidas',
+    description: 'Combinación sinérgica de tres hongos entomopatógenos (Metarhizium, Beauveria y Paecilomyces) para control efectivo de paratrioza (Bactericera cockerelli) en solanáceas.',
+    technical_description: 'Polvo humectable con 2.4 × 10¹² conidios totales en 240 g de tres especies: Metarhizium anisopliae, Beauveria bassiana y Paecilomyces fumosoroseus. Registro COFEPRIS: RSCO-INAC-0908-0285-002-5.7.',
+    composition: [
+      { ingredient: 'Metarhizium + Beauveria + Paecilomyces', value: '2.4 × 10¹² conidios / 240 g', unit: 'conidios' },
+    ],
+    presentations: [
+      { size: '240 g', unit: 'g' },
+    ],
+    certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
+    application_methods: ['foliar', 'aspersión'],
+    recommended_dose: {
+      foliar: '360–480 g / 200 L de agua',
+    },
+    frequency: '2 aplicaciones foliares a intervalos de 5 días',
+    best_stages: ['crecimiento vegetativo', 'floración', 'desarrollo de fruto'],
+    benefits: [
+      'Triple modo de acción sinérgico',
+      'Control específico de paratrioza',
+      'Sin residuos · Sin intervalo de seguridad',
+      'Apto programas orgánicos OMRI',
+    ],
+    crops: ['tomate', 'chile', 'tomate-cherry'],
+    compatibility: {
+      compatible:   ['agb-beauver', 'agb-paecilom', 'funbac-plus'],
+      incompatible: [],
+      conditional:  [],
+    },
+    solves_problems: ['paratrioza', 'Bactericera cockerelli', 'punta morada'],
+    featured: true,
+  },
+  {
+    id: 'agb-paecilom',
+    slug: 'paecilom',
+    name: 'PAECILOM®',
+    full_name: 'PAECILOM® — Bioinsecticida a base de Paecilomyces fumosoroseus',
+    line: 'zentia',
+    brand: 'agrobionsa',
+    category: 'Bioinsecticidas',
+    description: 'Hongo entomopatógeno que causa mortalidad en todos los estados de desarrollo de la mosquita blanca (Bemisia tabaci), incluyendo huevos, ninfas y adultos.',
+    technical_description: 'Polvo humectable con 1.2 × 10¹² conidios de Paecilomyces fumosoroseus en 240 g. Registro COFEPRIS: RSCO-INAC-0906-0286-002-3.0.',
+    composition: [
+      { ingredient: 'Paecilomyces fumosoroseus', value: '1.2 × 10¹² conidios / 240 g', unit: 'conidios' },
+    ],
+    presentations: [
+      { size: '240 g', unit: 'g' },
+    ],
+    certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
+    application_methods: ['foliar', 'aspersión'],
+    recommended_dose: {
+      foliar: '240–480 g / 200 L de agua',
+    },
+    frequency: '2 aplicaciones foliares a intervalos de 7 días',
+    best_stages: ['crecimiento vegetativo', 'floración', 'desarrollo de fruto'],
+    benefits: [
+      'Control en huevos, ninfas y adultos',
+      'Sin residuos · Sin PHI',
+      'OMRI · apto orgánico',
+      'Compatible con fauna benéfica',
+    ],
+    crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora'],
+    compatibility: {
+      compatible:   ['agb-beauver', 'agb-entomotri', 'funbac-plus'],
+      incompatible: [],
+      conditional:  [],
+    },
+    solves_problems: ['mosquita blanca', 'Bemisia tabaci', 'ninfas de mosca blanca'],
+    featured: false,
+  },
+  {
+    id: 'agb-dextrux',
+    slug: 'dextrux',
+    name: 'DEXTRUX®',
+    full_name: 'DEXTRUX® — Bioinsecticida a base de Metarhizium anisopliae',
+    line: 'zentia',
+    brand: 'agrobionsa',
+    category: 'Bioinsecticidas',
+    description: 'Metarhizium anisopliae formulado para control específico del picudo del chile (Anthonomus eugenii). Las conidias penetran la cutícula y provocan la momificación del insecto.',
+    technical_description: 'Polvo humectable con 1.2 × 10¹² conidios de Metarhizium anisopliae en 240 g. Registro COFEPRIS: RSCO-INAC-0376-0250-315-3.0.',
+    composition: [
+      { ingredient: 'Metarhizium anisopliae', value: '1.2 × 10¹² conidios / 240 g', unit: 'conidios' },
+    ],
+    presentations: [
+      { size: '240 g', unit: 'g' },
+    ],
+    certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
+    application_methods: ['foliar', 'aspersión'],
+    recommended_dose: {
+      foliar: '360–480 g / 200 L de agua',
+    },
+    frequency: '2 aplicaciones foliares a intervalos de 5 días',
+    best_stages: ['floración', 'cuajado', 'desarrollo de fruto'],
+    benefits: [
+      'Control específico del picudo del chile',
+      'Penetración cuticular directa',
+      'OMRI · residuo cero',
+      'Seguro para polinizadores',
+    ],
+    crops: ['chile'],
+    compatibility: {
+      compatible:   ['agb-beauver', 'agb-entomotri'],
+      incompatible: [],
+      conditional:  [],
+    },
+    solves_problems: ['picudo del chile', 'Anthonomus eugenii'],
+    featured: false,
+  },
+  {
+    id: 'agb-beauver',
+    slug: 'beauver',
+    name: 'BEAUVER®',
+    full_name: 'BEAUVER® — Bioinsecticida a base de Beauveria bassiana',
+    line: 'zentia',
+    brand: 'agrobionsa',
+    category: 'Bioinsecticidas',
+    description: 'Beauveria bassiana que infecta insectos plaga a través del intestino, espiráculos y especialmente por penetración directa del integumento — independiente de los hábitos alimenticios.',
+    technical_description: 'Polvo humectable con 1.28 × 10¹² conidios de Beauveria bassiana en 240 g. Registro COFEPRIS: RSCO-INAC-0903-0195-0291-002-2.5.',
+    composition: [
+      { ingredient: 'Beauveria bassiana', value: '1.28 × 10¹² conidios / 240 g', unit: 'conidios' },
+    ],
+    presentations: [
+      { size: '240 g', unit: 'g' },
+    ],
+    certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
+    application_methods: ['foliar', 'aspersión'],
+    recommended_dose: {
+      foliar: '480 g / 200 L de agua',
+    },
+    frequency: '2 aplicaciones foliares a intervalos de 14 días',
+    best_stages: ['crecimiento vegetativo', 'floración', 'desarrollo de fruto'],
+    benefits: [
+      'Control amplio de insectos chupadores',
+      'Penetración por integumento',
+      'OMRI · orgánico certificado',
+      'Compatible con programas IPM',
+    ],
+    crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora'],
+    compatibility: {
+      compatible:   ['agb-paecilom', 'agb-entomotri', 'agb-dextrux'],
+      incompatible: [],
+      conditional:  [],
+    },
+    solves_problems: ['mosquita blanca', 'Bemisia tabaci', 'thrips', 'pulgones'],
+    featured: false,
+  },
+  {
+    id: 'agb-lecanii-green',
+    slug: 'lecanii-green',
+    name: 'LECANII GREEN®',
+    full_name: 'LECANII GREEN® — Bioinsecticida líquido a base de Verticillium lecanii',
+    line: 'zentia',
+    brand: 'agrobionsa',
+    category: 'Bioinsecticidas',
+    description: 'Formulación líquida de Verticillium lecanii que infecta pulgones (Myzus persicae) en cualquier estado de desarrollo. Fácil aplicación foliar directa sin rehidratación.',
+    technical_description: 'Suspensión líquida con 1.2 × 10¹² conidios de Verticillium lecanii por litro. Registro COFEPRIS: RSCO-INAC-0104M-0237-315-2.5.',
+    composition: [
+      { ingredient: 'Verticillium lecanii', value: '1.2 × 10¹² conidios / L', unit: 'conidios' },
+    ],
+    presentations: [
+      { size: '1 L', unit: 'L' },
+    ],
+    certifications: ['COFEPRIS', 'Hecho en México'],
+    application_methods: ['foliar', 'aspersión'],
+    recommended_dose: {
+      foliar: '1.0–2.0 L/ha',
+    },
+    frequency: '2 aplicaciones foliares a intervalos de 7 días',
+    best_stages: ['crecimiento vegetativo', 'floración', 'desarrollo de fruto'],
+    benefits: [
+      'Control específico de pulgón',
+      'Formulación líquida lista para usar',
+      'Sin residuos · Sin intervalo de seguridad',
+      'Compatible con polinizadores',
+    ],
+    crops: ['tomate', 'chile'],
+    compatibility: {
+      compatible:   ['agb-beauver', 'agb-paecilom', 'funbac-plus'],
+      incompatible: [],
+      conditional:  [],
+    },
+    solves_problems: ['pulgón', 'Myzus persicae', 'áfidos'],
+    featured: false,
+  },
+]
+
+// ─────────────────────────────────────────────────────────────────────────
+// MARCA VEGANIC (1 producto) · Biosoluciones premium desde España
+// ─────────────────────────────────────────────────────────────────────────
+
+const VEGANIC: Product[] = [
+  {
+    id: 'vgn-brotanic',
+    slug: 'brotanic',
+    name: 'BROTANIC',
+    full_name: 'BROTANIC — Fertilizante Líquido Cu + Mn + Zn (Vitagea Line · Veganic)',
+    line: 'nutricion',
+    brand: 'veganic',
+    category: 'Micronutrientes foliares y al suelo',
+    description: 'Fertilizante inorgánico líquido fuente de Cobre, Manganeso y Zinc. Diseñado para óptima asimilación foliar y radicular, previene y corrige deficiencias de microelementos durante el desarrollo vegetativo y reproductivo del cultivo. Fórmula exclusiva de Veganic Nature, fabricado en España.',
+    technical_description: 'Formulación líquida ácida (pH 2,73) con microelementos en forma asimilable. Aspecto marrón, densidad 1,14 g/cm³. Registro sanitario COFEPRIS RSCO-335/VII/25. La acidez facilita el paso de los micros a través de la cutícula foliar y mejora la disponibilidad en suelos de pH alcalino. Compatible con fertirrigación y aspersión foliar; aplicar temprano en la mañana o por la tarde para evitar temperaturas superiores a 35 °C.',
+    composition: [
+      { ingredient: 'Cobre (Cu)',     value: '1,66 %', unit: '% p/v' },
+      { ingredient: 'Manganeso (Mn)', value: '0,90 %', unit: '% p/v' },
+      { ingredient: 'Zinc (Zn)',      value: '0,59 %', unit: '% p/v' },
+      { ingredient: 'pH',             value: '2,73',   unit: '—',     notes: 'Formulación ácida · facilita asimilación foliar' },
+      { ingredient: 'Densidad',       value: '1,14',   unit: 'g/cm³'                                                       },
+    ],
+    presentations: [
+      { size: '1 L',     unit: 'L' },
+      { size: '5 L',     unit: 'L' },
+      { size: '20 L',    unit: 'L' },
+      { size: '200 L',   unit: 'L' },
+      { size: '1 000 L', unit: 'L' },
+    ],
+    certifications: ['COFEPRIS'],
+    application_methods: ['foliar', 'fertirrigación'],
+    recommended_dose: {
+      foliar:         '0,5 – 2,5 L / 200 L de agua (según cultivo)',
+      fertirrigacion: '1,0 – 3,0 L/ha (según cultivo)',
+    },
+    frequency: 'Tres aplicaciones durante el desarrollo vegetativo y reproductivo del cultivo (dosis creciente)',
+    best_stages: ['crecimiento vegetativo', 'inducción floral', 'floración', 'desarrollo de fruto'],
+    benefits: [
+      'Triple fuente: Cobre + Manganeso + Zinc en un solo producto',
+      'Doble vía de aplicación: foliar y sistema de riego',
+      'Previene y corrige deficiencias de micronutrientes',
+      'Formulación ácida para máxima asimilación',
+      'Fabricado en España por Veganic Nature — Vegan & Cruelty Free',
+      'Registro COFEPRIS vigente RSCO-335/VII/25',
+    ],
+    crops: [
+      'tomate', 'tomate-cherry', 'chile', 'brocoli', 'apio',
+      'fresa', 'arandano', 'frambuesa', 'zarzamora', 'aguacate', 'citricos',
+      'maiz', 'cana-azucar', 'frijol',
+    ],
+    compatibility: {
+      compatible:   ['bp-nutri', 'bp-mix', 'n-ultra', 'p-ultra', 'k-ultra'],
+      incompatible: ['bp-calcio', 'ca-ultra'],
+      conditional:  ['bontera-sa10'],
+    },
+    solves_problems: [
+      'deficiencia de cobre',
+      'deficiencia de manganeso',
+      'deficiencia de zinc',
+      'clorosis por microelementos',
+      'baja fertilidad de polen',
+      'necrosis apical por micros',
+    ],
+    featured: true,
+    image: '/images/products/brotanic.png',
+    datasheet_url: '/docs/fichas-tecnicas/brotanic.pdf',
+    updated_at: '2025-08-13',
+    dosage_table: [
+      {
+        system:    'Hortalizas y ornamentales',
+        dose:      'Foliar 1,0 → 1,5 → 2,0 L / 200 L de agua · Riego 1,0 → 2,0 → 3,0 L/ha',
+        method:    'Foliar o fertirrigación',
+        frequency: 'Tres aplicaciones escalonadas durante el desarrollo vegetativo y reproductivo',
+      },
+      {
+        system:    'Frutales y tropicales',
+        dose:      'Foliar 1,5 → 2,0 → 2,5 L / 200 L de agua · Riego 2,0 → 2,5 → 3,0 L/ha',
+        method:    'Foliar o fertirrigación',
+        frequency: 'Tres aplicaciones escalonadas durante el desarrollo vegetativo y reproductivo',
+      },
+      {
+        system:    'Granos y cereales',
+        dose:      'Foliar 0,5 → 1,0 → 1,5 L / 200 L de agua · Riego 1,0 → 1,5 → 2,0 L/ha',
+        method:    'Foliar o fertirrigación',
+        frequency: 'Tres aplicaciones escalonadas durante el desarrollo vegetativo y reproductivo',
+      },
+    ],
+    dosage_by_crop: [
+      { crop: 'tomate',        cropName: 'Tomate',          stages: ['crecimiento vegetativo', 'floración', 'cuajado'],       dose: '1,0 – 2,0 L/200 L foliar · 1,0 – 3,0 L/ha riego', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Grupo hortalizas · dosis creciente' },
+      { crop: 'tomate-cherry', cropName: 'Tomate Cherry',   stages: ['crecimiento vegetativo', 'floración', 'cuajado'],       dose: '1,0 – 2,0 L/200 L foliar · 1,0 – 3,0 L/ha riego', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Grupo hortalizas · dosis creciente' },
+      { crop: 'chile',         cropName: 'Chile',           stages: ['crecimiento vegetativo', 'floración', 'cuajado'],       dose: '1,0 – 2,0 L/200 L foliar · 1,0 – 3,0 L/ha riego', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Grupo hortalizas · dosis creciente' },
+      { crop: 'brocoli',       cropName: 'Brócoli',         stages: ['crecimiento vegetativo', 'inducción floral'],           dose: '1,0 – 2,0 L/200 L foliar · 1,0 – 3,0 L/ha riego', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Grupo hortalizas · dosis creciente' },
+      { crop: 'apio',          cropName: 'Apio',            stages: ['crecimiento vegetativo'],                               dose: '1,0 – 2,0 L/200 L foliar · 1,0 – 3,0 L/ha riego', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Grupo hortalizas · dosis creciente' },
+      { crop: 'fresa',         cropName: 'Fresa',           stages: ['crecimiento vegetativo', 'floración', 'fructificación'],dose: '1,5 – 2,5 L/200 L foliar · 2,0 – 3,0 L/ha riego', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Grupo frutales · dosis creciente' },
+      { crop: 'arandano',      cropName: 'Arándano',        stages: ['crecimiento vegetativo', 'floración', 'fructificación'],dose: '1,5 – 2,5 L/200 L foliar · 2,0 – 3,0 L/ha riego', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Grupo frutales · dosis creciente' },
+      { crop: 'frambuesa',     cropName: 'Frambuesa',       stages: ['crecimiento vegetativo', 'floración', 'fructificación'],dose: '1,5 – 2,5 L/200 L foliar · 2,0 – 3,0 L/ha riego', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Grupo frutales · dosis creciente' },
+      { crop: 'zarzamora',     cropName: 'Zarzamora',       stages: ['crecimiento vegetativo', 'floración', 'fructificación'],dose: '1,5 – 2,5 L/200 L foliar · 2,0 – 3,0 L/ha riego', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Grupo frutales · dosis creciente' },
+      { crop: 'aguacate',      cropName: 'Aguacate',        stages: ['brotación', 'floración', 'cuajado'],                    dose: '1,5 – 2,5 L/200 L foliar · 2,0 – 3,0 L/ha riego', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Grupo frutales · dosis creciente' },
+      { crop: 'citricos',      cropName: 'Cítricos',        stages: ['brotación', 'floración', 'cuajado'],                    dose: '1,5 – 2,5 L/200 L foliar · 2,0 – 3,0 L/ha riego', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Grupo frutales · dosis creciente' },
+      { crop: 'maiz',          cropName: 'Maíz',            stages: ['crecimiento vegetativo', 'floración'],                  dose: '0,5 – 1,5 L/200 L foliar · 1,0 – 2,0 L/ha riego', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Grupo cereales · dosis creciente' },
+      { crop: 'cana-azucar',   cropName: 'Caña de Azúcar',  stages: ['crecimiento vegetativo', 'macollamiento'],              dose: '0,5 – 1,5 L/200 L foliar · 1,0 – 2,0 L/ha riego', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Grupo cereales/caña · dosis creciente' },
+      { crop: 'frijol',        cropName: 'Frijol',          stages: ['crecimiento vegetativo', 'floración'],                  dose: '0,5 – 1,5 L/200 L foliar · 1,0 – 2,0 L/ha riego', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Grupo leguminosas · dosis creciente' },
+    ],
+    documents: {
+      datasheet: '/docs/fichas-tecnicas/brotanic.pdf',
+    },
+  },
+]
+
 // ─── Export final ─────────────────────────────────────────────────────────
 
 export const PRODUCTS: Product[] = [
@@ -1526,6 +1951,8 @@ export const PRODUCTS: Product[] = [
   ...BIOESTIMULANTES,
   ...NUTRICION,
   ...ZENTIA,
+  ...AGROBIONSA,
+  ...VEGANIC,
 ]
 
 // ─── Helpers ──────────────────────────────────────────────────────────────
@@ -1536,6 +1963,10 @@ export function getProductBySlug(slug: string): Product | undefined {
 
 export function getProductsByLine(line: Product['line']): Product[] {
   return PRODUCTS.filter((p) => p.line === line)
+}
+
+export function getProductsByBrand(brand: Product['brand']): Product[] {
+  return PRODUCTS.filter((p) => p.brand === brand)
 }
 
 export function getFeaturedProducts(): Product[] {
