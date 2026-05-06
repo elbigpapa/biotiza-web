@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next'
+import path from 'node:path'
 
 /**
  * next.config.ts — Biotiza Website
@@ -53,6 +54,12 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
+
+  // Resolver la raíz correcta del workspace (Windows tiene un package-lock.json en
+  // C:\Users\elbig\ que confunde a Turbopack)
+  turbopack: {
+    root: path.resolve(__dirname),
+  },
 
   images: {
     formats: ['image/avif', 'image/webp'],
