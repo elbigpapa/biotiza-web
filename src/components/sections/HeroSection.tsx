@@ -30,10 +30,10 @@ function CountUp({ to, suffix = '' }: { to: number; suffix?: string }) {
 // ─── Datos de stats ───────────────────────────────────────────────────────
 
 const STATS = [
-  { value: 35, suffix: '+', label: 'Productos',          numeric: true  },
-  { value: 5,  suffix: '',  label: 'Líneas de solución', numeric: true  },
-  { value: 0,  suffix: '',  label: 'OMRI Certificados',  numeric: false, display: 'OMRI' },
-  { value: 0,  suffix: '',  label: 'Sin intermediarios', numeric: false, display: 'DTC'  },
+  { value: 49, suffix: '',  label: 'Productos',           numeric: true  },
+  { value: 14, suffix: '',  label: 'Cultivos',            numeric: true  },
+  { value: 25, suffix: '+', label: 'Años de I+D',         numeric: true  },
+  { value: 0,  suffix: '',  label: 'OMRI · COFEPRIS',     numeric: false, display: '✓' },
 ]
 
 // ─── Orbs decorativos con parallax suave ──────────────────────────────────
@@ -132,7 +132,7 @@ export default function HeroSection() {
           className="max-w-5xl font-serif text-4xl font-normal leading-[1.1] text-white text-balance sm:text-5xl md:text-6xl lg:text-7xl"
         >
           Ciencia que nutre la tierra.{' '}
-          <span className="gradient-text">
+          <span className="gradient-text-premium">
             Resultados que transforman tu cosecha.
           </span>
         </motion.h1>

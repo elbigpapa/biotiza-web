@@ -67,3 +67,5 @@ __crops*.txt
 __data*.txt
 __outdated*.txt
 __whatsapp*.txt
+
+.vercel
