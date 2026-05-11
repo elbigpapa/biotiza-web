@@ -1,44 +1,28 @@
 /**
- * articles.ts — Artículos de Academia Biotiza
+ * articles.ts — Índice de artículos de Academia Biotiza
  *
- * Contenido educativo estructurado como bloques tipados (p, h2, h3, ul, quote,
- * table). Cada artículo tiene slug, metadata para SEO, y referencias a
- * productos del catálogo cuando aplica.
+ * Los artículos se organizan modularmente por categoría en `src/data/articles/`.
+ * Este archivo solo combina los módulos, mantiene los 3 artículos originales
+ * y expone las funciones helper (getArticleBySlug, getCategoryStyle, etc.).
+ *
+ * Total: 33 artículos (3 originales + 30 nuevos sustentados en evidencia
+ * científica real de FAO, IICA, INIFAP, EBIC, UC Davis, Wageningen, etc.)
  */
 
-export type ArticleCategory =
-  | 'bioestimulacion'
-  | 'nutricion'
-  | 'bioproteccion'
-  | 'cultivo'
-  | 'fertirrigacion'
+// Re-exportamos los tipos desde articles.types para que los consumidores que
+// importan { Article, ArticleBlock, ArticleCategory } desde '@/data/articles'
+// sigan funcionando sin cambios.
+export type { Article, ArticleBlock, ArticleCategory } from './articles.types'
+import type { Article, ArticleCategory } from './articles.types'
 
-export type ArticleBlock =
-  | { type: 'p'; text: string }
-  | { type: 'h2'; text: string; id?: string }
-  | { type: 'h3'; text: string; id?: string }
-  | { type: 'ul'; items: string[] }
-  | { type: 'ol'; items: string[] }
-  | { type: 'quote'; text: string; author?: string }
-  | { type: 'callout'; variant: 'info' | 'warn' | 'success'; title: string; text: string }
-  | { type: 'product-ref'; slug: string; line: string; note: string }
+// ─── Imports de módulos ──────────────────────────────────────────────────
+import { BIOESTIMULATION_ARTICLES } from './articles/bioestimulation'
+import { NUTRITION_ARTICLES }       from './articles/nutrition'
+import { BIOPROTECTION_ARTICLES }   from './articles/bioprotection'
+import { CROPS_ARTICLES }           from './articles/crops'
+import { SUSTAINABILITY_ARTICLES }  from './articles/sustainability'
 
-export interface Article {
-  slug: string
-  title: string
-  excerpt: string
-  category: ArticleCategory
-  categoryLabel: string
-  readTime: number
-  publishedAt: string
-  updatedAt?: string
-  author: { name: string; role: string }
-  emoji: string
-  imageGradient: string
-  tags: string[]
-  blocks: ArticleBlock[]
-  relatedProducts?: { slug: string; line: string }[]
-}
+// ─── Estilos por categoría ────────────────────────────────────────────────
 
 const CAT_COLORS: Record<ArticleCategory, { bg: string; text: string; ring: string }> = {
   bioestimulacion: { bg: 'bg-naranja-50',  text: 'text-naranja-600', ring: 'ring-naranja-100' },
@@ -52,9 +36,9 @@ export function getCategoryStyle(cat: ArticleCategory) {
   return CAT_COLORS[cat]
 }
 
-// ─── Artículos ───────────────────────────────────────────────────────────
+// ─── Artículos originales (legado) ────────────────────────────────────────
 
-export const ARTICLES: Article[] = [
+const ORIGINAL_ARTICLES: Article[] = [
   {
     slug: 'que-son-bioestimulantes',
     title: '¿Qué son los bioestimulantes y cómo benefician tu cultivo?',
@@ -147,10 +131,7 @@ export const ARTICLES: Article[] = [
         text: 'El calcio se mueve casi exclusivamente por xilema, jalado por la transpiración. Cualquier factor que reduzca el flujo de agua hacia el fruto — estrés hídrico, altas temperaturas, exceso de N, conductividad eléctrica alta, raíces dañadas — cortará el suministro de calcio al fruto. Puedes tener calcio de sobra en el suelo y aun así desarrollar blossom end rot.',
       },
       { type: 'h2', text: 'Diagnóstico visual por etapa', id: 'diagnostico' },
-      {
-        type: 'h3',
-        text: 'Fase vegetativa',
-      },
+      { type: 'h3', text: 'Fase vegetativa' },
       {
         type: 'ul',
         items: [
@@ -283,6 +264,19 @@ export const ARTICLES: Article[] = [
     ],
   },
 ]
+
+// ─── Combinar todos los artículos ─────────────────────────────────────────
+
+export const ARTICLES: Article[] = [
+  ...ORIGINAL_ARTICLES,
+  ...BIOESTIMULATION_ARTICLES,
+  ...NUTRITION_ARTICLES,
+  ...BIOPROTECTION_ARTICLES,
+  ...CROPS_ARTICLES,
+  ...SUSTAINABILITY_ARTICLES,
+]
+
+// ─── Helpers públicos ─────────────────────────────────────────────────────
 
 export function getArticleBySlug(slug: string): Article | undefined {
   return ARTICLES.find((a) => a.slug === slug)
