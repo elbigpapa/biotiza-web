@@ -130,7 +130,7 @@ const ORGANICOS: Product[] = [
       conditional:  [],
     },
     solves_problems: ['deficiencia de potasio', 'bajo calibre', 'bajos brix', 'frutos insípidos', 'quemaduras de borde en hojas'],
-    featured: false,
+    featured: true,
   },
   {
     id: 'bp-moots',
@@ -173,7 +173,7 @@ const ORGANICOS: Product[] = [
       conditional:  [],
     },
     solves_problems: ['pobre sistema radicular', 'estrés de trasplante', 'bajo prendimiento', 'raíces cortas'],
-    featured: true,
+    featured: false,
   },
   {
     id: 'bp-koren',
@@ -209,7 +209,7 @@ const ORGANICOS: Product[] = [
       conditional:  [],
     },
     solves_problems: ['daño radicular', 'trasplante difícil', 'plantas débiles', 'raíces podridas por exceso de riego'],
-    featured: false,
+    featured: true,
   },
   {
     id: 'bp-nitro-fx',
@@ -397,7 +397,7 @@ const ORGANICOS: Product[] = [
       conditional:  [],
     },
     solves_problems: ['deficiencia severa de calcio', 'baja CIC del suelo', 'frutos con baja firmeza'],
-    featured: false,
+    featured: true,
   },
 ]
 
@@ -744,7 +744,7 @@ const BIOESTIMULANTES: Product[] = [
       conditional:  [],
     },
     solves_problems: ['aborto floral', 'bajo porcentaje de cuaje', 'caída de frutos recién cuajados', 'temperatura adversa en floración'],
-    featured: true,
+    featured: false,
   },
   {
     id: 'bp-gross',
@@ -896,7 +896,7 @@ const NUTRICION: Product[] = [
       conditional:  [],
     },
     solves_problems: ['deficiencia de nitrógeno', 'lento crecimiento vegetativo', 'hojas pálidas'],
-    featured: true,
+    featured: false,
   },
   {
     id: 'p-ultra',
@@ -966,7 +966,7 @@ const NUTRICION: Product[] = [
       conditional:  [],
     },
     solves_problems: ['bajos Brix', 'frutos insípidos', 'baja coloración', 'deficiencia de potasio'],
-    featured: false,
+    featured: true,
   },
   {
     id: 'ca-ultra',
@@ -1234,7 +1234,7 @@ const ZENTIA: Product[] = [
       conditional:  [],
     },
     solves_problems: ['trips', 'mosca blanca', 'áfidos', 'ácaros', 'chinche lygus'],
-    featured: true,
+    featured: false,
   },
   {
     id: 'zen-can',
@@ -1308,7 +1308,7 @@ const ZENTIA: Product[] = [
       conditional:  [],
     },
     solves_problems: ['plagas con resistencia a insecticidas', 'presión alta de trips y ácaros', 'control de emergencia'],
-    featured: false,
+    featured: true,
   },
   {
     id: 'zen-spider',
@@ -1601,7 +1601,7 @@ const AGROBIONSA: Product[] = [
       conditional:  [],
     },
     solves_problems: ['Meloidogyne incognita', 'nematodos agalladores', 'nódulos radiculares'],
-    featured: true,
+    featured: false,
   },
   {
     id: 'agb-elicitor-sin',
@@ -1678,7 +1678,7 @@ const AGROBIONSA: Product[] = [
       conditional:  [],
     },
     solves_problems: ['paratrioza', 'Bactericera cockerelli', 'punta morada'],
-    featured: true,
+    featured: false,
   },
   {
     id: 'agb-paecilom',

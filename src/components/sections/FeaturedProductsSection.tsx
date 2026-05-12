@@ -8,72 +8,91 @@ import SectionHeading from '@/components/ui/SectionHeading'
 import { Container } from '@/components/ui/Container'
 import ProductCard, { type ProductCardData } from '@/components/products/ProductCard'
 
-// ─── Productos destacados ─────────────────────────────────────────────────
+// ─── Productos estrella (orden definido por equipo comercial) ─────────────
+// El orden es importante: el primer producto es el más prioritario.
+// Mezcla líneas (orgánicos · bioestimulantes · nutrición · zentia) para
+// mostrar la amplitud del catálogo a la vez que destacamos los más pedidos.
 
 const FEATURED_PRODUCTS: ProductCardData[] = [
   {
-    id: 'bp-calcio',
-    slug: 'bp-calcio',
-    name: 'BP Calcio',
-    line: 'especialidades',
-    tagline: 'Calcio quelado 10% + Boro 0.5%. Previene bitter pit y rajaduras en frutos.',
-    icon: '🧪',
-  },
-  {
-    id: 'bp-moots',
-    slug: 'bp-moots',
-    name: 'BP Moots',
+    id: 'bp-koren',
+    slug: 'bp-koren',
+    name: 'BP Koren',
     line: 'organicos',
-    tagline: 'Enraizador orgánico: Ácidos húmicos 8% + Ácidos fúlvicos 2% + Micorrizas.',
+    tagline: 'Enraizador de alta concentración. Activa raíces nuevas en 7 días post-trasplante.',
     icon: '🌱',
-  },
-  {
-    id: 'bp-nitro-fx',
-    slug: 'bp-nitro-fx',
-    name: 'BP Nitro FX',
-    line: 'nutricion',
-    tagline: 'Nitrógeno líquido de alta concentración 20-0-0. Ideal para crecimiento vegetativo.',
-    icon: '💧',
   },
   {
     id: 'bp-fiore',
     slug: 'bp-fiore',
     name: 'BP Fioré',
     line: 'bioestimulantes',
-    tagline: 'Inductor de floración: Citoquininas + Auxinas + Giberelinas. Homogeneidad en la flor.',
+    tagline: 'Inductor de floración. Más yemas florales, más uniformes, más rentables.',
     icon: '🌸',
-  },
-  {
-    id: 'bp-cuaje',
-    slug: 'bp-cuaje',
-    name: 'BP Cuaje',
-    line: 'bioestimulantes',
-    tagline: 'Bioestimulante de cuajado con aminoácidos y cofactores enzimáticos. Reduce aborto floral.',
-    icon: '🍇',
   },
   {
     id: 'bp-gross',
     slug: 'bp-gross',
     name: 'BP Gross',
     line: 'bioestimulantes',
-    tagline: 'Engordador de fruto: Potasio + Citoquininas + Algas. Calibre y peso superiores.',
+    tagline: 'Engordador de fruto. Calibre comercial superior con K + citoquininas.',
     icon: '⚖️',
   },
   {
-    id: 'n-ultra',
-    slug: 'n-ultra',
-    name: 'N-Ultra',
+    id: 'k-ultra',
+    slug: 'k-ultra',
+    name: 'K-Ultra',
     line: 'nutricion',
-    tagline: 'NPK 20-20-20 + microelementos quelados. Fertilizante completo para fertirrigación.',
-    icon: '🔬',
+    tagline: 'Potasio líquido K₂O 40%. Motor del Brix, la firmeza y la coloración del fruto.',
+    icon: '💧',
   },
   {
-    id: 'zen-chrys',
-    slug: 'zen-chrys',
-    name: 'Zen-Chrys',
+    id: 'bp-potasio',
+    slug: 'bp-potasio',
+    name: 'BP Potasio',
+    line: 'organicos',
+    tagline: 'Potasio orgánico quelatado OMRI Listed. Calidad de fruto sin residuos.',
+    icon: '🍇',
+  },
+  {
+    id: 'bp-calcio',
+    slug: 'bp-calcio',
+    name: 'BP Calcio',
+    line: 'organicos',
+    tagline: 'Calcio orgánico quelatado. Previene BER, rajaduras y bitter pit.',
+    icon: '🧪',
+  },
+  {
+    id: 'ae-calcium',
+    slug: 'ae-calcium',
+    name: 'AE Calcium',
+    line: 'organicos',
+    tagline: 'Calcio premium con ácidos polihidroxicarboxílicos. Máxima firmeza post-cosecha.',
+    icon: '💎',
+  },
+  {
+    id: 'brotanic',
+    slug: 'brotanic',
+    name: 'Brotanic',
+    line: 'nutricion',
+    tagline: 'Cu + Mn + Zn líquidos de Veganic. Vigor foliar y prevención de clorosis.',
+    icon: '🍃',
+  },
+  {
+    id: 'elicitor-sin',
+    slug: 'elicitor-sin',
+    name: 'Elicitor-Sin',
     line: 'zentia',
-    tagline: 'Insecticida biológico a base de crisantemo. Control de trips, mosca blanca y ácaros.',
+    tagline: 'Biofungicida con Trichoderma harzianum. Antagonista natural de Fusarium y Rhizoctonia.',
     icon: '🛡️',
+  },
+  {
+    id: 'max-kill-plus',
+    slug: 'max-kill-plus',
+    name: 'Max-Kill Plus',
+    line: 'zentia',
+    tagline: 'Bioinsecticida multiacción. Control biológico de plagas con resistencia química.',
+    icon: '🦠',
   },
 ]
 
