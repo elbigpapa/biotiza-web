@@ -16,7 +16,6 @@ import ProductLinesSection    from '@/components/sections/ProductLinesSection'
 import FeaturedProductsSection from '@/components/sections/FeaturedProductsSection'
 import CropsSection           from '@/components/sections/CropsSection'
 import TestimonialsSection    from '@/components/sections/TestimonialsSection'
-import AlliedBrandsSection    from '@/components/sections/AlliedBrandsSection'
 import CTASection             from '@/components/sections/CTASection'
 import BlogPreviewSection     from '@/components/sections/BlogPreviewSection'
 import ContactFormSection     from '@/components/sections/ContactFormSection'
@@ -67,31 +66,25 @@ export default function HomePage() {
       {/* Transición: white → white (testimonios sigue limpio) */}
       <div className="h-px bg-gradient-to-r from-transparent via-gris-200/40 to-transparent" aria-hidden="true" />
 
-      {/* 8 ─ Testimonios: social proof */}
+      {/* 8 ─ Testimonios: social proof — fondo blanco */}
       <TestimonialsSection />
 
-      {/* Transición: white → gris-50 */}
-      <WaveSeparator from="white" to="gris-50" variant="gentle" flip />
+      {/* Transición: white → verde-800 (directo a CTA, sin marcas aliadas) */}
+      <WaveSeparator from="white" to="verde-800" variant="double" />
 
-      {/* 9 ─ Marcas aliadas — fondo gris-50 */}
-      <AlliedBrandsSection />
-
-      {/* Transición: gris-50 → verde-800 */}
-      <WaveSeparator from="gris-50" to="verde-800" variant="double" />
-
-      {/* 10 ─ CTA — fondo verde oscuro */}
+      {/* 9 ─ CTA — fondo verde oscuro */}
       <CTASection />
 
       {/* Transición: verde-800 → white */}
       <WaveSeparator from="verde-800" to="white" variant="steep" flip />
 
-      {/* 11 ─ Blog — fondo blanco */}
+      {/* 10 ─ Blog — fondo blanco */}
       <BlogPreviewSection />
 
       {/* Transición: white → verde-50 */}
       <WaveSeparator from="white" to="verde-50" variant="gentle" />
 
-      {/* 12 ─ Contacto — fondo verde-50 */}
+      {/* 11 ─ Contacto — fondo verde-50 */}
       <ContactFormSection />
     </>
   )
