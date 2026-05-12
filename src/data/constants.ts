@@ -192,6 +192,13 @@ export const CROPS_DATA: CropConfig[] = [
   { id: 'maiz',         name: 'Maíz',            slug: 'maiz',         emoji: '🌽', gradientFrom: 'from-yellow-600',  gradientTo: 'to-yellow-400',  description: 'Zea mays' },
   { id: 'cana-azucar',  name: 'Caña de Azúcar',  slug: 'cana-azucar',  emoji: '🎋', gradientFrom: 'from-lime-700',    gradientTo: 'to-lime-500',    description: 'Saccharum officinarum' },
   { id: 'frijol',       name: 'Frijol',          slug: 'frijol',       emoji: '🫘', gradientFrom: 'from-amber-800',   gradientTo: 'to-amber-600',   description: 'Phaseolus vulgaris' },
+  { id: 'agave',        name: 'Agave',           slug: 'agave',        emoji: '🪴', gradientFrom: 'from-teal-700',    gradientTo: 'to-teal-500',    description: 'Agave tequilana / A. salmiana' },
+  { id: 'cebolla',      name: 'Cebolla',         slug: 'cebolla',      emoji: '🧅', gradientFrom: 'from-purple-700',  gradientTo: 'to-orange-500',  description: 'Allium cepa' },
+  { id: 'esparrago',    name: 'Espárrago',       slug: 'esparrago',    emoji: '🌿', gradientFrom: 'from-emerald-700', gradientTo: 'to-lime-500',    description: 'Asparagus officinalis' },
+  { id: 'pepino',       name: 'Pepino',          slug: 'pepino',       emoji: '🥒', gradientFrom: 'from-green-700',   gradientTo: 'to-emerald-400', description: 'Cucumis sativus' },
+  { id: 'papa',         name: 'Papa',            slug: 'papa',         emoji: '🥔', gradientFrom: 'from-stone-700',   gradientTo: 'to-amber-500',   description: 'Solanum tuberosum' },
+  { id: 'lechuga',      name: 'Lechuga',         slug: 'lechuga',      emoji: '🥬', gradientFrom: 'from-lime-700',    gradientTo: 'to-green-400',   description: 'Lactuca sativa' },
+  { id: 'pina',         name: 'Piña',            slug: 'pina',         emoji: '🍍', gradientFrom: 'from-yellow-600',  gradientTo: 'to-amber-500',   description: 'Ananas comosus' },
 ]
 
 // ─── Certificaciones ──────────────────────────────────────────────────────

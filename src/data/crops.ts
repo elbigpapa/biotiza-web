@@ -4,6 +4,7 @@
  */
 
 import type { CropProtocol } from '@/types'
+import { EXTRA_CROP_PROTOCOLS } from './crops-extra'
 
 export interface StageProduct {
   productId:   string
@@ -1011,6 +1012,8 @@ const FRIJOL: FullCropProtocol = {
 export const CROP_PROTOCOLS: FullCropProtocol[] = [
   TOMATE, FRESA, ARANDANO, FRAMBUESA, ZARZAMORA, AGUACATE, CHILE, CITRICOS,
   TOMATE_CHERRY, BROCOLI, APIO, MAIZ, CANA_AZUCAR, FRIJOL,
+  // Cultivos agregados abril 2026: agave, cebolla, espárrago, pepino, papa, lechuga, piña
+  ...EXTRA_CROP_PROTOCOLS,
 ]
 
 export function getCropBySlug(slug: string): FullCropProtocol | undefined {
