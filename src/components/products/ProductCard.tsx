@@ -67,12 +67,15 @@ export default function ProductCard({ product, className }: ProductCardProps) {
 
   return (
     <TiltCard intensity={6} glare className={cn('w-[280px] shrink-0 sm:w-[300px]', className)}>
-      <div
+      <Link
+        href={productHref}
+        aria-label={`Ver ficha de ${name}`}
         className={cn(
           'group flex flex-col rounded-2xl bg-white border border-gris-100 h-full',
           'shadow-[0_4px_20px_rgba(15,23,42,0.06)]',
           'transition-all duration-500 overflow-hidden',
           '-translate-y-0 hover:-translate-y-1',
+          'cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-verde-500 focus-visible:ring-offset-2',
           lineShadow,
         )}
         style={{ willChange: 'transform, box-shadow' }}
@@ -117,15 +120,14 @@ export default function ProductCard({ product, className }: ProductCardProps) {
 
         {/* Contenido */}
         <div className="flex flex-col flex-1 p-5 gap-2.5">
-          <h3 className="text-base font-semibold text-gris-900 leading-tight">
+          <h3 className="text-base font-semibold text-gris-900 leading-tight group-hover:text-verde-700 transition-colors">
             {name}
           </h3>
           <p className="text-sm text-gris-500 leading-relaxed line-clamp-2 flex-1">
             {tagline}
           </p>
 
-          <Link
-            href={productHref}
+          <span
             className={cn(
               'inline-flex items-center gap-1.5 mt-1',
               'text-sm font-semibold text-verde-600',
@@ -135,9 +137,9 @@ export default function ProductCard({ product, className }: ProductCardProps) {
           >
             Ver ficha
             <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-          </Link>
+          </span>
         </div>
-      </div>
+      </Link>
     </TiltCard>
   )
 }
