@@ -13,6 +13,7 @@ import { fadeInUp, staggerContainer } from '@/lib/animations'
 export type HeadingAlign = 'left' | 'center' | 'right'
 export type HeadingAccent = 'verde' | 'naranja' | 'azul' | 'naranja-lt'
 export type HeadingLevel = 'h1' | 'h2' | 'h3'
+export type HeadingTheme = 'light' | 'dark'
 
 export interface SectionHeadingProps {
   tag?: string
@@ -24,6 +25,8 @@ export interface SectionHeadingProps {
   animate?: boolean
   className?: string
   titleClassName?: string
+  /** 'light' = títulos oscuros para fondos claros. 'dark' = títulos blancos para fondos oscuros. */
+  theme?: HeadingTheme
 }
 
 // ─── Config de colores ────────────────────────────────────────────────────
@@ -53,9 +56,15 @@ export default function SectionHeading({
   animate = true,
   className,
   titleClassName,
+  theme = 'light',
 }: SectionHeadingProps) {
   const accent = accentStyles[accentColor]
   const alignCls = alignStyles[align]
+  const isDark = theme === 'dark'
+
+  const defaultTitleColor    = isDark ? 'text-white'    : 'text-gris-900'
+  const defaultSubtitleColor = isDark ? 'text-gris-300' : 'text-gris-500'
+  const tagDarkOverride      = isDark ? 'bg-white/10 text-white ring-white/15 backdrop-blur-sm' : ''
 
   const Wrapper = animate ? motion.div : 'div'
   const wrapperProps = animate
@@ -82,7 +91,7 @@ export default function SectionHeading({
             className={cn(
               'inline-flex items-center gap-2 rounded-full px-4 py-1.5',
               'text-[11px] font-bold uppercase tracking-[0.15em]',
-              accent.tag,
+              isDark ? tagDarkOverride : accent.tag,
             )}
           >
             <span className="h-1.5 w-1.5 rounded-full bg-current opacity-60" aria-hidden="true" />
@@ -95,7 +104,8 @@ export default function SectionHeading({
       <ItemWrapper {...itemProps} className="flex flex-col gap-4">
         <Level
           className={cn(
-            'font-serif font-normal text-gris-900 text-balance leading-[1.15]',
+            'font-serif font-normal text-balance leading-[1.15]',
+            defaultTitleColor,
             titleClassName,
           )}
         >
@@ -123,7 +133,8 @@ export default function SectionHeading({
         <ItemWrapper {...itemProps}>
           <p
             className={cn(
-              'max-w-2xl text-base leading-relaxed text-gris-500 sm:text-lg',
+              'max-w-2xl text-base leading-relaxed sm:text-lg',
+              defaultSubtitleColor,
               align === 'center' && 'mx-auto',
               align === 'right'  && 'ml-auto',
             )}

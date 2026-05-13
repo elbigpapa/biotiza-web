@@ -2,9 +2,11 @@
 
 import { useRef, useEffect } from 'react'
 import Link from 'next/link'
-import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion'
+import Image from 'next/image'
+import { motion, useInView, useMotionValue, useTransform, animate, useScroll } from 'framer-motion'
 import { ArrowRight, MessageCircle, Leaf, Droplets, Shield, FlaskConical, Sparkles } from 'lucide-react'
 import { staggerContainer, fadeInUp } from '@/lib/animations'
+import { HERO_IMAGES } from '@/data/crop-images'
 import { cn } from '@/lib/utils'
 
 // ─── Counter animado ──────────────────────────────────────────────────────
@@ -41,16 +43,32 @@ const STATS = [
 function HeroBackground() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-      {/* Mesh gradient base */}
-      <div className="absolute inset-0 gradient-mesh-hero" />
+      {/* Foto HD de campo cultivado al amanecer — capa base */}
+      <Image
+        src={HERO_IMAGES.cultivatedField.src}
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center opacity-25"
+      />
 
-      {/* Glow orbs animados */}
+      {/* Overlay verde profesional — multiply blend + degradado para legibilidad */}
+      <div className="absolute inset-0" style={{
+        background: `
+          linear-gradient(180deg, rgba(8, 46, 33, 0.55) 0%, rgba(13, 92, 74, 0.65) 50%, rgba(8, 46, 33, 0.85) 100%),
+          radial-gradient(ellipse 80% 50% at 20% 40%, rgba(34, 181, 115, 0.25) 0%, transparent 70%),
+          radial-gradient(ellipse 60% 80% at 80% 20%, rgba(17, 137, 191, 0.15) 0%, transparent 70%)
+        `,
+      }} />
+
+      {/* Glow orbs animados — encima de la foto */}
       <div className="absolute -top-[20%] -left-[10%] h-[600px] w-[600px] rounded-full bg-verde-500/15 blur-[120px] animate-float-slow" />
       <div className="absolute -bottom-[10%] -right-[10%] h-[500px] w-[500px] rounded-full bg-azul-500/10 blur-[100px] animate-float-reverse" />
-      <div className="absolute top-[20%] right-[15%] h-[300px] w-[300px] rounded-full bg-naranja-500/8 blur-[80px] animate-float" />
+      <div className="absolute top-[20%] right-[15%] h-[300px] w-[300px] rounded-full bg-naranja-500/12 blur-[80px] animate-float" />
 
-      {/* Grid de puntos */}
-      <div className="absolute inset-0 dot-pattern-dark opacity-40" />
+      {/* Grid de puntos sutil */}
+      <div className="absolute inset-0 dot-pattern-dark opacity-25" />
 
       {/* Líneas orgánicas decorativas */}
       <svg className="absolute left-0 top-0 h-full w-full opacity-[0.04]" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">

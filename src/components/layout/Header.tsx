@@ -57,17 +57,17 @@ export default function Header() {
           'fixed inset-x-0 top-0 z-40',
           'transition-all duration-500 ease-out',
           isActive
-            ? 'bg-white/80 backdrop-blur-2xl shadow-[0_1px_24px_rgba(15,23,42,0.06)] border-b border-gris-100/50'
+            ? 'bg-white/85 backdrop-blur-2xl shadow-[0_2px_30px_rgba(15,23,42,0.08)] border-b border-gris-100/60'
             : 'bg-transparent',
         )}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-[4.5rem] items-center justify-between">
+          <div className="flex h-[5.5rem] items-center justify-between">
 
-            {/* Logo oficial */}
+            {/* Logo oficial registrado — prominente */}
             <Link
               href="/"
-              className="group flex items-center shrink-0 transition-transform duration-300 hover:scale-[1.02]"
+              className="group flex items-center shrink-0 transition-transform duration-300 hover:scale-[1.03]"
               aria-label="Inicio · Biotiza"
             >
               {/* Sobre fondo blanco (scrolled): logo full color del manual de marca */}
@@ -76,7 +76,7 @@ export default function Header() {
                   variant="lockup-h"
                   mode="color"
                   priority
-                  className="h-11 w-auto"
+                  className="h-14 w-auto md:h-16"
                 />
               ) : (
                 /* Sobre hero oscuro: variante verde claro del manual (mono-light) */
@@ -84,7 +84,7 @@ export default function Header() {
                   variant="lockup-h"
                   mode="mono-light"
                   priority
-                  className="h-11 w-auto"
+                  className="h-14 w-auto md:h-16"
                 />
               )}
             </Link>
@@ -187,7 +187,7 @@ export default function Header() {
       </header>
 
       {/* Espaciador para compensar el header fixed */}
-      <div className="h-[4.5rem]" aria-hidden="true" />
+      <div className="h-[5.5rem]" aria-hidden="true" />
 
       {/* ── MobileNav ──────────────────────────────────────────── */}
       <AnimatePresence>

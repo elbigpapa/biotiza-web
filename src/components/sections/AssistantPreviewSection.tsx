@@ -115,8 +115,7 @@ export default function AssistantPreviewSection() {
               align="left"
               accentColor="verde"
               animate
-              titleClassName="text-white"
-              className="[&_p]:text-gris-400"
+              theme="dark"
             />
 
             <motion.div variants={fadeInUp} className="mt-10 flex flex-wrap gap-4">

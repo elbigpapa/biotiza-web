@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   ArrowRight,
   Flower2,
@@ -16,6 +17,7 @@ import {
 import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
 import { GARDEN_CATEGORIES, GARDEN_PACKAGES, getFeaturedPackages } from '@/data/home-garden'
+import { HERO_IMAGES } from '@/data/crop-images'
 import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
@@ -58,9 +60,25 @@ export default function CasaJardinPage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-verde-900 via-verde-800 to-emerald-900 py-24 lg:py-32">
-        <div className="absolute inset-0 dot-pattern-dark opacity-40" aria-hidden="true" />
+      {/* Hero con foto HD de jardín */}
+      <section className="relative overflow-hidden py-24 lg:py-32">
+        {/* Foto HD de jardín */}
+        <Image
+          src={HERO_IMAGES.homeGarden.src}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        {/* Overlay verde profesional */}
+        <div className="absolute inset-0" style={{
+          background: `
+            linear-gradient(180deg, rgba(13, 92, 74, 0.75) 0%, rgba(10, 74, 59, 0.85) 100%),
+            radial-gradient(ellipse 70% 50% at 30% 40%, rgba(34, 181, 115, 0.20) 0%, transparent 70%)
+          `,
+        }} aria-hidden="true" />
+        <div className="absolute inset-0 dot-pattern-dark opacity-30" aria-hidden="true" />
         <div className="absolute -right-20 top-10 h-96 w-96 rounded-full bg-verde-500/15 blur-3xl" aria-hidden="true" />
         <div className="absolute -left-20 bottom-0 h-80 w-80 rounded-full bg-emerald-400/10 blur-3xl" aria-hidden="true" />
 

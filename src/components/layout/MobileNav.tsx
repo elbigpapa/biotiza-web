@@ -116,7 +116,7 @@ export default function MobileNav({ onClose }: MobileNavProps) {
             <BiotizaLogo
               variant="lockup-h"
               mode="color"
-              className="h-9 w-auto"
+              className="h-12 w-auto"
             />
           </Link>
           <button
