@@ -41,24 +41,24 @@ const CROP_IMAGES: Record<string, CropImage> = {
     alt: 'Frambuesas rojas maduras',
   },
   zarzamora: {
-    src: 'https://images.unsplash.com/photo-1597474561103-0ad8c47e02f6?w=1200&q=80&auto=format&fit=crop',
-    alt: 'Zarzamoras en arbusto',
+    src: 'https://images.unsplash.com/photo-1723580892175-2e267106c089?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Zarzamoras maduras de cerca',
   },
   aguacate: {
     src: 'https://images.unsplash.com/photo-1601039641847-7857b994d704?w=1200&q=80&auto=format&fit=crop',
     alt: 'Aguacates Hass en árbol',
   },
   chile: {
-    src: 'https://images.unsplash.com/photo-1583119912267-cc97c911e416?w=1200&q=80&auto=format&fit=crop',
-    alt: 'Chiles maduros en planta',
+    src: 'https://images.unsplash.com/photo-1761669411746-8f401c29e9a6?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Chiles rojos y verdes creciendo en la planta',
   },
   citricos: {
     src: 'https://images.unsplash.com/photo-1547514701-42782101795e?w=1200&q=80&auto=format&fit=crop',
     alt: 'Naranjas en árbol',
   },
   apio: {
-    src: 'https://images.unsplash.com/photo-1580397581145-cdb6a35b7d3f?w=1200&q=80&auto=format&fit=crop',
-    alt: 'Tallos de apio fresco',
+    src: 'https://images.unsplash.com/photo-1716434128739-ddbf5d3a1b7e?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Tallos de apio fresco con hojas verdes',
   },
   brocoli: {
     src: 'https://images.unsplash.com/photo-1584270354949-c26b0d5b4a0c?w=1200&q=80&auto=format&fit=crop',
@@ -69,24 +69,24 @@ const CROP_IMAGES: Record<string, CropImage> = {
     alt: 'Maíz dorado en mazorca',
   },
   'cana-azucar': {
-    src: 'https://images.unsplash.com/photo-1622037022824-0c71d511ef3c?w=1200&q=80&auto=format&fit=crop',
-    alt: 'Caña de azúcar',
+    src: 'https://images.unsplash.com/photo-1637335556827-bf5923d77f33?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Campo de caña de azúcar al atardecer',
   },
   frijol: {
-    src: 'https://images.unsplash.com/photo-1604908815951-8a08b1cf3260?w=1200&q=80&auto=format&fit=crop',
-    alt: 'Plantas de frijol',
+    src: 'https://images.unsplash.com/photo-1639947219179-bb0357b8856a?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Planta de frijol creciendo con hojas verdes',
   },
   agave: {
-    src: 'https://images.unsplash.com/photo-1626031732793-feaeb09a47a3?w=1200&q=80&auto=format&fit=crop',
-    alt: 'Plantación de agave azul en Jalisco',
+    src: 'https://images.unsplash.com/photo-1732043846829-dc34d9e2e989?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Plantación de agave azul tequilana con sierra al fondo',
   },
   cebolla: {
     src: 'https://images.unsplash.com/photo-1620574387735-3624d75b2dbc?w=1200&q=80&auto=format&fit=crop',
     alt: 'Cebollas frescas',
   },
   esparrago: {
-    src: 'https://images.unsplash.com/photo-1592156328757-67d65c41d4d4?w=1200&q=80&auto=format&fit=crop',
-    alt: 'Espárragos verdes',
+    src: 'https://images.unsplash.com/photo-1595855759920-86582396756a?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Espárragos verdes frescos en manojo',
   },
   pepino: {
     src: 'https://images.unsplash.com/photo-1568584711271-6c929fb49b60?w=1200&q=80&auto=format&fit=crop',
