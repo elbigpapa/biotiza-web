@@ -501,14 +501,10 @@ export default async function CultivoPage({
 
         <Container className="relative z-10 py-20 lg:py-28">
           <div className="max-w-3xl">
-            {/* Emoji del cultivo */}
-            <div className="text-7xl sm:text-8xl mb-6 motion-safe:animate-bounce-slow drop-shadow-[0_8px_24px_rgba(0,0,0,0.45)]">
-              {crop.emoji}
-            </div>
-
-            {/* Eyebrow */}
-            <p className="text-white/85 text-sm font-semibold uppercase tracking-widest mb-2">
-              Programa de Nutrición para
+            {/* Eyebrow con emoji decorativo discreto */}
+            <p className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm px-3 py-1.5 text-white/95 text-xs font-semibold uppercase tracking-widest mb-5">
+              <span className="text-base opacity-90" aria-hidden="true">{crop.emoji}</span>
+              Programa de Nutrición
             </p>
 
             {/* Nombre del cultivo */}
@@ -722,9 +718,22 @@ export default async function CultivoPage({
       <section className="py-16 bg-verde-50 border-t border-verde-100">
         <Container>
           <div className="text-center max-w-2xl mx-auto">
-            <div className="text-5xl mb-4" aria-hidden="true">
-              {crop.emoji}
-            </div>
+            {heroPhoto ? (
+              <div className="mx-auto mb-6 h-24 w-24 sm:h-28 sm:w-28 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(15,23,42,0.15)] ring-4 ring-white">
+                <Image
+                  src={heroPhoto.src}
+                  alt={heroPhoto.alt}
+                  width={320}
+                  height={320}
+                  sizes="112px"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            ) : (
+              <div className="text-5xl mb-4" aria-hidden="true">
+                {crop.emoji}
+              </div>
+            )}
             <h2 className="font-serif text-3xl text-gris-900 mb-4">
               ¿Listo para optimizar tu {crop.name}?
             </h2>

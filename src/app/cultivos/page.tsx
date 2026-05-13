@@ -6,8 +6,10 @@
 
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import Image from 'next/image'
+import { ArrowRight, Layers } from 'lucide-react'
 import { CROP_PROTOCOLS } from '@/data/crops'
+import { getCropImage } from '@/data/crop-images'
 import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
 
@@ -47,7 +49,15 @@ export default function CultivosPage() {
       {/* ── Grid de cultivos ──────────────────────────────────────────── */}
       <section className="py-16 lg:py-24 bg-white">
         <Container>
-          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+          <div className="mb-10 flex items-center justify-between flex-wrap gap-4">
+            <p className="text-sm text-gris-500">
+              <span className="font-semibold text-gris-800">{CROP_PROTOCOLS.length} cultivos</span> con protocolo Biotiza
+            </p>
+            <p className="text-xs text-gris-400 uppercase tracking-wider">
+              Da clic en cualquier cultivo para ver su programa
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
             {CROP_PROTOCOLS.map((crop) => (
               <CropCard key={crop.id} crop={crop} />
             ))}
@@ -82,7 +92,7 @@ export default function CultivosPage() {
   )
 }
 
-// ─── CropCard ─────────────────────────────────────────────────────────────
+// ─── CropCard — HD photo card profesional ────────────────────────────────
 
 interface CropCardProps {
   crop: {
@@ -97,55 +107,70 @@ interface CropCardProps {
 
 function CropCard({ crop }: CropCardProps) {
   const stageCount = crop.stages.length
+  const photo = getCropImage(crop.slug)
 
   return (
     <Link
       href={`/cultivos/${crop.slug}`}
-      className="group relative flex flex-col overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300"
+      aria-label={`Ver programa de nutrición para ${crop.name}`}
+      className="group relative flex flex-col overflow-hidden rounded-2xl aspect-[4/5] shadow-[0_4px_24px_rgba(15,23,42,0.10)] hover:shadow-[0_20px_50px_rgba(15,23,42,0.20)] transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-verde-500 focus-visible:ring-offset-2"
     >
-      {/* Fondo degradado */}
+      {/* Foto HD del cultivo (fondo) */}
+      {photo ? (
+        <Image
+          src={photo.src}
+          alt={photo.alt}
+          fill
+          sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className="object-cover scale-105 transition-transform duration-[1.4s] ease-out group-hover:scale-115"
+        />
+      ) : (
+        // Fallback al gradiente si por alguna razón no hay foto curada
+        <div className={`absolute inset-0 bg-gradient-to-br ${crop.gradient}`} aria-hidden="true" />
+      )}
+
+      {/* Overlay con gradiente para legibilidad del texto */}
       <div
-        className={`bg-gradient-to-br ${crop.gradient} p-6 sm:p-8 flex flex-col items-center text-center gap-3 flex-1`}
-      >
-        {/* Emoji del cultivo */}
+        className="absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.25) 45%, rgba(11, 60, 47, 0.92) 100%)',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Badge de etapas (top-left) */}
+      <div className="relative z-10 p-5 flex items-start justify-between">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-white/20 backdrop-blur-md ring-1 ring-white/30 px-2.5 py-1 text-[10px] font-bold text-white uppercase tracking-wider">
+          <Layers size={10} />
+          {stageCount} etapas
+        </span>
+        {/* Emoji decorativo discreto */}
         <span
-          className="text-6xl sm:text-7xl select-none transition-transform duration-300 group-hover:scale-110"
-          role="img"
-          aria-label={crop.name}
+          className="text-lg opacity-80 drop-shadow-md transition-transform duration-300 group-hover:scale-110"
+          aria-hidden="true"
         >
           {crop.emoji}
         </span>
+      </div>
 
-        {/* Nombre */}
+      {/* Contenido: nombre + CTA al fondo */}
+      <div className="relative z-10 mt-auto p-5 sm:p-6 flex flex-col gap-3">
         <div>
-          <h2 className="font-serif text-xl sm:text-2xl font-semibold text-white leading-tight">
+          <h2 className="font-serif text-2xl sm:text-3xl font-normal text-white leading-tight drop-shadow-[0_3px_10px_rgba(0,0,0,0.5)]">
             {crop.name}
           </h2>
           {crop.scientific_name && (
-            <p className="text-white/70 text-xs italic mt-0.5">
+            <p className="text-white/80 text-xs italic mt-0.5 drop-shadow-md">
               {crop.scientific_name}
             </p>
           )}
         </div>
 
-        {/* Badge de etapas */}
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-white">
-          <span className="h-1.5 w-1.5 rounded-full bg-white/80" aria-hidden="true" />
-          {stageCount} etapas
-        </span>
-      </div>
-
-      {/* Footer */}
-      <div
-        className={`bg-gradient-to-br ${crop.gradient} border-t border-white/10 px-5 py-3 flex items-center justify-between`}
-      >
-        <span className="text-xs font-semibold text-white/80 uppercase tracking-wide">
+        <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-verde-500/25 ring-1 ring-verde-300/40 backdrop-blur-sm px-3 py-1.5 text-[11px] font-bold text-verde-100 uppercase tracking-[0.12em] transition-all duration-300 group-hover:bg-verde-500/40 group-hover:gap-2.5">
           Ver programa
+          <ArrowRight size={11} className="transition-transform duration-300 group-hover:translate-x-0.5" />
         </span>
-        <ArrowRight
-          className="h-4 w-4 text-white/80 transition-transform duration-200 group-hover:translate-x-1"
-          aria-hidden="true"
-        />
       </div>
     </Link>
   )

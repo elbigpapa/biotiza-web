@@ -77,7 +77,7 @@ const CROP_IMAGES: Record<string, CropImage> = {
     alt: 'Plantas de frijol',
   },
   agave: {
-    src: 'https://images.unsplash.com/photo-1597474561103-0ad8c47e02f6?w=1200&q=80&auto=format&fit=crop',
+    src: 'https://images.unsplash.com/photo-1626031732793-feaeb09a47a3?w=1200&q=80&auto=format&fit=crop',
     alt: 'Plantación de agave azul en Jalisco',
   },
   cebolla: {
