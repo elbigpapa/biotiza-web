@@ -116,7 +116,6 @@ export default function MobileNav({ onClose }: MobileNavProps) {
             <BiotizaLogo
               variant="lockup-h"
               mode="color"
-              gradientId="bz-mobilenav"
               className="h-9 w-auto"
             />
           </Link>

@@ -18,11 +18,11 @@ function OrganizationJsonLd() {
     "url": "https://biotiza.mx",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://biotiza.mx/images/logos/biotiza-icon.svg",
-      "width": 200,
-      "height": 200,
+      "url": "https://biotiza.mx/images/logos/biotiza-icon-color.png",
+      "width": 800,
+      "height": 800,
     },
-    "image": "https://biotiza.mx/og-image.svg",
+    "image": "https://biotiza.mx/og-image.png",
     "description": "Empresa mexicana de biosoluciones agrícolas. Fertilizantes orgánicos, bioestimulantes y bioprotección para cultivos de exportación.",
     "address": {
       "@type": "PostalAddress",
@@ -99,11 +99,11 @@ export const metadata: Metadata = {
       'Fertilizantes orgánicos, bioestimulantes y bioprotección para cultivos de exportación. Directo de laboratorio a tu campo.',
     images: [
       {
-        url: '/og-image.svg',
-        width: 1200,
-        height: 630,
+        url: '/og-image.png',
+        width: 1080,
+        height: 1080,
         alt: 'Biotiza — Biosoluciones agrícolas',
-        type: 'image/svg+xml',
+        type: 'image/png',
       },
     ],
   },
@@ -112,7 +112,7 @@ export const metadata: Metadata = {
     title: 'Biotiza — Biosoluciones Agrícolas',
     description:
       'Fertilizantes orgánicos, bioestimulantes y bioprotección para cultivos de exportación.',
-    images: ['/og-image.svg'],
+    images: ['/og-image.png'],
   },
   manifest: '/manifest.webmanifest',
   robots: {

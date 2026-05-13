@@ -1,234 +1,97 @@
 /**
- * BiotizaLogo.tsx — Marca registrada Biotiza
+ * BiotizaLogo.tsx — Marca registrada oficial Biotiza
  *
- * Componente reusable inline SVG con múltiples variantes:
- *   - icon         → solo el isotipo (símbolo)
- *   - wordmark     → solo "Biotiza" en tipografía
- *   - lockup-h     → icono + texto en línea (default header)
- *   - lockup-v     → icono encima, texto debajo (favicon, OG, redes)
+ * Renderiza las imágenes oficiales del manual de marca, sin modificarlas.
+ * Las imágenes provienen del archivo .ai registrado y se extrajeron al
+ * proyecto vía `scripts/extract-logo-pages.mjs`.
  *
- * Y modos de color:
- *   - color → full color (gradiente verde + cotiledones naranja)
- *   - mono  → verde plano (usa color verde-800 o el que pase via prop)
- *   - white → blanco (para fondos oscuros)
- *
- * El logo es SVG inline para tener control de color, animaciones y NO depender
- * de carga de imagen externa. Es la marca registrada de Biotiza.
+ * Cada combinación de variant + mode corresponde a una página específica
+ * del PDF oficial — el mapping se hace explícito abajo. Si no estás seguro
+ * qué variante usar, prefiere `lockup-h-color` sobre fondos claros y
+ * `lockup-h-on-green` sobre fondos oscuros.
  */
 
-type Mode = 'color' | 'mono' | 'white'
+import Image from 'next/image'
+import { cn } from '@/lib/utils'
+
 type Variant = 'icon' | 'wordmark' | 'lockup-h' | 'lockup-v'
+type Mode = 'color' | 'mono-flat' | 'mono-dark' | 'mono-light' | 'on-green' | 'orange' | 'gradient'
 
 interface BiotizaLogoProps {
   variant?: Variant
   mode?: Mode
   className?: string
-  /** Override del color en modo mono (default: currentColor) */
-  monoColor?: string
-  /** ID único para gradientes (evita conflictos cuando hay múltiples logos en una página) */
-  gradientId?: string
-  /** Aria label custom */
-  ariaLabel?: string
+  /** Prioridad de carga (true para logos above-the-fold como Header) */
+  priority?: boolean
+  /** Alt text personalizado (default: "Biotiza — Biosoluciones Agrícolas") */
+  alt?: string
 }
 
-// ─── Subcomponente: el isotipo (símbolo) ────────────────────────────────────
+// ─── Mapeo variant + mode → archivo oficial ─────────────────────────────────
+// Si una combinación no existe en el manual oficial, cae al equivalente más cercano.
 
-interface IconProps {
-  mode: Mode
-  monoColor?: string
-  gradientPrefix: string
+const SOURCE_MAP: Record<string, { src: string; width: number; height: number }> = {
+  // Lockup vertical
+  'lockup-v|color':       { src: '/images/logos/biotiza-lockup-v-color.png',       width: 240, height: 280 },
+  'lockup-v|mono-flat':   { src: '/images/logos/biotiza-lockup-v-mono-flat.png',   width: 240, height: 280 },
+  'lockup-v|mono-dark':   { src: '/images/logos/biotiza-lockup-v-mono-dark.png',   width: 240, height: 280 },
+  'lockup-v|mono-light':  { src: '/images/logos/biotiza-lockup-v-mono-light.png',  width: 240, height: 280 },
+  'lockup-v|on-green':    { src: '/images/logos/biotiza-lockup-v-on-green.png',    width: 240, height: 280 },
+
+  // Lockup horizontal (más usado en Header/Footer)
+  'lockup-h|color':       { src: '/images/logos/biotiza-lockup-h-color.png',       width: 540, height: 200 },
+  'lockup-h|mono-flat':   { src: '/images/logos/biotiza-lockup-h-mono-flat.png',   width: 540, height: 200 },
+  'lockup-h|mono-dark':   { src: '/images/logos/biotiza-lockup-h-mono-dark.png',   width: 540, height: 200 },
+  'lockup-h|mono-light':  { src: '/images/logos/biotiza-lockup-h-mono-light.png',  width: 540, height: 200 },
+  'lockup-h|on-green':    { src: '/images/logos/biotiza-lockup-h-on-green.png',    width: 540, height: 200 },
+
+  // Isotipo solo
+  'icon|color':           { src: '/images/logos/biotiza-icon-color.png',           width: 200, height: 200 },
+  'icon|mono-flat':       { src: '/images/logos/biotiza-icon-mono-flat.png',       width: 200, height: 200 },
+  'icon|mono-dark':       { src: '/images/logos/biotiza-icon-mono-dark.png',       width: 200, height: 200 },
+  'icon|mono-light':      { src: '/images/logos/biotiza-icon-mono-light.png',      width: 200, height: 200 },
+  'icon|on-green':        { src: '/images/logos/biotiza-icon-on-green.png',        width: 200, height: 200 },
+
+  // Wordmark solo
+  'wordmark|gradient':    { src: '/images/logos/biotiza-wordmark-gradient.png',    width: 480, height: 200 },
+  'wordmark|mono-dark':   { src: '/images/logos/biotiza-wordmark-dark.png',        width: 480, height: 200 },
+  'wordmark|mono-flat':   { src: '/images/logos/biotiza-wordmark-flat.png',        width: 480, height: 200 },
+  'wordmark|orange':      { src: '/images/logos/biotiza-wordmark-orange.png',      width: 480, height: 200 },
+  'wordmark|on-green':    { src: '/images/logos/biotiza-wordmark-on-green.png',    width: 480, height: 200 },
 }
 
-function BiotizaIcon({ mode, monoColor, gradientPrefix }: IconProps) {
-  const idStem    = `${gradientPrefix}-stem`
-  const idField   = `${gradientPrefix}-field`
-  const idPetal   = `${gradientPrefix}-petal`
-
-  // Color de relleno para versión monocromo
-  const monoFill  = monoColor ?? 'currentColor'
-  // Color de los "huecos" (slits y valle)
-  const slitFill  = mode === 'white' ? 'transparent' : '#ffffff'
-
-  // Fills para cada parte según modo
-  const stemFill  = mode === 'color' ? `url(#${idStem})`  : monoFill
-  const fieldFill = mode === 'color' ? `url(#${idField})` : monoFill
-  const petalFill = mode === 'color' ? `url(#${idPetal})` : monoFill
-
-  return (
-    <>
-      {mode === 'color' && (
-        <defs>
-          <linearGradient id={idStem} x1="50%" y1="0%" x2="50%" y2="100%">
-            <stop offset="0%" stopColor="#0d5c4a" />
-            <stop offset="100%" stopColor="#0a4a3b" />
-          </linearGradient>
-          <linearGradient id={idField} x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#1e7a5e" />
-            <stop offset="100%" stopColor="#0d5c4a" />
-          </linearGradient>
-          <linearGradient id={idPetal} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#ff7a1a" />
-            <stop offset="100%" stopColor="#e8690f" />
-          </linearGradient>
-        </defs>
-      )}
-
-      {/* Surcos / campos cultivados */}
-      <g fill={fieldFill}>
-        <path d="M 12 178 Q 38 120 100 116 L 100 134 Q 50 138 30 178 Z" />
-        <path d="M 22 158 Q 50 108 100 102 L 100 118 Q 62 122 42 158 Z" opacity={mode === 'color' ? '0.95' : '1'} />
-        <path d="M 36 138 Q 65 96 100 90 L 100 104 Q 75 108 56 138 Z"   opacity={mode === 'color' ? '0.9'  : '1'} />
-        <path d="M 188 178 Q 162 120 100 116 L 100 134 Q 150 138 170 178 Z" />
-        <path d="M 178 158 Q 150 108 100 102 L 100 118 Q 138 122 158 158 Z" opacity={mode === 'color' ? '0.95' : '1'} />
-        <path d="M 164 138 Q 135 96 100 90 L 100 104 Q 125 108 144 138 Z"   opacity={mode === 'color' ? '0.9'  : '1'} />
-      </g>
-
-      {/* Tallo central */}
-      <rect x="93" y="62" width="14" height="58" rx="3" fill={stemFill} />
-
-      {/* Cotiledones (corazón invertido) */}
-      <path d="M 100 40 Q 98 22 78 18 Q 54 18 50 38 Q 50 56 70 64 Q 88 68 100 60 Z" fill={petalFill} />
-      <path d="M 100 40 Q 102 22 122 18 Q 146 18 150 38 Q 150 56 130 64 Q 112 68 100 60 Z" fill={petalFill} />
-
-      {/* Slits y valle */}
-      <g fill={slitFill}>
-        <ellipse cx="74" cy="42" rx="14" ry="4" transform="rotate(-18 74 42)" />
-        <ellipse cx="126" cy="42" rx="14" ry="4" transform="rotate(18 126 42)" />
-        <path d="M 92 56 Q 100 64 108 56 L 108 60 Q 100 70 92 60 Z" />
-      </g>
-    </>
-  )
+// Alias para retro-compatibilidad con código que usaba mode='white'
+const MODE_ALIAS: Record<string, Mode> = {
+  'white': 'on-green',  // para fondos oscuros usar versión on-green con cotiledones naranja
+  'mono':  'mono-dark',
 }
 
-// ─── Subcomponente: wordmark "Biotiza" ──────────────────────────────────────
-
-interface WordmarkProps {
-  mode: Mode
-  monoColor?: string
-  /** Posición/tamaño del texto dentro del viewBox del padre */
-  x?: number
-  y?: number
-  fontSize?: number
-  anchor?: 'start' | 'middle' | 'end'
+function resolveSource(variant: Variant, mode: Mode) {
+  const realMode = (MODE_ALIAS[mode as unknown as string] ?? mode) as Mode
+  const key = `${variant}|${realMode}`
+  return SOURCE_MAP[key] ?? SOURCE_MAP[`${variant}|color`] ?? SOURCE_MAP['lockup-h|color']
 }
 
-function BiotizaWordmark({
-  mode,
-  monoColor,
-  x = 0,
-  y = 50,
-  fontSize = 48,
-  anchor = 'start',
-}: WordmarkProps) {
-  const fill =
-    mode === 'white' ? '#ffffff' :
-    mode === 'mono'  ? (monoColor ?? 'currentColor') :
-    '#0d5c4a' // color full = verde profundo del logo oficial
-
-  return (
-    <text
-      x={x}
-      y={y}
-      textAnchor={anchor}
-      fontFamily='var(--font-dm-sans), "DM Sans", -apple-system, system-ui, sans-serif'
-      fontWeight={700}
-      fontSize={fontSize}
-      fill={fill}
-      letterSpacing="-0.025em"
-    >
-      Biotiza
-    </text>
-  )
-}
-
-// ─── Componente principal ──────────────────────────────────────────────────
+// ─── Componente ────────────────────────────────────────────────────────────
 
 export default function BiotizaLogo({
   variant = 'lockup-h',
-  mode = 'color',
+  mode    = 'color',
   className = '',
-  monoColor,
-  gradientId,
-  ariaLabel,
+  priority = false,
+  alt = 'Biotiza — Biosoluciones Agrícolas',
 }: BiotizaLogoProps) {
-  // ID único para gradientes
-  const gradPrefix = gradientId ?? `bz-${variant}-${mode}`
+  const { src, width, height } = resolveSource(variant, mode)
 
-  const label =
-    ariaLabel ??
-    (variant === 'icon'
-      ? 'Biotiza isotipo'
-      : variant === 'wordmark'
-      ? 'Biotiza'
-      : 'Biotiza — Biosoluciones Agrícolas')
-
-  // ── Variante: solo icono ──
-  if (variant === 'icon') {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 200 200"
-        className={className}
-        role="img"
-        aria-label={label}
-        fill="none"
-      >
-        <BiotizaIcon mode={mode} monoColor={monoColor} gradientPrefix={gradPrefix} />
-      </svg>
-    )
-  }
-
-  // ── Variante: solo wordmark ──
-  if (variant === 'wordmark') {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 240 64"
-        className={className}
-        role="img"
-        aria-label={label}
-        fill="none"
-      >
-        <BiotizaWordmark mode={mode} monoColor={monoColor} x={0} y={48} fontSize={56} />
-      </svg>
-    )
-  }
-
-  // ── Variante: lockup horizontal (icono + texto al lado) ──
-  if (variant === 'lockup-h') {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 540 200"
-        className={className}
-        role="img"
-        aria-label={label}
-        fill="none"
-      >
-        <g transform="translate(0, 0)">
-          <BiotizaIcon mode={mode} monoColor={monoColor} gradientPrefix={gradPrefix} />
-        </g>
-        <g transform="translate(220, 0)">
-          <BiotizaWordmark mode={mode} monoColor={monoColor} x={0} y={130} fontSize={120} />
-        </g>
-      </svg>
-    )
-  }
-
-  // ── Variante: lockup vertical (icono encima, texto debajo) ──
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 240 280"
-      className={className}
-      role="img"
-      aria-label={label}
-      fill="none"
-    >
-      <g transform="translate(20, 0)">
-        <BiotizaIcon mode={mode} monoColor={monoColor} gradientPrefix={gradPrefix} />
-      </g>
-      <BiotizaWordmark mode={mode} monoColor={monoColor} x={120} y={258} fontSize={48} anchor="middle" />
-    </svg>
+    <Image
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      priority={priority}
+      className={cn('select-none', className)}
+      draggable={false}
+    />
   )
 }

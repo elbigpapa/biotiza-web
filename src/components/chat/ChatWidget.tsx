@@ -155,8 +155,8 @@ export default function ChatWidget() {
             {/* Header */}
             <header className="relative flex items-center gap-3 overflow-hidden bg-gradient-to-br from-verde-600 via-verde-500 to-verde-600 px-4 py-3.5 text-white">
               <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-white/10 blur-xl" aria-hidden="true" />
-              <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm ring-2 ring-white/30 p-1.5">
-                <BiotizaLogo variant="icon" mode="white" gradientId="bz-chat" className="h-full w-full" />
+              <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-sm ring-2 ring-white/40 p-1 overflow-hidden">
+                <BiotizaLogo variant="icon" mode="color" className="h-full w-full object-contain" />
               </div>
               <div className="relative flex-1">
                 <p className="font-serif text-base leading-tight">Asesora Biotiza</p>

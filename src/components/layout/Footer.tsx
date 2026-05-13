@@ -199,8 +199,7 @@ export default function Footer() {
               >
                 <BiotizaLogo
                   variant="lockup-h"
-                  mode="white"
-                  gradientId="bz-footer"
+                  mode="mono-light"
                   className="h-12 w-auto"
                 />
               </Link>

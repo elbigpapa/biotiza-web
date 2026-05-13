@@ -70,20 +70,20 @@ export default function Header() {
               className="group flex items-center shrink-0 transition-transform duration-300 hover:scale-[1.02]"
               aria-label="Inicio · Biotiza"
             >
-              {/* Sobre fondo blanco (scrolled): logo full color */}
+              {/* Sobre fondo blanco (scrolled): logo full color del manual de marca */}
               {isActive ? (
                 <BiotizaLogo
                   variant="lockup-h"
                   mode="color"
-                  gradientId="bz-header-color"
+                  priority
                   className="h-11 w-auto"
                 />
               ) : (
-                /* Sobre hero oscuro: logo blanco */
+                /* Sobre hero oscuro: variante verde claro del manual (mono-light) */
                 <BiotizaLogo
                   variant="lockup-h"
-                  mode="white"
-                  gradientId="bz-header-white"
+                  mode="mono-light"
+                  priority
                   className="h-11 w-auto"
                 />
               )}
