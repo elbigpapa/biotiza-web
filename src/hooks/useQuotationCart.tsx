@@ -29,7 +29,7 @@ import type { ProductLine } from '@/types'
 export interface CartItem {
   productId:   string
   productName: string
-  /** Línea de producto: 'organicos' | 'especialidades' | 'bioestimulantes' | 'nutricion' | 'zentia' */
+  /** Línea de producto: 'organicos' | 'especialidades' | 'bioestimulantes' | 'nutricion' | 'bioproteccion' */
   productLine: ProductLine
   productSlug: string
   /** Cantidad en litros o kg */

@@ -54,24 +54,24 @@ function HeroBackground() {
         />
       </div>
 
-      {/* Overlay corporativo verde-oscuro — degradado complejo para profundidad */}
+      {/* Overlay corporativo verde-oscuro — un poco más oscuro para mejorar legibilidad del título y subtítulo */}
       <div
         className="absolute inset-0"
         style={{
           background: `
-            linear-gradient(115deg, rgba(5, 32, 24, 0.78) 0%, rgba(11, 60, 47, 0.62) 35%, rgba(13, 92, 74, 0.50) 70%, rgba(34, 181, 115, 0.30) 100%),
+            linear-gradient(115deg, rgba(5, 32, 24, 0.86) 0%, rgba(11, 60, 47, 0.72) 35%, rgba(13, 92, 74, 0.56) 70%, rgba(34, 181, 115, 0.32) 100%),
             radial-gradient(ellipse 70% 50% at 18% 30%, rgba(34, 181, 115, 0.30) 0%, transparent 70%),
             radial-gradient(ellipse 55% 70% at 82% 80%, rgba(17, 137, 191, 0.22) 0%, transparent 70%)
           `,
         }}
       />
 
-      {/* Vignette sutil para enfocar el contenido central */}
+      {/* Vignette para enfocar el contenido central */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 85% 70% at 50% 50%, transparent 35%, rgba(0,0,0,0.5) 100%)',
+            'radial-gradient(ellipse 85% 70% at 50% 50%, transparent 35%, rgba(0,0,0,0.55) 100%)',
         }}
       />
 
@@ -87,7 +87,7 @@ function HeroBackground() {
       {/* Grain orgánico premium */}
       <div className="absolute inset-0 noise-overlay opacity-25 mix-blend-overlay" />
 
-      {/* Líneas orgánicas decorativas (más visibles) */}
+      {/* Líneas orgánicas decorativas */}
       <svg className="absolute left-0 top-0 h-full w-full opacity-[0.08]" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
         <path d="M0,200 Q360,50 720,200 Q1080,350 1440,200" stroke="white" strokeWidth="1.5" fill="none" />
         <path d="M0,400 Q400,250 800,400 Q1200,550 1440,400" stroke="white" strokeWidth="1.2" fill="none" />
@@ -155,7 +155,21 @@ export default function HeroSection() {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.6, 1], reduce ? [1, 1, 1] : [1, 0.6, 0])
 
   return (
-    <section ref={sectionRef} className="relative flex min-h-[calc(100vh-4rem)] flex-col overflow-hidden">
+    /**
+     * IMPORTANTE: el hero usa margin-top negativa + padding-top equivalente para
+     * absorber los 88px del spacer del Header (que es fixed). Esto evita una
+     * franja blanca de 88px arriba del hero que rompía la legibilidad del
+     * wordmark + nav links sobre un fondo claro.
+     *
+     * El header sigue siendo transparente sobre el hero (sus links son blancos
+     * con drop-shadow), y aplica glassmorphism al scroll cuando ya está sobre
+     * fondo claro.
+     */
+    <section
+      ref={sectionRef}
+      className="relative flex min-h-screen flex-col overflow-hidden"
+      style={{ marginTop: '-5.5rem', paddingTop: '5.5rem' }}
+    >
       <HeroBackground />
       <FloatingIcons />
 
@@ -173,39 +187,50 @@ export default function HeroSection() {
         {/* Eyebrow con glow */}
         <motion.span
           variants={fadeInUp}
-          className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-verde-400/20 bg-verde-500/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-verde-300 backdrop-blur-md"
+          className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-verde-400/30 bg-verde-500/12 px-5 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-verde-200 backdrop-blur-md"
         >
           <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-verde-400 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-verde-400" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-verde-300 opacity-80" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-verde-300" />
           </span>
           Biosoluciones de laboratorio a tu campo
         </motion.span>
 
-        {/* Título principal */}
+        {/* Título principal — text-shadow más fuerte para asegurar legibilidad */}
         <motion.h1
           variants={fadeInUp}
-          className="max-w-5xl font-serif text-4xl font-normal leading-[1.1] text-white text-balance sm:text-5xl md:text-6xl lg:text-7xl"
+          className="max-w-5xl font-serif text-4xl font-normal leading-[1.05] text-white text-balance sm:text-5xl md:text-6xl lg:text-7xl"
+          style={{ textShadow: '0 4px 16px rgba(0,0,0,0.35)' }}
         >
           Ciencia que nutre la tierra.{' '}
-          <span className="gradient-text-premium">
+          <span
+            className="bg-clip-text text-transparent"
+            style={{
+              backgroundImage:
+                'linear-gradient(90deg, #b5f4d5 0%, #82ecc0 25%, #a5deff 50%, #82ecc0 75%, #b5f4d5 100%)',
+              backgroundSize: '200% auto',
+              animation: 'text-shimmer 6s ease-in-out infinite',
+              filter: 'drop-shadow(0 2px 12px rgba(67,217,158,0.35))',
+            }}
+          >
             Resultados que transforman tu cosecha.
           </span>
         </motion.h1>
 
-        {/* Subtítulo */}
+        {/* Subtítulo — más legible: verde-50 y line-height generoso */}
         <motion.p
           variants={fadeInUp}
-          className="mt-7 max-w-2xl text-base leading-relaxed text-gris-200 sm:text-lg md:text-xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
+          className="mt-7 max-w-2xl text-base leading-relaxed sm:text-lg md:text-xl"
+          style={{ color: '#f0fdf6', textShadow: '0 2px 8px rgba(0,0,0,0.45)' }}
         >
           Biosoluciones premium de laboratorio a tu campo. Nutrición, estimulación
           y protección para cultivos de exportación.
         </motion.p>
 
-        {/* CTAs con diseño premium */}
+        {/* CTAs */}
         <motion.div variants={fadeInUp} className="mt-12 flex flex-wrap items-center justify-center gap-4">
           <Link href="/soluciones" className="btn-secondary group">
-            Explorar Soluciones
+            Explorar soluciones
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </Link>
           <Link
@@ -215,18 +240,26 @@ export default function HeroSection() {
             className="btn-accent"
           >
             <MessageCircle size={16} />
-            Hablar con un Asesor
+            Hablar con un asesor
           </Link>
         </motion.div>
 
-        {/* Certificaciones mini */}
+        {/* Certificaciones — color y peso aumentados para legibilidad */}
         <motion.div
           variants={fadeInUp}
-          className="mt-14 flex flex-wrap items-center justify-center gap-6 text-xs text-gris-200"
+          className="mt-14 flex flex-wrap items-center justify-center gap-6 text-sm"
+          style={{ color: '#f0fdf6' }}
         >
           {['COFEPRIS', 'OMRI Listed', 'Hecho en MX'].map((cert) => (
-            <span key={cert} className="flex items-center gap-1.5 font-medium">
-              <span className="h-1.5 w-1.5 rounded-full bg-verde-400" />
+            <span
+              key={cert}
+              className="flex items-center gap-2 font-semibold"
+              style={{ textShadow: '0 1px 4px rgba(0,0,0,0.4)' }}
+            >
+              <span
+                className="h-2 w-2 rounded-full bg-verde-300"
+                style={{ boxShadow: '0 0 8px rgba(67,217,158,0.7)' }}
+              />
               {cert}
             </span>
           ))}
@@ -235,35 +268,41 @@ export default function HeroSection() {
         {/* Scroll indicator */}
         <motion.div
           variants={fadeInUp}
-          className="mt-16 flex flex-col items-center gap-2 text-gris-300"
+          className="mt-16 flex flex-col items-center gap-2 text-verde-100/80"
         >
           <span className="text-[10px] tracking-[0.2em] uppercase font-semibold">Descubrir</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="h-10 w-[1.5px] rounded-full bg-gradient-to-b from-verde-400/80 to-transparent"
+            className="h-10 w-[1.5px] rounded-full bg-gradient-to-b from-verde-300/90 to-transparent"
           />
         </motion.div>
       </motion.div>
 
-      {/* Stats bar con glass effect */}
+      {/* Stats bar con glass effect — labels más legibles */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.9, duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="relative z-10 border-t border-white/[0.06] bg-white/[0.04] backdrop-blur-xl"
+        className="relative z-10 border-t border-white/[0.08] bg-white/[0.05] backdrop-blur-xl"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 divide-x divide-white/[0.06] md:grid-cols-4">
+          <div className="grid grid-cols-2 divide-x divide-white/[0.08] md:grid-cols-4">
             {STATS.map((stat, i) => (
               <div key={i} className="flex flex-col items-center py-6 px-4 text-center">
-                <span className="font-serif text-2xl font-normal text-white sm:text-3xl lg:text-4xl">
+                <span
+                  className="font-serif text-2xl font-normal text-white sm:text-3xl lg:text-4xl"
+                  style={{ textShadow: '0 2px 12px rgba(0,0,0,0.4)' }}
+                >
                   {stat.numeric
                     ? <CountUp to={stat.value} suffix={stat.suffix} />
                     : stat.display
                   }
                 </span>
-                <span className="mt-1.5 text-[10px] font-semibold text-gris-200 uppercase tracking-[0.15em]">
+                <span
+                  className="mt-2 text-[11px] font-bold uppercase tracking-[0.15em]"
+                  style={{ color: '#f0fdf6' }}
+                >
                   {stat.label}
                 </span>
               </div>
@@ -271,6 +310,13 @@ export default function HeroSection() {
           </div>
         </div>
       </motion.div>
+
+      <style jsx>{`
+        @keyframes text-shimmer {
+          0%, 100% { background-position: 0% 50%; }
+          50%      { background-position: 100% 50%; }
+        }
+      `}</style>
     </section>
   )
 }

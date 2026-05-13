@@ -26,7 +26,7 @@ import type { ProductLine } from '@/types'
 // ─── Icono por línea ──────────────────────────────────────────────────────
 const LINE_ICONS: Record<ProductLine, React.ElementType> = {
   organicos: Leaf, especialidades: FlaskConical,
-  bioestimulantes: Sparkles, nutricion: Droplets, zentia: Shield,
+  bioestimulantes: Sparkles, nutricion: Droplets, bioproteccion: Shield,
 }
 
 // ─── ProductCard minimalista para el grid ─────────────────────────────────
@@ -142,7 +142,7 @@ export default function SolucionesPage() {
           <SectionHeading
             tag="Portafolio completo"
             title="Nuestras Soluciones"
-            subtitle={`${PRODUCTS.length} productos en 5 líneas especializadas: Orgánicos, Especialidades, Bioestimulantes, Nutrición Líquida y Bioprotección Zentia. Para cada etapa de tu cultivo.`}
+            subtitle={`${PRODUCTS.length} productos en 5 líneas especializadas: Orgánicos, Especialidades, Bioestimulantes, Nutrición Líquida y Bioprotección. Para cada etapa de tu cultivo.`}
             theme="dark"
             animate={false}
           />

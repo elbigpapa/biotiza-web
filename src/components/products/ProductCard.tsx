@@ -38,7 +38,7 @@ const LINE_GRADIENTS: Record<ProductLine, string> = {
   especialidades:  'from-azul-700    to-azul-500',
   bioestimulantes: 'from-naranja-600 to-naranja-400',
   nutricion:       'from-naranja-500 to-naranja-300',
-  zentia:          'from-azul-600    to-azul-400',
+  bioproteccion:   'from-azul-600    to-azul-400',
 }
 
 const LINE_ICONS: Record<ProductLine, string> = {
@@ -46,7 +46,7 @@ const LINE_ICONS: Record<ProductLine, string> = {
   especialidades:  '⚗️',
   bioestimulantes: '✨',
   nutricion:       '💧',
-  zentia:          '🛡️',
+  bioproteccion:   '🛡️',
 }
 
 const LINE_SHADOW: Record<ProductLine, string> = {
@@ -54,7 +54,7 @@ const LINE_SHADOW: Record<ProductLine, string> = {
   especialidades:  'hover:shadow-[0_24px_60px_rgba(14,110,153,0.22)]',
   bioestimulantes: 'hover:shadow-[0_24px_60px_rgba(232,105,15,0.20)]',
   nutricion:       'hover:shadow-[0_24px_60px_rgba(242,138,61,0.20)]',
-  zentia:          'hover:shadow-[0_24px_60px_rgba(17,137,191,0.22)]',
+  bioproteccion:   'hover:shadow-[0_24px_60px_rgba(17,137,191,0.22)]',
 }
 
 export default function ProductCard({ product, className }: ProductCardProps) {

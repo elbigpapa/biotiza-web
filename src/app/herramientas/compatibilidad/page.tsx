@@ -30,7 +30,7 @@ const LINE_COLORS: Record<string, { dot: string; badge: string }> = {
   especialidades:  { dot: 'bg-azul-600',    badge: 'bg-azul-50 text-azul-700'       },
   bioestimulantes: { dot: 'bg-naranja-500', badge: 'bg-naranja-50 text-naranja-600' },
   nutricion:       { dot: 'bg-naranja-400', badge: 'bg-orange-50 text-orange-500'   },
-  zentia:          { dot: 'bg-azul-500',    badge: 'bg-azul-50 text-azul-600'       },
+  bioproteccion:          { dot: 'bg-azul-500',    badge: 'bg-azul-50 text-azul-600'       },
 }
 
 // ─── Helper: get all pairs from selected IDs ─────────────────────────────────

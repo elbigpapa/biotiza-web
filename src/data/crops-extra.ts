@@ -33,7 +33,7 @@ const AGAVE: FullCropProtocol = {
         { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '5 mL/L', method: 'Drench', frequency: 'Al plantar + días 30, 60', notes: 'Enraizador concentrado: crítico para colonizar el suelo desde el hijuelo' },
         { productId: 'bp-moots', productName: 'BP Moots', line: 'organicos', dose: '3 mL/L', method: 'Drench', frequency: 'Cada 60 días primer año', notes: 'Ácidos húmicos activan microbiología del suelo' },
         { productId: 'biotiza-lactobacillus', productName: 'Lactobacillus', line: 'especialidades', dose: '2 g/L', method: 'Drench', frequency: 'Al plantar + 90 días', notes: 'Inhibe Erwinia que causa pudrición del cogollo en hijuelos jóvenes' },
-        { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'zentia', dose: '2 g/L', method: 'Drench', frequency: 'Cada 90 días', notes: 'Trichoderma antagonista de Fusarium, principal patógeno radicular del agave', isProtection: true },
+        { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'bioproteccion', dose: '2 g/L', method: 'Drench', frequency: 'Cada 90 días', notes: 'Trichoderma antagonista de Fusarium, principal patógeno radicular del agave', isProtection: true },
       ],
     },
     {
@@ -44,7 +44,7 @@ const AGAVE: FullCropProtocol = {
         { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '15 L/ha', method: 'Fertirrigación', frequency: '2 veces/año (lluvias y secas)', notes: 'N moderado: el agave NO tolera N alto, induce floración prematura (chiqueo) y reduce vida útil' },
         { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '2 L/ha', method: 'Foliar al brote', frequency: 'Cada 6 meses', notes: 'Micros completos para fotosíntesis máxima de la roseta' },
         { productId: 'bp-mol', productName: 'BP Mol', line: 'especialidades', dose: '0.5 g/L', method: 'Foliar', frequency: 'Anual', notes: 'Mo + B + P clave para meristemo vigoroso y desarrollo del cogollo' },
-        { productId: 'max-kill-plus', productName: 'Max-Kill Plus', line: 'zentia', dose: '2.5 mL/L', method: 'Aspersión dirigida a base de pencas', frequency: 'Cada 4 meses', notes: 'Control biológico del picudo del agave (Scyphophorus): clave para evitar pérdida del 30-40% en plantaciones afectadas', isProtection: true },
+        { productId: 'max-kill-plus', productName: 'Max-Kill Plus', line: 'bioproteccion', dose: '2.5 mL/L', method: 'Aspersión dirigida a base de pencas', frequency: 'Cada 4 meses', notes: 'Control biológico del picudo del agave (Scyphophorus): clave para evitar pérdida del 30-40% en plantaciones afectadas', isProtection: true },
       ],
     },
     {
@@ -55,7 +55,7 @@ const AGAVE: FullCropProtocol = {
         { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '20 L/ha', method: 'Fertirrigación / Aplicación al cogollo', frequency: '2 veces/año', notes: 'K es EL nutriente crítico del agave: define cantidad y calidad de fructanos para destilación' },
         { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '4 mL/L', method: 'Foliar al cogollo', frequency: 'Cada 6 meses', notes: 'K foliar complementa fertirrigación' },
         { productId: 'bontera-sa10', productName: 'Bontera SA-10', line: 'nutricion', dose: '3 L/ha', method: 'Fertirrigación', frequency: 'Anual al inicio de lluvias', notes: 'Mejora CIC del suelo y disponibilidad de cationes (K, Ca, Mg)' },
-        { productId: 'beauver', productName: 'BEAUVER', line: 'zentia', dose: '2 mL/L', method: 'Aspersión a base de pencas', frequency: 'Cada 6 meses', notes: 'Beauveria controla picudo en larvas dentro del cogollo', isProtection: true },
+        { productId: 'beauver', productName: 'BEAUVER', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión a base de pencas', frequency: 'Cada 6 meses', notes: 'Beauveria controla picudo en larvas dentro del cogollo', isProtection: true },
       ],
     },
     {
@@ -92,7 +92,7 @@ const CEBOLLA: FullCropProtocol = {
       products: [
         { productId: 'bp-moots', productName: 'BP Moots', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Días 1, 7, 14', notes: 'Enraizador esencial para cebolla — raíz fibrosa = bulbo grande' },
         { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Alta en establecimiento', notes: 'P arranca el sistema radicular y prepara la planta para crecimiento foliar' },
-        { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'zentia', dose: '2 g/L', method: 'Drench', frequency: 'Días 5 y 20', notes: 'Trichoderma protege contra Pythium y Fusarium en suelos húmedos', isProtection: true },
+        { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'bioproteccion', dose: '2 g/L', method: 'Drench', frequency: 'Días 5 y 20', notes: 'Trichoderma protege contra Pythium y Fusarium en suelos húmedos', isProtection: true },
       ],
     },
     {
@@ -103,7 +103,7 @@ const CEBOLLA: FullCropProtocol = {
         { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '4 L/ha', method: 'Fertirrigación', frequency: '2 veces/semana', notes: 'N alto en vegetativo, BAJAR drásticamente al iniciar bulbificación' },
         { productId: 'bp-nutri', productName: 'BP Nutri', line: 'organicos', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'Algas marinas + micros para hojas erectas y verdes' },
         { productId: 'mg-ultra', productName: 'Mg-Ultra', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Semanal', notes: 'Mg para clorofila — hojas verde oscuro absorben más luz' },
-        { productId: 'zen-chrys', productName: 'Zen-Chrys', line: 'zentia', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 10 días preventivo', notes: 'Trips de la cebolla afectan rendimiento y son vectores de IYSV (virus)', isProtection: true },
+        { productId: 'zen-chrys', productName: 'Zen-Chrys', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 10 días preventivo', notes: 'Trips de la cebolla afectan rendimiento y son vectores de IYSV (virus)', isProtection: true },
       ],
     },
     {
@@ -114,7 +114,7 @@ const CEBOLLA: FullCropProtocol = {
         { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '5 L/ha', method: 'Fertirrigación', frequency: '2 veces/semana', notes: 'K dispara la formación del bulbo y define tamaño final' },
         { productId: 'bp-calcio', productName: 'BP Calcio', line: 'organicos', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'Ca da firmeza al bulbo y vida post-cosecha extendida' },
         { productId: 'bp-vit', productName: 'BP Vit', line: 'especialidades', dose: '1 mL/L', method: 'Foliar', frequency: 'Inicio de bulbificación', notes: 'Cofactores enzimáticos para metabolismo de azufre y pungencia' },
-        { productId: 'funbac-plus', productName: 'Funbac Plus', line: 'zentia', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 7 días si hay humedad', notes: 'Bacillus controla mildiú y Botrytis del cuello — devastadores en bulbificación', isProtection: true },
+        { productId: 'funbac-plus', productName: 'Funbac Plus', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 7 días si hay humedad', notes: 'Bacillus controla mildiú y Botrytis del cuello — devastadores en bulbificación', isProtection: true },
       ],
     },
     {
@@ -179,8 +179,8 @@ const ESPARRAGO: FullCropProtocol = {
         { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '6 L/ha', method: 'Fertirrigación', frequency: '2 veces/semana', notes: 'N alto en helecho para biomasa fotosintética máxima' },
         { productId: 'bp-nutri', productName: 'BP Nutri', line: 'organicos', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 14 días', notes: 'Algas + micros: helecho denso = más reservas en corona' },
         { productId: 'mg-ultra', productName: 'Mg-Ultra', line: 'nutricion', dose: '3 L/ha', method: 'Fertirrigación', frequency: 'Quincenal', notes: 'Mg sostiene actividad fotosintética en helecho persistente' },
-        { productId: 'zen-fungi', productName: 'Zen-Fungi', line: 'zentia', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 10 días preventivo', notes: 'Stemphylium puede defoliar helecho 50% — prevención semanal es clave', isProtection: true },
-        { productId: 'zen-cu', productName: 'Zen-Cu', line: 'zentia', dose: '1.5 mL/L', method: 'Aspersión', frequency: 'Cada 14 días rotación', notes: 'Cu orgánico contra roya — alternar con Bacillus', isProtection: true },
+        { productId: 'zen-fungi', productName: 'Zen-Fungi', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 10 días preventivo', notes: 'Stemphylium puede defoliar helecho 50% — prevención semanal es clave', isProtection: true },
+        { productId: 'zen-cu', productName: 'Zen-Cu', line: 'bioproteccion', dose: '1.5 mL/L', method: 'Aspersión', frequency: 'Cada 14 días rotación', notes: 'Cu orgánico contra roya — alternar con Bacillus', isProtection: true },
       ],
     },
     {
@@ -190,7 +190,7 @@ const ESPARRAGO: FullCropProtocol = {
       products: [
         { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '10 L/ha', method: 'Fertirrigación', frequency: 'Alta en fin de helecho', notes: 'K dispara translocación de fotoasimilados a corona — define cosecha próxima' },
         { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'K foliar complementa fertirrigación en pre-descanso' },
-        { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'zentia', dose: '2 g/L', method: 'Drench mensual', frequency: 'Durante todo helecho', notes: 'Trichoderma antagoniza Fusarium en corona — declinación es enemigo a largo plazo', isProtection: true },
+        { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'bioproteccion', dose: '2 g/L', method: 'Drench mensual', frequency: 'Durante todo helecho', notes: 'Trichoderma antagoniza Fusarium en corona — declinación es enemigo a largo plazo', isProtection: true },
       ],
     },
   ],
@@ -217,7 +217,7 @@ const PEPINO: FullCropProtocol = {
       products: [
         { productId: 'bp-moots', productName: 'BP Moots', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Días 1 y 7', notes: 'Enraizador con ácidos húmicos para arraigo en sustrato' },
         { productId: 'biotiza-lactobacillus', productName: 'Lactobacillus', line: 'especialidades', dose: '2 g/L', method: 'Drench', frequency: 'Día 1', notes: 'Coloniza rizosfera antes que patógenos' },
-        { productId: 'zen-chrys', productName: 'Zen-Chrys', line: 'zentia', dose: '1.5 mL/L', method: 'Foliar', frequency: 'Preventivo desde día 3', notes: 'Mosquita blanca llega desde el primer momento — prevención inmediata', isProtection: true },
+        { productId: 'zen-chrys', productName: 'Zen-Chrys', line: 'bioproteccion', dose: '1.5 mL/L', method: 'Foliar', frequency: 'Preventivo desde día 3', notes: 'Mosquita blanca llega desde el primer momento — prevención inmediata', isProtection: true },
       ],
     },
     {
@@ -228,7 +228,7 @@ const PEPINO: FullCropProtocol = {
         { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '5 L/ha', method: 'Fertirrigación', frequency: 'Diario en invernadero', notes: 'CE 1.8-2.2 mS/cm en vegetativo' },
         { productId: 'bp-nutri', productName: 'BP Nutri', line: 'organicos', dose: '1.5 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'Algas activan crecimiento de zarcillos y vigor vegetativo' },
         { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '1.5 L/ha', method: 'Fertirrigación', frequency: 'Cada 14 días', notes: 'Micros completos — Fe especialmente crítico en sustrato' },
-        { productId: 'funbac-plus', productName: 'Funbac Plus', line: 'zentia', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 10 días preventivo', notes: 'Oídio aparece rápidamente en invernadero con alta humedad', isProtection: true },
+        { productId: 'funbac-plus', productName: 'Funbac Plus', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 10 días preventivo', notes: 'Oídio aparece rápidamente en invernadero con alta humedad', isProtection: true },
       ],
     },
     {
@@ -251,7 +251,7 @@ const PEPINO: FullCropProtocol = {
         { productId: 'ae-calcium', productName: 'AE Calcium', line: 'organicos', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Cada 7 días', notes: 'Ca evita "cuello blanco" y prolonga vida post-cosecha' },
         { productId: 'bp-calcio', productName: 'BP Calcio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'Ca foliar para firmeza al transporte' },
         { productId: 'bp-gross', productName: 'BP Gross', line: 'bioestimulantes', dose: '0.8 g/L', method: 'Foliar', frequency: 'Cada 14 días', notes: 'Engordador: mantiene calibre comercial en producción larga' },
-        { productId: 'beauver', productName: 'BEAUVER', line: 'zentia', dose: '2 mL/L', method: 'Aspersión envés', frequency: 'Cada 7 días', notes: 'Control de mosquita blanca y trips sin afectar polinizadores ni dejar residuo', isProtection: true },
+        { productId: 'beauver', productName: 'BEAUVER', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión envés', frequency: 'Cada 7 días', notes: 'Control de mosquita blanca y trips sin afectar polinizadores ni dejar residuo', isProtection: true },
       ],
     },
   ],
@@ -278,7 +278,7 @@ const PAPA: FullCropProtocol = {
       products: [
         { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '3 mL/L', method: 'Drench al surco', frequency: 'Aplicación al sembrar', notes: 'Activa raíces y estolones — base de la futura cosecha' },
         { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '3 L/ha', method: 'Fertirrigación / banda al sembrar', frequency: 'Toda al inicio', notes: 'P se mueve poco en suelo — ponerlo en banda cerca del tubérculo-semilla' },
-        { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'zentia', dose: '3 g/L', method: 'Drench al sembrar', frequency: 'Aplicación al surco', notes: 'Trichoderma protege contra Rhizoctonia (canchro) y Fusarium en estolones', isProtection: true },
+        { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'bioproteccion', dose: '3 g/L', method: 'Drench al sembrar', frequency: 'Aplicación al surco', notes: 'Trichoderma protege contra Rhizoctonia (canchro) y Fusarium en estolones', isProtection: true },
       ],
     },
     {
@@ -289,7 +289,7 @@ const PAPA: FullCropProtocol = {
         { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '5 L/ha', method: 'Fertirrigación', frequency: '2 veces/semana', notes: 'N alto en vegetativo, BAJAR drásticamente al iniciar tuberización (N tardío = papa esponjosa)' },
         { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Cada 14 días', notes: 'Micros completos para clorofila y enzimas fotosintéticas' },
         { productId: 'mg-ultra', productName: 'Mg-Ultra', line: 'nutricion', dose: '3 L/ha', method: 'Fertirrigación', frequency: 'Quincenal', notes: 'Mg para clorofila — papa es demandante de Mg' },
-        { productId: 'zen-fungi', productName: 'Zen-Fungi', line: 'zentia', dose: '2 mL/L', method: 'Aspersión preventivo', frequency: 'Cada 10 días', notes: 'Tizón temprano (Alternaria) ataca en vegetativo bajo estrés', isProtection: true },
+        { productId: 'zen-fungi', productName: 'Zen-Fungi', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión preventivo', frequency: 'Cada 10 días', notes: 'Tizón temprano (Alternaria) ataca en vegetativo bajo estrés', isProtection: true },
       ],
     },
     {
@@ -300,7 +300,7 @@ const PAPA: FullCropProtocol = {
         { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '6 L/ha', method: 'Fertirrigación', frequency: '3 veces/semana', notes: 'K dispara tuberización — mayor demanda nutricional del ciclo' },
         { productId: 'bp-calcio', productName: 'BP Calcio', line: 'organicos', dose: '3 mL/L', method: 'Foliar + drench', frequency: 'Cada 7 días', notes: 'Ca previene sarna común y hollow heart (defectos internos)' },
         { productId: 'bp-mol', productName: 'BP Mol', line: 'especialidades', dose: '0.5 g/L', method: 'Foliar', frequency: 'Al inicio de tuberización', notes: 'Mo + P + B sinergia para metabolismo de tubérculo' },
-        { productId: 'funbac-plus', productName: 'Funbac Plus', line: 'zentia', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 7 días', notes: 'Tizón tardío (Phytophthora) puede destruir cultivo en 14 días — prevención continua', isProtection: true },
+        { productId: 'funbac-plus', productName: 'Funbac Plus', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 7 días', notes: 'Tizón tardío (Phytophthora) puede destruir cultivo en 14 días — prevención continua', isProtection: true },
       ],
     },
     {
@@ -311,7 +311,7 @@ const PAPA: FullCropProtocol = {
         { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '8 L/ha', method: 'Fertirrigación', frequency: 'Pico de aplicación', notes: 'K = peso del tubérculo, almacenamiento de almidón, gravedad específica' },
         { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Cada 7 días', notes: 'K foliar refuerza materia seca y prevención de hollow heart' },
         { productId: 'ae-calcium', productName: 'AE Calcium', line: 'organicos', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'Ca foliar para firmeza de piel y reducir lesiones de manejo' },
-        { productId: 'max-kill-plus', productName: 'Max-Kill Plus', line: 'zentia', dose: '2.5 mL/L', method: 'Drench / al surco', frequency: 'Si hay gusano blanco', notes: 'Control de Phyllophaga (gallina ciega) — daño directo al tubérculo', isProtection: true },
+        { productId: 'max-kill-plus', productName: 'Max-Kill Plus', line: 'bioproteccion', dose: '2.5 mL/L', method: 'Drench / al surco', frequency: 'Si hay gusano blanco', notes: 'Control de Phyllophaga (gallina ciega) — daño directo al tubérculo', isProtection: true },
       ],
     },
     {
@@ -346,7 +346,7 @@ const LECHUGA: FullCropProtocol = {
       products: [
         { productId: 'bp-moots', productName: 'BP Moots', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Días 1 y 5', notes: 'Reduce estrés de trasplante en plántula tierna' },
         { productId: 'biotiza-coadyuvante', productName: 'Coadyuvante', line: 'bioestimulantes', dose: '0.5 mL/L', method: 'Foliar', frequency: 'Día 3', notes: 'Mejora absorción y reduce estrés osmótico inicial' },
-        { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'zentia', dose: '2 g/L', method: 'Drench', frequency: 'Día 1', notes: 'Trichoderma contra Pythium en plántula recién trasplantada', isProtection: true },
+        { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'bioproteccion', dose: '2 g/L', method: 'Drench', frequency: 'Día 1', notes: 'Trichoderma contra Pythium en plántula recién trasplantada', isProtection: true },
       ],
     },
     {
@@ -369,7 +369,7 @@ const LECHUGA: FullCropProtocol = {
         { productId: 'ae-calcium', productName: 'AE Calcium', line: 'organicos', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Cada 5 días alternando', notes: 'Calcio premium para máxima absorción — previene tipburn que arruina cabezas' },
         { productId: 'biotiza-calcio-boro', productName: 'Calcio-Boro', line: 'especialidades', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 7 días', notes: 'Sinergia Ca-B para pared celular firme' },
         { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '3 L/ha', method: 'Fertirrigación', frequency: 'Cada 3 días', notes: 'K para firmeza y peso de cabeza' },
-        { productId: 'funbac-plus', productName: 'Funbac Plus', line: 'zentia', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 7 días preventivo', notes: 'Sclerotinia y Botrytis devastan cabezas — prevención biológica continua', isProtection: true },
+        { productId: 'funbac-plus', productName: 'Funbac Plus', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 7 días preventivo', notes: 'Sclerotinia y Botrytis devastan cabezas — prevención biológica continua', isProtection: true },
       ],
     },
     {
@@ -377,7 +377,7 @@ const LECHUGA: FullCropProtocol = {
       durationDays: 10, objective: 'Maximizar firmeza y vida post-cosecha sin riesgo de pudrición de campo.',
       color: 'bg-emerald-100', textColor: 'text-emerald-700',
       products: [
-        { productId: 'zen-fungi', productName: 'Zen-Fungi', line: 'zentia', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 5 días', notes: 'Bacillus rota con Funbac para evitar resistencia y mantener prevención', isProtection: true },
+        { productId: 'zen-fungi', productName: 'Zen-Fungi', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 5 días', notes: 'Bacillus rota con Funbac para evitar resistencia y mantener prevención', isProtection: true },
         { productId: 'bp-fresh', productName: 'BP Fresh', line: 'bioestimulantes', dose: '1 mL/L', method: 'Foliar', frequency: '5 días pre-cosecha', notes: 'Reduce carga microbiana superficial — clave para vida útil en empaque', isProtection: true },
       ],
     },
@@ -405,8 +405,8 @@ const PINA: FullCropProtocol = {
       products: [
         { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '4 mL/L', method: 'Inmersión + drench', frequency: 'Antes de plantar + día 30', notes: 'Inmersión del hijuelo en solución activa raíces antes de plantar' },
         { productId: 'biotiza-lactobacillus', productName: 'Lactobacillus', line: 'especialidades', dose: '3 g/L', method: 'Drench', frequency: 'Día 1 + 60', notes: 'Inhibe Erwinia y bacterias que pudren cogollo' },
-        { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'zentia', dose: '3 g/L', method: 'Drench', frequency: 'Día 1 + 45', notes: 'Trichoderma vs Phytophthora — patógeno radicular crítico en zonas húmedas', isProtection: true },
-        { productId: 'max-kill-plus', productName: 'Max-Kill Plus', line: 'zentia', dose: '2.5 mL/L', method: 'Aspersión a axilas de hojas', frequency: 'Mensual', notes: 'Control biológico de cochinilla desde inicio — vector del wilt de piña', isProtection: true },
+        { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'bioproteccion', dose: '3 g/L', method: 'Drench', frequency: 'Día 1 + 45', notes: 'Trichoderma vs Phytophthora — patógeno radicular crítico en zonas húmedas', isProtection: true },
+        { productId: 'max-kill-plus', productName: 'Max-Kill Plus', line: 'bioproteccion', dose: '2.5 mL/L', method: 'Aspersión a axilas de hojas', frequency: 'Mensual', notes: 'Control biológico de cochinilla desde inicio — vector del wilt de piña', isProtection: true },
       ],
     },
     {
@@ -439,7 +439,7 @@ const PINA: FullCropProtocol = {
         { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Cada 30 días', notes: 'K orgánico complementa fertirrigación — Brix > 14° para exportación' },
         { productId: 'bp-calcio', productName: 'BP Calcio', line: 'organicos', dose: '3 mL/L', method: 'Foliar al fruto', frequency: 'Cada 30 días', notes: 'Ca evita translucencia de pulpa y mejora vida post-cosecha' },
         { productId: 'bp-gross', productName: 'BP Gross', line: 'bioestimulantes', dose: '1 g/L', method: 'Foliar al fruto', frequency: 'Mes 3 y 4 post-inducción', notes: 'Engordador para alcanzar 1.6-2 kg por fruto en MD-2' },
-        { productId: 'beauver', productName: 'BEAUVER', line: 'zentia', dose: '2 mL/L', method: 'Aspersión axilas', frequency: 'Mensual', notes: 'Mantener control biológico de cochinilla durante fructificación', isProtection: true },
+        { productId: 'beauver', productName: 'BEAUVER', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión axilas', frequency: 'Mensual', notes: 'Mantener control biológico de cochinilla durante fructificación', isProtection: true },
       ],
     },
     {

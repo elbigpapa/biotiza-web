@@ -258,9 +258,9 @@ const ORIGINAL_ARTICLES: Article[] = [
       },
     ],
     relatedProducts: [
-      { slug: 'zentia-beauveria', line: 'zentia' },
-      { slug: 'zentia-metarhizium', line: 'zentia' },
-      { slug: 'zentia-trichoderma', line: 'zentia' },
+      { slug: 'zentia-beauveria', line: 'bioproteccion' },
+      { slug: 'zentia-metarhizium', line: 'bioproteccion' },
+      { slug: 'zentia-trichoderma', line: 'bioproteccion' },
     ],
   },
 ]

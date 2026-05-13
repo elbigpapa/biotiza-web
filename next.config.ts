@@ -97,6 +97,9 @@ const nextConfig: NextConfig = {
     return [
       { source: '/aviso-de-privacidad', destination: '/politica-privacidad', permanent: true },
       { source: '/productos/:path*', destination: '/soluciones/:path*', permanent: true },
+      // Legacy: Línea Zentia ahora es categoría Bioprotección
+      { source: '/soluciones/zentia', destination: '/soluciones/bioproteccion', permanent: true },
+      { source: '/soluciones/zentia/:slug*', destination: '/soluciones/bioproteccion/:slug*', permanent: true },
     ]
   },
 

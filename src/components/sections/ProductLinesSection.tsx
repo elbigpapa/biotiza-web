@@ -58,11 +58,11 @@ const LINES = [
     accentColor: '#f28a3d',
   },
   {
-    id: 'zentia',
-    name: 'Línea Zentia',
-    count: 10,
-    description: 'Insecticidas, fungicidas y bactericidas de origen natural. Bioprotección integral certificada.',
-    href: '/soluciones/zentia',
+    id: 'bioproteccion',
+    name: 'Bioprotección',
+    count: 14,
+    description: 'Bioinsecticidas, biofungicidas y bactericidas naturales. Una categoría transversal que agrupa los productos de protección — incluyendo Zentia y control biológico microbiano — de todas nuestras líneas.',
+    href: '/soluciones/bioproteccion',
     icon: Shield,
     gradient: 'from-azul-500 to-azul-400',
     lightBg: 'bg-azul-50',
@@ -78,7 +78,7 @@ export default function ProductLinesSection() {
         <SectionHeading
           tag="Portafolio completo"
           title="Soluciones integrales para cada etapa de tu cultivo"
-          subtitle="Cinco líneas especializadas que cubren nutrición, estimulación y protección de forma integral."
+          subtitle="Cuatro líneas de nutrición y estimulación, más una categoría transversal de bioprotección. Cobertura completa desde la siembra hasta la cosecha."
           className="mb-20"
         />
 
@@ -122,7 +122,7 @@ export default function ProductLinesSection() {
                       <h3 className="font-sans text-base font-semibold text-white leading-tight">
                         {line.name}
                       </h3>
-                      <span className="text-xs text-white/70 font-medium">
+                      <span className="text-xs text-white/80 font-medium">
                         {line.count} productos
                       </span>
                     </div>
@@ -130,7 +130,7 @@ export default function ProductLinesSection() {
 
                   {/* Content */}
                   <div className="flex flex-col flex-1 p-6">
-                    <p className="text-sm leading-relaxed text-gris-500 flex-1">
+                    <p className="text-sm leading-relaxed text-gris-600 flex-1">
                       {line.description}
                     </p>
                     <div className="mt-5 flex items-center gap-2 text-sm font-semibold transition-all duration-300"
@@ -162,8 +162,8 @@ export default function ProductLinesSection() {
               <h3 className="font-sans text-base font-semibold text-verde-800 mb-2">
                 Ver catálogo completo
               </h3>
-              <p className="text-sm text-verde-600/70">
-                Explora las 5 líneas y 35+ productos
+              <p className="text-sm text-verde-700">
+                Explora las 5 categorías y 45+ productos
               </p>
             </Link>
           </motion.div>

@@ -50,9 +50,9 @@ export const BIOPROTECTION_ARTICLES: Article[] = [
       { type: 'quote', text: 'Beauveria es el control biológico que más impacto ha tenido en agricultura intensiva mundial. Su éxito viene de no necesitar perfección: 70% de control con un biológico vale más que 95% con resistencia incipiente.', author: 'Dr. Marcos Faria, Embrapa Brasil' },
     ],
     relatedProducts: [
-      { slug: 'beauver', line: 'zentia' },
-      { slug: 'zen-chrys', line: 'zentia' },
-      { slug: 'max-kill-plus', line: 'zentia' },
+      { slug: 'beauver', line: 'bioproteccion' },
+      { slug: 'zen-chrys', line: 'bioproteccion' },
+      { slug: 'max-kill-plus', line: 'bioproteccion' },
     ],
   },
   {
@@ -96,8 +96,8 @@ export const BIOPROTECTION_ARTICLES: Article[] = [
       { type: 'quote', text: 'Trichoderma cambió la microbiología del suelo agrícola. Pasamos de "matar lo malo" a "establecer lo bueno". Es la diferencia entre medicina y salud preventiva.', author: 'Dr. Gary Harman, Cornell University' },
     ],
     relatedProducts: [
-      { slug: 'zen-fungi', line: 'zentia' },
-      { slug: 'funbac-plus', line: 'zentia' },
+      { slug: 'zen-fungi', line: 'bioproteccion' },
+      { slug: 'funbac-plus', line: 'bioproteccion' },
     ],
   },
   {
@@ -137,8 +137,8 @@ export const BIOPROTECTION_ARTICLES: Article[] = [
       { type: 'quote', text: 'Si tuviera que elegir un solo microorganismo benéfico para llevar a Marte, sería Bacillus subtilis. Es la herramienta más flexible que tenemos en biocontrol.', author: 'Dr. Jos Raaijmakers, Universidad de Leiden' },
     ],
     relatedProducts: [
-      { slug: 'funbac-plus', line: 'zentia' },
-      { slug: 'zen-fungi', line: 'zentia' },
+      { slug: 'funbac-plus', line: 'bioproteccion' },
+      { slug: 'zen-fungi', line: 'bioproteccion' },
     ],
   },
   {
@@ -185,9 +185,9 @@ export const BIOPROTECTION_ARTICLES: Article[] = [
       { type: 'quote', text: 'El productor que rota modos de acción y mezcla biológicos con químicos selectivos extiende la vida útil de TODA su caja de herramientas. El que solo usa químicos calendarizados pierde herramientas año tras año.', author: 'Dr. Larry Gut, Michigan State University' },
     ],
     relatedProducts: [
-      { slug: 'zen-fungi', line: 'zentia' },
-      { slug: 'beauver', line: 'zentia' },
-      { slug: 'zen-cu', line: 'zentia' },
+      { slug: 'zen-fungi', line: 'bioproteccion' },
+      { slug: 'beauver', line: 'bioproteccion' },
+      { slug: 'zen-cu', line: 'bioproteccion' },
     ],
   },
   {
@@ -227,9 +227,9 @@ export const BIOPROTECTION_ARTICLES: Article[] = [
       { type: 'quote', text: 'La resistencia no es un problema futuro. Es el problema presente. Cada productor que aplica el mismo MoA por calendario está acelerando la fecha en que su caja de herramientas estará vacía.', author: 'Dr. Russell Slater, IRAC International' },
     ],
     relatedProducts: [
-      { slug: 'beauver', line: 'zentia' },
-      { slug: 'funbac-plus', line: 'zentia' },
-      { slug: 'zen-fungi', line: 'zentia' },
+      { slug: 'beauver', line: 'bioproteccion' },
+      { slug: 'funbac-plus', line: 'bioproteccion' },
+      { slug: 'zen-fungi', line: 'bioproteccion' },
     ],
   },
   {
@@ -277,9 +277,9 @@ export const BIOPROTECTION_ARTICLES: Article[] = [
       { type: 'quote', text: 'El MIP no es ideología. Es matemáticas. Los productores que combinan biológicos y químicos selectivos por umbral económico ganan 15-25% más por hectárea que los que solo aplican calendarizado.', author: 'Dr. Frank Zalom, UC Davis Integrated Pest Management Program' },
     ],
     relatedProducts: [
-      { slug: 'beauver', line: 'zentia' },
-      { slug: 'zen-fungi', line: 'zentia' },
-      { slug: 'funbac-plus', line: 'zentia' },
+      { slug: 'beauver', line: 'bioproteccion' },
+      { slug: 'zen-fungi', line: 'bioproteccion' },
+      { slug: 'funbac-plus', line: 'bioproteccion' },
     ],
   },
 ]

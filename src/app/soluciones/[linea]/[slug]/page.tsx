@@ -107,7 +107,7 @@ function ProductJsonLd({
 // ─── Icono por línea ──────────────────────────────────────────────────────
 const LINE_ICONS: Record<ProductLine, React.ElementType> = {
   organicos: Leaf, especialidades: FlaskConical,
-  bioestimulantes: Sparkles, nutricion: Droplets, zentia: Shield,
+  bioestimulantes: Sparkles, nutricion: Droplets, bioproteccion: Shield,
 }
 
 // ─── Componente principal ─────────────────────────────────────────────────

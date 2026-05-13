@@ -3,7 +3,7 @@
  *
  * Uso:
  *   <Badge line="organicos" />
- *   <Badge line="zentia" size="md" />
+ *   <Badge line="bioproteccion" size="md" />
  *   <Badge cert="omri" />
  *   <Badge cert="cofepris" size="sm" />
  *   <Badge custom label="Nuevo" className="bg-purple-500 text-white" />
@@ -76,8 +76,8 @@ const LINE_CONFIG: Record<ProductLine, LineConfig> = {
     dot:   'bg-naranja-400',
     badge: 'bg-[#fff4eb] text-naranja-500 ring-1 ring-naranja-200',
   },
-  zentia: {
-    label: 'Línea Zentia',
+  bioproteccion: {
+    label: 'Bioprotección',
     dot:   'bg-azul-500',
     badge: 'bg-azul-100 text-azul-600 ring-1 ring-azul-200',
   },
@@ -263,5 +263,5 @@ export const LINE_COLORS: Record<ProductLine, { bg: string; text: string; hex: s
   especialidades:  { bg: 'bg-azul-600',    text: 'text-azul-600',    hex: '#0e6e99' },
   bioestimulantes: { bg: 'bg-naranja-500', text: 'text-naranja-500', hex: '#e8690f' },
   nutricion:       { bg: 'bg-naranja-400', text: 'text-naranja-400', hex: '#f28a3d' },
-  zentia:          { bg: 'bg-azul-500',    text: 'text-azul-500',    hex: '#1189bf' },
+  bioproteccion:          { bg: 'bg-azul-500',    text: 'text-azul-500',    hex: '#1189bf' },
 }

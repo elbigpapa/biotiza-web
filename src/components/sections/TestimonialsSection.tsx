@@ -3,14 +3,9 @@
 /**
  * TestimonialsSection.tsx — Social proof premium
  *
- * Carrusel de testimonios con avatares iniciales generadas, ratings,
- * fondo con gradient mesh sutil, y micro-animaciones reveal-on-scroll.
- *
- * Patrón aplicado: "Social Proof-Focused" (UI/UX Pro Max #24)
- *  - testimonios con foto/avatar
- *  - star ratings accesibles
- *  - logo grid de "confían en nosotros"
- *  - reveal animado en scroll
+ * Cambios vs versión anterior:
+ *   • "productos de la línea Zentia" → "productos de Bioprotección"
+ *   • "Migramos a la línea Zentia"   → "Migramos a Bioprotección"
  */
 
 import { motion } from 'framer-motion'
@@ -52,7 +47,7 @@ const TESTIMONIALS: Testimonial[] = [
     avatarBg: 'from-rose-500 to-pink-500',
     rating: 5,
     quote:
-      'El acompañamiento técnico es lo que más valoro. Cualquier duda la resolvemos por WhatsApp en horas, no en días. Y los productos de la línea Zentia nos sacaron de un brote serio de Botrytis sin afectar la certificación orgánica.',
+      'El acompañamiento técnico es lo que más valoro. Cualquier duda la resolvemos por WhatsApp en horas, no en días. Y los productos de Bioprotección nos sacaron de un brote serio de Botrytis sin afectar la certificación orgánica.',
     cultivoOrUseCase: 'Fresa · 28 ha',
     highlight: 'Cert. orgánica intacta',
   },
@@ -63,7 +58,7 @@ const TESTIMONIALS: Testimonial[] = [
     avatarBg: 'from-emerald-600 to-green-500',
     rating: 5,
     quote:
-      'Migramos de pesticidas químicos a la línea Zentia hace 18 meses. Ahora podemos abrir los parques inmediatamente después de aplicar y sin restricciones. Los vecinos lo notaron — recibimos cartas de agradecimiento.',
+      'Migramos de pesticidas químicos a Bioprotección hace 18 meses. Ahora podemos abrir los parques inmediatamente después de aplicar y sin restricciones. Los vecinos lo notaron — recibimos cartas de agradecimiento.',
     cultivoOrUseCase: 'Parques municipales · 240 ha',
     highlight: 'Cero quejas vecinales',
   },

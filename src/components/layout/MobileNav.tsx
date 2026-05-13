@@ -34,7 +34,7 @@ const SOLUTION_LINES = [
   { name: 'Especialidades',   href: '/soluciones/especialidades',  icon: FlaskConical,  color: 'text-azul-600',    bg: 'bg-azul-100' },
   { name: 'Bioestimulantes',  href: '/soluciones/bioestimulantes', icon: Sparkles,      color: 'text-naranja-500', bg: 'bg-naranja-100' },
   { name: 'Nutrición Líquida',href: '/soluciones/nutricion',       icon: Droplets,      color: 'text-naranja-400', bg: 'bg-[#fff4eb]' },
-  { name: 'Línea Zentia',     href: '/soluciones/zentia',          icon: Shield,        color: 'text-azul-500',    bg: 'bg-azul-100' },
+  { name: 'Bioprotección',     href: '/soluciones/bioproteccion',          icon: Shield,        color: 'text-azul-500',    bg: 'bg-azul-100' },
 ]
 
 const NAV_LINKS = [

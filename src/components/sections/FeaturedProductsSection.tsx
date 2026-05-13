@@ -10,7 +10,7 @@ import ProductCard, { type ProductCardData } from '@/components/products/Product
 
 // ─── Productos estrella (orden definido por equipo comercial) ─────────────
 // El orden es importante: el primer producto es el más prioritario.
-// Mezcla líneas (orgánicos · bioestimulantes · nutrición · zentia) para
+// Mezcla líneas (orgánicos · bioestimulantes · nutrición · bioprotección) para
 // mostrar la amplitud del catálogo a la vez que destacamos los más pedidos.
 
 const FEATURED_PRODUCTS: ProductCardData[] = [
@@ -82,7 +82,7 @@ const FEATURED_PRODUCTS: ProductCardData[] = [
     id: 'elicitor-sin',
     slug: 'elicitor-sin',
     name: 'Elicitor-Sin',
-    line: 'zentia',
+    line: 'bioproteccion',
     tagline: 'Biofungicida con Trichoderma harzianum. Antagonista natural de Fusarium y Rhizoctonia.',
     icon: '🛡️',
   },
@@ -90,7 +90,7 @@ const FEATURED_PRODUCTS: ProductCardData[] = [
     id: 'max-kill-plus',
     slug: 'max-kill-plus',
     name: 'Max-Kill Plus',
-    line: 'zentia',
+    line: 'bioproteccion',
     tagline: 'Bioinsecticida multiacción. Control biológico de plagas con resistencia química.',
     icon: '🦠',
   },

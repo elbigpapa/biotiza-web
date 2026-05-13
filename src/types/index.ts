@@ -14,15 +14,15 @@
  * organicos    → #22b573 verde
  * especialidades → #0e6e99 azul-teal
  * bioestimulantes → #e8690f naranja
- * nutricion    → #f28a3d naranja claro
- * zentia       → #1189bf azul
+ * nutricion       → #f28a3d naranja claro
+ * bioproteccion   → #1189bf azul
  */
 export type ProductLine =
   | 'organicos'
   | 'especialidades'
   | 'bioestimulantes'
   | 'nutricion'
-  | 'zentia'
+  | 'bioproteccion'
 
 // ─── Marcas de Proveedor ──────────────────────────────────────────────────
 

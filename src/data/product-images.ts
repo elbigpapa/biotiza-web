@@ -55,11 +55,11 @@ export const PRODUCT_IMAGES: Record<string, ProductImage> = {
   'funbac-plus':    { src: '/images/products/funbac-plus.png',    alt: 'Funbac Plus — Bioestimulante anti-hongos Biotiza, envase 1 L' },
   'max-kill-plus':  { src: '/images/products/max-kill-plus.png',  alt: 'Max Kill Plus — Bioinsecticida concentrado Biotiza, envase 1 L' },
   'nemapro':        { src: '/images/products/nemapro.png',        alt: 'Nemapro — Bionematicida Biotiza, envase 1 L' },
-  'zen-can':        { src: '/images/products/zen-can.png',        alt: 'Zen-Can — Bioprotección Línea Zentia Biotiza, envase 1 L' },
-  'zen-chrys':      { src: '/images/products/zen-chrys.png',      alt: 'Zen-Chrys — Bioprotección con Chrysoperla Línea Zentia Biotiza, envase 1 L' },
-  'zen-cu':         { src: '/images/products/zen-cu.png',         alt: 'Zen-Cu — Bioprotección con cobre Línea Zentia Biotiza, envase 1 L' },
-  'zen-fungi':      { src: '/images/products/zen-fungi.png',      alt: 'Zen-Fungi — Biofungicida Línea Zentia Biotiza, envase 1 L' },
-  'zen-spider':     { src: '/images/products/zen-spider.png',     alt: 'Zen-Spider — Bioprotección contra ácaros Línea Zentia Biotiza, envase 1 L' },
+  'zen-can':        { src: '/images/products/zen-can.png',        alt: 'Zen-Can — Bioprotección Biotiza, envase 1 L' },
+  'zen-chrys':      { src: '/images/products/zen-chrys.png',      alt: 'Zen-Chrys — Bioprotección con Chrysoperla Biotiza, envase 1 L' },
+  'zen-cu':         { src: '/images/products/zen-cu.png',         alt: 'Zen-Cu — Bioprotección con cobre Biotiza, envase 1 L' },
+  'zen-fungi':      { src: '/images/products/zen-fungi.png',      alt: 'Zen-Fungi — Biofungicida Biotiza, envase 1 L' },
+  'zen-spider':     { src: '/images/products/zen-spider.png',     alt: 'Zen-Spider — Bioprotección contra ácaros Biotiza, envase 1 L' },
 }
 
 /**
@@ -85,5 +85,5 @@ export const LINE_BACKDROP: Record<Product['line'], { from: string; to: string }
   especialidades:  { from: '#0E6E99', to: '#085880' },
   bioestimulantes: { from: '#E8690F', to: '#cd5500' },
   nutricion:       { from: '#F28A3D', to: '#d97520' },
-  zentia:          { from: '#1189BF', to: '#0a6b97' },
+  bioproteccion:   { from: '#1189BF', to: '#0a6b97' },
 }

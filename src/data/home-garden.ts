@@ -226,7 +226,7 @@ export const GARDEN_PACKAGES: GardenPackage[] = [
     gradient: 'from-red-700 to-orange-500',
     products: [
       { productId: 'bp-moots', name: 'BP Moots (enraizador)', line: 'organicos', sizeCasa: '100 mL', useDescription: 'Reactiva raíces dañadas y activa tejido nuevo en zona radicular.' },
-      { productId: 'zen-fungi', name: 'Zen-Fungi (antihongos)', line: 'zentia', sizeCasa: '100 mL', useDescription: 'Bioprotección contra hongos de raíz (Fusarium, Pythium) y foliares (Botrytis).' },
+      { productId: 'zen-fungi', name: 'Zen-Fungi (antihongos)', line: 'bioproteccion', sizeCasa: '100 mL', useDescription: 'Bioprotección contra hongos de raíz (Fusarium, Pythium) y foliares (Botrytis).' },
       { productId: 'bp-nitro-fx', name: 'BP Nitro FX (aminoácidos)', line: 'organicos', sizeCasa: '100 mL', useDescription: 'Aminoácidos libres: la planta ahorra energía de síntesis y recupera tejido 3× más rápido.' },
     ],
     includes: [
@@ -266,7 +266,7 @@ export const GARDEN_PACKAGES: GardenPackage[] = [
       { productId: 'n-ultra', name: 'N-Ultra (nitrógeno)', line: 'nutricion', sizeCasa: '1 L concentrado', useDescription: 'Nitrógeno de alta asimilación: el pasto crece denso y vigoroso sin quemarse.' },
       { productId: 'bp-mix', name: 'BP Mix (micros)', line: 'nutricion', sizeCasa: '500 mL', useDescription: 'Hierro + manganeso + magnesio: el verde profundo que hace que se vea "de golf".' },
       { productId: 'bp-nutri', name: 'BP Nutri (algas)', line: 'organicos', sizeCasa: '500 mL', useDescription: 'Resistencia a estrés hídrico y térmico, menos estrés de corte.' },
-      { productId: 'zen-fungi', name: 'Zen-Fungi (biofungicida)', line: 'zentia', sizeCasa: '500 mL', useDescription: 'Preventivo contra manchas foliares, pythium y dollar spot.' },
+      { productId: 'zen-fungi', name: 'Zen-Fungi (biofungicida)', line: 'bioproteccion', sizeCasa: '500 mL', useDescription: 'Preventivo contra manchas foliares, pythium y dollar spot.' },
     ],
     includes: [
       '4 productos concentrados con dosificador',
@@ -301,8 +301,8 @@ export const GARDEN_PACKAGES: GardenPackage[] = [
     emoji: '🛡️',
     gradient: 'from-azul-600 to-cyan-500',
     products: [
-      { productId: 'zen-fungi', name: 'Zen-Fungi (biofungicida)', line: 'zentia', sizeCasa: '500 mL', useDescription: 'Bacillus subtilis: protección foliar preventiva.' },
-      { productId: 'zen-chrys', name: 'Zen-Chrys (Beauveria)', line: 'zentia', sizeCasa: '250 mL', useDescription: 'Control biológico de trips, mosca blanca y pulgón.' },
+      { productId: 'zen-fungi', name: 'Zen-Fungi (biofungicida)', line: 'bioproteccion', sizeCasa: '500 mL', useDescription: 'Bacillus subtilis: protección foliar preventiva.' },
+      { productId: 'zen-chrys', name: 'Zen-Chrys (Beauveria)', line: 'bioproteccion', sizeCasa: '250 mL', useDescription: 'Control biológico de trips, mosca blanca y pulgón.' },
       { productId: 'bp-acua', name: 'BP Acua (sanitizante)', line: 'bioestimulantes', sizeCasa: '250 mL', useDescription: 'Sanitiza el agua de riego, previene propagación por encharcamientos.' },
     ],
     includes: [
@@ -340,7 +340,7 @@ export const GARDEN_PACKAGES: GardenPackage[] = [
       { productId: 'bp-calcio', name: 'BP Calcio (calcio orgánico)', line: 'organicos', sizeCasa: '500 mL', useDescription: 'Calcio quelatado para evitar rajaduras y mejorar vida post-cosecha.' },
       { productId: 'bp-mix', name: 'BP Mix (micros)', line: 'nutricion', sizeCasa: '250 mL', useDescription: 'Corrige clorosis férrica y amarillez de hojas nuevas.' },
       { productId: 'bp-fiore', name: 'BP Fioré (inductor floración)', line: 'bioestimulantes', sizeCasa: '100 g', useDescription: 'Aumenta floración y cuajado de frutos.' },
-      { productId: 'zen-chrys', name: 'Zen-Chrys (Beauveria)', line: 'zentia', sizeCasa: '250 mL', useDescription: 'Control biológico de pulgón, mosquita blanca y psílido asiático.' },
+      { productId: 'zen-chrys', name: 'Zen-Chrys (Beauveria)', line: 'bioproteccion', sizeCasa: '250 mL', useDescription: 'Control biológico de pulgón, mosquita blanca y psílido asiático.' },
     ],
     includes: [
       '4 productos para ciclo anual completo',
@@ -378,7 +378,7 @@ export const GARDEN_PACKAGES: GardenPackage[] = [
       { productId: 'bp-cuaje', name: 'BP Cuaje (amarre de fruto)', line: 'bioestimulantes', sizeCasa: '250 mL', useDescription: 'Reduce aborto floral y mejora amarre de aguacatitos.' },
       { productId: 'bp-calcio', name: 'BP Calcio (orgánico)', line: 'organicos', sizeCasa: '500 mL', useDescription: 'Firmeza del fruto, prevención de rajaduras y micro-grietas.' },
       { productId: 'ca-ultra', name: 'Ca-Ultra (fertirrigación)', line: 'nutricion', sizeCasa: '1 L', useDescription: 'Para aplicar en drench al pie del árbol cada 6 semanas.' },
-      { productId: 'zen-fungi', name: 'Zen-Fungi (biofungicida)', line: 'zentia', sizeCasa: '250 mL', useDescription: 'Prevención de antracnosis del fruto y Phytophthora en raíz.' },
+      { productId: 'zen-fungi', name: 'Zen-Fungi (biofungicida)', line: 'bioproteccion', sizeCasa: '250 mL', useDescription: 'Prevención de antracnosis del fruto y Phytophthora en raíz.' },
     ],
     includes: [
       '4 productos ciclo completo',
@@ -415,7 +415,7 @@ export const GARDEN_PACKAGES: GardenPackage[] = [
     products: [
       { productId: 'bp-fiore', name: 'BP Fioré (inductor)', line: 'bioestimulantes', sizeCasa: '100 g', useDescription: 'Mayor densidad de botones florales.' },
       { productId: 'bp-potasio', name: 'BP Potasio', line: 'organicos', sizeCasa: '500 mL', useDescription: 'Intensifica color y vida de la flor cortada.' },
-      { productId: 'zen-fungi', name: 'Zen-Fungi', line: 'zentia', sizeCasa: '250 mL', useDescription: 'Prevención de mancha negra y oídio.' },
+      { productId: 'zen-fungi', name: 'Zen-Fungi', line: 'bioproteccion', sizeCasa: '250 mL', useDescription: 'Prevención de mancha negra y oídio.' },
     ],
     includes: [
       '3 productos para temporada completa',
@@ -451,7 +451,7 @@ export const GARDEN_PACKAGES: GardenPackage[] = [
       { productId: 'n-ultra', name: 'N-Ultra (presentación 20 L)', line: 'nutricion', sizeCasa: '20 L', useDescription: 'Base nitrogenada mensual para todos los greens.' },
       { productId: 'bp-mix', name: 'BP Mix (20 L)', line: 'nutricion', sizeCasa: '20 L', useDescription: 'Color profundo y uniformidad visual.' },
       { productId: 'bp-nutri', name: 'BP Nutri (20 L)', line: 'organicos', sizeCasa: '20 L', useDescription: 'Resistencia a estrés de corte bajo y tráfico.' },
-      { productId: 'zen-fungi', name: 'Zen-Fungi (20 L)', line: 'zentia', sizeCasa: '20 L', useDescription: 'Programa preventivo anti-dollar spot, pythium blight y brown patch.' },
+      { productId: 'zen-fungi', name: 'Zen-Fungi (20 L)', line: 'bioproteccion', sizeCasa: '20 L', useDescription: 'Programa preventivo anti-dollar spot, pythium blight y brown patch.' },
     ],
     includes: [
       'Análisis de suelo inicial por laboratorio certificado',
@@ -487,8 +487,8 @@ export const GARDEN_PACKAGES: GardenPackage[] = [
     gradient: 'from-slate-700 to-gris-600',
     products: [
       { productId: 'bp-nutri', name: 'BP Nutri', line: 'organicos', sizeCasa: '20 L tambo', useDescription: 'Estimulación natural, sin nitrógeno de síntesis.' },
-      { productId: 'zen-fungi', name: 'Zen-Fungi', line: 'zentia', sizeCasa: '20 L tambo', useDescription: 'Bioprotección familiar-compatible (sin restricción de acceso).' },
-      { productId: 'zen-chrys', name: 'Zen-Chrys', line: 'zentia', sizeCasa: '20 L tambo', useDescription: 'Control biológico de insectos sin impacto en polinizadores.' },
+      { productId: 'zen-fungi', name: 'Zen-Fungi', line: 'bioproteccion', sizeCasa: '20 L tambo', useDescription: 'Bioprotección familiar-compatible (sin restricción de acceso).' },
+      { productId: 'zen-chrys', name: 'Zen-Chrys', line: 'bioproteccion', sizeCasa: '20 L tambo', useDescription: 'Control biológico de insectos sin impacto en polinizadores.' },
     ],
     includes: [
       'Atención a licitaciones públicas',

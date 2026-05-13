@@ -30,7 +30,7 @@ const LINE_BG_GRADIENT: Record<ProductLine, string> = {
   especialidades:  'from-azul-100/80 via-azul-50/40 to-white',
   bioestimulantes: 'from-naranja-100/80 via-naranja-50/40 to-white',
   nutricion:       'from-naranja-100/60 via-yellow-50/30 to-white',
-  zentia:          'from-azul-100/80 via-azul-50/40 to-white',
+  bioproteccion:   'from-azul-100/80 via-azul-50/40 to-white',
 }
 
 const LINE_GLOW: Record<ProductLine, string> = {
@@ -38,7 +38,7 @@ const LINE_GLOW: Record<ProductLine, string> = {
   especialidades:  'bg-azul-600/25',
   bioestimulantes: 'bg-naranja-500/25',
   nutricion:       'bg-naranja-400/25',
-  zentia:          'bg-azul-500/25',
+  bioproteccion:   'bg-azul-500/25',
 }
 
 export default function ProductPhoto({

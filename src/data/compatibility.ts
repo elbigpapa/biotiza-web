@@ -242,7 +242,7 @@ export const COMPATIBILITY_MATRIX: CompatibilityEntry[] = [
     notes: 'Compatible. Buena combinación para establecimiento de planta nueva.',
   },
 
-  // ── Línea Zentia entre sí — compatibles ───────────────────────────────
+  // ── Bioprotección entre sí — compatibles ───────────────────────────────
   {
     productA: 'zen-chrys',
     productB: 'zen-fungi',

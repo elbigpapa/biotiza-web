@@ -149,7 +149,7 @@ export const SUSTAINABILITY_ARTICLES: Article[] = [
     ],
     relatedProducts: [
       { slug: 'biotiza-lactobacillus', line: 'especialidades' },
-      { slug: 'zen-fungi', line: 'zentia' },
+      { slug: 'zen-fungi', line: 'bioproteccion' },
       { slug: 'bp-koren', line: 'bioestimulantes' },
       { slug: 'bontera-sa10', line: 'nutricion' },
     ],
@@ -199,9 +199,9 @@ export const SUSTAINABILITY_ARTICLES: Article[] = [
       { type: 'quote', text: 'El productor que sigue pensando que "siempre se aplicó así" va a perder mercado. El que entiende que el residuo es el nuevo arbitro de exportación está construyendo el negocio del 2030.', author: 'Dr. Hans van der Beek, AgroExports Europe' },
     ],
     relatedProducts: [
-      { slug: 'beauver', line: 'zentia' },
-      { slug: 'zen-fungi', line: 'zentia' },
-      { slug: 'funbac-plus', line: 'zentia' },
+      { slug: 'beauver', line: 'bioproteccion' },
+      { slug: 'zen-fungi', line: 'bioproteccion' },
+      { slug: 'funbac-plus', line: 'bioproteccion' },
       { slug: 'bp-nutri', line: 'organicos' },
     ],
   },

@@ -208,7 +208,7 @@ export const CROPS_ARTICLES: Article[] = [
     relatedProducts: [
       { slug: 'bp-mix', line: 'nutricion' },
       { slug: 'bp-ferrum', line: 'especialidades' },
-      { slug: 'beauver', line: 'zentia' },
+      { slug: 'beauver', line: 'bioproteccion' },
       { slug: 'bp-zinc', line: 'especialidades' },
     ],
   },
@@ -250,9 +250,9 @@ export const CROPS_ARTICLES: Article[] = [
       { type: 'quote', text: 'En apio, el productor que gana es el que entiende que el empaque es donde se cobra. Aplicar biológicos preventivos en campo es defender el cheque del empacador.', author: 'Ing. Alfredo Martínez, Asociación de Productores de Querétaro' },
     ],
     relatedProducts: [
-      { slug: 'zen-fungi', line: 'zentia' },
-      { slug: 'funbac-plus', line: 'zentia' },
-      { slug: 'zen-cu', line: 'zentia' },
+      { slug: 'zen-fungi', line: 'bioproteccion' },
+      { slug: 'funbac-plus', line: 'bioproteccion' },
+      { slug: 'zen-cu', line: 'bioproteccion' },
     ],
   },
   {

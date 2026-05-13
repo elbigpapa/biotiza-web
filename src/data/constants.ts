@@ -74,17 +74,17 @@ export const PRODUCT_LINES: ProductLineConfig[] = [
     productCount:    9,
   },
   {
-    id:              'zentia',
-    name:            'Línea Zentia',
-    slug:            'zentia',
+    id:              'bioproteccion',
+    name:            'Bioprotección',
+    slug:            'bioproteccion',
     color:           '#1189bf',
     tailwindBg:      'bg-azul-500',
     tailwindText:    'text-azul-500',
     tailwindBorder:  'border-azul-500',
     iconName:        'Shield',
-    description:     'Bioprotección integral de origen natural: insecticidas, fungicidas y bactericidas. Efectivos, seguros para el agroecosistema y compatibles con exportación.',
+    description:     'Bioprotección integral de origen natural: bioinsecticidas, biofungicidas y bactericidas. Categoría transversal que agrupa los productos de protección de cultivo de todas nuestras líneas — incluyendo Zentia, control biológico microbiano y sanitizantes — efectivos, seguros para el agroecosistema y compatibles con exportación.',
     tagline:         'Bioinsecticidas · Biofungicidas · Bactericidas',
-    productCount:    10,
+    productCount:    14,
   },
 ]
 
@@ -122,7 +122,7 @@ export const BRANDS: BrandConfig[] = [
     iconName:    'Leaf',
     strengths:   [
       'Quelatos orgánicos de alta asimilación',
-      'Línea Zentia de bioprotección COFEPRIS + OMRI',
+      'Sello Zentia de bioprotección COFEPRIS + OMRI',
       'Nutrición líquida 100 % soluble',
       'Especialización en cultivos de exportación',
     ],
