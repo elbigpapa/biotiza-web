@@ -2,20 +2,26 @@
 
 /**
  * /soluciones — Catálogo completo con búsqueda y filtros
+ *
+ * Diseño "a granel": todos los productos juntos, agrupados por línea
+ * de producto (Orgánicos, Especialidades, Bioestimulantes, Nutrición,
+ * Zentia). NO se separa ni menciona por marca/proveedor.
  */
 
 import { useState, useMemo } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Search, X, Filter, Leaf, FlaskConical, Sparkles, Droplets, Shield } from 'lucide-react'
-import { PRODUCTS, getProductsByLine, getProductsByBrand } from '@/data/products'
-import { PRODUCT_LINES, BRANDS } from '@/data/constants'
+import { PRODUCTS, getProductsByLine } from '@/data/products'
+import { PRODUCT_LINES } from '@/data/constants'
+import { getProductImage } from '@/data/product-images'
 import { cn } from '@/lib/utils'
 import { staggerContainer, fadeInUp } from '@/lib/animations'
 import Badge from '@/components/ui/Badge'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Container from '@/components/ui/Container'
-import type { ProductLine, ProductBrand } from '@/types'
+import type { ProductLine } from '@/types'
 
 // ─── Icono por línea ──────────────────────────────────────────────────────
 const LINE_ICONS: Record<ProductLine, React.ElementType> = {
@@ -27,44 +33,69 @@ const LINE_ICONS: Record<ProductLine, React.ElementType> = {
 function CatalogCard({ product }: { product: typeof PRODUCTS[0] }) {
   const Icon = LINE_ICONS[product.line]
   const lineConfig = PRODUCT_LINES.find(l => l.id === product.line)!
+  const photo = getProductImage(product.slug)
 
   return (
     <Link
       href={`/soluciones/${product.line}/${product.slug}`}
+      aria-label={`Ver ficha de ${product.name}`}
       className={cn(
         'group flex flex-col rounded-xl bg-white border border-gris-100',
         'shadow-card hover:-translate-y-1 hover:shadow-[0_8px_28px_rgba(34,181,115,0.13)]',
         'transition-all duration-300 overflow-hidden',
+        'focus:outline-none focus-visible:ring-2 focus-visible:ring-verde-500 focus-visible:ring-offset-2',
       )}
     >
-      {/* Header colorido */}
+      {/* Cabecera: foto HD del envase si existe, fallback al icono */}
       <div
-        className="flex h-28 items-center justify-center"
-        style={{ background: `linear-gradient(135deg, ${lineConfig.color}22, ${lineConfig.color}44)` }}
+        className="relative flex h-36 sm:h-40 items-center justify-center overflow-hidden"
+        style={{ background: `linear-gradient(135deg, ${lineConfig.color}18, ${lineConfig.color}34)` }}
       >
+        {/* Glow sutil */}
         <div
-          className="flex h-14 w-14 items-center justify-center rounded-2xl"
-          style={{ backgroundColor: `${lineConfig.color}30` }}
-        >
-          <Icon size={26} style={{ color: lineConfig.color }} />
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[140%] w-[140%] rounded-full blur-2xl opacity-60"
+          style={{ background: `radial-gradient(circle, ${lineConfig.color}33 0%, transparent 60%)` }}
+          aria-hidden="true"
+        />
+
+        {photo ? (
+          <Image
+            src={photo.src}
+            alt={photo.alt}
+            width={300}
+            height={420}
+            sizes="(min-width: 1280px) 18vw, (min-width: 1024px) 22vw, (min-width: 640px) 32vw, 48vw"
+            className="relative z-10 h-[88%] w-auto object-contain drop-shadow-[0_12px_22px_rgba(0,0,0,0.22)] transition-transform duration-500 group-hover:scale-[1.08]"
+          />
+        ) : (
+          <div
+            className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl"
+            style={{ backgroundColor: `${lineConfig.color}30` }}
+          >
+            <Icon size={26} style={{ color: lineConfig.color }} />
+          </div>
+        )}
+
+        {/* Top badge "Top" si es featured */}
+        {product.featured && (
+          <span className="absolute top-2.5 right-2.5 z-20 rounded-full bg-naranja-500 px-2 py-0.5 text-[10px] font-bold text-white uppercase shadow-md">
+            ⭐ Top
+          </span>
+        )}
+        {/* Badge de línea bottom-left para identificar tipo */}
+        <div className="absolute bottom-2.5 left-2.5 z-20">
+          <Badge line={product.line} size="sm" />
         </div>
       </div>
 
       <div className="flex flex-col flex-1 p-4 gap-2">
-        <div className="flex items-start justify-between gap-2">
-          <Badge line={product.line} size="sm" />
-          {product.featured && (
-            <span className="rounded-full bg-naranja-100 px-2 py-0.5 text-[10px] font-bold text-naranja-600 uppercase">⭐ Top</span>
-          )}
-        </div>
-        <Badge brand={product.brand} size="sm" showDot={false} className="self-start" />
         <h3 className="text-sm font-semibold text-gris-900 leading-tight group-hover:text-verde-700 transition-colors">
           {product.name}
         </h3>
         <p className="text-xs text-gris-500 line-clamp-2 flex-1 leading-relaxed">
           {product.description}
         </p>
-        <span className="mt-1 text-xs font-semibold text-verde-600 group-hover:underline">
+        <span className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-verde-600 group-hover:gap-1.5 transition-all">
           Ver ficha →
         </span>
       </div>
@@ -78,18 +109,11 @@ const LINE_TABS: { id: ProductLine | 'all'; label: string; count: number }[] = [
   ...PRODUCT_LINES.map(l => ({ id: l.id, label: l.name, count: getProductsByLine(l.id).length })),
 ]
 
-// ─── Tabs de marcas ───────────────────────────────────────────────────────
-const BRAND_TABS: { id: ProductBrand | 'all'; label: string; count: number }[] = [
-  { id: 'all', label: 'Todas las marcas', count: PRODUCTS.length },
-  ...BRANDS.map(b => ({ id: b.id, label: b.name, count: getProductsByBrand(b.id).length })),
-]
-
 // ─── Componente ───────────────────────────────────────────────────────────
 
 export default function SolucionesPage() {
   const [query,      setQuery]      = useState('')
   const [activeLine, setActiveLine] = useState<ProductLine | 'all'>('all')
-  const [activeBrand, setActiveBrand] = useState<ProductBrand | 'all'>('all')
   const [activeCert, setActiveCert] = useState<string>('all')
   const [activeMethod, setActiveMethod] = useState<string>('all')
   const [showFilters, setShowFilters] = useState(false)
@@ -97,7 +121,6 @@ export default function SolucionesPage() {
   const filtered = useMemo(() => {
     return PRODUCTS.filter(p => {
       const matchLine   = activeLine === 'all' || p.line === activeLine
-      const matchBrand  = activeBrand === 'all' || p.brand === activeBrand
       const matchCert   = activeCert === 'all' || p.certifications.includes(activeCert)
       const matchMethod = activeMethod === 'all' || p.application_methods.includes(activeMethod)
       const matchQuery  = !query || (
@@ -105,11 +128,11 @@ export default function SolucionesPage() {
         p.description.toLowerCase().includes(query.toLowerCase()) ||
         p.solves_problems.some(s => s.toLowerCase().includes(query.toLowerCase()))
       )
-      return matchLine && matchBrand && matchCert && matchMethod && matchQuery
+      return matchLine && matchCert && matchMethod && matchQuery
     })
-  }, [query, activeLine, activeBrand, activeCert, activeMethod])
+  }, [query, activeLine, activeCert, activeMethod])
 
-  const hasFilters = activeLine !== 'all' || activeBrand !== 'all' || activeCert !== 'all' || activeMethod !== 'all' || query
+  const hasFilters = activeLine !== 'all' || activeCert !== 'all' || activeMethod !== 'all' || query
 
   return (
     <div className="bg-white">
@@ -119,7 +142,7 @@ export default function SolucionesPage() {
           <SectionHeading
             tag="Portafolio completo"
             title="Nuestras Soluciones"
-            subtitle={`${PRODUCTS.length} productos · 3 marcas (Bioproductos, Agrobionsa, Veganic) · 5 líneas especializadas. Nutrición, estimulación y bioprotección para cada etapa de tu cultivo.`}
+            subtitle={`${PRODUCTS.length} productos en 5 líneas especializadas: Orgánicos, Especialidades, Bioestimulantes, Nutrición Líquida y Bioprotección Zentia. Para cada etapa de tu cultivo.`}
             theme="dark"
             animate={false}
           />
@@ -162,7 +185,7 @@ export default function SolucionesPage() {
             </button>
             {hasFilters && (
               <button
-                onClick={() => { setQuery(''); setActiveLine('all'); setActiveBrand('all'); setActiveCert('all'); setActiveMethod('all') }}
+                onClick={() => { setQuery(''); setActiveLine('all'); setActiveCert('all'); setActiveMethod('all') }}
                 className="text-xs text-gris-500 hover:text-red-500 transition-colors"
               >
                 Limpiar
@@ -216,38 +239,7 @@ export default function SolucionesPage() {
           </motion.div>
         )}
 
-        {/* Tabs de marca (proveedor) */}
-        <div className="mb-3 flex items-center gap-3">
-          <span className="hidden text-xs font-semibold uppercase tracking-wider text-gris-500 sm:inline">Marca</span>
-          <div className="flex gap-2 overflow-x-auto pb-1">
-            {BRAND_TABS.map(tab => {
-              const brandColor = tab.id !== 'all' ? BRANDS.find(b => b.id === tab.id)?.color : undefined
-              const isActive = activeBrand === tab.id
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveBrand(tab.id)}
-                  className={cn(
-                    'flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors border',
-                    isActive
-                      ? 'text-white border-transparent'
-                      : 'bg-white text-gris-600 border-gris-200 hover:border-gris-300',
-                  )}
-                  style={isActive && brandColor ? { backgroundColor: brandColor } : undefined}
-                >
-                  {tab.label}
-                  <span className={cn('rounded-full px-1.5 py-0.5 text-[10px] font-bold',
-                    isActive ? 'bg-white/25 text-white' : 'bg-gris-100 text-gris-600'
-                  )}>
-                    {tab.count}
-                  </span>
-                </button>
-              )
-            })}
-          </div>
-        </div>
-
-        {/* Tabs de línea */}
+        {/* Tabs de línea de producto */}
         <div className="mb-8 flex items-center gap-3">
           <span className="hidden text-xs font-semibold uppercase tracking-wider text-gris-500 sm:inline">Línea</span>
           <div className="flex gap-2 overflow-x-auto pb-2">
@@ -277,13 +269,13 @@ export default function SolucionesPage() {
         {filtered.length === 0 ? (
           <div className="py-20 text-center">
             <p className="text-gris-500">No encontramos productos con esos filtros.</p>
-            <button onClick={() => { setQuery(''); setActiveLine('all'); setActiveBrand('all'); setActiveCert('all'); setActiveMethod('all') }} className="mt-3 text-sm text-verde-600 hover:underline">
+            <button onClick={() => { setQuery(''); setActiveLine('all'); setActiveCert('all'); setActiveMethod('all') }} className="mt-3 text-sm text-verde-600 hover:underline">
               Limpiar filtros →
             </button>
           </div>
         ) : (
           <motion.div
-            key={`${activeLine}-${activeBrand}-${query}-${activeCert}-${activeMethod}`}
+            key={`${activeLine}-${query}-${activeCert}-${activeMethod}`}
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
