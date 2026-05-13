@@ -3,11 +3,10 @@
 import { useRef, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion, useInView, useMotionValue, useTransform, animate, useScroll } from 'framer-motion'
+import { motion, useInView, useMotionValue, useTransform, animate, useScroll, useReducedMotion } from 'framer-motion'
 import { ArrowRight, MessageCircle, Leaf, Droplets, Shield, FlaskConical, Sparkles } from 'lucide-react'
 import { staggerContainer, fadeInUp } from '@/lib/animations'
 import { HERO_IMAGES } from '@/data/crop-images'
-import { cn } from '@/lib/utils'
 
 // ─── Counter animado ──────────────────────────────────────────────────────
 
@@ -38,44 +37,72 @@ const STATS = [
   { value: 0,  suffix: '',  label: 'OMRI · COFEPRIS',     numeric: false, display: '✓' },
 ]
 
-// ─── Orbs decorativos con parallax suave ──────────────────────────────────
+// ─── Orbs decorativos con parallax + foto HD con Ken Burns ─────────────────
 
 function HeroBackground() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-      {/* Foto HD de campo cultivado al amanecer — capa base */}
-      <Image
-        src={HERO_IMAGES.cultivatedField.src}
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center opacity-25"
+      {/* Foto HD de campo cultivado — capa base con Ken Burns lento */}
+      <div className="absolute inset-0 motion-safe:animate-[kenburns_28s_ease-in-out_infinite_alternate]">
+        <Image
+          src={HERO_IMAGES.cultivatedField.src}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
+
+      {/* Overlay corporativo verde-oscuro — degradado complejo para profundidad */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `
+            linear-gradient(115deg, rgba(5, 32, 24, 0.78) 0%, rgba(11, 60, 47, 0.62) 35%, rgba(13, 92, 74, 0.50) 70%, rgba(34, 181, 115, 0.30) 100%),
+            radial-gradient(ellipse 70% 50% at 18% 30%, rgba(34, 181, 115, 0.30) 0%, transparent 70%),
+            radial-gradient(ellipse 55% 70% at 82% 80%, rgba(17, 137, 191, 0.22) 0%, transparent 70%)
+          `,
+        }}
       />
 
-      {/* Overlay verde profesional — multiply blend + degradado para legibilidad */}
-      <div className="absolute inset-0" style={{
-        background: `
-          linear-gradient(180deg, rgba(8, 46, 33, 0.55) 0%, rgba(13, 92, 74, 0.65) 50%, rgba(8, 46, 33, 0.85) 100%),
-          radial-gradient(ellipse 80% 50% at 20% 40%, rgba(34, 181, 115, 0.25) 0%, transparent 70%),
-          radial-gradient(ellipse 60% 80% at 80% 20%, rgba(17, 137, 191, 0.15) 0%, transparent 70%)
-        `,
-      }} />
+      {/* Vignette sutil para enfocar el contenido central */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 85% 70% at 50% 50%, transparent 35%, rgba(0,0,0,0.5) 100%)',
+        }}
+      />
 
-      {/* Glow orbs animados — encima de la foto */}
-      <div className="absolute -top-[20%] -left-[10%] h-[600px] w-[600px] rounded-full bg-verde-500/15 blur-[120px] animate-float-slow" />
-      <div className="absolute -bottom-[10%] -right-[10%] h-[500px] w-[500px] rounded-full bg-azul-500/10 blur-[100px] animate-float-reverse" />
-      <div className="absolute top-[20%] right-[15%] h-[300px] w-[300px] rounded-full bg-naranja-500/12 blur-[80px] animate-float" />
+      {/* Glow orbs animados encima de la foto */}
+      <div className="absolute -top-[20%] -left-[10%] h-[600px] w-[600px] rounded-full bg-verde-500/20 blur-[120px] animate-float-slow" />
+      <div className="absolute -bottom-[10%] -right-[10%] h-[500px] w-[500px] rounded-full bg-azul-500/14 blur-[100px] animate-float-reverse" />
+      <div className="absolute top-[18%] right-[12%] h-[320px] w-[320px] rounded-full bg-naranja-500/14 blur-[80px] animate-float" />
+      <div className="absolute bottom-[18%] left-[14%] h-[260px] w-[260px] rounded-full bg-verde-400/12 blur-[60px] animate-float-slow" />
 
       {/* Grid de puntos sutil */}
-      <div className="absolute inset-0 dot-pattern-dark opacity-25" />
+      <div className="absolute inset-0 dot-pattern-dark opacity-30" />
 
-      {/* Líneas orgánicas decorativas */}
-      <svg className="absolute left-0 top-0 h-full w-full opacity-[0.04]" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      {/* Grain orgánico premium */}
+      <div className="absolute inset-0 noise-overlay opacity-25 mix-blend-overlay" />
+
+      {/* Líneas orgánicas decorativas (más visibles) */}
+      <svg className="absolute left-0 top-0 h-full w-full opacity-[0.08]" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
         <path d="M0,200 Q360,50 720,200 Q1080,350 1440,200" stroke="white" strokeWidth="1.5" fill="none" />
-        <path d="M0,400 Q400,250 800,400 Q1200,550 1440,400" stroke="white" strokeWidth="1" fill="none" />
-        <path d="M0,600 Q300,500 700,650 Q1100,700 1440,550" stroke="white" strokeWidth="0.8" fill="none" />
+        <path d="M0,400 Q400,250 800,400 Q1200,550 1440,400" stroke="white" strokeWidth="1.2" fill="none" />
+        <path d="M0,600 Q300,500 700,650 Q1100,700 1440,550" stroke="white" strokeWidth="1" fill="none" />
+        <path d="M0,750 Q480,650 960,780 Q1280,820 1440,720" stroke="rgba(34,181,115,0.6)" strokeWidth="1" fill="none" />
       </svg>
+
+      {/* Light rays diagonal — sensación cinematográfica */}
+      <div
+        className="absolute inset-0 mix-blend-screen opacity-30"
+        style={{
+          background:
+            'linear-gradient(115deg, transparent 25%, rgba(255, 240, 200, 0.18) 40%, transparent 60%)',
+        }}
+      />
     </div>
   )
 }
@@ -117,19 +144,30 @@ function FloatingIcons() {
 // ─── Componente principal ─────────────────────────────────────────────────
 
 export default function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const reduce = useReducedMotion()
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  })
+  // Parallax suave: el contenido se desplaza hacia arriba más rápido que el fondo
+  const contentY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, -80])
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.6, 1], reduce ? [1, 1, 1] : [1, 0.6, 0])
+
   return (
-    <section className="relative flex min-h-[calc(100vh-4rem)] flex-col overflow-hidden">
+    <section ref={sectionRef} className="relative flex min-h-[calc(100vh-4rem)] flex-col overflow-hidden">
       <HeroBackground />
       <FloatingIcons />
 
       {/* Noise texture overlay */}
       <div className="noise-overlay absolute inset-0 pointer-events-none" aria-hidden="true" />
 
-      {/* Contenido centrado */}
+      {/* Contenido centrado con parallax suave */}
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
+        style={{ y: contentY, opacity: contentOpacity }}
         className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center px-4 py-24 text-center sm:px-6 lg:px-8"
       >
         {/* Eyebrow con glow */}
@@ -158,7 +196,7 @@ export default function HeroSection() {
         {/* Subtítulo */}
         <motion.p
           variants={fadeInUp}
-          className="mt-7 max-w-2xl text-base leading-relaxed text-gris-300 sm:text-lg md:text-xl"
+          className="mt-7 max-w-2xl text-base leading-relaxed text-gris-200 sm:text-lg md:text-xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
         >
           Biosoluciones premium de laboratorio a tu campo. Nutrición, estimulación
           y protección para cultivos de exportación.
@@ -184,11 +222,11 @@ export default function HeroSection() {
         {/* Certificaciones mini */}
         <motion.div
           variants={fadeInUp}
-          className="mt-14 flex flex-wrap items-center justify-center gap-6 text-xs text-gris-500"
+          className="mt-14 flex flex-wrap items-center justify-center gap-6 text-xs text-gris-200"
         >
           {['COFEPRIS', 'OMRI Listed', 'Hecho en MX'].map((cert) => (
-            <span key={cert} className="flex items-center gap-1.5">
-              <span className="h-1 w-1 rounded-full bg-verde-500" />
+            <span key={cert} className="flex items-center gap-1.5 font-medium">
+              <span className="h-1.5 w-1.5 rounded-full bg-verde-400" />
               {cert}
             </span>
           ))}
@@ -197,13 +235,13 @@ export default function HeroSection() {
         {/* Scroll indicator */}
         <motion.div
           variants={fadeInUp}
-          className="mt-16 flex flex-col items-center gap-2 text-gris-500"
+          className="mt-16 flex flex-col items-center gap-2 text-gris-300"
         >
-          <span className="text-[10px] tracking-[0.2em] uppercase">Descubrir</span>
+          <span className="text-[10px] tracking-[0.2em] uppercase font-semibold">Descubrir</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="h-10 w-[1.5px] rounded-full bg-gradient-to-b from-verde-500/60 to-transparent"
+            className="h-10 w-[1.5px] rounded-full bg-gradient-to-b from-verde-400/80 to-transparent"
           />
         </motion.div>
       </motion.div>
@@ -225,7 +263,7 @@ export default function HeroSection() {
                     : stat.display
                   }
                 </span>
-                <span className="mt-1.5 text-[10px] font-medium text-gris-400 uppercase tracking-[0.15em]">
+                <span className="mt-1.5 text-[10px] font-semibold text-gris-200 uppercase tracking-[0.15em]">
                   {stat.label}
                 </span>
               </div>

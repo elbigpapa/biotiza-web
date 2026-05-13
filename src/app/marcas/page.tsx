@@ -74,8 +74,7 @@ export default function MarcasPage() {
             tag={`3 marcas · ${PRODUCTS.length} productos`}
             title="Las marcas que representamos"
             subtitle="Biotiza integra en un solo catálogo las biosoluciones más completas del mercado mexicano: fabricantes nacionales con décadas de experiencia y tecnologías premium importadas de España."
-            titleClassName="text-white"
-            className="[&_p]:text-gris-200 [&_span]:text-verde-200 [&_span]:bg-white/10 [&_span]:backdrop-blur-sm"
+            theme="dark"
             animate={false}
           />
         </Container>

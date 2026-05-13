@@ -6,6 +6,7 @@
 
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import {
   ArrowLeft,
@@ -20,6 +21,8 @@ import {
 import { CROP_PROTOCOLS, getCropBySlug } from '@/data/crops'
 import type { FullCropProtocol, CropStage, StageProduct } from '@/data/crops'
 import { PRODUCTS } from '@/data/products'
+import { getCropImage } from '@/data/crop-images'
+import { getProductImage } from '@/data/product-images'
 import { cn } from '@/lib/utils'
 import Container from '@/components/ui/Container'
 import Badge from '@/components/ui/Badge'
@@ -211,20 +214,35 @@ function StageProductsTable({ products }: { products: StageProduct[] }) {
           <tbody className="divide-y divide-gris-50">
             {products.map((p) => {
               const line = getProductLine(p.productId)
+              const photo = getProductImage(p.productId)
               return (
                 <tr
                   key={p.productId}
                   className="bg-white hover:bg-gris-50 transition-colors"
                 >
                   <td className="px-4 py-3">
-                    <div className="flex flex-col gap-1">
-                      <Link
-                        href={getProductHref(p.productId)}
-                        className="font-semibold text-gris-900 hover:text-verde-700 transition-colors"
-                      >
-                        {p.productName}
-                      </Link>
-                      {line && <Badge line={line as ProductLine} size="sm" />}
+                    <div className="flex items-center gap-3">
+                      {photo && (
+                        <div className="relative h-14 w-12 shrink-0 rounded-lg bg-gris-50 overflow-hidden ring-1 ring-gris-100">
+                          <Image
+                            src={photo.src}
+                            alt={photo.alt}
+                            width={96}
+                            height={144}
+                            sizes="48px"
+                            className="absolute inset-0 h-full w-full object-contain p-1 drop-shadow-[0_4px_6px_rgba(0,0,0,0.15)]"
+                          />
+                        </div>
+                      )}
+                      <div className="flex flex-col gap-1">
+                        <Link
+                          href={getProductHref(p.productId)}
+                          className="font-semibold text-gris-900 hover:text-verde-700 transition-colors"
+                        >
+                          {p.productName}
+                        </Link>
+                        {line && <Badge line={line as ProductLine} size="sm" />}
+                      </div>
                     </div>
                   </td>
                   <td className="px-4 py-3 font-mono text-sm text-gris-800">
@@ -246,19 +264,34 @@ function StageProductsTable({ products }: { products: StageProduct[] }) {
       <div className="md:hidden flex flex-col gap-3">
         {products.map((p) => {
           const line = getProductLine(p.productId)
+          const photo = getProductImage(p.productId)
           return (
             <div
               key={p.productId}
               className="rounded-xl border border-gris-100 bg-white p-4 shadow-sm"
             >
-              <div className="flex items-start justify-between gap-2 mb-2">
-                <Link
-                  href={getProductHref(p.productId)}
-                  className="font-semibold text-gris-900 hover:text-verde-700 transition-colors leading-snug"
-                >
-                  {p.productName}
-                </Link>
-                {line && <Badge line={line as ProductLine} size="sm" />}
+              <div className="flex items-start gap-3 mb-3">
+                {photo && (
+                  <div className="relative h-16 w-14 shrink-0 rounded-lg bg-gris-50 overflow-hidden ring-1 ring-gris-100">
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      width={96}
+                      height={144}
+                      sizes="56px"
+                      className="absolute inset-0 h-full w-full object-contain p-1 drop-shadow-[0_4px_6px_rgba(0,0,0,0.15)]"
+                    />
+                  </div>
+                )}
+                <div className="flex-1 min-w-0">
+                  <Link
+                    href={getProductHref(p.productId)}
+                    className="font-semibold text-gris-900 hover:text-verde-700 transition-colors leading-snug block"
+                  >
+                    {p.productName}
+                  </Link>
+                  {line && <Badge line={line as ProductLine} size="sm" className="mt-1" />}
+                </div>
               </div>
 
               <dl className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-sm">
@@ -400,6 +433,7 @@ export default async function CultivoPage({
   }
 
   const allProducts = getAllUniqueProducts(crop)
+  const heroPhoto = getCropImage(crop.slug)
 
   return (
     <main className="min-h-screen bg-white">
@@ -426,75 +460,100 @@ export default async function CultivoPage({
         </Container>
       </div>
 
-      {/* ── Hero ──────────────────────────────────────────────────────── */}
+      {/* ── Hero con foto HD del cultivo ─────────────────────────────── */}
       <section
-        className={`bg-gradient-to-br ${crop.gradient} py-16 lg:py-20 relative overflow-hidden`}
+        className={`relative overflow-hidden ${heroPhoto ? '' : `bg-gradient-to-br ${crop.gradient}`}`}
       >
-        {/* Decoración de fondo */}
+        {/* Foto HD de fondo (Ken Burns sutil) */}
+        {heroPhoto && (
+          <div className="absolute inset-0">
+            <Image
+              src={heroPhoto.src}
+              alt={heroPhoto.alt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover scale-105 motion-safe:animate-[kenburns_22s_ease-out_infinite_alternate]"
+            />
+            {/* Overlay para legibilidad — verde oscuro corporativo */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  'linear-gradient(115deg, rgba(11, 60, 47, 0.92) 0%, rgba(13, 92, 74, 0.78) 45%, rgba(34, 181, 115, 0.40) 100%)',
+              }}
+              aria-hidden="true"
+            />
+            {/* Grain sutil */}
+            <div className="absolute inset-0 mix-blend-overlay opacity-[0.08] noise-overlay" aria-hidden="true" />
+          </div>
+        )}
+
+        {/* Decoración complementaria */}
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 opacity-10 pointer-events-none"
           style={{
             backgroundImage:
-              'radial-gradient(circle at 70% 50%, white 0%, transparent 60%)',
+              'radial-gradient(circle at 80% 30%, white 0%, transparent 55%)',
           }}
           aria-hidden="true"
         />
 
-        <Container className="relative z-10">
+        <Container className="relative z-10 py-20 lg:py-28">
           <div className="max-w-3xl">
             {/* Emoji del cultivo */}
-            <div className="text-8xl sm:text-9xl mb-6 animate-bounce-slow">
+            <div className="text-7xl sm:text-8xl mb-6 motion-safe:animate-bounce-slow drop-shadow-[0_8px_24px_rgba(0,0,0,0.45)]">
               {crop.emoji}
             </div>
 
             {/* Eyebrow */}
-            <p className="text-white/70 text-sm font-semibold uppercase tracking-widest mb-2">
+            <p className="text-white/85 text-sm font-semibold uppercase tracking-widest mb-2">
               Programa de Nutrición para
             </p>
 
             {/* Nombre del cultivo */}
-            <h1 className="font-serif text-4xl sm:text-5xl text-white font-normal leading-tight mb-3">
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white font-normal leading-tight mb-3 drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
               {crop.name}
             </h1>
 
             {/* Nombre científico */}
             {crop.scientific_name && (
-              <p className="text-white/60 italic text-lg mb-5">
+              <p className="text-white/75 italic text-lg mb-5">
                 {crop.scientific_name}
               </p>
             )}
 
             {/* Descripción */}
-            <p className="text-white/80 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl">
+            <p className="text-white/90 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl">
               {crop.description}
             </p>
 
             {/* Stats */}
-            <div className="flex flex-wrap gap-4 mb-8">
+            <div className="flex flex-wrap gap-3 mb-8">
               {crop.cycle_days && (
-                <div className="bg-white/15 rounded-xl px-4 py-3 text-center">
+                <div className="rounded-xl border border-white/20 bg-white/15 backdrop-blur-md px-4 py-3 text-center shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
                   <p className="text-2xl font-bold text-white">
                     {crop.cycle_days}
                   </p>
-                  <p className="text-white/70 text-xs uppercase tracking-wide mt-0.5">
+                  <p className="text-white/80 text-xs uppercase tracking-wide mt-0.5">
                     días de ciclo
                   </p>
                 </div>
               )}
-              <div className="bg-white/15 rounded-xl px-4 py-3 text-center">
+              <div className="rounded-xl border border-white/20 bg-white/15 backdrop-blur-md px-4 py-3 text-center shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
                 <p className="text-2xl font-bold text-white">
                   {crop.stages.length}
                 </p>
-                <p className="text-white/70 text-xs uppercase tracking-wide mt-0.5">
+                <p className="text-white/80 text-xs uppercase tracking-wide mt-0.5">
                   etapas
                 </p>
               </div>
               {crop.regions && crop.regions.length > 0 && (
-                <div className="bg-white/15 rounded-xl px-4 py-3 text-center">
+                <div className="rounded-xl border border-white/20 bg-white/15 backdrop-blur-md px-4 py-3 text-center shadow-[0_6px_18px_rgba(0,0,0,0.15)]">
                   <p className="text-base font-bold text-white">
                     {crop.regions[0]}
                   </p>
-                  <p className="text-white/70 text-xs uppercase tracking-wide mt-0.5">
+                  <p className="text-white/80 text-xs uppercase tracking-wide mt-0.5">
                     región principal
                   </p>
                 </div>
@@ -504,16 +563,16 @@ export default async function CultivoPage({
             {/* Desafíos comunes como pills */}
             {crop.common_challenges && crop.common_challenges.length > 0 && (
               <div className="flex flex-wrap gap-2">
-                <span className="text-white/60 text-xs font-semibold uppercase tracking-wide self-center">
+                <span className="text-white/75 text-xs font-semibold uppercase tracking-wide self-center">
                   Desafíos:
                 </span>
                 {crop.common_challenges.map((challenge) => (
                   <span
                     key={challenge}
-                    className="inline-flex items-center gap-1 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs text-white/90"
+                    className="inline-flex items-center gap-1 rounded-full border border-white/25 bg-white/15 backdrop-blur-sm px-3 py-1 text-xs text-white/95"
                   >
                     <AlertTriangle
-                      className="h-3 w-3 text-white/60"
+                      className="h-3 w-3 text-white/80"
                       aria-hidden="true"
                     />
                     {challenge}
@@ -523,6 +582,9 @@ export default async function CultivoPage({
             )}
           </div>
         </Container>
+
+        {/* Wave separator inferior */}
+        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-b from-transparent to-white/0" aria-hidden="true" />
       </section>
 
       {/* ── Línea de tiempo ───────────────────────────────────────────── */}
@@ -559,13 +621,33 @@ export default async function CultivoPage({
                 <ul className="divide-y divide-gris-50">
                   {allProducts.map((p) => {
                     const line = getProductLine(p.productId)
+                    const photo = getProductImage(p.productId)
                     return (
                       <li key={p.productId}>
                         <Link
                           href={getProductHref(p.productId)}
-                          className="flex items-center justify-between gap-2 px-4 py-2.5 hover:bg-gris-50 transition-colors group"
+                          className="flex items-center gap-3 px-3 py-2.5 hover:bg-gris-50 transition-colors group"
                         >
-                          <span className="text-sm text-gris-700 group-hover:text-verde-700 transition-colors font-medium leading-snug">
+                          {photo ? (
+                            <div className="relative h-10 w-9 shrink-0 rounded-md bg-gris-50 overflow-hidden ring-1 ring-gris-100">
+                              <Image
+                                src={photo.src}
+                                alt={photo.alt}
+                                width={72}
+                                height={108}
+                                sizes="36px"
+                                className="absolute inset-0 h-full w-full object-contain p-0.5"
+                              />
+                            </div>
+                          ) : (
+                            <span
+                              className="h-9 w-9 shrink-0 rounded-md bg-verde-50 flex items-center justify-center"
+                              aria-hidden="true"
+                            >
+                              <Leaf className="h-4 w-4 text-verde-500" />
+                            </span>
+                          )}
+                          <span className="text-sm text-gris-700 group-hover:text-verde-700 transition-colors font-medium leading-snug flex-1 min-w-0">
                             {p.productName}
                           </span>
                           {line && (

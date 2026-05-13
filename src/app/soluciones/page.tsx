@@ -120,8 +120,7 @@ export default function SolucionesPage() {
             tag="Portafolio completo"
             title="Nuestras Soluciones"
             subtitle={`${PRODUCTS.length} productos · 3 marcas (Bioproductos, Agrobionsa, Veganic) · 5 líneas especializadas. Nutrición, estimulación y bioprotección para cada etapa de tu cultivo.`}
-            titleClassName="text-white"
-            className="[&_p]:text-verde-200 [&_span]:text-verde-300 [&_span]:bg-verde-800/50"
+            theme="dark"
             animate={false}
           />
         </Container>

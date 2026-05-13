@@ -12,6 +12,8 @@ import { cn } from '@/lib/utils'
 import Badge from '@/components/ui/Badge'
 import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
+import ProductPhoto from '@/components/products/ProductPhoto'
+import { hasProductPhoto } from '@/data/product-images'
 import type { ProductLine } from '@/types'
 
 // ─── Static params ────────────────────────────────────────────────────────
@@ -97,10 +99,17 @@ export default async function LineaPage({ params }: { params: Promise<{ linea: s
                 <Link
                   key={product.id}
                   href={`/soluciones/${linea}/${product.slug}`}
-                  className="group flex flex-col rounded-xl border border-gris-100 bg-white shadow-card hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 overflow-hidden"
+                  className="group flex flex-col rounded-xl border border-gris-100 bg-white shadow-card hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(15,23,42,0.12)] transition-all duration-300 overflow-hidden"
                 >
                   {/* Color strip de línea */}
                   <div className="h-1 w-full" style={{ backgroundColor: lineConfig.color }} />
+
+                  {/* Foto HD del producto */}
+                  {hasProductPhoto(product.slug) && (
+                    <div className="relative h-44 overflow-hidden">
+                      <ProductPhoto slug={product.slug} line={product.line} variant="card" showGlow={false} className="transition-transform duration-700 group-hover:scale-[1.05]" />
+                    </div>
+                  )}
 
                   <div className="flex flex-col flex-1 p-5 gap-3">
                     {product.featured && (

@@ -12,6 +12,8 @@ import { cn } from '@/lib/utils'
 import Badge from '@/components/ui/Badge'
 import Container from '@/components/ui/Container'
 import CompositionTable from '@/components/products/CompositionTable'
+import ProductPhoto from '@/components/products/ProductPhoto'
+import { hasProductPhoto } from '@/data/product-images'
 import type { ProductLine } from '@/types'
 
 // ─── Static params: todos los productos ──────────────────────────────────
@@ -151,19 +153,25 @@ export default async function ProductDetailPage({
 
           {/* ── Columna izquierda: imagen + presentaciones ─────── */}
           <div className="space-y-5">
-            {/* Imagen placeholder */}
-            <div
-              className="relative flex h-72 items-center justify-center rounded-2xl overflow-hidden sm:h-80 lg:h-72 xl:h-80"
-              style={{ background: `linear-gradient(135deg, ${lineConfig.color}33, ${lineConfig.color}66)` }}
-            >
-              <div
-                className="flex h-24 w-24 items-center justify-center rounded-3xl"
-                style={{ backgroundColor: `${lineConfig.color}40` }}
-              >
-                <Icon size={48} style={{ color: lineConfig.color }} />
-              </div>
+            {/* Imagen del producto (foto HD real si existe, fallback con icono) */}
+            <div className="relative h-80 sm:h-[420px] lg:h-[460px] rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(15,23,42,0.10)]">
+              {hasProductPhoto(product.slug) ? (
+                <ProductPhoto slug={product.slug} line={product.line} variant="hero" priority />
+              ) : (
+                <div
+                  className="absolute inset-0 flex items-center justify-center"
+                  style={{ background: `linear-gradient(135deg, ${lineConfig.color}33, ${lineConfig.color}66)` }}
+                >
+                  <div
+                    className="flex h-24 w-24 items-center justify-center rounded-3xl"
+                    style={{ backgroundColor: `${lineConfig.color}40` }}
+                  >
+                    <Icon size={48} style={{ color: lineConfig.color }} />
+                  </div>
+                </div>
+              )}
               {product.featured && (
-                <div className="absolute top-4 right-4 rounded-full bg-naranja-500 px-3 py-1 text-xs font-bold text-white">
+                <div className="absolute top-4 right-4 rounded-full bg-naranja-500 px-3 py-1 text-xs font-bold text-white shadow-lg">
                   ⭐ Estrella
                 </div>
               )}
@@ -369,17 +377,24 @@ export default async function ProductDetailPage({
               {related.map(rel => {
                 const relLine = PRODUCT_LINES.find(l => l.id === rel.line)!
                 const RelIcon = LINE_ICONS[rel.line]
+                const hasPhoto = hasProductPhoto(rel.slug)
                 return (
                   <Link
                     key={rel.id}
                     href={`/soluciones/${rel.line}/${rel.slug}`}
-                    className="group flex flex-col rounded-xl border border-gris-100 bg-white shadow-card hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 overflow-hidden"
+                    className="group flex flex-col rounded-xl border border-gris-100 bg-white shadow-card hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(15,23,42,0.12)] transition-all duration-300 overflow-hidden"
                   >
-                    <div
-                      className="flex h-20 items-center justify-center"
-                      style={{ background: `linear-gradient(135deg, ${relLine.color}22, ${relLine.color}44)` }}
-                    >
-                      <RelIcon size={28} style={{ color: relLine.color }} />
+                    <div className="relative h-36">
+                      {hasPhoto ? (
+                        <ProductPhoto slug={rel.slug} line={rel.line} variant="thumb" showGlow={false} />
+                      ) : (
+                        <div
+                          className="absolute inset-0 flex items-center justify-center"
+                          style={{ background: `linear-gradient(135deg, ${relLine.color}22, ${relLine.color}44)` }}
+                        >
+                          <RelIcon size={28} style={{ color: relLine.color }} />
+                        </div>
+                      )}
                     </div>
                     <div className="p-4 space-y-1.5">
                       <Badge line={rel.line} size="sm" />

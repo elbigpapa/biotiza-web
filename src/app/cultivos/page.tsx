@@ -39,7 +39,7 @@ export default function CultivosPage() {
             subtitle="Protocolos de nutrición diseñados por agrónomos para los cultivos de exportación más importantes de México."
             accentColor="verde"
             level="h1"
-            className="[&_h1]:text-white [&_p]:text-white/80 [&_span]:text-verde-200 [&_span]:bg-verde-800/60"
+            theme="dark"
           />
         </Container>
       </section>

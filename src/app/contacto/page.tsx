@@ -132,8 +132,7 @@ export default function ContactoPage() {
             subtitle="Nuestro equipo agronómico responde en menos de 24 horas hábiles. Para urgencias usa WhatsApp."
             align="center"
             animate={false}
-            className="[&_[data-tag]]:text-white/70 [&_[data-subtitle]]:text-white/80"
-            titleClassName="text-white"
+            theme="dark"
           />
         </Container>
       </section>
