@@ -11,8 +11,9 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { AnimatePresence } from 'framer-motion'
-import { Leaf, Menu, ChevronDown, ArrowRight } from 'lucide-react'
+import { Menu, ChevronDown, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import BiotizaLogo from '@/components/brand/BiotizaLogo'
 import MegaMenu from './MegaMenu'
 import MobileNav from './MobileNav'
 
@@ -63,17 +64,29 @@ export default function Header() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-[4.5rem] items-center justify-between">
 
-            {/* Logo */}
-            <Link href="/" className="group flex items-center gap-2.5 shrink-0">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-verde-500 to-verde-600 shadow-sm transition-all duration-300 group-hover:shadow-brand group-hover:scale-105">
-                <Leaf size={18} className="text-white" />
-              </div>
-              <span className={cn(
-                'font-serif text-xl leading-none transition-colors duration-300',
-                isActive ? 'text-verde-800' : 'text-white',
-              )}>
-                Biotiza
-              </span>
+            {/* Logo oficial */}
+            <Link
+              href="/"
+              className="group flex items-center shrink-0 transition-transform duration-300 hover:scale-[1.02]"
+              aria-label="Inicio · Biotiza"
+            >
+              {/* Sobre fondo blanco (scrolled): logo full color */}
+              {isActive ? (
+                <BiotizaLogo
+                  variant="lockup-h"
+                  mode="color"
+                  gradientId="bz-header-color"
+                  className="h-11 w-auto"
+                />
+              ) : (
+                /* Sobre hero oscuro: logo blanco */
+                <BiotizaLogo
+                  variant="lockup-h"
+                  mode="white"
+                  gradientId="bz-header-white"
+                  className="h-11 w-auto"
+                />
+              )}
             </Link>
 
             {/* ── Nav desktop ───────────────────────────────────── */}

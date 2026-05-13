@@ -8,6 +8,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
+import BiotizaLogo from '@/components/brand/BiotizaLogo'
 import {
   X,
   Leaf,
@@ -109,10 +110,15 @@ export default function MobileNav({ onClose }: MobileNavProps) {
           <Link
             href="/"
             onClick={onClose}
-            className="flex items-center gap-2"
+            className="flex items-center"
+            aria-label="Inicio · Biotiza"
           >
-            <Leaf size={20} className="text-naranja-500" />
-            <span className="font-serif text-lg text-verde-700">Biotiza</span>
+            <BiotizaLogo
+              variant="lockup-h"
+              mode="color"
+              gradientId="bz-mobilenav"
+              className="h-9 w-auto"
+            />
           </Link>
           <button
             onClick={onClose}

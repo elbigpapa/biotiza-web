@@ -14,8 +14,15 @@ function OrganizationJsonLd() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Biotiza",
+    "legalName": "Biotiza Biosoluciones Agrícolas",
     "url": "https://biotiza.mx",
-    "logo": "https://biotiza.mx/images/biotiza-logo.png",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://biotiza.mx/images/logos/biotiza-icon.svg",
+      "width": 200,
+      "height": 200,
+    },
+    "image": "https://biotiza.mx/og-image.svg",
     "description": "Empresa mexicana de biosoluciones agrícolas. Fertilizantes orgánicos, bioestimulantes y bioprotección para cultivos de exportación.",
     "address": {
       "@type": "PostalAddress",
@@ -25,9 +32,10 @@ function OrganizationJsonLd() {
     },
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+52-33-0000-0000",
+      "telephone": "+52-33-1602-2708",
       "contactType": "sales",
-      "availableLanguage": "Spanish"
+      "availableLanguage": "Spanish",
+      "areaServed": "MX"
     },
     "sameAs": [
       "https://instagram.com/biotiza",
@@ -89,13 +97,24 @@ export const metadata: Metadata = {
     title: 'Biotiza — Biosoluciones Agrícolas',
     description:
       'Fertilizantes orgánicos, bioestimulantes y bioprotección para cultivos de exportación. Directo de laboratorio a tu campo.',
+    images: [
+      {
+        url: '/og-image.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Biotiza — Biosoluciones agrícolas',
+        type: 'image/svg+xml',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Biotiza — Biosoluciones Agrícolas',
     description:
       'Fertilizantes orgánicos, bioestimulantes y bioprotección para cultivos de exportación.',
+    images: ['/og-image.svg'],
   },
+  manifest: '/manifest.webmanifest',
   robots: {
     index: true,
     follow: true,

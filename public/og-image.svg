@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <!--
+    Biotiza OG Image · 1200x630 estándar OpenGraph
+    Para mejor compatibilidad con redes sociales, también deberías generar
+    una versión PNG. Vercel servirá este SVG si el bot acepta SVG;
+    si no, se hace fallback a metadata sin imagen.
+  -->
+  <defs>
+    <linearGradient id="og-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e7a5e" />
+      <stop offset="50%" stop-color="#0d5c4a" />
+      <stop offset="100%" stop-color="#0a4a3b" />
+    </linearGradient>
+    <linearGradient id="og-petal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff7a1a" />
+      <stop offset="100%" stop-color="#e8690f" />
+    </linearGradient>
+    <radialGradient id="og-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#22b573" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#22b573" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Fondo -->
+  <rect width="1200" height="630" fill="url(#og-bg)" />
+
+  <!-- Glow decorativo -->
+  <circle cx="950" cy="180" r="280" fill="url(#og-glow)" />
+  <circle cx="220" cy="500" r="240" fill="url(#og-glow)" opacity="0.6" />
+
+  <!-- Logo (icono) centrado a la izquierda -->
+  <g transform="translate(80, 200) scale(1.15)">
+    <g fill="#ffffff">
+      <path d="M 12 178 Q 38 120 100 116 L 100 134 Q 50 138 30 178 Z" />
+      <path d="M 22 158 Q 50 108 100 102 L 100 118 Q 62 122 42 158 Z" />
+      <path d="M 36 138 Q 65 96 100 90 L 100 104 Q 75 108 56 138 Z" />
+      <path d="M 188 178 Q 162 120 100 116 L 100 134 Q 150 138 170 178 Z" />
+      <path d="M 178 158 Q 150 108 100 102 L 100 118 Q 138 122 158 158 Z" />
+      <path d="M 164 138 Q 135 96 100 90 L 100 104 Q 125 108 144 138 Z" />
+      <rect x="93" y="62" width="14" height="58" rx="3" />
+    </g>
+    <path d="M 100 40 Q 98 22 78 18 Q 54 18 50 38 Q 50 56 70 64 Q 88 68 100 60 Z" fill="url(#og-petal)" />
+    <path d="M 100 40 Q 102 22 122 18 Q 146 18 150 38 Q 150 56 130 64 Q 112 68 100 60 Z" fill="url(#og-petal)" />
+  </g>
+
+  <!-- Wordmark + tagline -->
+  <text x="380" y="280" fontFamily="DM Sans, sans-serif" fontWeight="700" fontSize="120" fill="#ffffff" letterSpacing="-3">
+    Biotiza
+  </text>
+  <text x="380" y="350" fontFamily="DM Sans, sans-serif" fontWeight="400" fontSize="36" fill="#dcfaed">
+    Biosoluciones agrícolas
+  </text>
+  <text x="380" y="395" fontFamily="DM Sans, sans-serif" fontWeight="400" fontSize="28" fill="#a7e9c8" opacity="0.85">
+    Directo de laboratorio a tu campo.
+  </text>
+
+  <!-- Certificaciones -->
+  <g transform="translate(380, 460)">
+    <rect width="160" height="42" rx="21" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" />
+    <text x="80" y="28" textAnchor="middle" fontFamily="DM Sans, sans-serif" fontWeight="700" fontSize="16" fill="#ffffff">COFEPRIS</text>
+
+    <g transform="translate(180, 0)">
+      <rect width="160" height="42" rx="21" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" />
+      <text x="80" y="28" textAnchor="middle" fontFamily="DM Sans, sans-serif" fontWeight="700" fontSize="16" fill="#ffffff">OMRI Listed</text>
+    </g>
+
+    <g transform="translate(360, 0)">
+      <rect width="190" height="42" rx="21" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" />
+      <text x="95" y="28" textAnchor="middle" fontFamily="DM Sans, sans-serif" fontWeight="700" fontSize="16" fill="#ffffff">Hecho en México</text>
+    </g>
+  </g>
+
+  <!-- URL footer -->
+  <text x="1120" y="595" textAnchor="end" fontFamily="DM Sans, sans-serif" fontWeight="500" fontSize="22" fill="#a7e9c8" opacity="0.7">
+    biotiza.mx
+  </text>
+</svg>

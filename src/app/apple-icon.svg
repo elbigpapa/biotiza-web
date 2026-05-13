@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" fill="none">
+  <!-- Apple touch icon · Biotiza (180x180 estándar iOS) -->
+  <defs>
+    <linearGradient id="ai-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e7a5e" />
+      <stop offset="100%" stop-color="#0d5c4a" />
+    </linearGradient>
+    <linearGradient id="ai-petal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff7a1a" />
+      <stop offset="100%" stop-color="#e8690f" />
+    </linearGradient>
+  </defs>
+
+  <!-- Fondo verde gradient (estilo página 5 del logo oficial) -->
+  <rect width="180" height="180" rx="40" fill="url(#ai-bg)" />
+
+  <!-- Logo blanco sobre verde -->
+  <g transform="translate(-10, -10) scale(1)" fill="#ffffff">
+    <!-- Campos -->
+    <path d="M 12 178 Q 38 120 100 116 L 100 134 Q 50 138 30 178 Z" />
+    <path d="M 22 158 Q 50 108 100 102 L 100 118 Q 62 122 42 158 Z" />
+    <path d="M 36 138 Q 65 96 100 90 L 100 104 Q 75 108 56 138 Z" />
+    <path d="M 188 178 Q 162 120 100 116 L 100 134 Q 150 138 170 178 Z" />
+    <path d="M 178 158 Q 150 108 100 102 L 100 118 Q 138 122 158 158 Z" />
+    <path d="M 164 138 Q 135 96 100 90 L 100 104 Q 125 108 144 138 Z" />
+    <!-- Tallo -->
+    <rect x="93" y="62" width="14" height="58" rx="3" />
+  </g>
+
+  <!-- Cotiledones naranja (mantienen el color brand sobre el fondo verde) -->
+  <g transform="translate(-10, -10) scale(1)">
+    <path d="M 100 40 Q 98 22 78 18 Q 54 18 50 38 Q 50 56 70 64 Q 88 68 100 60 Z" fill="url(#ai-petal)" />
+    <path d="M 100 40 Q 102 22 122 18 Q 146 18 150 38 Q 150 56 130 64 Q 112 68 100 60 Z" fill="url(#ai-petal)" />
+  </g>
+</svg>

@@ -7,13 +7,13 @@
 import { useState, type FormEvent } from 'react'
 import Link from 'next/link'
 import {
-  Leaf,
   Mail,
   MapPin,
   ArrowRight,
   Send,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import BiotizaLogo from '@/components/brand/BiotizaLogo'
 
 // ─── Datos de columnas ────────────────────────────────────────────────────
 
@@ -192,11 +192,17 @@ export default function Footer() {
 
             {/* Col 0: Marca + tagline + newsletter */}
             <div className="space-y-6">
-              <Link href="/" className="group inline-flex items-center gap-2.5">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-verde-500 to-verde-600 shadow-sm transition-all duration-300 group-hover:shadow-brand">
-                  <Leaf size={18} className="text-white" />
-                </div>
-                <span className="font-serif text-xl text-white">Biotiza</span>
+              <Link
+                href="/"
+                className="group inline-flex items-center transition-transform duration-300 hover:scale-[1.02]"
+                aria-label="Inicio · Biotiza"
+              >
+                <BiotizaLogo
+                  variant="lockup-h"
+                  mode="white"
+                  gradientId="bz-footer"
+                  className="h-12 w-auto"
+                />
               </Link>
 
               <p className="text-sm leading-relaxed text-gris-400">
