@@ -7,6 +7,8 @@ import Footer from '@/components/layout/Footer'
 import WhatsAppFloat from '@/components/shared/WhatsAppFloat'
 import CookieConsent from '@/components/shared/CookieConsent'
 import ChatWidget from '@/components/chat/ChatWidget'
+import ScrollProgress from '@/components/ui/ScrollProgress'
+import ToastProvider from '@/components/ui/Toast'
 
 // ─── Organization JSON-LD ─────────────────────────────────────────────────
 function OrganizationJsonLd() {
@@ -134,12 +136,15 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col bg-white font-sans text-gris-900">
         <OrganizationJsonLd />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <WhatsAppFloat />
-        <ChatWidget />
-        <CookieConsent />
+        <ScrollProgress />
+        <ToastProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <WhatsAppFloat />
+          <ChatWidget />
+          <CookieConsent />
+        </ToastProvider>
       </body>
     </html>
   )

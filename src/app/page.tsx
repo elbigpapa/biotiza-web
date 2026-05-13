@@ -9,6 +9,7 @@
  */
 
 import HeroSection            from '@/components/sections/HeroSection'
+import CertificationsMarquee  from '@/components/sections/CertificationsMarquee'
 import WhyBiotizaSection      from '@/components/sections/WhyBiotizaSection'
 import StatsSection           from '@/components/sections/StatsSection'
 import AssistantPreviewSection from '@/components/sections/AssistantPreviewSection'
@@ -24,13 +25,19 @@ import WaveSeparator          from '@/components/shared/WaveSeparator'
 export default function HomePage() {
   return (
     <>
-      {/* 1 ─ Hero: dark mesh gradient */}
+      {/* 1 ─ Hero: dark mesh gradient con foto HD */}
       <HeroSection />
 
-      {/* Transición: gris-950 → verde-50 */}
-      <WaveSeparator from="gris-950" to="verde-50" variant="gentle" />
+      {/* Transición: gris-950 → white (la marquee va en blanco) */}
+      <WaveSeparator from="gris-950" to="white" variant="gentle" />
 
-      {/* 2 ─ ¿Por qué Biotiza? — fondo verde-50 */}
+      {/* 2 ─ Marquee de certificaciones (trust bar) */}
+      <CertificationsMarquee />
+
+      {/* Transición: white → verde-50 */}
+      <div className="h-px bg-gradient-to-r from-transparent via-verde-200/40 to-transparent" aria-hidden="true" />
+
+      {/* 3 ─ ¿Por qué Biotiza? — fondo verde-50 */}
       <WhyBiotizaSection />
 
       {/* Transición: verde-50 → white (sin sobresalto, gentle) */}

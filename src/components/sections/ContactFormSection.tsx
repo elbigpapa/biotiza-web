@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { motion } from 'framer-motion'
 import { Mail, MapPin, Phone, CheckCircle, Clock, Send } from 'lucide-react'
+import { useToast } from '@/components/ui/Toast'
 
 // Instagram icon (removed from lucide-react v1.7+)
 function InstagramIcon({ size = 20 }: { size?: number }) {
@@ -53,6 +54,7 @@ const CROPS = [
 export default function ContactFormSection() {
   const [submitted, setSubmitted] = useState(false)
   const [serverError, setServerError] = useState<string | null>(null)
+  const { showToast } = useToast()
 
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<ContactForm>({
     resolver: zodResolver(contactSchema),
@@ -74,12 +76,21 @@ export default function ContactFormSection() {
       })
       if (!res.ok) {
         const json = await res.json().catch(() => ({}))
-        setServerError(json?.error ?? 'No pudimos enviar tu mensaje. Intenta de nuevo.')
+        const error = json?.error ?? 'No pudimos enviar tu mensaje. Intenta de nuevo.'
+        setServerError(error)
+        showToast({ type: 'error', title: 'Error al enviar', message: error })
         return
       }
       setSubmitted(true)
+      showToast({
+        type: 'success',
+        title: '¡Mensaje enviado!',
+        message: 'Un agrónomo te contactará en menos de 24 horas.',
+      })
     } catch {
-      setServerError('Error de red. Intenta de nuevo.')
+      const error = 'Error de red. Intenta de nuevo.'
+      setServerError(error)
+      showToast({ type: 'error', title: 'Sin conexión', message: error })
     }
   }
 
