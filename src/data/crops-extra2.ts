@@ -157,7 +157,7 @@ const SANDIA: FullCropProtocol = {
       color: 'bg-green-100', textColor: 'text-green-700',
       products: [
         { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '4 L/ha', method: 'Fertirrigación', frequency: '2 veces/semana', notes: 'N moderado: el exceso retrasa floración y baja Brix' },
-        { productId: 'vgn-brotanic', productName: 'BROTANIC', line: 'nutricion', dose: '1.5 → 2.0 L / 200 L agua', method: 'Foliar', frequency: '2 aplicaciones escalonadas', notes: 'Cu+Mn+Zn previene clorosis y fortalece guía. Grupo hortalizas.' },
+        { productId: 'vgn-brotanic', productName: 'BROTANIC', line: 'nutricion', dose: '1.5 → 2.0 L / 200 L agua', method: 'Foliar', frequency: '2 aplicaciones escalonadas', notes: 'Genera nuevos haces vasculares → mayor flujo de savia y mejor asimilación de nutrientes y fitosanitarios; brotación sin hormonas' },
         { productId: 'zen-fungi', productName: 'Zen-Fungi', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 10 días', notes: 'Preventivo de mildiú y cenicilla en follaje denso', isProtection: true },
       ],
     },
