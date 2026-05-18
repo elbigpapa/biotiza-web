@@ -245,10 +245,10 @@ const ARROZ: FullCropProtocol = {
 // ════════════════════════════════════════════════════════════════════════
 
 const CALABAZA: FullCropProtocol = {
-  id: 'calabaza', slug: 'calabaza', name: 'Calabaza', scientific_name: 'Cucurbita pepo / C. moschata',
+  id: 'calabaza', slug: 'calabaza', name: 'Calabaza (de Castilla / pumpkin)', scientific_name: 'Cucurbita moschata / C. maxima',
   emoji: '🎃', gradient: 'from-orange-600 to-amber-500', accentColor: '#ea580c',
-  description: 'Cucurbitácea de ciclo corto para calabacita (zucchini), calabaza de Castilla y semilla. Muy sensible a cenicilla, mosca blanca y al aborto floral por estrés. El programa busca cuajado continuo y firmeza de fruto.',
-  cycle_days: 75,
+  description: 'Calabaza de fruto grande para pulpa, semilla (pepita) y mercado de temporada (calabaza de Castilla, kabocha, butternut, pumpkin). Ciclo medio con un solo fruto/planta de gran calibre que se cosecha maduro. Muy sensible a cenicilla, mosca blanca y a la pudrición apical por deficiencia de Ca. Para calabacita/zucchini de corte continuo, consulta el protocolo de Calabacín.',
+  cycle_days: 110,
   season: 'Primavera-verano y otoño-invierno (noroeste y Bajío)',
   regions: ['Sonora', 'Sinaloa', 'Jalisco', 'Guanajuato', 'Zacatecas', 'Morelos'],
   featured_products: ['bp-koren', 'bp-cuaje', 'k-ultra', 'zen-chrys', 'zen-fungi'],
@@ -256,42 +256,101 @@ const CALABAZA: FullCropProtocol = {
   stages: [
     {
       id: 'siembra', name: 'Siembra y emergencia', emoji: '🌱',
-      durationDays: 14, objective: 'Emergencia pareja y raíz fuerte para un ciclo corto sin tropiezos.',
+      durationDays: 18, objective: 'Emergencia pareja y raíz fuerte que sostenga una planta de guía larga y un fruto de gran calibre.',
       color: 'bg-emerald-100', textColor: 'text-emerald-700',
       products: [
-        { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Emergencia y a los 10 días', notes: 'Arranque radicular crítico en cultivo de ciclo muy corto' },
-        { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '1 L/ha', method: 'Fertirrigación', frequency: 'Días 1 y 10', notes: 'P para volumen radicular y arranque vegetativo' },
+        { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Emergencia y a los 12 días', notes: 'Raíz profunda: la calabaza de fruto grande demanda mucha agua y nutrición' },
+        { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '1.5 L/ha', method: 'Fertirrigación', frequency: 'Días 1, 10, 18', notes: 'P para volumen radicular y arranque vegetativo' },
         { productId: 'zen-chrys', productName: 'Zen-Chrys', line: 'bioproteccion', dose: '1.5 mL/L', method: 'Aspersión', frequency: 'Preventivo desde emergencia', notes: 'Mosca blanca y pulgón temprano transmiten virus que arruinan el ciclo', isProtection: true },
       ],
     },
     {
-      id: 'vegetativo', name: 'Desarrollo vegetativo', emoji: '🌿',
-      durationDays: 21, objective: 'Planta vigorosa con buena área foliar antes del inicio de floración (muy temprano en calabaza).',
+      id: 'vegetativo', name: 'Desarrollo de guía', emoji: '🌿',
+      durationDays: 35, objective: 'Construir guía larga y dosel foliar amplio: la fábrica de azúcares que llenará el fruto grande.',
       color: 'bg-green-100', textColor: 'text-green-700',
       products: [
-        { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '4 L/ha', method: 'Fertirrigación', frequency: '2 veces/semana', notes: 'N para área foliar — moderar cerca de floración' },
-        { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '1 L/ha', method: 'Fertirrigación', frequency: 'Cada 12 días', notes: 'Micros completos para metabolismo del ciclo corto' },
-        { productId: 'zen-fungi', productName: 'Zen-Fungi', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 8 días', notes: 'Preventivo de cenicilla — la enfermedad más limitante en calabaza', isProtection: true },
+        { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '5 L/ha', method: 'Fertirrigación', frequency: '2 veces/semana', notes: 'N sostiene la guía vigorosa — moderar al acercarse la floración' },
+        { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '1.5 L/ha', method: 'Fertirrigación', frequency: 'Cada 14 días', notes: 'Micros completos para fotosíntesis del dosel' },
+        { productId: 'zen-fungi', productName: 'Zen-Fungi', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 10 días', notes: 'Preventivo de cenicilla — la enfermedad más limitante en calabaza', isProtection: true },
       ],
     },
     {
-      id: 'floracion', name: 'Floración y cuajado', emoji: '🌸',
-      durationDays: 18, objective: 'Cuajado continuo de fruto (en calabacita se corta diario) evitando aborto floral.',
+      id: 'floracion', name: 'Floración y amarre', emoji: '🌸',
+      durationDays: 25, objective: 'Amarrar el fruto en la posición correcta de la guía y evitar aborto por estrés o mala polinización.',
       color: 'bg-yellow-100', textColor: 'text-yellow-700',
       products: [
-        { productId: 'bp-cuaje', productName: 'BP Cuaje', line: 'bioestimulantes', dose: '2 mL/L', method: 'Foliar', frequency: 'Inicio de flor + cada 10 días', notes: 'Sostiene amarre continuo en cosecha escalonada diaria' },
-        { productId: 'biotiza-calcio-boro', productName: 'Biotiza Calcio Boro', line: 'especialidades', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'Ca+B contra pudrición apical y deformación del fruto joven' },
-        { productId: 'bp-fiore', productName: 'BP Fioré', line: 'bioestimulantes', dose: '1 g/L', method: 'Foliar', frequency: 'Inicio de floración', notes: 'Mejora proporción de flores femeninas y amarre' },
+        { productId: 'bp-fiore', productName: 'BP Fioré', line: 'bioestimulantes', dose: '1 g/L', method: 'Foliar', frequency: 'Inicio de floración', notes: 'Mejora proporción de flores femeninas y amarre del fruto principal' },
+        { productId: 'bp-cuaje', productName: 'BP Cuaje', line: 'bioestimulantes', dose: '2 mL/L', method: 'Foliar', frequency: 'Inicio de flor + 10 días', notes: 'Asegura el amarre del fruto que se llevará a calibre comercial' },
+        { productId: 'biotiza-calcio-boro', productName: 'Biotiza Calcio Boro', line: 'especialidades', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 12 días', notes: 'Ca+B contra pudrición apical y deformación del fruto joven' },
       ],
     },
     {
-      id: 'produccion-cosecha', name: 'Producción y cosecha', emoji: '🎃',
-      durationDays: 22, objective: 'Mantener calidad y firmeza de fruto durante la ventana de cosecha escalonada.',
+      id: 'llenado-maduracion', name: 'Llenado y maduración del fruto', emoji: '🎃',
+      durationDays: 32, objective: 'Maximizar calibre, contenido de pulpa/pepita y curado de la cáscara para almacenamiento prolongado.',
       color: 'bg-orange-100', textColor: 'text-orange-700',
       products: [
-        { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '6 L/ha', method: 'Fertirrigación', frequency: 'Cada 5 días', notes: 'K mantiene firmeza, color y vida post-corte del fruto' },
-        { productId: 'ae-calcium', productName: 'AE Calcium', line: 'organicos', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 7 días', notes: 'Ca firmeza y resistencia al manejo post-cosecha' },
-        { productId: 'bp-fresh', productName: 'BP Fresh', line: 'bioestimulantes', dose: '1 mL/L', method: 'Foliar', frequency: 'Semanal en cosecha', notes: 'Sanitiza superficie del fruto y reduce pudriciones en anaquel', isProtection: true },
+        { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '8 L/ha', method: 'Fertirrigación', frequency: 'Semanal', notes: 'K es el motor del calibre, materia seca y color de pulpa del fruto grande' },
+        { productId: 'bp-gross', productName: 'BP Gross', line: 'bioestimulantes', dose: '1 g/L', method: 'Foliar', frequency: '20 y 40 días post-amarre', notes: 'Engordador: maximiza peso del fruto, factor directo del rendimiento' },
+        { productId: 'ae-calcium', productName: 'AE Calcium', line: 'organicos', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Cada 12 días', notes: 'Ca cura la cáscara para resistir manejo y almacén de varios meses' },
+        { productId: 'bp-fresh', productName: 'BP Fresh', line: 'bioestimulantes', dose: '1 mL/L', method: 'Foliar al fruto', frequency: '15 días pre-cosecha', notes: 'Sanitiza la superficie del fruto y reduce pudriciones en almacenamiento', isProtection: true },
+      ],
+    },
+  ],
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// CALABACÍN (calabacita / zucchini / zapallito italiano)
+// ════════════════════════════════════════════════════════════════════════
+
+const CALABACIN: FullCropProtocol = {
+  id: 'calabacin', slug: 'calabacin', name: 'Calabacín (calabacita / zucchini)', scientific_name: 'Cucurbita pepo',
+  emoji: '🥒', gradient: 'from-green-600 to-lime-500', accentColor: '#16a34a',
+  description: 'Calabacita, zucchini o zapallito italiano: cucurbitácea de ciclo ultracorto y cosecha continua diaria (el fruto se corta tierno cada 24-48 h durante varias semanas). El éxito comercial depende de sostener un cuajado constante sin aborto floral, calibre uniforme y un manejo estricto de mosca blanca (virosis) y cenicilla sin residuo.',
+  cycle_days: 70,
+  season: 'Producción casi continua en invernadero; ciclos escalonados en campo abierto',
+  regions: ['Sinaloa', 'Sonora', 'Jalisco', 'Guanajuato', 'Baja California', 'Morelos'],
+  featured_products: ['bp-koren', 'bp-cuaje', 'k-ultra', 'zen-chrys', 'biotiza-calcio-boro'],
+  common_challenges: ['Mosca blanca y pulgón (vectores de virosis: CYSDV, ToLCNDV)', 'Cenicilla polvosa (Podosphaera xanthii)', 'Aborto floral por estrés térmico o nutricional', 'Fruto curvo o de calibre disparejo', 'Pudrición apical (blossom-end) por deficiencia de Ca'],
+  stages: [
+    {
+      id: 'siembra', name: 'Siembra y emergencia', emoji: '🌱',
+      durationDays: 12, objective: 'Emergencia uniforme y raíz rápida: el calabacín no perdona tropiezos por su ciclo ultracorto.',
+      color: 'bg-emerald-100', textColor: 'text-emerald-700',
+      products: [
+        { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Emergencia y a los 8 días', notes: 'Arranque radicular crítico — cada día cuenta en un cultivo de 70 días' },
+        { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '1 L/ha', method: 'Fertirrigación', frequency: 'Días 1, 6, 12', notes: 'P para volumen radicular y arranque vegetativo veloz' },
+        { productId: 'zen-chrys', productName: 'Zen-Chrys', line: 'bioproteccion', dose: '1.5 mL/L', method: 'Aspersión', frequency: 'Preventivo desde emergencia', notes: 'Mosca blanca temprana = virosis que colapsa el ciclo: prevenir desde plántula', isProtection: true },
+      ],
+    },
+    {
+      id: 'vegetativo', name: 'Desarrollo vegetativo', emoji: '🌿',
+      durationDays: 18, objective: 'Planta compacta y vigorosa con buena área foliar antes del inicio temprano de floración (≈ día 30).',
+      color: 'bg-green-100', textColor: 'text-green-700',
+      products: [
+        { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '4 L/ha', method: 'Fertirrigación', frequency: '2 veces/semana', notes: 'N para área foliar — equilibrar para no retrasar la floración' },
+        { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '1 L/ha', method: 'Fertirrigación', frequency: 'Cada 10 días', notes: 'Micros completos para el metabolismo acelerado del ciclo corto' },
+        { productId: 'zen-fungi', productName: 'Zen-Fungi', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 8 días', notes: 'Preventivo de cenicilla — clave: sin residuo visible para fruto de corte continuo', isProtection: true },
+      ],
+    },
+    {
+      id: 'floracion-cuajado', name: 'Floración y cuajado continuo', emoji: '🌸',
+      durationDays: 14, objective: 'Lograr el flujo continuo de flores femeninas amarradas que sostendrá la cosecha diaria.',
+      color: 'bg-yellow-100', textColor: 'text-yellow-700',
+      products: [
+        { productId: 'bp-fiore', productName: 'BP Fioré', line: 'bioestimulantes', dose: '1 g/L', method: 'Foliar', frequency: 'Inicio de floración', notes: 'Aumenta la proporción de flores femeninas — más fruto por planta' },
+        { productId: 'bp-cuaje', productName: 'BP Cuaje', line: 'bioestimulantes', dose: '2 mL/L', method: 'Foliar', frequency: 'Inicio de flor + cada 8 días', notes: 'Sostiene el amarre continuo bajo cosecha escalonada diaria' },
+        { productId: 'biotiza-calcio-boro', productName: 'Biotiza Calcio Boro', line: 'especialidades', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 8 días', notes: 'Ca+B contra pudrición apical y fruto curvo/deforme — defecto #1 de descarte' },
+      ],
+    },
+    {
+      id: 'cosecha-continua', name: 'Cosecha continua (corte diario)', emoji: '🥒',
+      durationDays: 26, objective: 'Mantener calibre uniforme, color brillante y firmeza durante 3-4 semanas de corte diario sin agotar la planta.',
+      color: 'bg-lime-100', textColor: 'text-lime-700',
+      products: [
+        { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '6 L/ha', method: 'Fertirrigación', frequency: 'Cada 4 días', notes: 'K sostiene calibre, color y firmeza fruto tras fruto en cosecha intensiva' },
+        { productId: 'bp-nutri', productName: 'BP Nutri', line: 'organicos', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 7 días', notes: 'Algas: sostienen vigor de la planta bajo estrés de corte diario, alargan la vida productiva' },
+        { productId: 'ae-calcium', productName: 'AE Calcium', line: 'organicos', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 7 días', notes: 'Ca firmeza y vida post-corte: el zucchini se deshidrata rápido en anaquel' },
+        { productId: 'bp-fresh', productName: 'BP Fresh', line: 'bioestimulantes', dose: '1 mL/L', method: 'Foliar', frequency: 'Semanal durante cosecha', notes: 'Sanitiza superficie del fruto tierno y reduce pudriciones en cadena de frío', isProtection: true },
       ],
     },
   ],
@@ -751,6 +810,6 @@ const FLORES: FullCropProtocol = {
 // ─── Export ───────────────────────────────────────────────────────────────
 
 export const EXTRA_CROP_PROTOCOLS_2: FullCropProtocol[] = [
-  PLATANO, PAPAYA, SANDIA, ARROZ, CALABAZA, TRIGO, SORGO,
+  PLATANO, PAPAYA, SANDIA, ARROZ, CALABAZA, CALABACIN, TRIGO, SORGO,
   ALFALFA, MANZANA, UVA, NUEZ, MANGO, FLORES,
 ]

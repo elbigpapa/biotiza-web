@@ -124,6 +124,10 @@ const CROP_IMAGES: Record<string, CropImage> = {
     src: 'https://images.unsplash.com/photo-1697382492273-d7725efe3b62?w=1200&q=80&auto=format&fit=crop',
     alt: 'Campo de calabazas maduras',
   },
+  calabacin: {
+    src: 'https://images.unsplash.com/photo-1661604661117-790b6cb80108?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Calabacita (zucchini) creciendo en la planta',
+  },
   trigo: {
     src: 'https://images.unsplash.com/photo-1594842059196-5b6b8fa73187?w=1200&q=80&auto=format&fit=crop',
     alt: 'Campo de trigo dorado al atardecer',
