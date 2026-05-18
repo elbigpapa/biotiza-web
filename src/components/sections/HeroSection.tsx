@@ -31,7 +31,7 @@ function CountUp({ to, suffix = '' }: { to: number; suffix?: string }) {
 // ─── Datos de stats ───────────────────────────────────────────────────────
 
 const STATS = [
-  { value: 49, suffix: '',  label: 'Productos',           numeric: true  },
+  { value: 47, suffix: '',  label: 'Productos',           numeric: true  },
   { value: 14, suffix: '',  label: 'Cultivos',            numeric: true  },
   { value: 25, suffix: '+', label: 'Años de I+D',         numeric: true  },
   { value: 0,  suffix: '',  label: 'OMRI · COFEPRIS',     numeric: false, display: '✓' },

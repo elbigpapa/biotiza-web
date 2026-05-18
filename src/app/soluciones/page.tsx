@@ -12,10 +12,11 @@ import { useState, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Search, X, Filter, Leaf, FlaskConical, Sparkles, Droplets, Shield } from 'lucide-react'
+import { Search, X, Filter } from 'lucide-react'
 import { PRODUCTS, getProductsByLine } from '@/data/products'
 import { PRODUCT_LINES } from '@/data/constants'
 import { getProductImage } from '@/data/product-images'
+import { ProductPhotoFallback } from '@/components/products/ProductPhoto'
 import { cn } from '@/lib/utils'
 import { staggerContainer, fadeInUp } from '@/lib/animations'
 import Badge from '@/components/ui/Badge'
@@ -23,15 +24,8 @@ import SectionHeading from '@/components/ui/SectionHeading'
 import Container from '@/components/ui/Container'
 import type { ProductLine } from '@/types'
 
-// ─── Icono por línea ──────────────────────────────────────────────────────
-const LINE_ICONS: Record<ProductLine, React.ElementType> = {
-  organicos: Leaf, especialidades: FlaskConical,
-  bioestimulantes: Sparkles, nutricion: Droplets, bioproteccion: Shield,
-}
-
 // ─── ProductCard minimalista para el grid ─────────────────────────────────
 function CatalogCard({ product }: { product: typeof PRODUCTS[0] }) {
-  const Icon = LINE_ICONS[product.line]
   const lineConfig = PRODUCT_LINES.find(l => l.id === product.line)!
   const photo = getProductImage(product.slug)
 
@@ -68,12 +62,12 @@ function CatalogCard({ product }: { product: typeof PRODUCTS[0] }) {
             className="relative z-10 h-[88%] w-auto object-contain drop-shadow-[0_12px_22px_rgba(0,0,0,0.22)] transition-transform duration-500 group-hover:scale-[1.08]"
           />
         ) : (
-          <div
-            className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl"
-            style={{ backgroundColor: `${lineConfig.color}30` }}
-          >
-            <Icon size={26} style={{ color: lineConfig.color }} />
-          </div>
+          <ProductPhotoFallback
+            name={product.name}
+            line={product.line}
+            variant="thumb"
+            className="absolute inset-0"
+          />
         )}
 
         {/* Top badge "Top" si es featured */}

@@ -36,6 +36,7 @@ const COL_SOLUCIONES = [
 const COL_RECURSOS = [
   { label: 'Blog agrícola',         href: '/academia/blog'             },
   { label: 'Guías técnicas',        href: '/academia/guias'            },
+  { label: 'Huella de carbono',     href: '/huella-de-carbono'         },
   { label: 'Calculadora de dosis',  href: '/herramientas/calculadora-dosis' },
   { label: 'Diagnóstico de cultivo',href: '/herramientas/diagnostico'  },
   { label: 'Compatibilidad',        href: '/herramientas/compatibilidad' },

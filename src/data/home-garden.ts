@@ -189,7 +189,7 @@ export const GARDEN_PACKAGES: GardenPackage[] = [
     products: [
       { productId: 'bp-nutri', name: 'BP Nutri (algas marinas)', line: 'organicos', sizeCasa: '250 mL concentrado', useDescription: 'Bioestimulante de algas marinas: mantiene hojas firmes y brillantes, estimula nuevos brotes.' },
       { productId: 'bp-mix', name: 'BP Mix (microelementos)', line: 'nutricion', sizeCasa: '250 mL', useDescription: 'Corrige amarilleamientos por deficiencia de Fe, Zn, Mn en sustratos viejos.' },
-      { productId: 'bp-moots', name: 'BP Moots (enraizador)', line: 'organicos', sizeCasa: '100 mL', useDescription: 'Para trasplante: ayuda a las raíces a colonizar el sustrato nuevo en 7 días.' },
+      { productId: 'bp-koren', name: 'BP Koren (enraizador)', line: 'organicos', sizeCasa: '100 mL', useDescription: 'Para trasplante: ayuda a las raíces a colonizar el sustrato nuevo en 7 días.' },
     ],
     includes: [
       '3 productos concentrados con dosificador',
@@ -200,7 +200,7 @@ export const GARDEN_PACKAGES: GardenPackage[] = [
     howToUse: [
       'Diluir 2 mL de BP Nutri por litro de agua y regar cada 15 días.',
       'Cada 30 días, alternar con BP Mix a 1 mL/L para micronutrientes.',
-      'Al trasplantar o comprar planta nueva, aplicar BP Moots a 2 mL/L en el primer riego.',
+      'Al trasplantar o comprar planta nueva, aplicar BP Koren a 2 mL/L en el primer riego.',
       'No aplicar sobre flores abiertas ni en horas de sol directo.',
     ],
     bestFor: [
@@ -225,7 +225,7 @@ export const GARDEN_PACKAGES: GardenPackage[] = [
     emoji: '🚑',
     gradient: 'from-red-700 to-orange-500',
     products: [
-      { productId: 'bp-moots', name: 'BP Moots (enraizador)', line: 'organicos', sizeCasa: '100 mL', useDescription: 'Reactiva raíces dañadas y activa tejido nuevo en zona radicular.' },
+      { productId: 'bp-koren', name: 'BP Koren (enraizador)', line: 'organicos', sizeCasa: '100 mL', useDescription: 'Reactiva raíces dañadas y activa tejido nuevo en zona radicular.' },
       { productId: 'zen-fungi', name: 'Zen-Fungi (antihongos)', line: 'bioproteccion', sizeCasa: '100 mL', useDescription: 'Bioprotección contra hongos de raíz (Fusarium, Pythium) y foliares (Botrytis).' },
       { productId: 'bp-nitro-fx', name: 'BP Nitro FX (aminoácidos)', line: 'organicos', sizeCasa: '100 mL', useDescription: 'Aminoácidos libres: la planta ahorra energía de síntesis y recupera tejido 3× más rápido.' },
     ],
@@ -236,8 +236,8 @@ export const GARDEN_PACKAGES: GardenPackage[] = [
     ],
     howToUse: [
       'Día 1: revisar raíces (sacar la planta del tiesto). Si todas están negras, no hay rescate.',
-      'Día 1–3: drench con BP Moots + Zen-Fungi a dosis indicada. Suelo ligeramente húmedo, nunca encharcado.',
-      'Días 7, 14: repetir drench con BP Moots + foliar con BP Nitro FX.',
+      'Día 1–3: drench con BP Koren + Zen-Fungi a dosis indicada. Suelo ligeramente húmedo, nunca encharcado.',
+      'Días 7, 14: repetir drench con BP Koren + foliar con BP Nitro FX.',
       'Día 30: la planta debe tener al menos un brote nuevo si está respondiendo.',
     ],
     bestFor: [

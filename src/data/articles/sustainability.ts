@@ -41,7 +41,7 @@ export const SUSTAINABILITY_ARTICLES: Article[] = [
         'Mientras tanto, ya puedes vender como "transitional organic" con premium del 15-20%',
       ]},
       { type: 'callout', variant: 'success', title: 'Productos OMRI Biotiza',
-        text: 'Toda la línea Orgánicos de Biotiza (BP Calcio, BP Magnesio, BP Potasio, BP Nutri, BP Moots, AE Calcium, BP Nitro FX) es OMRI Listed. Esto significa que tu programa puede ser 70-80% orgánico certificado desde el día uno.' },
+        text: 'Toda la línea Orgánicos de Biotiza (BP Calcio, BP Magnesio, BP Potasio, BP Nutri, BP Koren, AE Calcium, BP Nitro FX) es OMRI Listed. Esto significa que tu programa puede ser 70-80% orgánico certificado desde el día uno.' },
       { type: 'quote', text: 'El consumidor de 2030 paga el doble por comida sin residuos. Los productores que migran ahora a programas orgánicos certificados están construyendo el mercado del futuro, no respondiendo a una moda.', author: 'Dr. Charles Benbrook, Heartland Health Research Alliance' },
     ],
     relatedProducts: [
@@ -151,7 +151,6 @@ export const SUSTAINABILITY_ARTICLES: Article[] = [
       { slug: 'biotiza-lactobacillus', line: 'especialidades' },
       { slug: 'zen-fungi', line: 'bioproteccion' },
       { slug: 'bp-koren', line: 'bioestimulantes' },
-      { slug: 'bontera-sa10', line: 'nutricion' },
     ],
   },
   {

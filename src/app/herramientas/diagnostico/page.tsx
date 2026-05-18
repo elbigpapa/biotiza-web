@@ -210,7 +210,7 @@ function getDiagnosis(zone: Zone, symptoms: Symptom[]): DiagnosisResult {
         badgeColor: 'bg-purple-100 text-purple-700',
         explanation:
           'El daño radicular con síntomas en raíces puede ser causado por oomycetes (Pythium, Phytophthora) u hongos del suelo. Las raíces presentan color café o negro, consistencia blanda y olor fétido. Es crítico actuar rápido: aplicar oxidante + estimulador radicular.',
-        productIds: ['bp-oxyagro', 'bp-moots'],
+        productIds: ['bp-oxyagro', 'bp-koren'],
       }
   }
 

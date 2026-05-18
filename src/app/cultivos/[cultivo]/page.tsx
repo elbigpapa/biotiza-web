@@ -576,6 +576,22 @@ export default async function CultivoPage({
                 ))}
               </div>
             )}
+
+            {/* Acciones principales del cultivo */}
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link
+                href={`/cultivos/${crop.slug}/ficha`}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-verde-800 shadow-[0_8px_24px_rgba(0,0,0,0.18)] transition-transform hover:-translate-y-0.5"
+              >
+                Descargar ficha técnica (PDF)
+              </Link>
+              <Link
+                href="/cotizacion"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/20"
+              >
+                Solicitar este programa
+              </Link>
+            </div>
           </div>
         </Container>
 
@@ -757,6 +773,12 @@ export default async function CultivoPage({
               >
                 Hablar con agrónomo
               </a>
+              <Link
+                href={`/cultivos/${crop.slug}/ficha`}
+                className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-gris-300 px-6 py-3 font-semibold text-gris-700 transition-colors hover:border-verde-400 hover:text-verde-700"
+              >
+                Descargar ficha técnica (PDF)
+              </Link>
             </div>
           </div>
         </Container>

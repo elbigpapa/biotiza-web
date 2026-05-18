@@ -5,16 +5,14 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowLeft, MessageCircle, ShoppingCart, CheckCircle, Target, Droplets, Leaf, FlaskConical, Sparkles, Shield, ChevronRight } from 'lucide-react'
+import { ArrowLeft, MessageCircle, ShoppingCart, CheckCircle, Target, ChevronRight } from 'lucide-react'
 import { PRODUCTS, getProductBySlug, getRelatedProducts } from '@/data/products'
-import { PRODUCT_LINES, BRANDS } from '@/data/constants'
-import { cn } from '@/lib/utils'
+import { PRODUCT_LINES } from '@/data/constants'
 import Badge from '@/components/ui/Badge'
 import Container from '@/components/ui/Container'
 import CompositionTable from '@/components/products/CompositionTable'
-import ProductPhoto from '@/components/products/ProductPhoto'
+import ProductPhoto, { ProductPhotoFallback } from '@/components/products/ProductPhoto'
 import { hasProductPhoto } from '@/data/product-images'
-import type { ProductLine } from '@/types'
 
 // ─── Static params: todos los productos ──────────────────────────────────
 
@@ -50,11 +48,9 @@ export async function generateMetadata({
 // ─── JSON-LD: Product + BreadcrumbList ─────────────────────────────────
 function ProductJsonLd({
   product,
-  brandName,
   lineName,
 }: {
   product: { name: string; full_name: string; description: string; line: string; slug: string; certifications: string[] }
-  brandName: string
   lineName: string
 }) {
   const productSchema = {
@@ -64,8 +60,8 @@ function ProductJsonLd({
     alternateName: product.name,
     description: product.description,
     url: `https://biotiza.mx/soluciones/${product.line}/${product.slug}`,
-    brand: { '@type': 'Brand', name: brandName },
-    manufacturer: { '@type': 'Organization', name: brandName },
+    brand: { '@type': 'Brand', name: 'Biotiza' },
+    manufacturer: { '@type': 'Organization', name: 'Biotiza', url: 'https://biotiza.mx' },
     category: lineName,
     hasCertification: product.certifications.map((cert) => ({
       '@type': 'Certification',
@@ -104,12 +100,6 @@ function ProductJsonLd({
   )
 }
 
-// ─── Icono por línea ──────────────────────────────────────────────────────
-const LINE_ICONS: Record<ProductLine, React.ElementType> = {
-  organicos: Leaf, especialidades: FlaskConical,
-  bioestimulantes: Sparkles, nutricion: Droplets, bioproteccion: Shield,
-}
-
 // ─── Componente principal ─────────────────────────────────────────────────
 
 export default async function ProductDetailPage({
@@ -122,9 +112,7 @@ export default async function ProductDetailPage({
   if (!product || product.line !== linea) notFound()
 
   const lineConfig  = PRODUCT_LINES.find(l => l.id === product.line)!
-  const brandConfig = BRANDS.find(b => b.id === product.brand)!
   const related     = getRelatedProducts(product, 4)
-  const Icon        = LINE_ICONS[product.line]
 
   const waText = encodeURIComponent(
     `Hola Biotiza, quiero información sobre ${product.name}. ¿Cuál es la dosis para mi cultivo?`
@@ -158,17 +146,12 @@ export default async function ProductDetailPage({
               {hasProductPhoto(product.slug) ? (
                 <ProductPhoto slug={product.slug} line={product.line} variant="hero" priority />
               ) : (
-                <div
-                  className="absolute inset-0 flex items-center justify-center"
-                  style={{ background: `linear-gradient(135deg, ${lineConfig.color}33, ${lineConfig.color}66)` }}
-                >
-                  <div
-                    className="flex h-24 w-24 items-center justify-center rounded-3xl"
-                    style={{ backgroundColor: `${lineConfig.color}40` }}
-                  >
-                    <Icon size={48} style={{ color: lineConfig.color }} />
-                  </div>
-                </div>
+                <ProductPhotoFallback
+                  name={product.name}
+                  line={product.line}
+                  variant="hero"
+                  className="absolute inset-0"
+                />
               )}
               {product.featured && (
                 <div className="absolute top-4 right-4 rounded-full bg-naranja-500 px-3 py-1 text-xs font-bold text-white shadow-lg">
@@ -220,7 +203,6 @@ export default async function ProductDetailPage({
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-2">
                 <Badge line={product.line} size="md" />
-                <Badge brand={product.brand} size="md" showDot />
                 <span className="text-xs font-semibold uppercase tracking-wider text-gris-400">
                   {product.category}
                 </span>
@@ -229,15 +211,6 @@ export default async function ProductDetailPage({
                 {product.name}
               </h1>
               <p className="mt-1 text-sm font-medium text-gris-500">{product.full_name}</p>
-              <Link
-                href={`/marcas/${brandConfig.slug}`}
-                className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-gris-500 hover:text-gris-800 transition-colors"
-                style={{ color: brandConfig.color }}
-              >
-                <span className="h-2 w-2 rounded-full" style={{ backgroundColor: brandConfig.color }} />
-                Producto de la marca {brandConfig.name}
-                <ChevronRight size={12} />
-              </Link>
               <p className="mt-4 text-base leading-relaxed text-gris-700">
                 {product.description}
               </p>
@@ -375,8 +348,6 @@ export default async function ProductDetailPage({
             </h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {related.map(rel => {
-                const relLine = PRODUCT_LINES.find(l => l.id === rel.line)!
-                const RelIcon = LINE_ICONS[rel.line]
                 const hasPhoto = hasProductPhoto(rel.slug)
                 return (
                   <Link
@@ -388,12 +359,12 @@ export default async function ProductDetailPage({
                       {hasPhoto ? (
                         <ProductPhoto slug={rel.slug} line={rel.line} variant="thumb" showGlow={false} />
                       ) : (
-                        <div
-                          className="absolute inset-0 flex items-center justify-center"
-                          style={{ background: `linear-gradient(135deg, ${relLine.color}22, ${relLine.color}44)` }}
-                        >
-                          <RelIcon size={28} style={{ color: relLine.color }} />
-                        </div>
+                        <ProductPhotoFallback
+                          name={rel.name}
+                          line={rel.line}
+                          variant="thumb"
+                          className="absolute inset-0"
+                        />
                       )}
                     </div>
                     <div className="p-4 space-y-1.5">
@@ -423,7 +394,7 @@ export default async function ProductDetailPage({
       </Container>
 
       {/* SEO: Product + Breadcrumb JSON-LD */}
-      <ProductJsonLd product={product} brandName={brandConfig.name} lineName={lineConfig.name} />
+      <ProductJsonLd product={product} lineName={lineConfig.name} />
     </div>
   )
 }

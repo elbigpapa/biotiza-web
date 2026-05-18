@@ -4,7 +4,7 @@
  * Reglas clave:
  *  - bp-oxyagro (H₂O₂) es INCOMPATIBLE con todos los biológicos
  *  - bp-calcio es INCOMPATIBLE con bp-boro (precipitan en tanque)
- *  - Los biológicos (lactobacillus, bp-moots, bp-koren) son COMPATIBLES entre sí
+ *  - Los biológicos (lactobacillus, bp-koren) son COMPATIBLES entre sí
  *  - Los productos Zen de bioprotección son COMPATIBLES con nutrición
  *  - Usar prueba de jarrita siempre que el estado sea 'conditional'
  */
@@ -23,15 +23,9 @@ export const COMPATIBILITY_MATRIX: CompatibilityEntry[] = [
   },
   {
     productA: 'bp-oxyagro',
-    productB: 'bp-moots',
-    status: 'incompatible',
-    notes: 'El H₂O₂ oxida los fitohormonas orgánicas y destruye los componentes biológicos de BP Moots.',
-  },
-  {
-    productA: 'bp-oxyagro',
     productB: 'bp-koren',
     status: 'incompatible',
-    notes: 'El H₂O₂ desnaturaliza los componentes activos del enraizador BP Koren.',
+    notes: 'El H₂O₂ oxida los fitohormonas orgánicas y destruye los componentes biológicos de BP Koren.',
   },
   {
     productA: 'bp-oxyagro',
@@ -165,12 +159,6 @@ export const COMPATIBILITY_MATRIX: CompatibilityEntry[] = [
     status: 'compatible',
     notes: 'Compatible. Los aminoácidos de BP Nitro FX potencian la asimilación del N mineral.',
   },
-  {
-    productA: 'bontera-sa10',
-    productB: 'n-ultra',
-    status: 'compatible',
-    notes: 'Compatible. Los ácidos húmicos y fúlvicos mejoran la eficiencia del fertilizante mineral.',
-  },
 
   // ── Bioestimulantes entre sí ───────────────────────────────────────────
   {
@@ -212,34 +200,10 @@ export const COMPATIBILITY_MATRIX: CompatibilityEntry[] = [
 
   // ── Biológicos entre sí — compatibles ─────────────────────────────────
   {
-    productA: 'bp-moots',
+    productA: 'bp-koren',
     productB: 'biotiza-lactobacillus',
     status: 'compatible',
     notes: 'Excelente combinación de enraizamiento + microbiota. Aplicar juntos en trasplante.',
-  },
-  {
-    productA: 'bp-moots',
-    productB: 'bontera-sa10',
-    status: 'compatible',
-    notes: 'Compatible. Los ácidos húmicos de Bontera SA-10 potencian el efecto de los fitohormonas.',
-  },
-  {
-    productA: 'biotiza-lactobacillus',
-    productB: 'bontera-sa10',
-    status: 'compatible',
-    notes: 'Compatible. Los ácidos orgánicos crean un ambiente favorable para Lactobacillus.',
-  },
-  {
-    productA: 'bp-koren',
-    productB: 'bp-moots',
-    status: 'compatible',
-    notes: 'Compatible. BP Koren (AIB) + BP Moots (auxinas) para máxima inducción radicular.',
-  },
-  {
-    productA: 'bp-koren',
-    productB: 'biotiza-lactobacillus',
-    status: 'compatible',
-    notes: 'Compatible. Buena combinación para establecimiento de planta nueva.',
   },
 
   // ── Bioprotección entre sí — compatibles ───────────────────────────────

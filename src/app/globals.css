@@ -680,3 +680,44 @@ a:hover {
     animation: none !important;
   }
 }
+
+/* ─── Impresión: ficha técnica de cultivo / guardar como PDF ─────────── */
+.print-only { display: none; }
+
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+  }
+
+  main {
+    margin: 0 !important;
+  }
+
+  .print-only {
+    display: revert;
+  }
+
+  .ficha-print {
+    color: #0f172a;
+  }
+
+  .ficha-print .break-inside-avoid {
+    break-inside: avoid;
+  }
+
+  .ficha-print a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  @page {
+    margin: 14mm 12mm;
+  }
+}

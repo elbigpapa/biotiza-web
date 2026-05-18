@@ -31,7 +31,6 @@ const AGAVE: FullCropProtocol = {
       color: 'bg-emerald-100', textColor: 'text-emerald-700',
       products: [
         { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '5 mL/L', method: 'Drench', frequency: 'Al plantar + días 30, 60', notes: 'Enraizador concentrado: crítico para colonizar el suelo desde el hijuelo' },
-        { productId: 'bp-moots', productName: 'BP Moots', line: 'organicos', dose: '3 mL/L', method: 'Drench', frequency: 'Cada 60 días primer año', notes: 'Ácidos húmicos activan microbiología del suelo' },
         { productId: 'biotiza-lactobacillus', productName: 'Lactobacillus', line: 'especialidades', dose: '2 g/L', method: 'Drench', frequency: 'Al plantar + 90 días', notes: 'Inhibe Erwinia que causa pudrición del cogollo en hijuelos jóvenes' },
         { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'bioproteccion', dose: '2 g/L', method: 'Drench', frequency: 'Cada 90 días', notes: 'Trichoderma antagonista de Fusarium, principal patógeno radicular del agave', isProtection: true },
       ],
@@ -54,7 +53,6 @@ const AGAVE: FullCropProtocol = {
       products: [
         { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '20 L/ha', method: 'Fertirrigación / Aplicación al cogollo', frequency: '2 veces/año', notes: 'K es EL nutriente crítico del agave: define cantidad y calidad de fructanos para destilación' },
         { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '4 mL/L', method: 'Foliar al cogollo', frequency: 'Cada 6 meses', notes: 'K foliar complementa fertirrigación' },
-        { productId: 'bontera-sa10', productName: 'Bontera SA-10', line: 'nutricion', dose: '3 L/ha', method: 'Fertirrigación', frequency: 'Anual al inicio de lluvias', notes: 'Mejora CIC del suelo y disponibilidad de cationes (K, Ca, Mg)' },
         { productId: 'beauver', productName: 'BEAUVER', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión a base de pencas', frequency: 'Cada 6 meses', notes: 'Beauveria controla picudo en larvas dentro del cogollo', isProtection: true },
       ],
     },
@@ -90,7 +88,7 @@ const CEBOLLA: FullCropProtocol = {
       durationDays: 21, objective: 'Prendimiento rápido de la plántula y construcción de sistema radicular fibroso. La cebolla tiene raíces superficiales — necesita raíz densa.',
       color: 'bg-emerald-100', textColor: 'text-emerald-700',
       products: [
-        { productId: 'bp-moots', productName: 'BP Moots', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Días 1, 7, 14', notes: 'Enraizador esencial para cebolla — raíz fibrosa = bulbo grande' },
+        { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Días 1, 7, 14', notes: 'Enraizador esencial para cebolla — raíz fibrosa = bulbo grande' },
         { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Alta en establecimiento', notes: 'P arranca el sistema radicular y prepara la planta para crecimiento foliar' },
         { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'bioproteccion', dose: '2 g/L', method: 'Drench', frequency: 'Días 5 y 20', notes: 'Trichoderma protege contra Pythium y Fusarium en suelos húmedos', isProtection: true },
       ],
@@ -215,7 +213,7 @@ const PEPINO: FullCropProtocol = {
       durationDays: 10, objective: 'Arraigo rápido y emisión de las 2-3 primeras hojas verdaderas vigorosas.',
       color: 'bg-emerald-100', textColor: 'text-emerald-700',
       products: [
-        { productId: 'bp-moots', productName: 'BP Moots', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Días 1 y 7', notes: 'Enraizador con ácidos húmicos para arraigo en sustrato' },
+        { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Días 1 y 7', notes: 'Enraizador con ácidos húmicos para arraigo en sustrato' },
         { productId: 'biotiza-lactobacillus', productName: 'Lactobacillus', line: 'especialidades', dose: '2 g/L', method: 'Drench', frequency: 'Día 1', notes: 'Coloniza rizosfera antes que patógenos' },
         { productId: 'zen-chrys', productName: 'Zen-Chrys', line: 'bioproteccion', dose: '1.5 mL/L', method: 'Foliar', frequency: 'Preventivo desde día 3', notes: 'Mosquita blanca llega desde el primer momento — prevención inmediata', isProtection: true },
       ],
@@ -344,7 +342,7 @@ const LECHUGA: FullCropProtocol = {
       durationDays: 7, objective: 'Prendimiento rápido sin estrés — lechuga es muy sensible al choque de trasplante.',
       color: 'bg-emerald-100', textColor: 'text-emerald-700',
       products: [
-        { productId: 'bp-moots', productName: 'BP Moots', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Días 1 y 5', notes: 'Reduce estrés de trasplante en plántula tierna' },
+        { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Días 1 y 5', notes: 'Reduce estrés de trasplante en plántula tierna' },
         { productId: 'biotiza-coadyuvante', productName: 'Coadyuvante', line: 'bioestimulantes', dose: '0.5 mL/L', method: 'Foliar', frequency: 'Día 3', notes: 'Mejora absorción y reduce estrés osmótico inicial' },
         { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'bioproteccion', dose: '2 g/L', method: 'Drench', frequency: 'Día 1', notes: 'Trichoderma contra Pythium en plántula recién trasplantada', isProtection: true },
       ],

@@ -33,7 +33,7 @@ export const CROPS_ARTICLES: Article[] = [
       { type: 'h2', text: 'Protocolo Biotiza por etapa', id: 'protocolo' },
       { type: 'h3', text: 'Etapa 1 — Trasplante' },
       { type: 'ul', items: [
-        'BP Moots 2 mL/L drench al trasplante + días 7 y 14',
+        'BP Koren 2 mL/L drench al trasplante + días 7 y 14',
         'P-Ultra 1 L/ha fertirrigado (el P es crítico para raíz)',
         'Zen-Chrys preventivo cada 7 días contra mosquita blanca',
       ]},
@@ -56,7 +56,7 @@ export const CROPS_ARTICLES: Article[] = [
       { type: 'quote', text: 'El tomate no perdona errores de nutrición. Pero recompensa la precisión como ningún otro cultivo: 5% más calcio en cuajado puede ser 12% más empaque exportable.', author: 'Dr. Luis Castellanos, INIFAP Sinaloa' },
     ],
     relatedProducts: [
-      { slug: 'bp-moots', line: 'organicos' },
+      { slug: 'bp-koren', line: 'organicos' },
       { slug: 'bp-cuaje', line: 'bioestimulantes' },
       { slug: 'ae-calcium', line: 'organicos' },
       { slug: 'k-ultra', line: 'nutricion' },

@@ -75,7 +75,7 @@ const FEATURED_PRODUCTS: ProductCardData[] = [
     slug: 'brotanic',
     name: 'Brotanic',
     line: 'nutricion',
-    tagline: 'Cu + Mn + Zn líquidos de Veganic. Vigor foliar y prevención de clorosis.',
+    tagline: 'Cu + Mn + Zn líquidos. Vigor foliar y prevención de clorosis.',
     icon: '🍃',
   },
   {

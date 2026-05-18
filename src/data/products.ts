@@ -6,7 +6,7 @@
 import type { Product } from '@/types'
 
 // ─────────────────────────────────────────────────────────────────────────
-// LÍNEA ORGÁNICOS (10 productos) · #22b573 verde
+// LÍNEA ORGÁNICOS (9 productos) · #22b573 verde
 // ─────────────────────────────────────────────────────────────────────────
 
 const ORGANICOS: Product[] = [
@@ -85,7 +85,7 @@ const ORGANICOS: Product[] = [
     ],
     crops: ['tomate', 'tomate-cherry', 'chile', 'citricos', 'aguacate', 'fresa', 'brocoli', 'apio', 'cana-azucar'],
     compatibility: {
-      compatible:   ['bp-calcio', 'bp-potasio', 'n-ultra', 'bontera-sa10'],
+      compatible:   [ 'bp-calcio', 'bp-potasio', 'n-ultra' ],
       incompatible: [],
       conditional:  ['bp-boro'],
     },
@@ -133,49 +133,6 @@ const ORGANICOS: Product[] = [
     featured: true,
   },
   {
-    id: 'bp-moots',
-    slug: 'bp-moots',
-    name: 'BP Moots',
-    full_name: 'BP Moots — Enraizador Orgánico Premium',
-    line: 'organicos',
-    brand: 'bioproductos',
-    category: 'Enraizadores',
-    description: 'Enraizador orgánico de alta performance con ácido indolbutírico, aminoácidos libres y microorganismos promotores para un sistema radicular potente desde el primer día.',
-    technical_description: 'Combina el poder de las auxinas naturales (AIB), los ácidos húmicos y fúlvicos como quelantes y mejoradores de suelo, y aminoácidos libres como bioestimulantes de la rizogénesis. Resultados visibles en 7–10 días.',
-    composition: [
-      { ingredient: 'Ácido Indolbutírico (AIB, enraizador)', value: '3600 ppm', unit: 'ppm' },
-      { ingredient: 'Nitrógeno total (N)',                    value: '2.5 %',   unit: '%'   },
-      { ingredient: 'Óxido de Potasio (K₂O)',                 value: '0.4 %',   unit: '%'   },
-      { ingredient: 'Aminoácidos libres',                     value: '8.3 %',   unit: '%'   },
-    ],
-    presentations: [
-      { size: '1 L',  unit: 'L' },
-      { size: '20 L', unit: 'L' },
-    ],
-    certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['drench', 'fertirrigación', 'drench radicular'],
-    recommended_dose: {
-      drench:        '2–3 mL/L de solución (500–750 mL/ha)',
-      fertirrigacion:'1–2 L/ha',
-    },
-    frequency: 'Al trasplante, repetir a los 10 y 20 días',
-    best_stages: ['pre-siembra', 'trasplante', 'emergencia', 'crecimiento vegetativo'],
-    benefits: [
-      'Estimula la formación de raíces primarias y secundarias',
-      'Aumenta la absorción de agua y nutrientes',
-      'Reduce el estrés de trasplante',
-      'Mejora el prendimiento en hasta 95%',
-    ],
-    crops: ['tomate', 'tomate-cherry', 'fresa', 'chile', 'arandano', 'aguacate', 'citricos', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol'],
-    compatibility: {
-      compatible:   ['biotiza-lactobacillus', 'bontera-sa10', 'bp-nutri'],
-      incompatible: [],
-      conditional:  [],
-    },
-    solves_problems: ['pobre sistema radicular', 'estrés de trasplante', 'bajo prendimiento', 'raíces cortas'],
-    featured: false,
-  },
-  {
     id: 'bp-koren',
     slug: 'bp-koren',
     name: 'BP Koren',
@@ -204,7 +161,7 @@ const ORGANICOS: Product[] = [
     ],
     crops: ['arandano', 'frambuesa', 'zarzamora', 'aguacate', 'fresa'],
     compatibility: {
-      compatible:   ['biotiza-lactobacillus', 'bontera-sa10'],
+      compatible:   [ 'biotiza-lactobacillus' ],
       incompatible: [],
       conditional:  [],
     },
@@ -242,7 +199,7 @@ const ORGANICOS: Product[] = [
     ],
     crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa'],
     compatibility: {
-      compatible:   ['bp-moots', 'bp-nutri', 'bontera-sa10'],
+      compatible:   [ 'bp-koren', 'bp-nutri' ],
       incompatible: [],
       conditional:  [],
     },
@@ -279,7 +236,7 @@ const ORGANICOS: Product[] = [
     crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora'],
     compatibility: {
       compatible:   [],
-      incompatible: ['biotiza-lactobacillus', 'bp-moots', 'bp-koren'],
+      incompatible: [ 'biotiza-lactobacillus', 'bp-koren' ],
       conditional:  [],
     },
     solves_problems: ['dampimg-off', 'Pythium', 'Phytophthora', 'Fusarium radicular', 'suelo asfixiante'],
@@ -354,7 +311,7 @@ const ORGANICOS: Product[] = [
     ],
     crops: ['tomate', 'tomate-cherry', 'fresa', 'arandano', 'chile', 'aguacate', 'citricos', 'brocoli', 'apio', 'cana-azucar'],
     compatibility: {
-      compatible:   ['bp-calcio', 'bp-moots', 'bp-nitro-fx', 'bontera-sa10'],
+      compatible:   [ 'bp-calcio', 'bp-koren', 'bp-nitro-fx' ],
       incompatible: [],
       conditional:  [],
     },
@@ -392,7 +349,7 @@ const ORGANICOS: Product[] = [
     ],
     crops: ['tomate', 'tomate-cherry', 'fresa', 'arandano', 'frambuesa', 'aguacate', 'brocoli', 'apio'],
     compatibility: {
-      compatible:   ['bp-magnesio', 'bp-potasio', 'bontera-sa10'],
+      compatible:   [ 'bp-magnesio', 'bp-potasio' ],
       incompatible: ['bp-calcio'],
       conditional:  [],
     },
@@ -585,7 +542,7 @@ const ESPECIALIDADES: Product[] = [
     ],
     crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol'],
     compatibility: {
-      compatible:   ['bp-moots', 'bontera-sa10', 'bp-nutri'],
+      compatible:   [ 'bp-koren', 'bp-nutri' ],
       incompatible: ['bp-oxyagro', 'zen-cu'],
       conditional:  [],
     },
@@ -1156,43 +1113,6 @@ const NUTRICION: Product[] = [
     solves_problems: ['deficiencias múltiples de microelementos', 'análisis de suelo con varios bajos', 'suelos empobrecidos'],
     featured: false,
   },
-  {
-    id: 'bontera-sa10',
-    slug: 'bontera-sa10',
-    name: 'Bontera SA-10',
-    full_name: 'Bontera SA-10 — Ácidos Húmicos y Fúlvicos de Alta Concentración',
-    line: 'nutricion',
-    brand: 'bioproductos',
-    category: 'Bioestimulantes de suelo',
-    description: 'Concentrado de ácidos húmicos y fúlvicos de máxima concentración para mejorar la estructura del suelo, aumentar la CIC y potenciar la absorción de nutrientes.',
-    composition: [
-      { ingredient: 'Ácido Fúlvico',   value: '67.46 %', unit: '%' },
-      { ingredient: 'Ácido Húmico',    value: '18.97 %', unit: '%' },
-    ],
-    presentations: [{ size: '1 L', unit: 'L' }, { size: '20 L', unit: 'L' }],
-    certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['fertirrigación', 'drench'],
-    recommended_dose: {
-      fertirrigacion: '1–2 L/ha',
-      drench:         '2–3 L/ha',
-    },
-    frequency: 'Cada 15–21 días; más frecuente en suelos arenosos o degradados',
-    best_stages: ['pre-siembra', 'trasplante', 'crecimiento vegetativo'],
-    benefits: [
-      'Mejora la CIC del suelo hasta 40%',
-      'Potencia la absorción de N, P, K y microelementos',
-      'Mejora la estructura de suelos arcillosos y arenosos',
-      'Compatible con cualquier programa de fertirrigación',
-    ],
-    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'aguacate', 'citricos', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol'],
-    compatibility: {
-      compatible:   ['bp-moots', 'biotiza-lactobacillus', 'bp-nutri', 'n-ultra'],
-      incompatible: [],
-      conditional:  [],
-    },
-    solves_problems: ['suelo degradado', 'baja CIC', 'nutrientes inmovilizados', 'suelo compactado'],
-    featured: false,
-  },
 ]
 
 // ─────────────────────────────────────────────────────────────────────────
@@ -1517,7 +1437,7 @@ const BIOPROTECCION: Product[] = [
     ],
     crops: ['tomate', 'chile', 'fresa', 'arandano'],
     compatibility: {
-      compatible:   ['biotiza-lactobacillus', 'bontera-sa10'],
+      compatible:   [ 'biotiza-lactobacillus' ],
       incompatible: ['bp-oxyagro'],
       conditional:  [],
     },
@@ -1598,7 +1518,7 @@ const AGROBIONSA: Product[] = [
     ],
     crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora'],
     compatibility: {
-      compatible:   ['agb-elicitor-sin', 'bp-moots'],
+      compatible:   [ 'agb-elicitor-sin', 'bp-koren' ],
       incompatible: [],
       conditional:  [],
     },
@@ -1637,7 +1557,7 @@ const AGROBIONSA: Product[] = [
     ],
     crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'brocoli', 'apio'],
     compatibility: {
-      compatible:   ['agb-lilac', 'bp-moots'],
+      compatible:   [ 'agb-lilac', 'bp-koren' ],
       incompatible: [],
       conditional:  [],
     },
@@ -1845,11 +1765,11 @@ const VEGANIC: Product[] = [
     id: 'vgn-brotanic',
     slug: 'brotanic',
     name: 'BROTANIC',
-    full_name: 'BROTANIC — Fertilizante Líquido Cu + Mn + Zn (Vitagea Line · Veganic)',
+    full_name: 'BROTANIC — Fertilizante Líquido Cu + Mn + Zn',
     line: 'nutricion',
     brand: 'veganic',
     category: 'Micronutrientes foliares y al suelo',
-    description: 'Fertilizante inorgánico líquido fuente de Cobre, Manganeso y Zinc. Diseñado para óptima asimilación foliar y radicular, previene y corrige deficiencias de microelementos durante el desarrollo vegetativo y reproductivo del cultivo. Fórmula exclusiva de Veganic Nature, fabricado en España.',
+    description: 'Fertilizante inorgánico líquido fuente de Cobre, Manganeso y Zinc. Diseñado para óptima asimilación foliar y radicular, previene y corrige deficiencias de microelementos durante el desarrollo vegetativo y reproductivo del cultivo. Formulación ácida de alta pureza para máxima asimilación de microelementos.',
     technical_description: 'Formulación líquida ácida (pH 2,73) con microelementos en forma asimilable. Aspecto marrón, densidad 1,14 g/cm³. Registro sanitario COFEPRIS RSCO-335/VII/25. La acidez facilita el paso de los micros a través de la cutícula foliar y mejora la disponibilidad en suelos de pH alcalino. Compatible con fertirrigación y aspersión foliar; aplicar temprano en la mañana o por la tarde para evitar temperaturas superiores a 35 °C.',
     composition: [
       { ingredient: 'Cobre (Cu)',     value: '1,66 %', unit: '% p/v' },
@@ -1878,7 +1798,7 @@ const VEGANIC: Product[] = [
       'Doble vía de aplicación: foliar y sistema de riego',
       'Previene y corrige deficiencias de micronutrientes',
       'Formulación ácida para máxima asimilación',
-      'Fabricado en España por Veganic Nature — Vegan & Cruelty Free',
+      'Certificado Vegan & Cruelty Free',
       'Registro COFEPRIS vigente RSCO-335/VII/25',
     ],
     crops: [
@@ -1889,7 +1809,7 @@ const VEGANIC: Product[] = [
     compatibility: {
       compatible:   ['bp-nutri', 'bp-mix', 'n-ultra', 'p-ultra', 'k-ultra'],
       incompatible: ['bp-calcio', 'ca-ultra'],
-      conditional:  ['bontera-sa10'],
+      conditional:  [],
     },
     solves_problems: [
       'deficiencia de cobre',

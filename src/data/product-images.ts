@@ -38,7 +38,6 @@ export const PRODUCT_IMAGES: Record<string, ProductImage> = {
   'bp-magnesio':  { src: '/images/products/bp-magnesio.png',  alt: 'BP Magnesio — Magnesio orgánico quelatado Biotiza, envase 1 L' },
   'bp-mix':       { src: '/images/products/bp-mix.png',       alt: 'BP Mix — Mezcla de micronutrientes Biotiza, envase 1 L' },
   'bp-mol':       { src: '/images/products/bp-mol.png',       alt: 'BP Mol — Molibdeno orgánico Biotiza, envase 1 L' },
-  'bp-moots':     { src: '/images/products/bp-moots.png',     alt: 'BP Moots — Activador radicular Biotiza, envase 1 L' },
   'bp-nitro-fx':  { src: '/images/products/bp-nitro-fx.png',  alt: 'BP Nitro FX — Nitrógeno orgánico Biotiza, envase 1 L' },
   'bp-nutri':     { src: '/images/products/bp-nutri.png',     alt: 'BP Nutri — Nutrición foliar balanceada Biotiza, envase 1 L' },
   'bp-potasio':   { src: '/images/products/bp-potasio.png',   alt: 'BP Potasio — Potasio orgánico quelatado Biotiza, envase 1 L' },

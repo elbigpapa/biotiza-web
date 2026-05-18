@@ -14,6 +14,7 @@ import { cn } from '@/lib/utils'
 import Badge from '@/components/ui/Badge'
 import TiltCard from '@/components/ui/TiltCard'
 import { getProductImage } from '@/data/product-images'
+import { ProductPhotoFallback } from '@/components/products/ProductPhoto'
 import type { ProductLine, ProductBrand } from '@/types'
 
 export interface ProductCardData {
@@ -41,14 +42,6 @@ const LINE_GRADIENTS: Record<ProductLine, string> = {
   bioproteccion:   'from-azul-600    to-azul-400',
 }
 
-const LINE_ICONS: Record<ProductLine, string> = {
-  organicos:       '🌿',
-  especialidades:  '⚗️',
-  bioestimulantes: '✨',
-  nutricion:       '💧',
-  bioproteccion:   '🛡️',
-}
-
 const LINE_SHADOW: Record<ProductLine, string> = {
   organicos:       'hover:shadow-[0_24px_60px_rgba(34,181,115,0.22)]',
   especialidades:  'hover:shadow-[0_24px_60px_rgba(14,110,153,0.22)]',
@@ -58,10 +51,9 @@ const LINE_SHADOW: Record<ProductLine, string> = {
 }
 
 export default function ProductCard({ product, className }: ProductCardProps) {
-  const { slug, name, line, brand, tagline, icon, href } = product
+  const { slug, name, line, tagline, href } = product
   const productHref = href ?? `/soluciones/${line}/${slug}`
   const gradient    = LINE_GRADIENTS[line]
-  const lineIcon    = icon ?? LINE_ICONS[line]
   const lineShadow  = LINE_SHADOW[line]
   const photo       = getProductImage(slug)
 
@@ -97,25 +89,18 @@ export default function ProductCard({ product, className }: ProductCardProps) {
               style={{ transform: 'translateZ(40px)' }}
             />
           ) : (
-            <span
-              className="text-5xl select-none drop-shadow-md transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
-              aria-hidden="true"
-              style={{ transform: 'translateZ(40px)' }}
-            >
-              {lineIcon}
-            </span>
+            <ProductPhotoFallback
+              name={name}
+              line={line}
+              variant="card"
+              className="absolute inset-0"
+            />
           )}
 
           {/* Badge de línea */}
           <div className="absolute top-3 left-3 z-20">
             <Badge line={line} size="sm" />
           </div>
-          {/* Badge de marca */}
-          {brand && (
-            <div className="absolute top-3 right-3 z-20">
-              <Badge brand={brand} size="sm" showDot={false} className="bg-white/95 backdrop-blur-sm" />
-            </div>
-          )}
         </div>
 
         {/* Contenido */}

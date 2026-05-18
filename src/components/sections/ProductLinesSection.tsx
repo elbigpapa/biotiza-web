@@ -12,7 +12,7 @@ const LINES = [
   {
     id: 'organicos',
     name: 'Orgánicos',
-    count: 10,
+    count: 9,
     description: 'Fertilizantes quelatados orgánicos con certificación OMRI. Base sólida para programas de nutrición limpia.',
     href: '/soluciones/organicos',
     icon: Leaf,
@@ -48,7 +48,7 @@ const LINES = [
   {
     id: 'nutricion',
     name: 'Nutrición Líquida',
-    count: 9,
+    count: 8,
     description: 'Fertilizantes de alta concentración con quelatos de última generación para fertirrigación de precisión.',
     href: '/soluciones/nutricion',
     icon: Droplets,

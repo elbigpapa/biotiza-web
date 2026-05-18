@@ -136,14 +136,18 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col bg-white font-sans text-gris-900">
         <OrganizationJsonLd />
-        <ScrollProgress />
+        <div className="no-print">
+          <ScrollProgress />
+        </div>
         <ToastProvider>
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
-          <WhatsAppFloat />
-          <ChatWidget />
-          <CookieConsent />
+          <div className="no-print">
+            <WhatsAppFloat />
+            <ChatWidget />
+            <CookieConsent />
+          </div>
         </ToastProvider>
       </body>
     </html>

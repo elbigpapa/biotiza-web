@@ -32,7 +32,7 @@ export const PRODUCT_LINES: ProductLineConfig[] = [
     iconName:        'Leaf',
     description:     'Fertilizantes quelatados orgánicos con certificación OMRI. La base sólida de cualquier programa de nutrición limpia para exportación.',
     tagline:         'Certificados OMRI · Para producción orgánica',
-    productCount:    10,
+    productCount:    9,
   },
   {
     id:              'especialidades',
@@ -71,7 +71,7 @@ export const PRODUCT_LINES: ProductLineConfig[] = [
     iconName:        'Droplets',
     description:     'Fertilizantes de alta concentración con quelatos de última generación. Macronutrientes, secundarios y microelementos para fertirrigación de precisión.',
     tagline:         'Alta concentración · Quelatos premium',
-    productCount:    9,
+    productCount:    8,
   },
   {
     id:              'bioproteccion',
@@ -239,7 +239,6 @@ export const CONTACT_INFO = {
 
 export const NAV_LINKS = [
   { label: 'Soluciones',     href: '/soluciones'     },
-  { label: 'Marcas',         href: '/marcas'         },
   { label: 'Cultivos',       href: '/cultivos'       },
   { label: 'Herramientas',   href: '/herramientas'   },
   { label: 'Casos de Éxito', href: '/casos-de-exito' },

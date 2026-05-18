@@ -156,7 +156,6 @@ export const BIOESTIMULATION_ARTICLES: Article[] = [
       { type: 'quote', text: 'No vamos a alimentar el mundo del 2050 con suelos del 2020. La regeneración del carbono del suelo es la única estrategia escalable que tenemos para resiliencia climática agrícola.', author: 'Dr. Rattan Lal, Premio Mundial de Alimentación 2020' },
     ],
     relatedProducts: [
-      { slug: 'bontera-sa10', line: 'nutricion' },
       { slug: 'bp-koren', line: 'bioestimulantes' },
     ],
   },
