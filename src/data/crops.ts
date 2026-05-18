@@ -5,6 +5,7 @@
 
 import type { CropProtocol } from '@/types'
 import { EXTRA_CROP_PROTOCOLS } from './crops-extra'
+import { EXTRA_CROP_PROTOCOLS_2 } from './crops-extra2'
 
 export interface StageProduct {
   productId:   string
@@ -44,9 +45,9 @@ export interface FullCropProtocol extends Omit<CropProtocol, 'stages'> {
 // ─────────────────────────────────────────────────────────────────────────
 
 const TOMATE: FullCropProtocol = {
-  id: 'tomate', slug: 'tomate', name: 'Tomate', scientific_name: 'Solanum lycopersicum',
+  id: 'tomate', slug: 'tomate', name: 'Tomate (jitomate, bola, saladette)', scientific_name: 'Solanum lycopersicum',
   emoji: '🍅', gradient: 'from-red-700 to-red-500', accentColor: '#ef4444',
-  description: 'Uno de los cultivos más importantes de México para exportación. Requiere un programa de nutrición preciso en cada etapa para lograr calibre, Brix y firmeza que cumplan los estándares internacionales.',
+  description: 'Protocolo general para tomate fresco de exportación en todos sus tipos comerciales: bola, saladette (roma), beef y racimo (jitomate). Requiere un programa de nutrición preciso en cada etapa para lograr calibre, Brix y firmeza que cumplan los estándares internacionales. Para tomate cherry, consulta el protocolo específico de Tomate Cherry.',
   cycle_days: 120,
   season: 'Todo el año bajo invernadero; ciclo otoño-invierno en campo abierto',
   regions: ['Sinaloa', 'Sonora', 'Baja California', 'Jalisco', 'Michoacán'],
@@ -1005,6 +1006,9 @@ export const CROP_PROTOCOLS: FullCropProtocol[] = [
   TOMATE_CHERRY, BROCOLI, APIO, MAIZ, CANA_AZUCAR, FRIJOL,
   // Cultivos agregados abril 2026: agave, cebolla, espárrago, pepino, papa, lechuga, piña
   ...EXTRA_CROP_PROTOCOLS,
+  // Cultivos agregados mayo 2026: plátano, papaya, sandía, arroz, calabaza, trigo,
+  // sorgo, alfalfa, manzana, uva, nuez, mango, flores
+  ...EXTRA_CROP_PROTOCOLS_2,
 ]
 
 export function getCropBySlug(slug: string): FullCropProtocol | undefined {

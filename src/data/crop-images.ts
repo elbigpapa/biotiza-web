@@ -49,8 +49,8 @@ const CROP_IMAGES: Record<string, CropImage> = {
     alt: 'Aguacates Hass en árbol',
   },
   chile: {
-    src: 'https://images.unsplash.com/photo-1761669411746-8f401c29e9a6?w=1200&q=80&auto=format&fit=crop',
-    alt: 'Chiles rojos y verdes creciendo en la planta',
+    src: 'https://images.unsplash.com/photo-1604488943825-f95dc6796ca5?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Chile pimiento (morrón) creciendo en la planta',
   },
   citricos: {
     src: 'https://images.unsplash.com/photo-1547514701-42782101795e?w=1200&q=80&auto=format&fit=crop',
@@ -103,6 +103,58 @@ const CROP_IMAGES: Record<string, CropImage> = {
   pina: {
     src: 'https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=1200&q=80&auto=format&fit=crop',
     alt: 'Piña madura',
+  },
+  platano: {
+    src: 'https://images.unsplash.com/photo-1620036924477-c3d6e9ce36fc?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Racimo de plátano verde en la planta',
+  },
+  papaya: {
+    src: 'https://images.unsplash.com/photo-1671769194959-6d61b233aad9?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Papayos con frutos verdes y maduros en el árbol',
+  },
+  sandia: {
+    src: 'https://images.unsplash.com/photo-1658482199477-5b441d4e2321?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Sandía creciendo en el campo',
+  },
+  arroz: {
+    src: 'https://images.unsplash.com/photo-1728895604559-a4e16081504e?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Espigas de arroz en parcela inundada',
+  },
+  calabaza: {
+    src: 'https://images.unsplash.com/photo-1697382492273-d7725efe3b62?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Campo de calabazas maduras',
+  },
+  trigo: {
+    src: 'https://images.unsplash.com/photo-1594842059196-5b6b8fa73187?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Campo de trigo dorado al atardecer',
+  },
+  sorgo: {
+    src: 'https://images.unsplash.com/photo-1758356860542-a2df92aad294?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Panículas de sorgo rojizo en el campo',
+  },
+  alfalfa: {
+    src: 'https://images.unsplash.com/photo-1631532319613-e512b18253a0?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Campo verde de alfalfa',
+  },
+  manzana: {
+    src: 'https://images.unsplash.com/photo-1537811465496-6c38a51d2d81?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Huerto de manzanos con manzanas rojas',
+  },
+  uva: {
+    src: 'https://images.unsplash.com/photo-1515778767554-42d4b373f2b3?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Racimos de uva en la vid',
+  },
+  nuez: {
+    src: 'https://images.unsplash.com/photo-1718118069316-9b7675979ef7?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Nuez con cáscara verde en el árbol',
+  },
+  mango: {
+    src: 'https://images.unsplash.com/photo-1705723115413-a0ec375ac414?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Mangos creciendo en el árbol',
+  },
+  flores: {
+    src: 'https://images.unsplash.com/photo-1561361376-f84b523f6a96?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Surcos de flores en producción de floricultura',
   },
 }
 

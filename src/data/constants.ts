@@ -199,6 +199,19 @@ export const CROPS_DATA: CropConfig[] = [
   { id: 'papa',         name: 'Papa',            slug: 'papa',         emoji: '🥔', gradientFrom: 'from-stone-700',   gradientTo: 'to-amber-500',   description: 'Solanum tuberosum' },
   { id: 'lechuga',      name: 'Lechuga',         slug: 'lechuga',      emoji: '🥬', gradientFrom: 'from-lime-700',    gradientTo: 'to-green-400',   description: 'Lactuca sativa' },
   { id: 'pina',         name: 'Piña',            slug: 'pina',         emoji: '🍍', gradientFrom: 'from-yellow-600',  gradientTo: 'to-amber-500',   description: 'Ananas comosus' },
+  { id: 'platano',      name: 'Plátano',         slug: 'platano',      emoji: '🍌', gradientFrom: 'from-yellow-600',  gradientTo: 'to-lime-500',    description: 'Musa × paradisiaca' },
+  { id: 'papaya',       name: 'Papaya',          slug: 'papaya',       emoji: '🫐', gradientFrom: 'from-orange-600',  gradientTo: 'to-amber-500',   description: 'Carica papaya' },
+  { id: 'sandia',       name: 'Sandía',          slug: 'sandia',       emoji: '🍉', gradientFrom: 'from-green-700',   gradientTo: 'to-red-500',     description: 'Citrullus lanatus' },
+  { id: 'arroz',        name: 'Arroz',           slug: 'arroz',        emoji: '🌾', gradientFrom: 'from-lime-600',    gradientTo: 'to-green-500',   description: 'Oryza sativa' },
+  { id: 'calabaza',     name: 'Calabaza',        slug: 'calabaza',     emoji: '🎃', gradientFrom: 'from-orange-600',  gradientTo: 'to-amber-500',   description: 'Cucurbita pepo / C. moschata' },
+  { id: 'trigo',        name: 'Trigo',           slug: 'trigo',        emoji: '🌾', gradientFrom: 'from-amber-600',   gradientTo: 'to-yellow-500',  description: 'Triticum aestivum / T. durum' },
+  { id: 'sorgo',        name: 'Sorgo',           slug: 'sorgo',        emoji: '🌾', gradientFrom: 'from-red-700',     gradientTo: 'to-orange-500',  description: 'Sorghum bicolor' },
+  { id: 'alfalfa',      name: 'Alfalfa',         slug: 'alfalfa',      emoji: '🍀', gradientFrom: 'from-green-700',   gradientTo: 'to-emerald-500', description: 'Medicago sativa' },
+  { id: 'manzana',      name: 'Manzana',         slug: 'manzana',      emoji: '🍎', gradientFrom: 'from-red-700',     gradientTo: 'to-rose-500',    description: 'Malus domestica' },
+  { id: 'uva',          name: 'Uva',             slug: 'uva',          emoji: '🍇', gradientFrom: 'from-purple-800',  gradientTo: 'to-violet-600',  description: 'Vitis vinifera' },
+  { id: 'nuez',         name: 'Nuez',            slug: 'nuez',         emoji: '🌰', gradientFrom: 'from-amber-800',   gradientTo: 'to-yellow-600',  description: 'Carya illinoinensis' },
+  { id: 'mango',        name: 'Mango',           slug: 'mango',        emoji: '🥭', gradientFrom: 'from-orange-600',  gradientTo: 'to-yellow-500',  description: 'Mangifera indica' },
+  { id: 'flores',       name: 'Flores',          slug: 'flores',       emoji: '🌹', gradientFrom: 'from-pink-600',    gradientTo: 'to-rose-500',    description: 'Floricultura ornamental' },
 ]
 
 // ─── Certificaciones ──────────────────────────────────────────────────────
