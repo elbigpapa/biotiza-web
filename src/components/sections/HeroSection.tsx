@@ -1,147 +1,24 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+/**
+ * HeroSection.tsx — Hero editorial · Sub-fase 3.3a
+ * Reemplaza biotiza-web/src/components/sections/HeroSection.tsx
+ *
+ * Cambios vs versión anterior:
+ *  · 3 capas máx (foto + overlay + grain) en vez de 8
+ *  · Sin orbs flotantes, sin iconos lucide flotantes
+ *  · Tipografía 64-200px protagonista
+ *  · Sin shimmer animado en el título (cinematográfico estático)
+ *  · Topmeta y métricas en monospace minimal
+ *  · 1 CTA primario (WhatsApp) + link secundario
+ */
+
+import { useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion, useInView, useMotionValue, useTransform, animate, useScroll, useReducedMotion } from 'framer-motion'
-import { ArrowRight, MessageCircle, Leaf, Droplets, Shield, FlaskConical, Sparkles } from 'lucide-react'
-import { staggerContainer, fadeInUp } from '@/lib/animations'
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
+import { ArrowRight, MessageCircle } from 'lucide-react'
 import { HERO_IMAGES } from '@/data/crop-images'
-
-// ─── Counter animado ──────────────────────────────────────────────────────
-
-function CountUp({ to, suffix = '' }: { to: number; suffix?: string }) {
-  const ref        = useRef<HTMLSpanElement>(null)
-  const count      = useMotionValue(0)
-  const rounded    = useTransform(count, (v) => Math.round(v))
-  const isInView   = useInView(ref, { once: true, margin: '-40px' })
-
-  useEffect(() => {
-    if (isInView) animate(count, to, { duration: 2, ease: 'easeOut' })
-  }, [isInView, count, to])
-
-  return (
-    <span ref={ref} className="tabular-nums">
-      <motion.span>{rounded}</motion.span>
-      {suffix}
-    </span>
-  )
-}
-
-// ─── Datos de stats ───────────────────────────────────────────────────────
-
-const STATS = [
-  { value: 47, suffix: '',  label: 'Productos',           numeric: true  },
-  { value: 14, suffix: '',  label: 'Cultivos',            numeric: true  },
-  { value: 25, suffix: '+', label: 'Años de I+D',         numeric: true  },
-  { value: 0,  suffix: '',  label: 'OMRI · COFEPRIS',     numeric: false, display: '✓' },
-]
-
-// ─── Orbs decorativos con parallax + foto HD con Ken Burns ─────────────────
-
-function HeroBackground() {
-  return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-      {/* Foto HD de campo cultivado — capa base con Ken Burns lento */}
-      <div className="absolute inset-0 motion-safe:animate-[kenburns_28s_ease-in-out_infinite_alternate]">
-        <Image
-          src={HERO_IMAGES.cultivatedField.src}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-      </div>
-
-      {/* Overlay corporativo verde-oscuro — un poco más oscuro para mejorar legibilidad del título y subtítulo */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: `
-            linear-gradient(115deg, rgba(5, 32, 24, 0.86) 0%, rgba(11, 60, 47, 0.72) 35%, rgba(13, 92, 74, 0.56) 70%, rgba(34, 181, 115, 0.32) 100%),
-            radial-gradient(ellipse 70% 50% at 18% 30%, rgba(34, 181, 115, 0.30) 0%, transparent 70%),
-            radial-gradient(ellipse 55% 70% at 82% 80%, rgba(17, 137, 191, 0.22) 0%, transparent 70%)
-          `,
-        }}
-      />
-
-      {/* Vignette para enfocar el contenido central */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            'radial-gradient(ellipse 85% 70% at 50% 50%, transparent 35%, rgba(0,0,0,0.55) 100%)',
-        }}
-      />
-
-      {/* Glow orbs animados encima de la foto */}
-      <div className="absolute -top-[20%] -left-[10%] h-[600px] w-[600px] rounded-full bg-verde-500/20 blur-[120px] animate-float-slow" />
-      <div className="absolute -bottom-[10%] -right-[10%] h-[500px] w-[500px] rounded-full bg-azul-500/14 blur-[100px] animate-float-reverse" />
-      <div className="absolute top-[18%] right-[12%] h-[320px] w-[320px] rounded-full bg-naranja-500/14 blur-[80px] animate-float" />
-      <div className="absolute bottom-[18%] left-[14%] h-[260px] w-[260px] rounded-full bg-verde-400/12 blur-[60px] animate-float-slow" />
-
-      {/* Grid de puntos sutil */}
-      <div className="absolute inset-0 dot-pattern-dark opacity-30" />
-
-      {/* Grain orgánico premium */}
-      <div className="absolute inset-0 noise-overlay opacity-25 mix-blend-overlay" />
-
-      {/* Líneas orgánicas decorativas */}
-      <svg className="absolute left-0 top-0 h-full w-full opacity-[0.08]" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
-        <path d="M0,200 Q360,50 720,200 Q1080,350 1440,200" stroke="white" strokeWidth="1.5" fill="none" />
-        <path d="M0,400 Q400,250 800,400 Q1200,550 1440,400" stroke="white" strokeWidth="1.2" fill="none" />
-        <path d="M0,600 Q300,500 700,650 Q1100,700 1440,550" stroke="white" strokeWidth="1" fill="none" />
-        <path d="M0,750 Q480,650 960,780 Q1280,820 1440,720" stroke="rgba(34,181,115,0.6)" strokeWidth="1" fill="none" />
-      </svg>
-
-      {/* Light rays diagonal — sensación cinematográfica */}
-      <div
-        className="absolute inset-0 mix-blend-screen opacity-30"
-        style={{
-          background:
-            'linear-gradient(115deg, transparent 25%, rgba(255, 240, 200, 0.18) 40%, transparent 60%)',
-        }}
-      />
-    </div>
-  )
-}
-
-// ─── Floating product icons ───────────────────────────────────────────────
-
-function FloatingIcons() {
-  const icons = [
-    { Icon: Leaf,        color: 'text-verde-400/30',   x: '8%',  y: '20%', delay: 0,   size: 40 },
-    { Icon: FlaskConical,color: 'text-azul-400/25',    x: '85%', y: '15%', delay: 1,   size: 36 },
-    { Icon: Droplets,    color: 'text-naranja-400/20', x: '75%', y: '65%', delay: 2,   size: 32 },
-    { Icon: Shield,      color: 'text-azul-300/20',    x: '12%', y: '70%', delay: 0.5, size: 28 },
-    { Icon: Sparkles,    color: 'text-verde-300/20',   x: '92%', y: '45%', delay: 1.5, size: 24 },
-  ]
-
-  return (
-    <div className="pointer-events-none absolute inset-0 hidden lg:block" aria-hidden="true">
-      {icons.map(({ Icon, color, x, y, delay, size }, i) => (
-        <motion.div
-          key={i}
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1.2 + delay * 0.3, duration: 0.8, ease: 'easeOut' }}
-          className="absolute"
-          style={{ left: x, top: y }}
-        >
-          <motion.div
-            animate={{ y: [0, -15, 0], rotate: [0, 5, -3, 0] }}
-            transition={{ duration: 6 + i * 0.8, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            <Icon size={size} className={color} strokeWidth={1.2} />
-          </motion.div>
-        </motion.div>
-      ))}
-    </div>
-  )
-}
-
-// ─── Componente principal ─────────────────────────────────────────────────
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -150,171 +27,120 @@ export default function HeroSection() {
     target: sectionRef,
     offset: ['start start', 'end start'],
   })
-  // Parallax suave: el contenido se desplaza hacia arriba más rápido que el fondo
-  const contentY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, -80])
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.6, 1], reduce ? [1, 1, 1] : [1, 0.6, 0])
+  const contentY       = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, -60])
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.6, 1], reduce ? [1, 1, 1] : [1, 0.7, 0])
 
   return (
-    /**
-     * IMPORTANTE: el hero usa margin-top negativa + padding-top equivalente para
-     * absorber los 88px del spacer del Header (que es fixed). Esto evita una
-     * franja blanca de 88px arriba del hero que rompía la legibilidad del
-     * wordmark + nav links sobre un fondo claro.
-     *
-     * El header sigue siendo transparente sobre el hero (sus links son blancos
-     * con drop-shadow), y aplica glassmorphism al scroll cuando ya está sobre
-     * fondo claro.
-     */
     <section
       ref={sectionRef}
-      className="relative flex min-h-screen flex-col overflow-hidden"
-      style={{ marginTop: '-5.5rem', paddingTop: '5.5rem' }}
+      className="relative flex min-h-screen flex-col overflow-hidden bg-verde-950"
+      style={{ marginTop: '-5.25rem', paddingTop: '5.25rem' }}
     >
-      <HeroBackground />
-      <FloatingIcons />
+      {/* CAPA 1 · Foto cinematográfica · Ken Burns lento */}
+      <div className="absolute inset-0 motion-safe:animate-[kenburns_22s_cubic-bezier(0.25,0.1,0.25,1)_forwards]">
+        <Image
+          src={HERO_IMAGES.cultivatedField.src}
+          alt={HERO_IMAGES.cultivatedField.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
 
-      {/* Noise texture overlay */}
-      <div className="noise-overlay absolute inset-0 pointer-events-none" aria-hidden="true" />
+      {/* CAPA 2 · Overlay verde-oscuro corporativo */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `
+            linear-gradient(180deg, rgba(8,46,33,0.30) 0%, rgba(8,46,33,0.55) 55%, rgba(8,46,33,0.95) 100%)
+          `,
+        }}
+        aria-hidden="true"
+      />
 
-      {/* Contenido centrado con parallax suave */}
+      {/* CAPA 3 · Grain orgánico sutil */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.14] mix-blend-overlay"
+        style={{
+          backgroundImage:
+            'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\'/%3E%3C/svg%3E")',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* CONTENIDO con parallax suave */}
       <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
         style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center px-4 py-24 text-center sm:px-6 lg:px-8"
+        className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-4 sm:px-6 lg:px-12 py-24"
       >
-        {/* Eyebrow con glow */}
-        <motion.span
-          variants={fadeInUp}
-          className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-verde-400/30 bg-verde-500/12 px-5 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-verde-200 backdrop-blur-md"
+        {/* Top meta · monospace minimal */}
+        <div
+          className="flex items-baseline justify-between gap-6 flex-wrap pb-7 border-b border-white/15"
         >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-verde-300 opacity-80" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-verde-300" />
+          <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-white/70">
+            <span className="text-verde-300 font-semibold">Biotiza</span> · biosoluciones agrícolas · Zapopan, MX
           </span>
-          Biosoluciones de laboratorio a tu campo
-        </motion.span>
-
-        {/* Título principal — text-shadow más fuerte para asegurar legibilidad */}
-        <motion.h1
-          variants={fadeInUp}
-          className="max-w-5xl font-serif text-4xl font-normal leading-[1.05] text-white text-balance sm:text-5xl md:text-6xl lg:text-7xl"
-          style={{ textShadow: '0 4px 16px rgba(0,0,0,0.35)' }}
-        >
-          Ciencia que nutre la tierra.{' '}
-          <span
-            className="bg-clip-text text-transparent"
-            style={{
-              backgroundImage:
-                'linear-gradient(90deg, #b5f4d5 0%, #82ecc0 25%, #a5deff 50%, #82ecc0 75%, #b5f4d5 100%)',
-              backgroundSize: '200% auto',
-              animation: 'text-shimmer 6s ease-in-out infinite',
-              filter: 'drop-shadow(0 2px 12px rgba(67,217,158,0.35))',
-            }}
-          >
-            Resultados que transforman tu cosecha.
+          <span className="hidden md:inline font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-white/70">
+            25 años de I+D · COFEPRIS · OMRI
           </span>
-        </motion.h1>
+          <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-white/70">
+            MMXXVI
+          </span>
+        </div>
 
-        {/* Subtítulo — más legible: verde-50 y line-height generoso */}
-        <motion.p
-          variants={fadeInUp}
-          className="mt-7 max-w-2xl text-base leading-relaxed sm:text-lg md:text-xl"
-          style={{ color: '#f0fdf6', textShadow: '0 2px 8px rgba(0,0,0,0.45)' }}
-        >
-          Biosoluciones premium de laboratorio a tu campo. Nutrición, estimulación
-          y protección para cultivos de exportación.
-        </motion.p>
+        {/* Título display protagonista */}
+        <div className="flex-1 flex flex-col justify-end pt-20">
+          <h1 className="title-hero text-white max-w-[12ch] mb-6">
+            Ciencia<br />
+            <em>que rinde</em><br />
+            al campo.
+          </h1>
 
-        {/* CTAs */}
-        <motion.div variants={fadeInUp} className="mt-12 flex flex-wrap items-center justify-center gap-4">
-          <Link href="/soluciones" className="btn-secondary group">
-            Explorar soluciones
-            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-          </Link>
-          <Link
-            href="https://wa.me/523316022708?text=Hola%20Biotiza%2C%20quiero%20hablar%20con%20un%20asesor"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-accent"
-          >
-            <MessageCircle size={16} />
-            Hablar con un asesor
-          </Link>
-        </motion.div>
+          <p className="text-base sm:text-lg lg:text-xl text-white/85 max-w-[38ch] leading-relaxed mb-9">
+            Biosoluciones formuladas en laboratorio, con asesoría técnica
+            de agrónomos especializados incluida en cada compra.
+          </p>
 
-        {/* Certificaciones — color y peso aumentados para legibilidad */}
-        <motion.div
-          variants={fadeInUp}
-          className="mt-14 flex flex-wrap items-center justify-center gap-6 text-sm"
-          style={{ color: '#f0fdf6' }}
-        >
-          {['COFEPRIS', 'OMRI Listed', 'Hecho en MX'].map((cert) => (
-            <span
-              key={cert}
-              className="flex items-center gap-2 font-semibold"
-              style={{ textShadow: '0 1px 4px rgba(0,0,0,0.4)' }}
+          <div className="flex items-center gap-6 flex-wrap">
+            <a
+              href="https://wa.me/523316022708?text=Hola%20Biotiza%2C%20quiero%20hablar%20con%20un%20asesor"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-6 py-4 bg-naranja-500 text-white font-mono text-[11px] font-semibold uppercase tracking-[0.16em] hover:bg-naranja-600 hover:-translate-y-0.5 transition-all duration-300 hover:shadow-[0_12px_28px_-8px_rgba(232,105,15,0.5)]"
             >
-              <span
-                className="h-2 w-2 rounded-full bg-verde-300"
-                style={{ boxShadow: '0 0 8px rgba(67,217,158,0.7)' }}
-              />
-              {cert}
-            </span>
-          ))}
-        </motion.div>
+              <MessageCircle size={14} />
+              Hablar por WhatsApp
+              <ArrowRight size={14} />
+            </a>
+            <Link
+              href="/soluciones"
+              className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-white/85 border-b border-white/40 pb-1 hover:text-verde-300 hover:border-verde-300 transition-colors"
+            >
+              o explorar las soluciones
+            </Link>
+          </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          variants={fadeInUp}
-          className="mt-16 flex flex-col items-center gap-2 text-verde-100/80"
-        >
-          <span className="text-[10px] tracking-[0.2em] uppercase font-semibold">Descubrir</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="h-10 w-[1.5px] rounded-full bg-gradient-to-b from-verde-300/90 to-transparent"
-          />
-        </motion.div>
-      </motion.div>
-
-      {/* Stats bar con glass effect — labels más legibles */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.9, duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="relative z-10 border-t border-white/[0.08] bg-white/[0.05] backdrop-blur-xl"
-      >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 divide-x divide-white/[0.08] md:grid-cols-4">
-            {STATS.map((stat, i) => (
-              <div key={i} className="flex flex-col items-center py-6 px-4 text-center">
-                <span
-                  className="font-serif text-2xl font-normal text-white sm:text-3xl lg:text-4xl"
-                  style={{ textShadow: '0 2px 12px rgba(0,0,0,0.4)' }}
-                >
-                  {stat.numeric
-                    ? <CountUp to={stat.value} suffix={stat.suffix} />
-                    : stat.display
-                  }
-                </span>
-                <span
-                  className="mt-2 text-[11px] font-bold uppercase tracking-[0.15em]"
-                  style={{ color: '#f0fdf6' }}
-                >
-                  {stat.label}
-                </span>
-              </div>
-            ))}
+          {/* Métricas inline */}
+          <div className="mt-14 pt-6 border-t border-white/15 flex flex-wrap gap-x-9 gap-y-3 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-white/70">
+            <span><span className="text-verde-300 mr-1.5">49</span>productos</span>
+            <span><span className="text-verde-300 mr-1.5">28</span>cultivos con protocolo</span>
+            <span><span className="text-verde-300 mr-1.5">25+</span>años de I+D</span>
+            <span className="ml-auto">OMRI · COFEPRIS · Hecho en MX</span>
           </div>
         </div>
       </motion.div>
 
+      {/* Scroll indicator */}
+      <div className="absolute bottom-7 right-4 sm:right-6 lg:right-12 z-10 flex items-center gap-3.5 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-white/60">
+        Descubrir
+        <span className="h-10 w-px bg-gradient-to-b from-white/60 to-transparent" />
+      </div>
+
       <style jsx>{`
-        @keyframes text-shimmer {
-          0%, 100% { background-position: 0% 50%; }
-          50%      { background-position: 100% 50%; }
+        @keyframes kenburns {
+          0%   { transform: scale(1.05); }
+          100% { transform: scale(1.0); }
         }
       `}</style>
     </section>

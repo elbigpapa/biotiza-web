@@ -1,98 +1,51 @@
 /**
- * page.tsx — Homepage de Biotiza
+ * page.tsx — Homepage editorial · Sub-fase 3.3
+ * Reemplaza biotiza-web/src/app/page.tsx
  *
- * Composición de todas las secciones con separadores orgánicos SVG entre ellas.
- * El orden y los separadores están diseñados para un flujo visual coherente.
+ * Cambios:
+ *  · Quita WaveSeparators (eran demasiado "template")
+ *  · Nueva secuencia editorial:
+ *      Hero → Proceso (4 actos) → Servicio (qué nos diferencia)
+ *    → Marquee certificaciones → Líneas (editorial list) → Producto signature
+ *    → Cultivos (8 expedientes) → Lo que medimos (objetivos)
+ *    → Sustentabilidad (huella) → Mapa MX → Caso reportaje → CTA final
+ *  · Bordes hairline entre secciones, no ondas
  *
- * Patrón aplicado (UI/UX Pro Max):
- *  Hero-Centric → Trust & Authority → Storytelling → Social Proof → CTA
+ * NOTA (aplicación Sub-fase 3.3a): `SustainabilitySection` y `MapSection`
+ * aún no se han entregado al repo. Quedan importados/usados pero
+ * COMENTADOS para que el build compile y la home editorial quede en
+ * producción. Al recibir esos 2 componentes, descomentar las 4 líneas
+ * marcadas con «TODO Sub-fase 3.3b».
  */
 
-import HeroSection            from '@/components/sections/HeroSection'
-import CertificationsMarquee  from '@/components/sections/CertificationsMarquee'
-import WhyBiotizaSection      from '@/components/sections/WhyBiotizaSection'
-import StatsSection           from '@/components/sections/StatsSection'
-import AssistantPreviewSection from '@/components/sections/AssistantPreviewSection'
-import ProductLinesSection    from '@/components/sections/ProductLinesSection'
+import HeroSection           from '@/components/sections/HeroSection'
+import WhyBiotizaSection     from '@/components/sections/WhyBiotizaSection'
+import ServiceSection        from '@/components/sections/ServiceSection'
+import CertificationsMarquee from '@/components/sections/CertificationsMarquee'
+import ProductLinesSection   from '@/components/sections/ProductLinesSection'
 import FeaturedProductsSection from '@/components/sections/FeaturedProductsSection'
-import CropsSection           from '@/components/sections/CropsSection'
-import TestimonialsSection    from '@/components/sections/TestimonialsSection'
-import CTASection             from '@/components/sections/CTASection'
-import BlogPreviewSection     from '@/components/sections/BlogPreviewSection'
-import ContactFormSection     from '@/components/sections/ContactFormSection'
-import WaveSeparator          from '@/components/shared/WaveSeparator'
+import CropsSection          from '@/components/sections/CropsSection'
+import StatsSection          from '@/components/sections/StatsSection'
+// TODO Sub-fase 3.3b: import SustainabilitySection from '@/components/sections/SustainabilitySection'
+// TODO Sub-fase 3.3b: import MapSection            from '@/components/sections/MapSection'
+import TestimonialsSection   from '@/components/sections/TestimonialsSection'
+import CTASection            from '@/components/sections/CTASection'
 
 export default function HomePage() {
   return (
     <>
-      {/* 1 ─ Hero: dark mesh gradient con foto HD */}
       <HeroSection />
-
-      {/* Transición: gris-950 → white (la marquee va en blanco) */}
-      <WaveSeparator from="gris-950" to="white" variant="gentle" />
-
-      {/* 2 ─ Marquee de certificaciones (trust bar) */}
-      <CertificationsMarquee />
-
-      {/* Transición: white → verde-50 */}
-      <div className="h-px bg-gradient-to-r from-transparent via-verde-200/40 to-transparent" aria-hidden="true" />
-
-      {/* 3 ─ ¿Por qué Biotiza? — fondo verde-50 */}
-      <WhyBiotizaSection />
-
-      {/* Transición: verde-50 → white (sin sobresalto, gentle) */}
-      <WaveSeparator from="verde-50" to="white" variant="gentle" flip />
-
-      {/* 3 ─ Stats: trust & authority con count-up */}
-      <StatsSection />
-
-      {/* Transición: white → gris-900 */}
-      <WaveSeparator from="white" to="gris-900" variant="steep" />
-
-      {/* 4 ─ Asistente IA — fondo oscuro */}
-      <AssistantPreviewSection />
-
-      {/* Transición: gris-900 → white */}
-      <WaveSeparator from="gris-900" to="white" variant="double" flip />
-
-      {/* 5 ─ Líneas de producto — fondo blanco */}
-      <ProductLinesSection />
-
-      {/* Transición: white → gris-50 */}
-      <WaveSeparator from="white" to="gris-50" variant="gentle" flip />
-
-      {/* 6 ─ Productos destacados (carrusel) — fondo gris-50 */}
-      <FeaturedProductsSection />
-
-      {/* Transición: gris-50 → white */}
-      <WaveSeparator from="gris-50" to="white" variant="steep" />
-
-      {/* 7 ─ Cultivos — fondo blanco */}
-      <CropsSection />
-
-      {/* Transición: white → white (testimonios sigue limpio) */}
-      <div className="h-px bg-gradient-to-r from-transparent via-gris-200/40 to-transparent" aria-hidden="true" />
-
-      {/* 8 ─ Testimonios: social proof — fondo blanco */}
-      <TestimonialsSection />
-
-      {/* Transición: white → verde-800 (directo a CTA, sin marcas aliadas) */}
-      <WaveSeparator from="white" to="verde-800" variant="double" />
-
-      {/* 9 ─ CTA — fondo verde oscuro */}
-      <CTASection />
-
-      {/* Transición: verde-800 → white */}
-      <WaveSeparator from="verde-800" to="white" variant="steep" flip />
-
-      {/* 10 ─ Blog — fondo blanco */}
-      <BlogPreviewSection />
-
-      {/* Transición: white → verde-50 */}
-      <WaveSeparator from="white" to="verde-50" variant="gentle" />
-
-      {/* 11 ─ Contacto — fondo verde-50 */}
-      <ContactFormSection />
+      <WhyBiotizaSection />        {/* Proceso Lab → Campo → Asesor → Cosecha */}
+      <ServiceSection />           {/* "Vendemos productos. Acompañamos resultados." */}
+      <CertificationsMarquee />    {/* COFEPRIS · OMRI · Hecho en MX (delgado) */}
+      <ProductLinesSection />      {/* Lista editorial 5 líneas */}
+      <FeaturedProductsSection />  {/* BP Koren signature card */}
+      <CropsSection />             {/* Grid fotográfico 8 cultivos */}
+      <StatsSection />             {/* Lo que medimos · 4 indicadores */}
+      {/* TODO Sub-fase 3.3b: <SustainabilitySection /> — Huella de carbono con fuentes citadas */}
+      {/* TODO Sub-fase 3.3b: <MapSection /> — México 8 zonas de asesoría */}
+      <TestimonialsSection />      {/* Caso reportaje · dato como titular */}
+      <CTASection />               {/* Cuéntanos tu cultivo · WhatsApp */}
     </>
   )
 }
