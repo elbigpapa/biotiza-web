@@ -37,7 +37,7 @@ export default function PoliticaPrivacidadPage() {
 
       <Container narrow className="py-12 lg:py-16">
         <p className="mb-8 text-xs text-gris-400 uppercase tracking-wider font-semibold">
-          Última actualización: enero 2025
+          Última actualización: mayo 2026
         </p>
 
         <h1 className="font-serif text-3xl text-gris-900 lg:text-4xl mb-6">

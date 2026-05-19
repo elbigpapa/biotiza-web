@@ -103,8 +103,8 @@ const ORIGINAL_ARTICLES: Article[] = [
       },
     ],
     relatedProducts: [
-      { slug: 'bp-aminofort', line: 'bioestimulantes' },
-      { slug: 'bp-algamar', line: 'bioestimulantes' },
+      { slug: 'bp-nitro-fx', line: 'bioestimulantes' },
+      { slug: 'bp-nutri', line: 'organicos' },
     ],
   },
   {
@@ -188,7 +188,7 @@ const ORIGINAL_ARTICLES: Article[] = [
     ],
     relatedProducts: [
       { slug: 'bp-calcio', line: 'organicos' },
-      { slug: 'ultra-calcio-boro', line: 'nutricion' },
+      { slug: 'biotiza-calcio-boro', line: 'nutricion' },
     ],
   },
   {
@@ -200,10 +200,10 @@ const ORIGINAL_ARTICLES: Article[] = [
     categoryLabel: 'Bioprotección',
     readTime: 7,
     publishedAt: '2026-03-05',
-    author: { name: 'M.C. Andrea Figueroa', role: 'Especialista en MIP · Zentia' },
+    author: { name: 'M.C. Andrea Figueroa', role: 'Especialista en MIP · Bioprotección' },
     emoji: '🛡️',
     imageGradient: 'from-azul-700 to-azul-500',
-    tags: ['control biológico', 'MIP', 'Zentia', 'residuos', 'exportación'],
+    tags: ['control biológico', 'MIP', 'bioprotección', 'residuos', 'exportación'],
     blocks: [
       {
         type: 'p',
@@ -258,9 +258,9 @@ const ORIGINAL_ARTICLES: Article[] = [
       },
     ],
     relatedProducts: [
-      { slug: 'zentia-beauveria', line: 'bioproteccion' },
-      { slug: 'zentia-metarhizium', line: 'bioproteccion' },
-      { slug: 'zentia-trichoderma', line: 'bioproteccion' },
+      { slug: 'beauver', line: 'bioproteccion' },
+      { slug: 'entomotri', line: 'bioproteccion' },
+      { slug: 'zen-fungi', line: 'bioproteccion' },
     ],
   },
 ]

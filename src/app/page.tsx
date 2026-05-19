@@ -18,6 +18,7 @@
  * Sin WaveSeparators (transiciones por cambio de fondo editorial).
  */
 
+import type { Metadata } from 'next'
 import HeroSection             from '@/components/sections/HeroSection'
 import CertificationsMarquee   from '@/components/sections/CertificationsMarquee'
 import WhyBiotizaSection       from '@/components/sections/WhyBiotizaSection'
@@ -28,6 +29,29 @@ import FeaturedProductsSection from '@/components/sections/FeaturedProductsSecti
 import CropsSection            from '@/components/sections/CropsSection'
 import SustainabilitySection   from '@/components/sections/SustainabilitySection'
 import CTASection              from '@/components/sections/CTASection'
+
+export const metadata: Metadata = {
+  title: 'Biotiza — Biosoluciones agrícolas mexicanas | Fertilizantes orgánicos y bioprotección',
+  description:
+    '25 años formulando bioestimulantes, fertilizantes orgánicos OMRI y bioprotección para agricultura de exportación. 47 productos · 35 cultivos con protocolo agronómico. Zapopan, Jalisco.',
+  alternates: { canonical: 'https://biotiza.mx' },
+  openGraph: {
+    type: 'website',
+    locale: 'es_MX',
+    url: 'https://biotiza.mx',
+    siteName: 'Biotiza',
+    title: 'Biotiza — Biosoluciones agrícolas mexicanas',
+    description:
+      'Del laboratorio a tu cultivo, con un agrónomo a tu lado. Fertilizantes orgánicos, bioestimulantes y bioprotección para cultivos de exportación.',
+    images: [{ url: '/og-image.png', width: 1080, height: 1080, alt: 'Biotiza — Biosoluciones agrícolas' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Biotiza — Biosoluciones agrícolas mexicanas',
+    description: '25 años · 47 productos · 35 cultivos. Asesoría técnica directa en campo.',
+    images: ['/og-image.png'],
+  },
+}
 
 export default function HomePage() {
   return (

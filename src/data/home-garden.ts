@@ -120,7 +120,7 @@ export const GARDEN_CATEGORIES: GardenCategoryConfig[] = [
     name: 'Áreas verdes institucionales',
     tagline: 'Gobierno, parques, campos de golf, escuelas y corporativos: áreas verdes premium a gran escala.',
     description:
-      'Programa especial para administradores de áreas verdes con hectáreas de responsabilidad. Ofrecemos productos en presentaciones industriales, asesoría técnica dedicada y planes de aplicación por temporada. Todos nuestros productos Zentia son compatibles con reapertura al público sin intervalos prolongados de seguridad.',
+      'Programa especial para administradores de áreas verdes con hectáreas de responsabilidad. Ofrecemos productos en presentaciones industriales, asesoría técnica dedicada y planes de aplicación por temporada. Todos nuestros productos de bioprotección son compatibles con reapertura al público sin intervalos prolongados de seguridad.',
     emoji: '⛳',
     icon: 'Landmark',
     gradient: 'from-verde-800 to-verde-600',
@@ -479,7 +479,7 @@ export const GARDEN_PACKAGES: GardenPackage[] = [
     shortDescription:
       'Para gobiernos: áreas verdes urbanas saludables sin pesticidas químicos, seguros para familias y mascotas.',
     longDescription:
-      'Nuestros productos Zentia son 100% biológicos y compatibles con reapertura inmediata al público. Ideales para parques, plazas, camellones y zonas escolares donde los pesticidas químicos son un riesgo político y sanitario.',
+      'Nuestros productos de bioprotección son 100% biológicos y compatibles con reapertura inmediata al público. Ideales para parques, plazas, camellones y zonas escolares donde los pesticidas químicos son un riesgo político y sanitario.',
     price: 0, // cotización
     coverage: 'Parques municipales · programa anual por convocatoria',
     frequency: 'Programa mensual',

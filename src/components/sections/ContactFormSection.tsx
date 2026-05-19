@@ -120,7 +120,7 @@ export default function ContactFormSection() {
                 { icon: Mail,          label: 'Email',     value: 'ventas@biotiza.mx',              href: 'mailto:ventas@biotiza.mx' },
                 { icon: Phone,         label: 'WhatsApp',  value: '+52 33 1602 2708',               href: 'https://wa.me/523316022708' },
                 { icon: MapPin,        label: 'Dirección', value: 'Zapopan, Jalisco, México',       href: '' },
-                { icon: InstagramIcon, label: 'Instagram', value: '@biotiza',                       href: 'https://instagram.com/biotiza' },
+                { icon: InstagramIcon, label: 'Instagram', value: '@biotiza.mx',                    href: 'https://www.instagram.com/biotiza.mx/' },
               ].map(({ icon: Icon, label, value, href }) => (
                 <li key={label} className="flex items-start gap-4">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-verde-500 to-verde-600 text-white shadow-sm">

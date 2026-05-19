@@ -221,7 +221,7 @@ export const CROPS_ARTICLES: Article[] = [
     categoryLabel: 'Cultivo',
     readTime: 6,
     publishedAt: '2026-04-22',
-    author: { name: 'M.C. Andrea Figueroa', role: 'Especialista en MIP · Zentia' },
+    author: { name: 'M.C. Andrea Figueroa', role: 'Especialista en MIP · Bioprotección' },
     emoji: '🥬',
     imageGradient: 'from-emerald-700 to-lime-500',
     tags: ['apio', 'Botrytis', 'post-cosecha', 'biofungicida'],

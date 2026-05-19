@@ -39,11 +39,11 @@ const COL_RECURSOS = [
 ]
 const COL_EMPRESA = [
   { label: 'Nosotros',              href: '/nosotros'                      },
-  { label: 'Certificaciones',       href: '/nosotros#certificaciones'      },
+  { label: 'Certificaciones',       href: '/nosotros'                      },
   { label: 'Contacto',              href: '/contacto'                      },
   { label: 'Solicitar cotización',  href: '/cotizacion'                    },
   { label: 'Política de privacidad',href: '/politica-privacidad'           },
-  { label: 'Términos de uso',       href: '/politica-privacidad#terminos'  },
+  { label: 'Huella de carbono',     href: '/huella-de-carbono'             },
 ]
 
 function InstagramIcon({ size = 18 }: { size?: number }) {
@@ -224,8 +224,8 @@ export default function Footer() {
             <Link href="/politica-privacidad" className="hover:text-white transition-colors">
               Privacidad
             </Link>
-            <Link href="/politica-privacidad#terminos" className="hover:text-white transition-colors">
-              Términos
+            <Link href="/contacto" className="hover:text-white transition-colors">
+              Contacto
             </Link>
             <a href="https://biotiza.mx" className="text-verde-300 hover:text-verde-200 transition-colors">
               biotiza.mx

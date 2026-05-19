@@ -1,5 +1,7 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { DM_Sans, DM_Serif_Display } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 
 import Header from '@/components/layout/Header'
@@ -10,11 +12,12 @@ import ChatWidget from '@/components/chat/ChatWidget'
 import ScrollProgress from '@/components/ui/ScrollProgress'
 import ToastProvider from '@/components/ui/Toast'
 
-// ─── Organization JSON-LD ─────────────────────────────────────────────────
+// ─── Organization + LocalBusiness JSON-LD ─────────────────────────────────
 function OrganizationJsonLd() {
   const schema = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "LocalBusiness"],
+    "@id": "https://biotiza.mx/#org",
     "name": "Biotiza",
     "legalName": "Biotiza Biosoluciones Agrícolas",
     "url": "https://biotiza.mx",
@@ -26,31 +29,69 @@ function OrganizationJsonLd() {
     },
     "image": "https://biotiza.mx/og-image.png",
     "description": "Empresa mexicana de biosoluciones agrícolas. Fertilizantes orgánicos, bioestimulantes y bioprotección para cultivos de exportación.",
+    "foundingDate": "2001",
+    "slogan": "Del laboratorio a tu cultivo, con un agrónomo a tu lado.",
+    "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Zapopan",
       "addressRegion": "Jalisco",
       "addressCountry": "MX"
     },
-    "contactPoint": {
+    "areaServed": [
+      { "@type": "Country", "name": "México" },
+      { "@type": "AdministrativeArea", "name": "Jalisco" },
+      { "@type": "AdministrativeArea", "name": "Sinaloa" },
+      { "@type": "AdministrativeArea", "name": "Michoacán" },
+      { "@type": "AdministrativeArea", "name": "Guanajuato" }
+    ],
+    "contactPoint": [{
       "@type": "ContactPoint",
       "telephone": "+52-33-1602-2708",
       "contactType": "sales",
-      "availableLanguage": "Spanish",
+      "availableLanguage": ["Spanish"],
       "areaServed": "MX"
-    },
+    }],
+    "email": "ventas@biotiza.mx",
+    "telephone": "+52-33-1602-2708",
     "sameAs": [
-      "https://instagram.com/biotiza",
+      "https://www.instagram.com/biotiza.mx/",
       "https://facebook.com/biotiza",
       "https://linkedin.com/company/biotiza"
     ]
   }
+  const website = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://biotiza.mx/#website",
+    "url": "https://biotiza.mx",
+    "name": "Biotiza",
+    "inLanguage": "es-MX",
+    "publisher": { "@id": "https://biotiza.mx/#org" },
+  }
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }}
+      />
+    </>
   )
+}
+
+// ─── Viewport ──────────────────────────────────────────────────────────────
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0d5c4a' },
+  ],
+  colorScheme: 'light',
 }
 
 // ─── Google Fonts ──────────────────────────────────────────────────────────
@@ -149,6 +190,8 @@ export default function RootLayout({
             <CookieConsent />
           </div>
         </ToastProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

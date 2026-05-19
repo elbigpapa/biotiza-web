@@ -75,7 +75,7 @@ function ArticleJsonLd({ article }: { article: (typeof ARTICLES)[number] }) {
       name: 'Biotiza',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://biotiza.mx/images/biotiza-logo.png',
+        url: 'https://biotiza.mx/images/logos/biotiza-icon-color.png',
       },
     },
     datePublished: article.publishedAt,

@@ -115,10 +115,10 @@ export default function NosotrosPage() {
           </p>
           <div className="border-t border-ink">
             {[
-              { num:'01', name:'Fertilización', em:'orgánica',  meta:'Quelatos y enraizadores con cert. OMRI · base de programas limpios', count:'10', color:'text-verde-700' },
+              { num:'01', name:'Fertilización', em:'orgánica',  meta:'Quelatos y enraizadores con cert. OMRI · base de programas limpios', count:'09', color:'text-verde-700' },
               { num:'02', name:'Especialidades', em:null,        meta:'Correctores de deficiencias e inoculantes microbianos puntuales',     count:'06', color:'text-azul-600' },
               { num:'03', name:'Bioestimulación',em:null,        meta:'Aminoácidos, citoquininas, promotores de floración y cuajado',         count:'06', color:'text-naranja-500' },
-              { num:'04', name:'Nutrición',     em:'líquida',    meta:'Fertilizantes de alta concentración para fertirrigación de precisión', count:'10', color:'text-naranja-400' },
+              { num:'04', name:'Nutrición',     em:'líquida',    meta:'Fertilizantes de alta concentración para fertirrigación de precisión', count:'09', color:'text-naranja-400' },
               { num:'05', name:'Bioprotección', em:'natural',    meta:'Bioinsecticidas, biofungicidas y bactericidas naturales',              count:'17', color:'text-azul-500' },
             ].map(l => (
               <div key={l.num} className="grid grid-cols-[80px_1fr_140px_50px] items-center gap-[clamp(20px,4vw,50px)] py-[clamp(20px,3vw,32px)] border-b border-rule">

@@ -71,7 +71,7 @@ export const PRODUCT_LINES: ProductLineConfig[] = [
     iconName:        'Droplets',
     description:     'Fertilizantes de alta concentración con quelatos de última generación. Macronutrientes, secundarios y microelementos para fertirrigación de precisión.',
     tagline:         'Alta concentración · Quelatos premium',
-    productCount:    8,
+    productCount:    9,
   },
   {
     id:              'bioproteccion',
@@ -82,9 +82,9 @@ export const PRODUCT_LINES: ProductLineConfig[] = [
     tailwindText:    'text-azul-500',
     tailwindBorder:  'border-azul-500',
     iconName:        'Shield',
-    description:     'Bioprotección integral de origen natural: bioinsecticidas, biofungicidas y bactericidas. Categoría transversal que agrupa los productos de protección de cultivo de todas nuestras líneas — incluyendo Zentia, control biológico microbiano y sanitizantes — efectivos, seguros para el agroecosistema y compatibles con exportación.',
+    description:     'Bioprotección integral de origen natural: bioinsecticidas, biofungicidas y bactericidas. Categoría transversal que agrupa los productos de protección de cultivo de todas nuestras líneas — incluyendo control biológico microbiano y sanitizantes — efectivos, seguros para el agroecosistema y compatibles con exportación.',
     tagline:         'Bioinsecticidas · Biofungicidas · Bactericidas',
-    productCount:    14,
+    productCount:    17,
   },
 ]
 
@@ -239,7 +239,7 @@ export const CONTACT_INFO = {
   whatsapp:   '523316022708',
   whatsappUrl: 'https://wa.me/523316022708',
   instagram:  '@biotiza',
-  instagramUrl: 'https://instagram.com/biotiza',
+  instagramUrl: 'https://www.instagram.com/biotiza.mx/',
   address:    'Zapopan, Jalisco, México',
   website:    'https://biotiza.mx',
   schedule: {

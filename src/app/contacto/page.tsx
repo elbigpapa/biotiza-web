@@ -186,7 +186,7 @@ export default function ContactoPage() {
               <div className="mt-6 flex items-center gap-3">
                 <span className="text-sm text-gris-500">Síguenos:</span>
                 <a
-                  href="https://instagram.com/biotiza"
+                  href="https://www.instagram.com/biotiza.mx/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full border border-gris-200 px-4 py-1.5 text-sm font-medium text-gris-700 hover:border-verde-400 hover:text-verde-600 transition-colors"

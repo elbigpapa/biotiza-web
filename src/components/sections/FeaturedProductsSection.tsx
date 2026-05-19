@@ -77,7 +77,7 @@ export default function FeaturedProductsSection() {
               <em className="font-serif italic text-verde-700" style={{ fontFamily: 'var(--serif-it)' }}>
                 libres
               </em>{' '}
-              + fitohormonas.
+              + raíz nueva.
             </h3>
             <p className="dek-edit text-ink-2 max-w-[36ch]">
               {PRODUCT.tagline}
