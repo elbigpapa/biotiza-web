@@ -32,6 +32,72 @@ export async function generateMetadata({
   }
 }
 
+// ─── JSON-LD · Product + BreadcrumbList (SEO rich-results) ────────────────
+// Marca/fabricante = "Biotiza" (catálogo único; no se expone el proveedor).
+// Renderiza sólo <script> invisibles — cero impacto en el diseño editorial.
+function ProductJsonLd({
+  product,
+  lineName,
+}: {
+  product: {
+    name: string
+    full_name?: string
+    description: string
+    line: string
+    slug: string
+    certifications: string[]
+  }
+  lineName: string
+}) {
+  const url = `https://biotiza.mx/soluciones/${product.line}/${product.slug}`
+
+  const productSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.full_name ?? product.name,
+    alternateName: product.name,
+    description: product.description,
+    url,
+    brand: { '@type': 'Brand', name: 'Biotiza' },
+    manufacturer: { '@type': 'Organization', name: 'Biotiza', url: 'https://biotiza.mx' },
+    category: lineName,
+    hasCertification: product.certifications.map((cert) => ({
+      '@type': 'Certification',
+      name: cert,
+    })),
+    offers: {
+      '@type': 'Offer',
+      availability: 'https://schema.org/InStock',
+      seller: { '@type': 'Organization', name: 'Biotiza', url: 'https://biotiza.mx' },
+      priceCurrency: 'MXN',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        price: 0,
+        priceCurrency: 'MXN',
+        description: 'Precio bajo cotización',
+      },
+    },
+  }
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio',     item: 'https://biotiza.mx' },
+      { '@type': 'ListItem', position: 2, name: 'Soluciones', item: 'https://biotiza.mx/soluciones' },
+      { '@type': 'ListItem', position: 3, name: lineName,     item: `https://biotiza.mx/soluciones/${product.line}` },
+      { '@type': 'ListItem', position: 4, name: product.name, item: url },
+    ],
+  }
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+    </>
+  )
+}
+
 export default async function ProductoPage({
   params,
 }: {
@@ -47,6 +113,9 @@ export default async function ProductoPage({
 
   return (
     <main className="bg-white">
+      {/* SEO · datos estructurados (invisible — no afecta el diseño editorial) */}
+      <ProductJsonLd product={product} lineName={lineConfig.name} />
+
       {/* Hero del producto · 5-7 split editorial */}
       <section className="bg-paper py-32 lg:py-40 border-b border-rule">
         <Container>
