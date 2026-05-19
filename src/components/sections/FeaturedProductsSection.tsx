@@ -1,180 +1,142 @@
-'use client'
+/**
+ * FeaturedProductsSection.tsx — Producto signature · Sub-fase 3.3b
+ * Reemplaza biotiza-web/src/components/sections/FeaturedProductsSection.tsx
+ *
+ * Antes: carrusel horizontal de 10 cards uniformes
+ * Después: producto signature BP Koren con composición visible
+ */
 
-import { useRef } from 'react'
-import { motion } from 'framer-motion'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { staggerContainer, fadeInUp } from '@/lib/animations'
-import SectionHeading from '@/components/ui/SectionHeading'
-import { Container } from '@/components/ui/Container'
-import ProductCard, { type ProductCardData } from '@/components/products/ProductCard'
+import Link from 'next/link'
+import Image from 'next/image'
+import { ArrowRight } from 'lucide-react'
+import Container from '@/components/ui/Container'
+import { getProductImage } from '@/data/product-images'
 
-// ─── Productos estrella (orden definido por equipo comercial) ─────────────
-// El orden es importante: el primer producto es el más prioritario.
-// Mezcla líneas (orgánicos · bioestimulantes · nutrición · bioprotección) para
-// mostrar la amplitud del catálogo a la vez que destacamos los más pedidos.
-
-const FEATURED_PRODUCTS: ProductCardData[] = [
-  {
-    id: 'bp-koren',
-    slug: 'bp-koren',
-    name: 'BP Koren',
-    line: 'organicos',
-    tagline: 'Enraizador de alta concentración. Activa raíces nuevas en 7 días post-trasplante.',
-    icon: '🌱',
-  },
-  {
-    id: 'bp-fiore',
-    slug: 'bp-fiore',
-    name: 'BP Fioré',
-    line: 'bioestimulantes',
-    tagline: 'Inductor de floración. Más yemas florales, más uniformes, más rentables.',
-    icon: '🌸',
-  },
-  {
-    id: 'bp-gross',
-    slug: 'bp-gross',
-    name: 'BP Gross',
-    line: 'bioestimulantes',
-    tagline: 'Engordador de fruto. Calibre comercial superior con K + citoquininas.',
-    icon: '⚖️',
-  },
-  {
-    id: 'k-ultra',
-    slug: 'k-ultra',
-    name: 'K-Ultra',
-    line: 'nutricion',
-    tagline: 'Potasio líquido K₂O 40%. Motor del Brix, la firmeza y la coloración del fruto.',
-    icon: '💧',
-  },
-  {
-    id: 'bp-potasio',
-    slug: 'bp-potasio',
-    name: 'BP Potasio',
-    line: 'organicos',
-    tagline: 'Potasio orgánico quelatado OMRI Listed. Calidad de fruto sin residuos.',
-    icon: '🍇',
-  },
-  {
-    id: 'bp-calcio',
-    slug: 'bp-calcio',
-    name: 'BP Calcio',
-    line: 'organicos',
-    tagline: 'Calcio orgánico quelatado. Previene BER, rajaduras y bitter pit.',
-    icon: '🧪',
-  },
-  {
-    id: 'ae-calcium',
-    slug: 'ae-calcium',
-    name: 'AE Calcium',
-    line: 'organicos',
-    tagline: 'Calcio premium con ácidos polihidroxicarboxílicos. Máxima firmeza post-cosecha.',
-    icon: '💎',
-  },
-  {
-    id: 'brotanic',
-    slug: 'brotanic',
-    name: 'Brotanic',
-    line: 'nutricion',
-    tagline: 'Cu + Mn + Zn líquidos. Vigor foliar y prevención de clorosis.',
-    icon: '🍃',
-  },
-  {
-    id: 'elicitor-sin',
-    slug: 'elicitor-sin',
-    name: 'Elicitor-Sin',
-    line: 'bioproteccion',
-    tagline: 'Biofungicida con Trichoderma harzianum. Antagonista natural de Fusarium y Rhizoctonia.',
-    icon: '🛡️',
-  },
-  {
-    id: 'max-kill-plus',
-    slug: 'max-kill-plus',
-    name: 'Max-Kill Plus',
-    line: 'bioproteccion',
-    tagline: 'Bioinsecticida multiacción. Control biológico de plagas con resistencia química.',
-    icon: '🦠',
-  },
-]
-
-// ─── Componente ───────────────────────────────────────────────────────────
+const PRODUCT = {
+  slug: 'bp-koren',
+  line: 'organicos',
+  name: 'BP Koren',
+  tagline: 'Auxinas, citoquininas y aminoácidos libres en una sola formulación orgánica certificada OMRI. Compatible con drench y fertirrigación.',
+  stat: { value: '17', unit: 'aa libres', label: 'Aminoácidos libres en la formulación · 22% del producto' },
+  composition: [
+    { k: 'Aux + Cit',    v: '<1%',   d: 'auxinas + citoq.' },
+    { k: 'N total',      v: '4.0%',  d: 'orgánico'          },
+    { k: 'K₂O',          v: '6.0%',  d: 'quelatado'         },
+    { k: 'Aminoácidos',  v: '22%',   d: '17 aa libres'      },
+  ],
+  certs: ['OMRI', 'COFEPRIS', 'Hecho en MX'],
+}
 
 export default function FeaturedProductsSection() {
-  const scrollRef = useRef<HTMLDivElement>(null)
-
-  const scroll = (dir: 'left' | 'right') => {
-    if (!scrollRef.current) return
-    scrollRef.current.scrollBy({ left: dir === 'left' ? -320 : 320, behavior: 'smooth' })
-  }
+  const photo = getProductImage(PRODUCT.slug)
 
   return (
-    <section className="relative bg-gris-50/50 py-24 lg:py-32 overflow-hidden">
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-verde-50/30 to-transparent pointer-events-none" aria-hidden="true" />
+    <section className="bg-white py-24 lg:py-32 border-b border-rule">
+      <Container>
+        {/* Header */}
+        <div className="mb-12 lg:mb-16">
+          <p className="eyebrow-edit mb-6">— 04 · Producto del mes</p>
+          <h2 className="title-display max-w-[16ch]">
+            Enraizador <em>BP Koren</em>.
+          </h2>
+          <p className="dek-edit text-ink-2 max-w-[60ch] mt-5">
+            La base de los protocolos post-trasplante diseñados por nuestros agrónomos.
+            Sin hormonas sintéticas, con certificación OMRI.
+          </p>
+        </div>
 
-      <Container className="relative z-10">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-        >
-          <motion.div variants={fadeInUp} className="flex items-end justify-between mb-14 flex-wrap gap-4">
-            <SectionHeading
-              tag="Lo más pedido"
-              title="Productos estrella"
-              align="left"
-              animate={false}
-            />
-            {/* Flechas desktop premium */}
-            <div className="hidden sm:flex items-center gap-2 shrink-0">
-              <button
-                onClick={() => scroll('left')}
-                aria-label="Anterior"
-                className="flex h-11 w-11 items-center justify-center rounded-xl border border-gris-200 bg-white text-gris-500 shadow-sm transition-all duration-300 hover:border-verde-300 hover:text-verde-600 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
-              >
-                <ChevronLeft size={18} />
-              </button>
-              <button
-                onClick={() => scroll('right')}
-                aria-label="Siguiente"
-                className="flex h-11 w-11 items-center justify-center rounded-xl border border-gris-200 bg-white text-gris-500 shadow-sm transition-all duration-300 hover:border-verde-300 hover:text-verde-600 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
-              >
-                <ChevronRight size={18} />
-              </button>
+        {/* Card editorial */}
+        <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] bg-paper border border-ink min-h-[540px]">
+          {/* IZQ · Producto sobre paper-2 */}
+          <div className="relative flex items-center justify-center p-8 lg:p-14 bg-paper-2 border-r-0 lg:border-r border-b lg:border-b-0 border-ink min-h-[420px]">
+            <span className="absolute top-6 left-6 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-ink-3">
+              N° 01 · Catálogo
+            </span>
+            {photo ? (
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                width={400}
+                height={600}
+                sizes="(min-width: 1024px) 380px, 70vw"
+                className="max-h-[460px] w-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.18)]"
+              />
+            ) : (
+              <div className="font-serif text-9xl text-verde-700/40">BK</div>
+            )}
+            <span className="absolute bottom-6 right-6 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-verde-700">
+              Orgánicos · OMRI
+            </span>
+          </div>
+
+          {/* DER · Info editorial */}
+          <div className="p-8 lg:p-14 flex flex-col gap-6">
+            <p className="eyebrow-edit eyebrow-green">Enraizador orgánico · cert. OMRI</p>
+            <h3 className="font-serif text-[clamp(36px,5vw,64px)] leading-[0.95] tracking-[-0.035em] max-w-[16ch]">
+              BP Koren · aminoácidos{' '}
+              <em className="font-serif italic text-verde-700" style={{ fontFamily: 'var(--serif-it)' }}>
+                libres
+              </em>{' '}
+              + fitohormonas.
+            </h3>
+            <p className="dek-edit text-ink-2 max-w-[36ch]">
+              {PRODUCT.tagline}
+            </p>
+
+            {/* Stat signature */}
+            <div className="pt-5 border-t border-rule">
+              <div className="font-serif text-[clamp(60px,8vw,96px)] leading-[0.85] tracking-[-0.04em] text-ink">
+                {PRODUCT.stat.value}
+                <em
+                  className="font-serif italic text-verde-700 text-[0.4em] align-[14%] ml-1.5"
+                  style={{ fontFamily: 'var(--serif-it)' }}
+                >
+                  {' '}{PRODUCT.stat.unit}
+                </em>
+              </div>
+              <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-3 mt-2">
+                {PRODUCT.stat.label}
+              </p>
             </div>
-          </motion.div>
-        </motion.div>
+
+            {/* Composición mono dark */}
+            <div className="composition-edit">
+              <div className="text-white/40 text-[10px] font-semibold uppercase tracking-[0.2em] mb-3 flex items-center gap-2.5 before:content-[''] before:w-4 before:h-px before:bg-white/30">
+                // {PRODUCT.name} · composición
+              </div>
+              {PRODUCT.composition.map((row, i) => (
+                <div key={i} className="row">
+                  <div className="text-white/85">{row.k}</div>
+                  <div className="v">{row.v}</div>
+                  <div className="text-white/50 text-[11px]">{row.d}</div>
+                </div>
+              ))}
+              <div className="mt-4 pt-3.5 border-t border-white/15 flex flex-wrap gap-3.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-verde-300">
+                {PRODUCT.certs.map(c => <span key={c}>● {c}</span>)}
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div className="mt-auto flex items-center gap-5 flex-wrap pt-2">
+              <Link
+                href={`/soluciones/${PRODUCT.line}/${PRODUCT.slug}`}
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-naranja-500 text-white font-mono text-[11px] font-semibold uppercase tracking-[0.16em] hover:bg-naranja-600 hover:-translate-y-0.5 transition-all duration-300"
+              >
+                Ver ficha completa
+                <ArrowRight size={14} />
+              </Link>
+              <a
+                href={`https://wa.me/523316022708?text=Hola%2C%20quiero%20cotizar%20${PRODUCT.name}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-ink border-b border-ink pb-0.5 hover:text-verde-700 hover:border-verde-700 transition-colors"
+              >
+                Cotizar por WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
       </Container>
-
-      {/* Carrusel */}
-      <div
-        ref={scrollRef}
-        className="flex gap-5 overflow-x-auto pb-6 px-4 sm:px-6 lg:px-8 xl:px-[max(2rem,calc((100vw-1280px)/2+2rem))]"
-        style={{ scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none' }}
-      >
-        {FEATURED_PRODUCTS.map((product, i) => (
-          <motion.div
-            key={product.id}
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.06, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-            style={{ scrollSnapAlign: 'start' }}
-          >
-            <ProductCard product={product} />
-          </motion.div>
-        ))}
-
-        {/* Spacer final */}
-        <div className="w-4 shrink-0" aria-hidden="true" />
-      </div>
-
-      {/* Scroll indicator mobile */}
-      <div className="mt-6 flex justify-center gap-1.5 sm:hidden">
-        {Array.from({ length: Math.ceil(FEATURED_PRODUCTS.length / 2) }).map((_, i) => (
-          <span key={i} className={`h-1.5 rounded-full transition-all ${i === 0 ? 'w-6 bg-verde-500' : 'w-1.5 bg-gris-300'}`} />
-        ))}
-      </div>
     </section>
   )
 }
