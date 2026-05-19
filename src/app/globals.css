@@ -721,3 +721,150 @@ a:hover {
     margin: 14mm 12mm;
   }
 }
+
+/* ═════════════════════════════════════════════════════════════════════════
+   BIOTIZA EDITORIAL LAYER · Sub-fase 3.1 (mayo 2026)
+   ─────────────────────────────────────────────────────────────────────────
+   INSTRUCCIONES PARA APLICAR AL REPO
+   ─────────────────────────────────────────────────────────────────────────
+   1. Abre  biotiza-web/src/app/globals.css
+   2. Pega TODO el contenido de este archivo AL FINAL de globals.css
+   3. Guarda. `npm run dev` y verifica que no hay errores de build.
+   4. Las nuevas utilidades quedan disponibles globalmente:
+        .title-hero  .title-display  .dek-edit  .eyebrow-edit
+        .serif-it    .composition-edit
+      Y los tokens nuevos como Tailwind classes:
+        bg-paper  bg-paper-2  bg-paper-3  text-ink  text-ink-2  border-rule
+   5. Mantén el sistema existente intacto — esta capa AÑADE sobre él.
+   ═════════════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+
+@theme {
+  /* Editorial italic accent — Instrument Serif alongside DM Serif Display */
+  --font-serif-it: 'Instrument Serif', var(--font-dm-serif), Georgia, serif;
+
+  /* Tierra editorial · papel crema y tinta verde-negro */
+  --color-paper:      #f4efe3;
+  --color-paper-2:    #ebe4d2;
+  --color-paper-3:    #e1d8be;
+  --color-paper-line: #c8bda1;
+
+  --color-ink:   #0a1a14;
+  --color-ink-2: #1f2d27;
+  --color-ink-3: #4a5854;
+  --color-ink-4: #7c8884;
+  --color-ink-5: #b4bdb9;
+
+  --color-rule:        rgba(10, 26, 20, 0.12);
+  --color-rule-strong: rgba(10, 26, 20, 0.32);
+}
+
+:root {
+  --paper:      #f4efe3;
+  --paper-2:    #ebe4d2;
+  --paper-3:    #e1d8be;
+  --paper-line: #c8bda1;
+  --ink:        #0a1a14;
+  --ink-2:      #1f2d27;
+  --ink-3:      #4a5854;
+  --ink-4:      #7c8884;
+  --ink-5:      #b4bdb9;
+  --rule:       rgba(10, 26, 20, 0.12);
+  --rule-strong:rgba(10, 26, 20, 0.32);
+
+  --serif:    'DM Serif Display', 'Times New Roman', Georgia, serif;
+  --serif-it: 'Instrument Serif', 'DM Serif Display', Georgia, serif;
+  --sans:     'DM Sans', -apple-system, system-ui, sans-serif;
+  --mono:     'JetBrains Mono', ui-monospace, 'SF Mono', Monaco, monospace;
+}
+
+/* ── Editorial utilities ─────────────────────────────────────────────── */
+.serif-it { font-family: var(--serif-it); font-style: italic; font-weight: 400; letter-spacing: -0.015em; }
+
+.eyebrow-edit {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.eyebrow-edit::before { content: ''; width: 24px; height: 1px; background: currentColor; }
+.eyebrow-edit.eyebrow-green  { color: var(--color-verde-700); }
+.eyebrow-edit.eyebrow-orange { color: var(--color-naranja-600); }
+.eyebrow-edit.eyebrow-light  { color: var(--color-verde-300); }
+.eyebrow-edit.eyebrow-muted  { color: var(--ink-4); }
+.eyebrow-edit.no-line::before { display: none; }
+
+.title-display {
+  font-family: var(--serif);
+  font-size: clamp(40px, 7vw, 96px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.title-display em { font-family: var(--serif-it); font-style: italic; color: var(--color-verde-700); font-weight: 400; }
+.title-display .accent { font-family: var(--serif-it); font-style: italic; color: var(--color-naranja-500); font-weight: 400; }
+
+.title-hero {
+  font-family: var(--serif);
+  font-size: clamp(64px, 12vw, 200px);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+.title-hero em { font-family: var(--serif-it); font-style: italic; color: var(--color-verde-300); font-weight: 400; }
+
+.dek-edit {
+  font-family: var(--serif-it);
+  font-style: italic;
+  font-size: clamp(18px, 1.8vw, 26px);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+
+.composition-edit {
+  background: var(--ink);
+  color: var(--color-verde-300);
+  padding: clamp(20px, 3vw, 32px);
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.composition-edit .row {
+  display: grid; grid-template-columns: 80px 1fr auto; gap: 16px; align-items: baseline;
+  padding-block: 4px; border-bottom: 1px dashed rgba(255,255,255,0.08);
+}
+.composition-edit .v { color: var(--color-naranja-400); font-weight: 500; }
+
+/* ═════════════════════════════════════════════════════════════════════════
+   PRINT STYLES · FICHA TÉCNICA DE CULTIVO · TESIS CIENTÍFICA
+   ═════════════════════════════════════════════════════════════════════════ */
+@media print {
+  @page {
+    size: A4;
+    margin: 22mm 18mm 20mm 18mm;
+    @top-left    { content: "Biotiza · Programa de Nutrición"; font-family: 'JetBrains Mono', monospace; font-size: 8pt; letter-spacing: 0.16em; text-transform: uppercase; color: #4a5854; }
+    @top-right   { content: "biotiza.mx"; font-family: 'JetBrains Mono', monospace; font-size: 8pt; letter-spacing: 0.16em; text-transform: uppercase; color: #4a5854; }
+    @bottom-left { content: "© Biotiza · Asesoría técnica incluida"; font-family: 'JetBrains Mono', monospace; font-size: 8pt; letter-spacing: 0.14em; text-transform: uppercase; color: #7c8884; }
+    @bottom-center { content: counter(page) " · " counter(pages); font-family: 'JetBrains Mono', monospace; font-size: 8pt; color: #4a5854; }
+    @bottom-right  { content: "Zapopan · MX"; font-family: 'JetBrains Mono', monospace; font-size: 8pt; letter-spacing: 0.14em; text-transform: uppercase; color: #7c8884; }
+  }
+  html, body { background: #fff !important; color: #0a1a14 !important; font-size: 11pt; line-height: 1.55; }
+  header, footer, nav, .whatsapp-float, .no-print, [data-no-print] { display: none !important; }
+  section { padding: 0 !important; background: transparent !important; box-shadow: none !important; }
+  h1 { font-family: 'DM Serif Display', serif !important; font-size: 64pt !important; line-height: 1 !important; letter-spacing: -0.04em !important; color: #0a1a14 !important; }
+  h1 em { font-family: 'Instrument Serif', serif !important; font-style: italic; color: #147a57 !important; }
+  h2 { font-family: 'DM Serif Display', serif !important; font-size: 24pt !important; color: #0a1a14 !important; page-break-after: avoid; }
+  h2 em { color: #147a57 !important; font-family: 'Instrument Serif', serif !important; font-style: italic; }
+  h3 { font-family: 'DM Serif Display', serif !important; font-size: 18pt !important; color: #0a1a14 !important; page-break-after: avoid; }
+  h4 { font-family: 'DM Serif Display', serif !important; font-size: 14pt !important; color: #0a1a14 !important; page-break-after: avoid; }
+  table { width: 100% !important; border-collapse: collapse !important; font-family: 'DM Sans', sans-serif !important; font-size: 9.5pt !important; page-break-inside: avoid; }
+  th { background: #f4efe3 !important; border-top: 0.6pt solid #0a1a14 !important; border-bottom: 0.4pt solid #0a1a14 !important; color: #0a1a14 !important; padding: 2.5mm 3mm !important; font-family: 'JetBrains Mono', monospace !important; font-size: 7.5pt !important; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; text-align: left; }
+  td { border-bottom: 0.2pt solid #c8bda1 !important; padding: 2.5mm 3mm !important; vertical-align: top; font-size: 9pt !important; color: #0a1a14 !important; }
+  p, li { orphans: 3; widows: 3; }
+  tr, .protocol-stage { page-break-inside: avoid; }
+  * { box-shadow: none !important; text-shadow: none !important; }
+  .bg-verde-950, .bg-verde-900, .bg-gris-900, .bg-gris-950 { background: #fff !important; color: #0a1a14 !important; }
+  .bg-verde-950 *, .bg-verde-900 *, .bg-gris-900 *, .bg-gris-950 * { color: #0a1a14 !important; }
+}
