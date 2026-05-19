@@ -75,7 +75,7 @@ export default function WhyBiotizaSection() {
           {STAGES.map((s, i) => (
             <div
               key={s.num}
-              className={`relative p-7 sm:p-9 lg:p-10 ${
+              className={`relative min-w-0 p-7 sm:p-9 lg:p-10 ${
                 i < STAGES.length - 1 ? 'border-b sm:border-b-0 lg:border-r border-rule' : ''
               } ${i === 1 && 'sm:border-r-0 lg:border-r'} ${i === 1 && 'lg:border-b-0'}`}
             >
@@ -91,7 +91,7 @@ export default function WhyBiotizaSection() {
                 <span className="flex-1 h-px bg-ink-4 opacity-40 ml-2" />
               </div>
 
-              <h3 className="font-serif text-[clamp(28px,3vw,42px)] leading-none tracking-[-0.03em] mb-3.5">
+              <h3 className="font-serif text-[clamp(26px,2.6vw,40px)] leading-[1.05] tracking-[-0.03em] mb-3.5 break-words [hyphens:auto]">
                 {s.em ? (
                   <em className="font-serif italic text-verde-700" style={{ fontFamily: 'var(--serif-it)' }}>
                     {s.title}
