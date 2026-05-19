@@ -140,22 +140,14 @@ export const metadata: Metadata = {
     title: 'Biotiza — Biosoluciones Agrícolas',
     description:
       'Fertilizantes orgánicos, bioestimulantes y bioprotección para cultivos de exportación. Directo de laboratorio a tu campo.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1080,
-        height: 1080,
-        alt: 'Biotiza — Biosoluciones agrícolas',
-        type: 'image/png',
-      },
-    ],
+    // Sin `images` aquí — Next usa el opengraph-image.tsx (1200×630 dinámico)
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Biotiza — Biosoluciones Agrícolas',
     description:
       'Fertilizantes orgánicos, bioestimulantes y bioprotección para cultivos de exportación.',
-    images: ['/og-image.png'],
+    // Sin `images` — Next usa el twitter-image.tsx
   },
   manifest: '/manifest.webmanifest',
   robots: {

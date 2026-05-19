@@ -43,13 +43,13 @@ export const metadata: Metadata = {
     title: 'Biotiza — Biosoluciones agrícolas mexicanas',
     description:
       'Del laboratorio a tu cultivo, con un agrónomo a tu lado. Fertilizantes orgánicos, bioestimulantes y bioprotección para cultivos de exportación.',
-    images: [{ url: '/og-image.png', width: 1080, height: 1080, alt: 'Biotiza — Biosoluciones agrícolas' }],
+    // images omitidas → Next usa src/app/opengraph-image.tsx (1200×630 generado)
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Biotiza — Biosoluciones agrícolas mexicanas',
     description: '25 años · 47 productos · 35 cultivos. Asesoría técnica directa en campo.',
-    images: ['/og-image.png'],
+    // images omitidas → Next usa src/app/twitter-image.tsx
   },
 }
 
