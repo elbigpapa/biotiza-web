@@ -30,7 +30,7 @@ export default function CropsSection() {
           <div>
             <p className="eyebrow-edit mb-6">— 05 · Cultivos</p>
             <h2 className="title-display max-w-[16ch] mb-7">
-              28 expedientes,<br />
+              35 expedientes,<br />
               con <em>protocolo completo</em>.
             </h2>
             <p className="dek-edit text-ink-2 max-w-[60ch]">
@@ -43,7 +43,7 @@ export default function CropsSection() {
             href="/cultivos"
             className="self-end inline-flex items-center gap-2.5 px-6 py-3.5 border border-ink text-ink font-mono text-[11px] font-semibold uppercase tracking-[0.16em] hover:bg-ink hover:text-white transition-all duration-300"
           >
-            Ver los 28 expedientes
+            Ver los 35 expedientes
             <ArrowRight size={14} />
           </Link>
         </div>

@@ -123,8 +123,8 @@ export default function HeroSection() {
 
           {/* Métricas inline */}
           <div className="mt-14 pt-6 border-t border-white/15 flex flex-wrap gap-x-9 gap-y-3 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-white/70">
-            <span><span className="text-verde-300 mr-1.5">49</span>productos</span>
-            <span><span className="text-verde-300 mr-1.5">28</span>cultivos con protocolo</span>
+            <span><span className="text-verde-300 mr-1.5">47</span>productos</span>
+            <span><span className="text-verde-300 mr-1.5">35</span>cultivos con protocolo</span>
             <span><span className="text-verde-300 mr-1.5">25+</span>años de I+D</span>
             <span className="ml-auto">OMRI · COFEPRIS · Hecho en MX</span>
           </div>

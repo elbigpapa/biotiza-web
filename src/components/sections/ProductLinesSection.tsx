@@ -13,8 +13,8 @@ const LINES = [
   { id:'organicos',       num:'01', name:'Orgánicos',       em:'quelatados', count:9,  meta:'Cert. OMRI · base de programas limpios',              color:'text-verde-700' },
   { id:'especialidades',  num:'02', name:'Especialidades',  em:null,         count:6,  meta:'Correctores · inoculantes microbianos',              color:'text-azul-600'  },
   { id:'bioestimulantes', num:'03', name:'Bioestimulantes', em:null,         count:6,  meta:'Floración · cuajado · engorde · sanitizantes',       color:'text-naranja-500' },
-  { id:'nutricion',       num:'04', name:'Nutrición',       em:'líquida',    count:10, meta:'Fertirrigación · quelatos premium · micros',         color:'text-naranja-400' },
-  { id:'bioproteccion',   num:'05', name:'Bioprotección',   em:'natural',    count:16, meta:'Bioinsecticidas · biofungicidas · entomopatógenos',  color:'text-azul-500'  },
+  { id:'nutricion',       num:'04', name:'Nutrición',       em:'líquida',    count:9,  meta:'Fertirrigación · quelatos premium · micros',         color:'text-naranja-400' },
+  { id:'bioproteccion',   num:'05', name:'Bioprotección',   em:'natural',    count:17, meta:'Bioinsecticidas · biofungicidas · entomopatógenos',  color:'text-azul-500'  },
 ]
 
 export default function ProductLinesSection() {
