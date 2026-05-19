@@ -1,3 +1,7 @@
+/* Fuentes externas PRIMERO — Tailwind v4 expande `@import "tailwindcss"`
+   en su lugar, así que cualquier @import posterior queda "después de
+   reglas" e invalida la spec. Debe ir antes que la línea de Tailwind. */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -738,7 +742,10 @@ a:hover {
    5. Mantén el sistema existente intacto — esta capa AÑADE sobre él.
    ═════════════════════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+/* NOTA: el @import de Instrument Serif se movió al inicio del archivo
+   (junto a @import "tailwindcss") porque la CSS spec exige que todas las
+   reglas @import precedan cualquier otra regla. Turbopack/Lightning CSS
+   ahora lo valida estrictamente. */
 
 @theme {
   /* Editorial italic accent — Instrument Serif alongside DM Serif Display */
