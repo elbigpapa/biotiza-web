@@ -1,51 +1,56 @@
 /**
- * page.tsx — Homepage editorial · Sub-fase 3.3
+ * page.tsx — Homepage editorial · Sub-fase 3.3d
  * Reemplaza biotiza-web/src/app/page.tsx
  *
- * Cambios:
- *  · Quita WaveSeparators (eran demasiado "template")
- *  · Nueva secuencia editorial:
- *      Hero → Proceso (4 actos) → Servicio (qué nos diferencia)
- *    → Marquee certificaciones → Líneas (editorial list) → Producto signature
- *    → Cultivos (8 expedientes) → Lo que medimos (objetivos)
- *    → Sustentabilidad (huella) → Mapa MX → Caso reportaje → CTA final
- *  · Bordes hairline entre secciones, no ondas
+ * NOTA · WaveSeparators eliminados intencionalmente: con la paleta tierra
+ * editorial las transiciones se manejan con cambios sutiles de fondo
+ * (white → paper-2 → paper → ink → verde-950), sin SVG decorativo entre
+ * secciones.
  *
- * NOTA (aplicación Sub-fase 3.3a): `SustainabilitySection` y `MapSection`
- * aún no se han entregado al repo. Quedan importados/usados pero
- * COMENTADOS para que el build compile y la home editorial quede en
- * producción. Al recibir esos 2 componentes, descomentar las 4 líneas
- * marcadas con «TODO Sub-fase 3.3b».
+ * Si todavía tienes WhyBiotizaSection, StatsSection, AssistantPreviewSection
+ * o BlogPreviewSection, decide si reincorporarlos. Este orden propone una
+ * narrativa editorial de 11 secciones consecutivas.
  */
 
-import HeroSection           from '@/components/sections/HeroSection'
-import WhyBiotizaSection     from '@/components/sections/WhyBiotizaSection'
-import ServiceSection        from '@/components/sections/ServiceSection'
-import CertificationsMarquee from '@/components/sections/CertificationsMarquee'
-import ProductLinesSection   from '@/components/sections/ProductLinesSection'
+import HeroSection             from '@/components/sections/HeroSection'
+import CertificationsMarquee   from '@/components/sections/CertificationsMarquee'
+import ProductLinesSection     from '@/components/sections/ProductLinesSection'
 import FeaturedProductsSection from '@/components/sections/FeaturedProductsSection'
-import CropsSection          from '@/components/sections/CropsSection'
-import StatsSection          from '@/components/sections/StatsSection'
-// TODO Sub-fase 3.3b: import SustainabilitySection from '@/components/sections/SustainabilitySection'
-// TODO Sub-fase 3.3b: import MapSection            from '@/components/sections/MapSection'
-import TestimonialsSection   from '@/components/sections/TestimonialsSection'
-import CTASection            from '@/components/sections/CTASection'
+import CropsSection            from '@/components/sections/CropsSection'
+import TestimonialsSection     from '@/components/sections/TestimonialsSection'
+import SustainabilitySection   from '@/components/sections/SustainabilitySection'
+import MapSection              from '@/components/sections/MapSection'
+import CTASection              from '@/components/sections/CTASection'
 
 export default function HomePage() {
   return (
     <>
+      {/* 01 · Hero cinematográfico — foto + display 200px */}
       <HeroSection />
-      <WhyBiotizaSection />        {/* Proceso Lab → Campo → Asesor → Cosecha */}
-      <ServiceSection />           {/* "Vendemos productos. Acompañamos resultados." */}
-      <CertificationsMarquee />    {/* COFEPRIS · OMRI · Hecho en MX (delgado) */}
-      <ProductLinesSection />      {/* Lista editorial 5 líneas */}
-      <FeaturedProductsSection />  {/* BP Koren signature card */}
-      <CropsSection />             {/* Grid fotográfico 8 cultivos */}
-      <StatsSection />             {/* Lo que medimos · 4 indicadores */}
-      {/* TODO Sub-fase 3.3b: <SustainabilitySection /> — Huella de carbono con fuentes citadas */}
-      {/* TODO Sub-fase 3.3b: <MapSection /> — México 8 zonas de asesoría */}
-      <TestimonialsSection />      {/* Caso reportaje · dato como titular */}
-      <CTASection />               {/* Cuéntanos tu cultivo · WhatsApp */}
+
+      {/* 02 · Marquee trust bar — certificaciones */}
+      <CertificationsMarquee />
+
+      {/* 03 · Portafolio — lista editorial de 5 líneas */}
+      <ProductLinesSection />
+
+      {/* 04 · Producto signature — BP Koren con ciencia visible */}
+      <FeaturedProductsSection />
+
+      {/* 05 · Cultivos — grid fotográfico cinematográfico */}
+      <CropsSection />
+
+      {/* 06 · Filosofía / pull quote editorial */}
+      <TestimonialsSection />
+
+      {/* 07 · Huella de carbono — datos sustentados con fuentes */}
+      <SustainabilitySection />
+
+      {/* 08 · Mapa México — 9 zonas con asesoría */}
+      <MapSection />
+
+      {/* 09 · CTA final — WhatsApp + calculadora ROI */}
+      <CTASection />
     </>
   )
 }
