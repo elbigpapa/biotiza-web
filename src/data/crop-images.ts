@@ -169,10 +169,10 @@ export function getCropImage(slug: string): CropImage | null {
 // ─── Hero photography ──────────────────────────────────────────────────────
 
 export const HERO_IMAGES = {
-  /** Campo cultivado al amanecer — para hero principal */
+  /** Manos sembrando plántulas — foto del hero del prototipo Claude Design */
   cultivatedField: {
-    src: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=2400&q=85&auto=format&fit=crop',
-    alt: 'Campo cultivado al amanecer',
+    src: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=2400&q=85&auto=format&fit=crop',
+    alt: 'Manos sembrando plántulas en charola de germinación',
   },
   /** Jardín casero — para Casa y Jardín hero */
   homeGarden: {
