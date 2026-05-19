@@ -8,6 +8,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import WhatsAppFloat from '@/components/shared/WhatsAppFloat'
 import CookieConsent from '@/components/shared/CookieConsent'
+import GoogleAnalytics from '@/components/shared/GoogleAnalytics'
 import ChatWidget from '@/components/chat/ChatWidget'
 import ScrollProgress from '@/components/ui/ScrollProgress'
 import ToastProvider from '@/components/ui/Toast'
@@ -184,6 +185,7 @@ export default function RootLayout({
         </ToastProvider>
         <Analytics />
         <SpeedInsights />
+        <GoogleAnalytics gaId="G-VY5V5D35TB" />
       </body>
     </html>
   )

@@ -33,6 +33,10 @@ export default function CookieConsent() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ value, at: new Date().toISOString() }))
     } catch {}
+    // Empuja la decisión a Google Consent Mode v2 (definido en GoogleAnalytics)
+    if (typeof window !== 'undefined' && typeof window.setBiotizaConsent === 'function') {
+      window.setBiotizaConsent(value)
+    }
     setVisible(false)
   }
 
