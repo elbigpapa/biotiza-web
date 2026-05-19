@@ -1,429 +1,229 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
-import {
-  Leaf,
-  Target,
-  Eye,
-  Heart,
-  Shield,
-  Zap,
-  Users,
-  Globe,
-  Award,
-  ChevronRight,
-} from 'lucide-react'
-import Container from '@/components/ui/Container'
-import SectionHeading from '@/components/ui/SectionHeading'
-import Badge from '@/components/ui/Badge'
-import { PRODUCTS } from '@/data/products'
+/**
+ * nosotros/page.tsx — Spreads editoriales · Sub-fase 3.6a
+ * Reemplaza biotiza-web/src/app/nosotros/page.tsx
+ */
 
-// ---------------------------------------------------------------------------
-// Metadata
-// ---------------------------------------------------------------------------
+import type { Metadata } from 'next'
+import Container from '@/components/ui/Container'
+
 export const metadata: Metadata = {
-  title: 'Nosotros — Biotiza',
-  description:
-    'Somos Biotiza, empresa mexicana de biosoluciones agrícolas con sede en Zapopan, Jalisco. Desarrollamos fertilizantes orgánicos, bioestimulantes y bioprotección para productores de exportación comprometidos con la agricultura sustentable.',
+  title: 'Nosotros · Servicio que nos diferencia | Biotiza',
+  description: 'Veinticinco años trabajando con productores mexicanos. Servicio técnico con agrónomo asignado por zona.',
 }
 
-// ---------------------------------------------------------------------------
-// Data
-// ---------------------------------------------------------------------------
-const milestones = [
-  { year: '2018', label: 'Fundación en Zapopan, Jalisco' },
-  { year: '2020', label: 'Primera certificación OMRI Listed' },
-  { year: '2023', label: 'Expansión a nivel nacional' },
-]
-
-const stats = [
-  { value: '8', label: 'cultivos atendidos' },
-  { value: '5', label: 'líneas de producto' },
-  { value: '🇲🇽', label: 'México' },
-]
-
-const valores = [
-  {
-    emoji: '🔬',
-    title: 'Ciencia',
-    description: 'Formulaciones basadas en investigación y evidencia',
-  },
-  {
-    emoji: '🌱',
-    title: 'Sustentabilidad',
-    description: 'Productos que cuidan el suelo para las próximas generaciones',
-  },
-  {
-    emoji: '🤝',
-    title: 'Cercanía',
-    description: 'Acompañamiento técnico personalizado en campo',
-  },
-  {
-    emoji: '🏆',
-    title: 'Calidad',
-    description: 'Certificaciones OMRI y COFEPRIS como garantía',
-  },
-  {
-    emoji: '🇲🇽',
-    title: 'Orgullo mexicano',
-    description: 'Hecho en México para el campo mexicano',
-  },
-]
-
-const teamMembers = [
-  { name: 'Carlos M.', role: 'Director General' },
-  { name: 'Dr. Ana L.', role: 'I+D Agronómica' },
-  { name: 'Roberto H.', role: 'Ventas y Territorio' },
-  { name: 'Ing. Patricia V.', role: 'Servicio Técnico' },
-]
-
-const cofeprisChecks = [
-  'Registro sanitario vigente',
-  'Formulaciones auditadas',
-  'Etiquetado oficial',
-]
-
-const omriChecks = [
-  'Ingredientes de origen biológico',
-  'Sin contaminantes sintéticos',
-  'Aceptado en producción orgánica USDA/EU',
-]
-
-// ---------------------------------------------------------------------------
-// Page component
-// ---------------------------------------------------------------------------
 export default function NosotrosPage() {
   return (
-    <main>
-
-      {/* ------------------------------------------------------------------ */}
-      {/* 1. Hero                                                             */}
-      {/* ------------------------------------------------------------------ */}
-      <section className="relative bg-gradient-to-br from-verde-900 via-verde-800 to-verde-700 py-20 lg:py-28 overflow-hidden">
-        {/* Decorative circles */}
-        <span className="absolute -top-16 -right-16 w-80 h-80 rounded-full bg-white opacity-10 pointer-events-none" />
-        <span className="absolute bottom-0 -left-24 w-96 h-96 rounded-full bg-white opacity-10 pointer-events-none" />
-        <span className="absolute top-1/2 right-1/4 w-48 h-48 rounded-full bg-white opacity-20 pointer-events-none" />
-
-        <Container>
-          <div className="relative z-10 max-w-3xl">
-            {/* Tag */}
-            <span className="inline-block bg-white/10 text-white/80 px-3 py-1 rounded-full text-xs uppercase tracking-wider mb-6">
-              Zapopan, Jalisco · Desde 2018
-            </span>
-
-            {/* Headline */}
-            <h1 className="font-serif text-4xl lg:text-6xl text-white leading-tight">
-              Generamos Vida y Valor al Campo
-            </h1>
-
-            {/* Subtitle */}
-            <p className="text-white/80 max-w-2xl mt-4 text-lg leading-relaxed">
-              Somos una empresa mexicana de biosoluciones agrícolas que acompaña a los
-              productores de exportación con ciencia, tecnología y servicio personalizado.
-            </p>
-
-            {/* Stats pills */}
-            <div className="flex flex-wrap gap-3 mt-8">
-              <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-5 py-2 text-sm font-semibold text-white">
-                {PRODUCTS.length} productos
-              </span>
-              <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-5 py-2 text-sm font-semibold text-white">
-                5 líneas especializadas
-              </span>
-            </div>
-
-            {/* CTA */}
-            <Link
-              href="/soluciones"
-              className="inline-flex items-center gap-2 mt-8 rounded-lg bg-verde-500 px-6 py-3 text-sm font-semibold text-white hover:bg-verde-400 transition-colors"
-            >
-              Ver nuestras soluciones →
-            </Link>
+    <main className="bg-white">
+      {/* Hero */}
+      <section
+        className="relative min-h-[70vh] flex flex-col justify-end text-white overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(180deg, rgba(8,46,33,0.30) 0%, rgba(8,46,33,0.55) 55%, rgba(8,46,33,0.95) 100%), url('https://images.unsplash.com/photo-1500076656116-558758c991c1?w=2400&q=85&auto=format&fit=crop')`,
+          backgroundSize: 'cover', backgroundPosition: 'center',
+        }}
+      >
+        <Container className="py-[110px_60px]">
+          <div className="flex justify-between items-baseline font-mono text-[11px] tracking-[0.18em] uppercase text-white/70 mb-7 pb-4 border-b border-white/20">
+            <span><span className="text-verde-300 font-semibold">Biotiza</span> · empresa · Zapopan, MX</span>
+            <span>25 años de I+D</span>
           </div>
+          <h1 className="title-hero text-white max-w-[14ch]">
+            <em style={{ fontFamily: 'var(--serif-it)' }} className="text-verde-300">Generamos</em><br />
+            vida y valor<br />al campo.
+          </h1>
+          <p className="mt-7 max-w-[40ch] text-[clamp(16px,1.5vw,22px)] leading-[1.5] text-white/88">
+            Veinticinco años trabajando con productores mexicanos, con un servicio
+            que combina los mejores productos del mercado y la mejor asesoría técnica.
+          </p>
         </Container>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* 2. Historia / Propósito                                             */}
-      {/* ------------------------------------------------------------------ */}
-      <section className="py-16 lg:py-20">
-        <Container>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-
-            {/* Left: text */}
-            <div>
-              <span className="inline-block text-xs font-semibold uppercase tracking-widest text-verde-600 mb-3">
-                Nuestra Historia
-              </span>
-              <h2 className="font-serif text-3xl lg:text-4xl text-gris-900 leading-snug mb-6">
-                Ciencia al servicio del campo mexicano
-              </h2>
-
-              <div className="space-y-4 text-gris-600 text-base leading-relaxed">
-                <p>
-                  Biotiza nació en Zapopan, Jalisco, con una convicción clara: los productores
-                  mexicanos merecen acceso a las mismas soluciones biológicas de vanguardia que
-                  utilizan los agricultores más competitivos del mundo. Desde nuestra fundación
-                  en 2018, hemos construido un portafolio de más de {PRODUCTS.length} productos orientado
-                  exclusivamente a resultados medibles en campo.
-                </p>
-                <p>
-                  Nuestro equipo de investigación y desarrollo trabaja de la mano con agrónomos
-                  especializados para formular cada producto con evidencia científica sólida.
-                  Obtenemos las certificaciones más exigentes del mercado —COFEPRIS y OMRI
-                  Listed— porque entendemos que la confianza del productor se gana con
-                  transparencia y rigor técnico.
-                </p>
-                <p>
-                  Hoy acompañamos a productores de exportación en los principales estados
-                  agrícolas de México, ayudándolos a reducir el uso de agroquímicos sintéticos,
-                  mejorar la salud del suelo y obtener certificaciones orgánicas que abren
-                  puertas a mercados internacionales más rentables.
-                </p>
-              </div>
-
-              {/* Timeline */}
-              <div className="mt-8 flex flex-col sm:flex-row gap-0 sm:gap-0 relative">
-                {/* connector line */}
-                <div className="hidden sm:block absolute top-5 left-5 right-5 h-px bg-verde-100 z-0" />
-                {milestones.map((m, i) => (
-                  <div key={i} className="relative z-10 flex sm:flex-col items-start sm:items-center gap-3 sm:gap-2 flex-1 pb-4 sm:pb-0">
-                    <span className="flex-shrink-0 w-10 h-10 rounded-full bg-verde-500 text-white text-xs font-bold flex items-center justify-center shadow-md">
-                      {m.year.slice(2)}
-                    </span>
-                    <div className="sm:text-center">
-                      <p className="text-xs font-bold text-verde-700">{m.year}</p>
-                      <p className="text-xs text-gris-500 leading-snug">{m.label}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right: decorative card + stats */}
-            <div className="flex flex-col gap-4">
-              {/* Large decorative card */}
-              <div className="relative rounded-2xl bg-gradient-to-br from-verde-700 to-verde-500 p-8 overflow-hidden">
-                <span className="absolute -top-8 -right-8 w-40 h-40 rounded-full bg-white/10 pointer-events-none" />
-                <Leaf size={40} className="text-white/70 mb-4" />
-                <p className="font-serif text-2xl text-white leading-snug">
-                  "Cada producto que formulamos es una promesa de rendimiento y responsabilidad
-                  con la tierra."
-                </p>
-                <p className="mt-4 text-sm text-white/70">— Equipo Biotiza</p>
-              </div>
-
-              {/* Stat cards */}
-              <div className="grid grid-cols-3 gap-3">
-                {stats.map((s, i) => (
-                  <div
-                    key={i}
-                    className="rounded-xl border border-gris-100 bg-white p-4 text-center shadow-sm"
-                  >
-                    <p className="text-2xl font-bold text-verde-600">{s.value}</p>
-                    <p className="text-xs text-gris-500 mt-1 leading-snug">{s.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
+      {/* Spread 1 · Origen */}
+      <section className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
+        <div
+          className="min-h-[70vh] relative"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=1600&q=80&auto=format&fit=crop')`,
+            backgroundSize: 'cover', backgroundPosition: 'center',
+          }}
+        >
+          <div className="absolute bottom-5 left-5 right-5 font-mono text-[10px] tracking-[0.16em] uppercase text-white/85 bg-black/45 backdrop-blur-sm px-3 py-2">
+            N° 01 · Laboratorio · Zapopan, Jalisco
           </div>
-        </Container>
+        </div>
+        <div className="p-12 lg:p-20 flex flex-col justify-center bg-paper">
+          <p className="eyebrow-edit eyebrow-muted mb-5">— Capítulo 01 · Origen</p>
+          <h3 className="font-serif text-[clamp(40px,5vw,72px)] leading-[0.98] tracking-[-0.035em] mb-7 max-w-[14ch]">
+            Empezamos por <em style={{ fontFamily: 'var(--serif-it)' }} className="text-verde-700">servicio</em>, no por catálogo.
+          </h3>
+          <p className="text-[17px] leading-[1.7] text-ink-2 max-w-[50ch] mb-4">
+            <span className="font-serif text-[5em] leading-[0.8] float-left mr-3 -mt-1 text-verde-700">B</span>
+            iotiza nació hace 25 años con una idea sencilla: el productor mexicano
+            merece la mejor agronomía disponible — no necesariamente la marca de moda,
+            sino la combinación correcta de producto y acompañamiento técnico.
+          </p>
+          <p className="text-[17px] leading-[1.7] text-ink-2 max-w-[50ch]">
+            Trabajamos con varios laboratorios y formuladores líderes — algunos los
+            fabricamos nosotros, otros los seleccionamos del mercado nacional e
+            internacional — y los entregamos directamente al campo con asesoría incluida.
+          </p>
+        </div>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* 3. Misión, Visión y Valores                                         */}
-      {/* ------------------------------------------------------------------ */}
-      <section className="bg-gris-50 py-16 lg:py-20">
-        <Container>
-          <SectionHeading
-            tag="Nuestra esencia"
-            title="Misión, Visión y Valores"
-            align="center"
-            className="mb-10"
-          />
-
-          {/* Misión + Visión */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            {/* Misión */}
-            <div className="rounded-2xl bg-verde-500 p-8 text-white">
-              <div className="flex items-center gap-3 mb-4">
-                <Target size={28} className="opacity-80" />
-                <h3 className="font-serif text-xl">Misión</h3>
-              </div>
-              <p className="text-white/90 leading-relaxed">
-                Empoderar a los productores de México con soluciones biológicas probadas,
-                basadas en ciencia, que incrementan la productividad, protegen la salud del
-                suelo y entregan alimentos más seguros al mundo.
-              </p>
-            </div>
-
-            {/* Visión */}
-            <div className="rounded-2xl bg-gris-900 p-8 text-white">
-              <div className="flex items-center gap-3 mb-4">
-                <Eye size={28} className="opacity-80" />
-                <h3 className="font-serif text-xl">Visión</h3>
-              </div>
-              <p className="text-white/90 leading-relaxed">
-                Una agricultura latinoamericana próspera donde la innovación biológica permite
-                a cada productor producir más y mejores alimentos de manera sustentable.
-              </p>
-            </div>
+      {/* Spread 2 · Método (invertido) */}
+      <section className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
+        <div className="p-12 lg:p-20 flex flex-col justify-center bg-paper-2 order-2 lg:order-1">
+          <p className="eyebrow-edit eyebrow-muted mb-5">— Capítulo 02 · Método</p>
+          <h3 className="font-serif text-[clamp(40px,5vw,72px)] leading-[0.98] tracking-[-0.035em] mb-7 max-w-[14ch]">
+            El producto correcto, <em style={{ fontFamily: 'var(--serif-it)' }} className="text-verde-700">en el momento correcto</em>.
+          </h3>
+          <p className="text-[17px] leading-[1.7] text-ink-2 max-w-[50ch] mb-4">
+            <span className="font-serif text-[5em] leading-[0.8] float-left mr-3 -mt-1 text-verde-700">N</span>
+            o vendemos catálogo en frasco. Vendemos protocolos: secuencias de productos
+            y aplicaciones diseñadas por nuestros agrónomos, basadas en lo que el cultivo
+            y la zona necesitan en cada etapa.
+          </p>
+          <p className="text-[17px] leading-[1.7] text-ink-2 max-w-[50ch]">
+            Si la solución correcta es un producto nuestro, lo recomendamos. Si es de otro
+            fabricante con respaldo serio, lo decimos también. La honestidad técnica es lo
+            que sostiene la relación con cada productor a lo largo de los años.
+          </p>
+        </div>
+        <div
+          className="min-h-[70vh] relative order-1 lg:order-2"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1600&q=80&auto=format&fit=crop')`,
+            backgroundSize: 'cover', backgroundPosition: 'center',
+          }}
+        >
+          <div className="absolute bottom-5 left-5 right-5 font-mono text-[10px] tracking-[0.16em] uppercase text-white/85 bg-black/45 backdrop-blur-sm px-3 py-2">
+            N° 02 · Visita técnica · ajuste de protocolo en campo
           </div>
-
-          {/* Valores */}
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
-            {valores.map((v) => (
-              <div
-                key={v.title}
-                className="rounded-xl border border-gris-100 bg-white p-5 shadow-sm flex flex-col items-center text-center"
-              >
-                <span className="text-3xl mb-3">{v.emoji}</span>
-                <p className="font-semibold text-gris-800 text-sm mb-1">{v.title}</p>
-                <p className="text-xs text-gris-500 leading-snug">{v.description}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
+        </div>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* 4. Certificaciones                                                  */}
-      {/* ------------------------------------------------------------------ */}
-      <section id="certificaciones" className="py-16 lg:py-20">
+      {/* Categorías que manejamos · sin marcas */}
+      <section className="bg-paper py-24 lg:py-32 border-y border-rule">
         <Container>
-          <SectionHeading
-            tag="Respaldo oficial"
-            title="Certificaciones que nos avalan"
-            subtitle="Nuestros productos cumplen con los estándares más exigentes del mercado nacional e internacional."
-            align="center"
-            className="mb-10"
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-            {/* COFEPRIS */}
-            <div className="rounded-2xl border border-gris-200 bg-white p-8">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-4xl">🇲🇽</span>
+          <p className="eyebrow-edit eyebrow-green mb-5">— Categorías que manejamos</p>
+          <h2 className="title-display mb-7" style={{ fontSize: 'clamp(36px,5vw,72px)' }}>
+            Cinco familias.<br />Un solo <em>criterio de calidad</em>.
+          </h2>
+          <p className="dek-edit text-ink-2 max-w-[60ch] mb-12">
+            Cada producto pasa por el mismo filtro: respaldo científico, ficha técnica,
+            certificación sanitaria mexicana, y validación en cultivos comparables al tuyo.
+          </p>
+          <div className="border-t border-ink">
+            {[
+              { num:'01', name:'Fertilización', em:'orgánica',  meta:'Quelatos y enraizadores con cert. OMRI · base de programas limpios', count:'10', color:'text-verde-700' },
+              { num:'02', name:'Especialidades', em:null,        meta:'Correctores de deficiencias e inoculantes microbianos puntuales',     count:'06', color:'text-azul-600' },
+              { num:'03', name:'Bioestimulación',em:null,        meta:'Aminoácidos, citoquininas, promotores de floración y cuajado',         count:'06', color:'text-naranja-500' },
+              { num:'04', name:'Nutrición',     em:'líquida',    meta:'Fertilizantes de alta concentración para fertirrigación de precisión', count:'10', color:'text-naranja-400' },
+              { num:'05', name:'Bioprotección', em:'natural',    meta:'Bioinsecticidas, biofungicidas y bactericidas naturales',              count:'17', color:'text-azul-500' },
+            ].map(l => (
+              <div key={l.num} className="grid grid-cols-[80px_1fr_140px_50px] items-center gap-[clamp(20px,4vw,50px)] py-[clamp(20px,3vw,32px)] border-b border-rule">
+                <span className={`font-serif text-[clamp(36px,4vw,56px)] leading-none tracking-[-0.04em] ${l.color}`}>{l.num}</span>
                 <div>
-                  <p className="font-serif text-xl text-gris-900">COFEPRIS</p>
-                  <p className="text-xs text-gris-500">
-                    Comisión Federal para la Protección contra Riesgos Sanitarios
-                  </p>
+                  <div className="font-serif text-[clamp(28px,3.5vw,48px)] leading-[1.05] tracking-[-0.03em]">
+                    {l.name}{' '}
+                    {l.em && <em style={{ fontFamily: 'var(--serif-it)' }} className={l.color}>{l.em}</em>}
+                  </div>
+                  <div className="font-mono text-[11px] tracking-[0.14em] uppercase text-ink-4 mt-1.5 font-semibold">{l.meta}</div>
                 </div>
-              </div>
-              <p className="text-sm text-gris-600 leading-relaxed mt-4 mb-5">
-                Todos nuestros productos cuentan con registro sanitario ante la COFEPRIS,
-                garantizando su seguridad, eficacia y legalidad en México.
-              </p>
-              <ul className="space-y-2">
-                {cofeprisChecks.map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-gris-700">
-                    <span className="flex-shrink-0 w-5 h-5 rounded-full bg-verde-100 flex items-center justify-center">
-                      <ChevronRight size={12} className="text-verde-600" />
-                    </span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* OMRI */}
-            <div className="rounded-2xl border border-verde-200 bg-verde-50 p-8">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="flex-shrink-0 w-10 h-10 rounded-full bg-verde-500 flex items-center justify-center text-white font-bold text-sm">
-                  ✓
+                <span className="font-mono text-[13px] text-ink-3 text-right font-medium">
+                  <span className={`font-serif text-[32px] leading-none ${l.color} tracking-[-0.03em] mr-1`}>{l.count}</span>
+                  productos
                 </span>
-                <div>
-                  <p className="font-serif text-xl text-gris-900">OMRI Listed</p>
-                  <p className="text-xs text-gris-500">Organic Materials Review Institute</p>
-                </div>
-              </div>
-              <p className="text-sm text-gris-600 leading-relaxed mt-4 mb-5">
-                La certificación OMRI es el estándar internacional que avala que nuestros
-                productos son aptos para ser usados en agricultura orgánica certificada.
-              </p>
-              <ul className="space-y-2">
-                {omriChecks.map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-gris-700">
-                    <span className="flex-shrink-0 w-5 h-5 rounded-full bg-verde-500 flex items-center justify-center">
-                      <ChevronRight size={12} className="text-white" />
-                    </span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-          </div>
-        </Container>
-      </section>
-
-      {/* ------------------------------------------------------------------ */}
-      {/* 5. Equipo                                                           */}
-      {/* ------------------------------------------------------------------ */}
-      <section className="bg-gris-50 py-16">
-        <Container>
-          <SectionHeading
-            tag="Las personas detrás de Biotiza"
-            title="Nuestro Equipo"
-            subtitle="Un equipo multidisciplinario de agrónomos, científicos y especialistas comprometidos con el campo."
-            align="center"
-            className="mb-10"
-          />
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {teamMembers.map((member) => (
-              <div
-                key={member.name}
-                className="rounded-xl border border-gris-100 bg-verde-50 p-6 flex flex-col items-center text-center shadow-sm"
-              >
-                {/* Avatar placeholder */}
-                <div className="w-16 h-16 bg-gris-200 rounded-full mb-4 flex items-center justify-center">
-                  <Users size={24} className="text-gris-400" />
-                </div>
-                <p className="font-semibold text-gris-800 text-sm">{member.name}</p>
-                <p className="text-xs text-gris-500 mt-0.5">{member.role}</p>
+                <span className="font-serif text-2xl text-ink-3">›</span>
               </div>
             ))}
           </div>
         </Container>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* 6. CTA final                                                        */}
-      {/* ------------------------------------------------------------------ */}
-      <section className="bg-gradient-to-r from-verde-700 to-verde-500 py-16">
-        <Container narrow>
-          <div className="text-center">
-            <h2 className="font-serif text-3xl lg:text-4xl text-white mb-4">
-              ¿Listo para transformar tu cultivo?
-            </h2>
-            <p className="text-white/80 max-w-xl mx-auto mb-8 text-base leading-relaxed">
-              Habla con nuestro equipo agronómico y descubre qué línea de biosoluciones es
-              la indicada para tu cultivo y etapa fenológica.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <Link
-                href="/cotizacion"
-                className="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-verde-700 hover:bg-verde-50 transition-colors"
-              >
-                Solicitar cotización
-                <ChevronRight size={16} />
-              </Link>
-              <Link
-                href="/soluciones"
-                className="inline-flex items-center gap-2 rounded-lg border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white hover:bg-white/20 transition-colors"
-              >
-                Ver productos
-                <ChevronRight size={16} />
-              </Link>
+      {/* Compromiso · "Lo que NO vamos a hacer" */}
+      <section className="bg-white py-24 lg:py-32 border-b border-rule">
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-10 lg:gap-20 items-center">
+            <div>
+              <p className="eyebrow-edit eyebrow-orange mb-5">— Compromiso</p>
+              <h2 className="title-display max-w-[14ch]" style={{ fontSize: 'clamp(36px,5vw,72px)' }}>
+                Lo que <em>no</em><br />vamos a hacer.
+              </h2>
+            </div>
+            <div className="space-y-5">
+              {[
+                ['No prometemos números mágicos.','Cada cifra que publicamos proviene de ficha técnica o certificado verificable.'],
+                ['No vendemos en caja sin acompañamiento.','Cada compra incluye al agrónomo asignado a tu zona.'],
+                ['No recomendamos lo que no usaríamos.','Si el problema requiere un producto de otro fabricante, lo decimos.'],
+                ['No desaparecemos después de la venta.','Estamos en WhatsApp cuando algo cambia en campo.'],
+              ].map(([h, b]) => (
+                <p key={h} className="text-[17px] leading-[1.65] text-ink-2 max-w-[54ch]">
+                  <strong className="font-semibold text-ink">{h}</strong> {b}
+                </p>
+              ))}
             </div>
           </div>
         </Container>
       </section>
 
+      {/* CTA · "Trabajamos contigo" */}
+      <section className="relative overflow-hidden bg-verde-950 text-white py-24 lg:py-32">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 60% 80% at 90% 20%, rgba(34,181,115,0.22), transparent 60%), radial-gradient(ellipse 50% 50% at 10% 80%, rgba(232,105,15,0.16), transparent 60%)',
+          }}
+          aria-hidden="true"
+        />
+        <Container className="relative">
+          <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-10 lg:gap-20 items-center">
+            <div>
+              <p className="eyebrow-edit eyebrow-light no-line mb-5">Compromiso</p>
+              <h2 className="title-display text-white max-w-[14ch]">
+                Trabajamos<br /><em style={{ fontFamily: 'var(--serif-it)' }} className="text-verde-300">contigo</em>,<br />
+                no para ti.
+              </h2>
+            </div>
+            <div>
+              <p className="text-lg leading-[1.55] text-white/88 max-w-[54ch] mb-6">
+                Cada productor Biotiza tiene un agrónomo asignado que conoce tu cultivo,
+                tu zona, tu agua, tus objetivos y los retos específicos del ciclo.
+              </p>
+              <p className="text-base leading-[1.55] text-white/78 max-w-[54ch] mb-9">
+                Ese acompañamiento, junto con los mejores productos disponibles del mercado,
+                es lo que nos diferencia.
+              </p>
+              <div className="flex items-center gap-5 flex-wrap mb-7">
+                <a
+                  href="https://wa.me/523316022708?text=Hola%20Biotiza%2C%20quiero%20conocer%20su%20servicio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-naranja-500 text-white font-mono text-[11px] font-semibold uppercase tracking-[0.16em] hover:bg-naranja-600 hover:-translate-y-0.5 transition-all"
+                >
+                  Hablar con un asesor →
+                </a>
+                <a href="/cultivos" className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-white/85 border-b border-current pb-0.5 hover:text-verde-300">
+                  o explorar los expedientes
+                </a>
+              </div>
+              <div className="pt-6 border-t border-white/15 flex flex-wrap gap-7 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">
+                <span>+52 33 1602 2708</span>
+                <span>ventas@biotiza.mx</span>
+                <a
+                  href="https://www.instagram.com/biotiza.mx/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-verde-300 transition-colors"
+                >
+                  @biotiza.mx
+                </a>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
     </main>
   )
 }
