@@ -137,27 +137,35 @@ body {
   font-variant-ligatures: common-ligatures;
 }
 
-/* ── Tipografía base — fluid clamp() premium ──────────────────────────── */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  line-height: 1.08;
-  letter-spacing: -0.028em;
-  color: var(--text-primary);
-  /* Balance automático del texto (mejora rivers + huérfanas) */
-  text-wrap: balance;
+/* ── Tipografía base — fluid clamp() premium ──────────────────────────────
+   Va en @layer base para que las utilidades de color de Tailwind
+   (text-white, text-ink, text-verde-300…) puedan sobrescribir el color
+   por defecto. Sin @layer, estas reglas no-capa ganaban SIEMPRE y dejaban
+   los títulos oscuros e ilegibles sobre fondos oscuros en todo el sitio. */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.028em;
+    color: var(--text-primary);
+    /* Balance automático del texto (mejora rivers + huérfanas) */
+    text-wrap: balance;
+  }
+
+  h1 { font-size: clamp(2.5rem,   1.5rem + 4.5vw, 5rem);    line-height: 1.05; letter-spacing: -0.035em; }
+  h2 { font-size: clamp(1.875rem, 1.25rem + 3vw,  3.5rem);  line-height: 1.08; }
+  h3 { font-size: clamp(1.375rem, 1.05rem + 1.6vw, 2.25rem); line-height: 1.15; }
+  h4 { font-size: clamp(1.125rem, 0.95rem + 0.9vw, 1.5rem);  line-height: 1.25; }
 }
 
-h1 { font-size: clamp(2.5rem,   1.5rem + 4.5vw, 5rem);    line-height: 1.05; letter-spacing: -0.035em; }
-h2 { font-size: clamp(1.875rem, 1.25rem + 3vw,  3.5rem);  line-height: 1.08; }
-h3 { font-size: clamp(1.375rem, 1.05rem + 1.6vw, 2.25rem); line-height: 1.15; }
-h4 { font-size: clamp(1.125rem, 0.95rem + 0.9vw, 1.5rem);  line-height: 1.25; }
-
-p {
-  line-height: 1.7;
-  color: var(--text-secondary);
-  /* Mejor wrap evitando líneas viudas (text-wrap: pretty es CSS4) */
-  text-wrap: pretty;
+@layer base {
+  p {
+    line-height: 1.7;
+    color: var(--text-secondary);
+    /* Mejor wrap evitando líneas viudas (text-wrap: pretty es CSS4) */
+    text-wrap: pretty;
+  }
 }
 
 /* Hyphenation automático en lengua larga (español) */
@@ -167,14 +175,18 @@ p, li, blockquote {
   hyphenate-limit-chars: 8 4 4;
 }
 
-a {
-  color: var(--brand-verde);
-  text-decoration: none;
-  transition: color 0.2s ease;
+@layer base {
+  a {
+    color: var(--brand-verde);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
 }
 
-a:hover {
-  color: var(--color-verde-600);
+@layer base {
+  a:hover {
+    color: var(--color-verde-600);
+  }
 }
 
 /* ── Selección de texto ─────────────────────────────────────────────── */
