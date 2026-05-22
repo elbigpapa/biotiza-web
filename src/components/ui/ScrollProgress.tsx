@@ -8,7 +8,7 @@
  * Patrón usado por Medium, Substack, Linear y otros sitios premium.
  */
 
-import { motion, useScroll, useSpring } from 'framer-motion'
+import { motion, useScroll, useSpring } from 'motion/react'
 
 interface ScrollProgressProps {
   className?: string

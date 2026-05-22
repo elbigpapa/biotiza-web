@@ -10,7 +10,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 import { Cookie, X } from 'lucide-react'
 
 const STORAGE_KEY = 'biotiza_cookie_consent_v1'

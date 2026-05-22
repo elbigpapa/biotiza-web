@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
-import { motion, AnimatePresence, useInView } from 'framer-motion'
+import { motion, AnimatePresence, useInView } from 'motion/react'
 import { MessageCircle, Bot, Sparkles } from 'lucide-react'
 import { staggerContainer, fadeInUp } from '@/lib/animations'
 import { cn } from '@/lib/utils'

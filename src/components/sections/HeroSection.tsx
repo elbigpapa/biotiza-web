@@ -16,7 +16,7 @@
 import { useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
+import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react'
 import { ArrowRight, MessageCircle } from 'lucide-react'
 import { HERO_IMAGES } from '@/data/crop-images'
 

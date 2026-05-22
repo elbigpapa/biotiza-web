@@ -7,7 +7,7 @@ Biotiza (biotiza.mx) es una empresa mexicana de biosoluciones agrícolas con sed
 - **Next.js 16.2.4** App Router con Turbopack (NO es 14 — breaking changes)
 - **React 19.2.5**
 - **Tailwind CSS v4** con `@theme` en globals.css (tailwind.config.ts es IDE-only)
-- **Framer Motion 12.38**
+- **motion 12.40+** (rebranded framer-motion, import from `motion/react`) + **lenis 1.3+** (smooth scroll)
 - **TypeScript 6** strict
 - **Zod 4.3** + React Hook Form 7.72
 - **lucide-react 1.8** (Instagram icon removed — usar custom SVG)
@@ -21,7 +21,7 @@ Biotiza (biotiza.mx) es una empresa mexicana de biosoluciones agrícolas con sed
 - Constantes: SCREAMING_SNAKE (PRODUCTS_DATA.ts)
 - Mobile-first responsive (sm → md → lg → xl)
 - Todas las imágenes con next/image + sizes prop
-- Animaciones: framer-motion con whileInView + viewport={{ once: true }}
+- Animaciones: motion/react con whileInView + viewport={{ once: true }}
 - **Server Components NO pueden recibir handlers de evento como prop.** Usa CSS hover con custom properties o extrae a Client Component.
 
 ## Estructura de Carpetas

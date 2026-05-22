@@ -9,7 +9,7 @@
  */
 
 import { useState, useRef, useEffect, type FormEvent } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'motion/react'
 import { Send, X, Sparkles, Loader2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import BiotizaLogo from '@/components/brand/BiotizaLogo'

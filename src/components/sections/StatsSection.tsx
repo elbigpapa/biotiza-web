@@ -11,7 +11,7 @@
  */
 
 import { useRef, useEffect } from 'react'
-import { motion, useInView, useMotionValue, useTransform, animate } from 'framer-motion'
+import { motion, useInView, useMotionValue, useTransform, animate } from 'motion/react'
 import { Leaf, Sprout, Award, Users, type LucideIcon } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import { cn } from '@/lib/utils'

@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { ArrowRight, Clock } from 'lucide-react'
 import { staggerContainer, fadeInUp } from '@/lib/animations'
 import SectionHeading from '@/components/ui/SectionHeading'

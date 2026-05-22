@@ -5,7 +5,7 @@
  * Posicionado absolute top-full dentro del Header (que es fixed).
  */
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import Link from 'next/link'
 import {
   Leaf,

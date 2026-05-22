@@ -4,7 +4,7 @@
  * SectionHeading.tsx — Encabezado de sección premium con línea decorativa gradiente
  */
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 import { fadeInUp, staggerContainer } from '@/lib/animations'
 

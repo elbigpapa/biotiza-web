@@ -11,7 +11,7 @@
  */
 
 import { useRef, type ReactNode, type MouseEvent } from 'react'
-import { motion, useMotionValue, useSpring, useReducedMotion } from 'framer-motion'
+import { motion, useMotionValue, useSpring, useReducedMotion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 interface MagneticButtonProps {
