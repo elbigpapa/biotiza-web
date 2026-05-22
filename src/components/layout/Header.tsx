@@ -14,6 +14,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { AnimatePresence } from 'framer-motion'
 import { Menu, ChevronDown, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -34,6 +35,16 @@ export default function Header() {
   const [megaOpen,   setMegaOpen]   = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
+  /**
+   * Solo la home (`/`) tiene un hero con foto oscura que justifica el header
+   * transparente con texto blanco. En el resto de páginas el fondo superior
+   * es claro (bg-paper editorial) — ahí el header debe ser SIEMPRE sólido,
+   * o el logo, la navegación y la hamburguesa se vuelven blanco-sobre-claro
+   * (ilegibles).
+   */
+  const pathname = usePathname()
+  const isHome = pathname === '/'
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30)
     onScroll()
@@ -46,7 +57,7 @@ export default function Header() {
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
-  const solid = scrolled || megaOpen
+  const solid = scrolled || megaOpen || !isHome
 
   return (
     <>

@@ -196,18 +196,30 @@ export default function ContactoPage() {
                 </a>
               </div>
 
-              {/* Map placeholder */}
-              <div className="mt-6 h-56 rounded-2xl overflow-hidden bg-gris-100 relative border border-gris-200">
-                <div className="flex h-full items-center justify-center flex-col gap-2 text-gris-400">
-                  <MapPin size={32} />
-                  <p className="text-sm font-medium">Zapopan, Jalisco, México</p>
+              {/* Mapa de ubicación — embebido */}
+              <div className="mt-6 rounded-2xl overflow-hidden border border-gris-200 bg-gris-100">
+                <iframe
+                  title="Ubicación de Biotiza en Zapopan, Jalisco, México"
+                  src="https://www.google.com/maps?q=Zapopan,Jalisco,M%C3%A9xico&z=12&output=embed"
+                  width="100%"
+                  height="240"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="block w-full"
+                  style={{ border: 0 }}
+                />
+                <div className="flex items-center justify-between gap-3 bg-white px-4 py-3 border-t border-gris-200">
+                  <span className="inline-flex items-center gap-2 text-sm font-medium text-gris-700">
+                    <MapPin size={16} className="text-verde-500" />
+                    Zapopan, Jalisco, México
+                  </span>
                   <a
-                    href="https://maps.google.com/?q=Zapopan+Jalisco+Mexico"
+                    href="https://www.google.com/maps/search/?api=1&query=Zapopan,Jalisco,M%C3%A9xico"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-verde-600 underline hover:text-verde-700 transition-colors"
+                    className="text-xs font-semibold text-verde-600 hover:text-verde-700 transition-colors"
                   >
-                    Ver en Google Maps →
+                    Cómo llegar →
                   </a>
                 </div>
               </div>

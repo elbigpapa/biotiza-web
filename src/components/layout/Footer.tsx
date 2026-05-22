@@ -60,14 +60,33 @@ function NewsletterForm() {
   const [email, setEmail]         = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading]     = useState(false)
+  const [error, setError]         = useState<string | null>(null)
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     if (!email) return
     setLoading(true)
-    await new Promise((r) => setTimeout(r, 800))
-    setSubmitted(true)
-    setLoading(false)
+    setError(null)
+    try {
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          fuente: 'newsletter',
+          notas: 'Suscripción al newsletter técnico desde el footer del sitio.',
+        }),
+      })
+      if (!res.ok) {
+        setError('No pudimos registrar tu correo. Intenta de nuevo.')
+        return
+      }
+      setSubmitted(true)
+    } catch {
+      setError('Error de red. Intenta de nuevo.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -79,7 +98,9 @@ function NewsletterForm() {
         Tips de campo cada quincena.
       </p>
       {submitted ? (
-        <p className="text-sm text-verde-300 mt-3">✓ Suscrito. Revisa tu correo.</p>
+        <p className="text-sm text-verde-300 mt-3">
+          ✓ ¡Listo! Tu correo quedó registrado. Pronto te llegará contenido técnico.
+        </p>
       ) : (
         <form onSubmit={handleSubmit} className="flex gap-2 mt-3">
           <input
@@ -106,6 +127,9 @@ function NewsletterForm() {
               : <Send size={15} />}
           </button>
         </form>
+      )}
+      {error && (
+        <p className="text-sm text-naranja-300 mt-3" role="alert">{error}</p>
       )}
     </div>
   )

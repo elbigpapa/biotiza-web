@@ -25,7 +25,7 @@ const leadSchema = z.object({
   urgencia:     z.enum(['inmediata', 'esta-semana', 'este-mes', 'proximos-meses']).optional(),
 
   // Meta
-  fuente:    z.enum(['chat', 'formulario-contacto', 'cotizacion', 'manual', 'academia', 'casa-jardin']).default('manual'),
+  fuente:    z.enum(['chat', 'formulario-contacto', 'cotizacion', 'manual', 'academia', 'casa-jardin', 'newsletter']).default('manual'),
   notas:     z.string().max(2000).optional(),
 
   // Honeypot

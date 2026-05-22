@@ -22,12 +22,12 @@ interface Badge {
 }
 
 const CERTIFICATIONS: Badge[] = [
-  { label: 'COFEPRIS',         sub: 'Registro sanitario',  Icon: ShieldCheck,    color: 'text-azul-600'    },
-  { label: 'OMRI Listed',      sub: 'Producción orgánica', Icon: Leaf,           color: 'text-verde-600'   },
-  { label: 'Hecho en México',  sub: 'NOM cumplida',        Icon: Globe2,         color: 'text-naranja-600' },
-  { label: 'ISO 9001:2015',    sub: 'Calidad certificada', Icon: Award,          color: 'text-azul-700'    },
-  { label: 'I+D Propio',       sub: '25+ años en campo',   Icon: FlaskConical,   color: 'text-verde-700'   },
-  { label: 'OMRI · USDA NOP',  sub: 'Listo para EU/USA',   Icon: Star,           color: 'text-amber-600'   },
+  { label: 'COFEPRIS',         sub: 'Registro sanitario',          Icon: ShieldCheck,  color: 'text-azul-600'    },
+  { label: 'OMRI Listed',      sub: 'Insumo agricultura orgánica', Icon: Leaf,         color: 'text-verde-600'   },
+  { label: 'Hecho en México',  sub: 'Formulación nacional',        Icon: Globe2,       color: 'text-naranja-600' },
+  { label: 'Apto USDA NOP',    sub: 'Programas orgánicos vía OMRI',Icon: Star,         color: 'text-amber-600'   },
+  { label: 'I+D propio',       sub: '25+ años en campo',           Icon: FlaskConical, color: 'text-verde-700'   },
+  { label: 'Análisis por lote',sub: 'Trazabilidad de producto',    Icon: Award,        color: 'text-azul-700'    },
 ]
 
 function BadgeCard({ badge }: { badge: Badge }) {

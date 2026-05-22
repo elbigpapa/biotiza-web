@@ -62,12 +62,12 @@ export default async function LineaPage({ params }: { params: Promise<{ linea: s
 
         <Container>
           {/* Breadcrumb */}
-          <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-sm text-white/70">
+          <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-sm font-medium text-white/90">
             <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
-            <span>/</span>
+            <span className="text-white/60">/</span>
             <Link href="/soluciones" className="hover:text-white transition-colors">Soluciones</Link>
-            <span>/</span>
-            <span className="text-white font-medium">{lineConfig.name}</span>
+            <span className="text-white/60">/</span>
+            <span className="text-white font-semibold">{lineConfig.name}</span>
           </nav>
 
           <div className="max-w-2xl">

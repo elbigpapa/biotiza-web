@@ -3,10 +3,25 @@
  * Server Component
  */
 
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Calculator, Stethoscope, CheckSquare, TrendingUp } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
+
+export const metadata: Metadata = {
+  title: 'Herramientas agronómicas',
+  description:
+    'Calculadora de dosis, calculadora de ROI, diagnóstico de deficiencias y verificador de compatibilidad de mezclas. Herramientas gratuitas para planear tu programa nutricional.',
+  alternates: { canonical: 'https://biotiza.mx/herramientas' },
+  openGraph: {
+    title: 'Herramientas agronómicas · Biotiza',
+    description:
+      'Calculadora de dosis, ROI, diagnóstico de deficiencias y compatibilidad de mezclas.',
+    url: 'https://biotiza.mx/herramientas',
+    type: 'website',
+  },
+}
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
