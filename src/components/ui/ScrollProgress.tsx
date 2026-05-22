@@ -4,7 +4,7 @@
  * ScrollProgress.tsx — Barra de progreso fija arriba que muestra cuánto
  * has scrolleado del artículo/página.
  *
- * Sub-pixel rendering vía framer-motion useScroll. No bloquea interacción.
+ * Sub-pixel rendering vía motion/react useScroll. No bloquea interacción.
  * Patrón usado por Medium, Substack, Linear y otros sitios premium.
  */
 

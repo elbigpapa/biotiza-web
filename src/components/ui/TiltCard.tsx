@@ -3,7 +3,7 @@
 /**
  * TiltCard.tsx — Card con efecto 3D tilt al pasar el cursor
  *
- * Usa framer-motion para detectar la posición del mouse sobre la card y
+ * Usa motion/react para detectar la posición del mouse sobre la card y
  * aplicar una rotación 3D suave en eje X/Y. Crea sensación de profundidad
  * tipo "premium product showcase" sin ser exagerado.
  *
