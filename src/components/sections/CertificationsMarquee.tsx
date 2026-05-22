@@ -9,7 +9,8 @@
  * Patrón usado por Stripe, Vercel, Linear para mostrar "trusted by".
  */
 
-import { ShieldCheck, Award, Globe2, Leaf, FlaskConical, Star } from 'lucide-react'
+import Link from 'next/link'
+import { ShieldCheck, Award, Globe2, Leaf, FlaskConical, Star, ArrowRight } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Marquee from '@/components/ui/Marquee'
 import { cn } from '@/lib/utils'
@@ -61,6 +62,25 @@ export default function CertificationsMarquee() {
           <BadgeCard key={i} badge={badge} />
         ))}
       </Marquee>
+
+      {/* Documentación a solicitud — atención técnica personalizada */}
+      <Container>
+        <div className="mt-10 lg:mt-12 flex flex-col items-center gap-3 text-center">
+          <p className="max-w-2xl text-sm leading-relaxed text-gris-500">
+            Registros COFEPRIS, listados OMRI, fichas técnicas y hojas de seguridad
+            se comparten con <span className="font-semibold text-gris-700">atención técnica personalizada</span>:
+            nuestro equipo de ingenieros te envía la documentación que tu operación
+            o tu certificadora requiera.
+          </p>
+          <Link
+            href="/contacto"
+            className="group inline-flex items-center gap-1.5 text-sm font-semibold text-verde-600 hover:text-verde-700 transition-colors"
+          >
+            Solicitar documentación a un ingeniero
+            <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        </div>
+      </Container>
     </section>
   )
 }
