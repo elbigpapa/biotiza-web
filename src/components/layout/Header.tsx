@@ -15,6 +15,7 @@ import { usePathname } from 'next/navigation'
 import { AnimatePresence } from 'motion/react'
 import { Menu, ChevronDown, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { scrollToTop } from '@/lib/smoothScroll'
 import BiotizaLogo from '@/components/brand/BiotizaLogo'
 import MegaMenu from './MegaMenu'
 import CultivosMegaMenu from './CultivosMegaMenu'
@@ -86,6 +87,15 @@ export default function Header() {
             {/* ─── LOGO ───────────────────────────────────────────────── */}
             <Link
               href="/"
+              onClick={(e) => {
+                // Si ya estás en la home, el Link no navega: hay que
+                // subir manualmente (y con Lenis, vía su propio scroll).
+                if (isHome) {
+                  e.preventDefault()
+                  closeMenus()
+                  scrollToTop()
+                }
+              }}
               className="group flex items-center shrink-0 transition-opacity hover:opacity-85"
               aria-label="Inicio · Biotiza"
             >

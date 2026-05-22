@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import Lenis from 'lenis'
+import { registerLenis } from '@/lib/smoothScroll'
 
 /**
  * SmoothScrollProvider — scroll suave global vía Lenis.
@@ -23,6 +24,8 @@ export default function SmoothScrollProvider({
     }
 
     const lenis = new Lenis({ duration: 1.1, smoothWheel: true })
+    registerLenis(lenis)
+
     let rafId = 0
     const raf = (time: number) => {
       lenis.raf(time)
@@ -33,6 +36,7 @@ export default function SmoothScrollProvider({
     return () => {
       cancelAnimationFrame(rafId)
       lenis.destroy()
+      registerLenis(null)
     }
   }, [])
 
