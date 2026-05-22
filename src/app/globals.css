@@ -189,6 +189,19 @@ p, li, blockquote {
   }
 }
 
+/* ── Breadcrumbs ──────────────────────────────────────────────────────
+   La regla global `a { color: var(--brand-verde) }` hacía que TODO link
+   de breadcrumb saliera verde — invisible sobre los heros de color e
+   ilegible (2.6:1) sobre fondos claros. Esta regla en @layer components
+   (que gana sobre @layer base) hace que los links hereden el color del
+   <nav> contenedor; las utilidades hover: de Tailwind (@layer utilities)
+   siguen ganando. */
+@layer components {
+  nav[aria-label='Breadcrumb'] a {
+    color: inherit;
+  }
+}
+
 /* ── Selección de texto ─────────────────────────────────────────────── */
 ::selection {
   background-color: var(--brand-verde);

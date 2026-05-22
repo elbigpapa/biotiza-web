@@ -61,11 +61,14 @@ export default async function LineaPage({ params }: { params: Promise<{ linea: s
         />
 
         <Container>
-          {/* Breadcrumb */}
-          <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-sm font-medium text-white/90">
-            <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+          {/* Breadcrumb — color explícito en cada Link: la regla global
+              `a { color: var(--brand-verde) }` gana sobre el color heredado
+              del <nav>, así que sin esta clase los links saldrían verdes
+              (invisibles sobre el hero de color). */}
+          <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-sm font-medium">
+            <Link href="/" className="text-white/90 hover:text-white transition-colors">Inicio</Link>
             <span className="text-white/60">/</span>
-            <Link href="/soluciones" className="hover:text-white transition-colors">Soluciones</Link>
+            <Link href="/soluciones" className="text-white/90 hover:text-white transition-colors">Soluciones</Link>
             <span className="text-white/60">/</span>
             <span className="text-white font-semibold">{lineConfig.name}</span>
           </nav>
