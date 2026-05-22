@@ -6,6 +6,7 @@ import './globals.css'
 
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import SmoothScrollProvider from '@/components/redesign/SmoothScrollProvider'
 import WhatsAppFloat from '@/components/shared/WhatsAppFloat'
 import CookieConsent from '@/components/shared/CookieConsent'
 import GoogleAnalytics from '@/components/shared/GoogleAnalytics'
@@ -166,7 +167,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${dmSans.variable} ${dmSerif.variable} h-full scroll-smooth antialiased`}
+      className={`${dmSans.variable} ${dmSerif.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-white font-sans text-gris-900">
         <OrganizationJsonLd />
@@ -175,7 +176,9 @@ export default function RootLayout({
         </div>
         <ToastProvider>
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1">
+            <SmoothScrollProvider>{children}</SmoothScrollProvider>
+          </main>
           <Footer />
           <div className="no-print">
             <WhatsAppFloat />

@@ -1,34 +1,28 @@
 /**
- * page.tsx — Homepage editorial · Sub-fase 3.7
+ * page.tsx — Homepage · rediseño 2026
  *
- * Reconstruida para coincidir con el prototipo de Claude Design
- * (biotizamx/project/prototype/home.jsx). La versión 3.3d había
- * ELIMINADO dos secciones que sí están en el prototipo:
- *   · WhyBiotizaSection  — "Del laboratorio a tu cultivo" (proceso 4 actos)
- *   · ServiceSection     — "Vendemos productos. Acompañamos resultados."
- * Ahora se reincorporan en el orden del prototipo.
+ * 9 escenas con el modelo de 2 capas (gancho escaneable + inmersión
+ * opcional). Cada escena entra con animación al hacer scroll e invita
+ * a seguir bajando.
  *
- * MapSection se RETIRA por petición del usuario (no le gustó). El
- * archivo del componente se conserva en el repo, sólo se desconecta
- * del home.
+ * Orden: Hero → Proceso → Servicio → Soluciones → Cultivos →
+ *        Herramientas → Huella de carbono → Filosofía → CTA.
  *
- * Orden del prototipo:
- *   Hero → Proceso → Servicio → Portafolio → Filosofía(pull quote)
- *   → Producto signature → Cultivos → Sustentabilidad → CTA
- * Sin WaveSeparators (transiciones por cambio de fondo editorial).
+ * Se retiraron del home la banda de Certificaciones (la cubre cada
+ * ficha de producto) y la sección de Producto Estrella (los destacados
+ * ya viven en Soluciones).
  */
 
 import type { Metadata } from 'next'
-import HeroSection             from '@/components/sections/HeroSection'
-import CertificationsMarquee   from '@/components/sections/CertificationsMarquee'
-import WhyBiotizaSection       from '@/components/sections/WhyBiotizaSection'
-import ServiceSection          from '@/components/sections/ServiceSection'
-import ProductLinesSection     from '@/components/sections/ProductLinesSection'
-import TestimonialsSection     from '@/components/sections/TestimonialsSection'
-import FeaturedProductsSection from '@/components/sections/FeaturedProductsSection'
-import CropsSection            from '@/components/sections/CropsSection'
-import SustainabilitySection   from '@/components/sections/SustainabilitySection'
-import CTASection              from '@/components/sections/CTASection'
+import HeroSection           from '@/components/sections/HeroSection'
+import WhyBiotizaSection     from '@/components/sections/WhyBiotizaSection'
+import ServiceSection        from '@/components/sections/ServiceSection'
+import ProductLinesSection   from '@/components/sections/ProductLinesSection'
+import CropsSection          from '@/components/sections/CropsSection'
+import HerramientasSection   from '@/components/sections/HerramientasSection'
+import SustainabilitySection from '@/components/sections/SustainabilitySection'
+import TestimonialsSection   from '@/components/sections/TestimonialsSection'
+import CTASection            from '@/components/sections/CTASection'
 
 export const metadata: Metadata = {
   title: 'Biotiza — Biosoluciones agrícolas mexicanas | Fertilizantes orgánicos y bioprotección',
@@ -56,34 +50,31 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      {/* 01 · Hero cinematográfico — foto + display 200px */}
+      {/* 01 · Hero — "Ciencia que rinde al campo" */}
       <HeroSection />
 
-      {/* 02 · Marquee trust bar — certificaciones */}
-      <CertificationsMarquee />
-
-      {/* 03 · Proceso — "Del laboratorio a tu cultivo" (4 actos) */}
+      {/* 02 · Proceso — "Del laboratorio a tu cultivo" (4 actos) */}
       <WhyBiotizaSection />
 
-      {/* 04 · Servicio — "Vendemos productos. Acompañamos resultados." */}
+      {/* 03 · Servicio — "Acompañamos resultados" */}
       <ServiceSection />
 
-      {/* 05 · Portafolio — lista editorial de 5 líneas */}
+      {/* 04 · Soluciones — las 5 líneas de producto */}
       <ProductLinesSection />
 
-      {/* 06 · Filosofía — pull quote editorial */}
-      <TestimonialsSection />
-
-      {/* 07 · Producto signature — BP Koren con ciencia visible */}
-      <FeaturedProductsSection />
-
-      {/* 08 · Cultivos — grid fotográfico cinematográfico */}
+      {/* 05 · Cultivos — invitación medular a /cultivos */}
       <CropsSection />
 
-      {/* 09 · Huella de carbono — datos sustentados con fuentes */}
+      {/* 06 · Herramientas — "Calcula, diagnostica, decide" */}
+      <HerramientasSection />
+
+      {/* 07 · Huella de carbono — datos sustentados con fuentes */}
       <SustainabilitySection />
 
-      {/* 10 · CTA final — WhatsApp + calculadora ROI */}
+      {/* 08 · Filosofía — pull quote + "lo que no vamos a hacer" */}
+      <TestimonialsSection />
+
+      {/* 09 · CTA final — WhatsApp + cotización + mini-formulario */}
       <CTASection />
     </>
   )

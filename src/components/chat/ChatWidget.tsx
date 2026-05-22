@@ -115,10 +115,10 @@ export default function ChatWidget() {
         aria-label={open ? 'Cerrar asistente' : 'Abrir asistente Biotiza'}
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          'fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full shadow-[0_12px_40px_rgba(34,181,115,0.4)]',
+          'fixed bottom-24 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full shadow-[0_12px_40px_rgba(34,181,115,0.4)]',
           'bg-gradient-to-br from-verde-500 to-verde-600 text-white',
           'transition-transform duration-300 hover:scale-105 active:scale-95',
-          'lg:bottom-6 lg:right-24', // deja espacio al WhatsAppFloat
+          'lg:bottom-6 lg:right-24', // móvil: apilado arriba del WhatsApp · desktop: offset lateral
         )}
       >
         {open ? (
@@ -147,9 +147,9 @@ export default function ChatWidget() {
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
             className={cn(
-              'fixed bottom-24 right-5 z-50 flex w-[calc(100vw-2.5rem)] max-w-[380px] flex-col overflow-hidden rounded-2xl border border-gris-100 bg-white shadow-[0_25px_60px_rgba(15,23,42,0.2)]',
-              'h-[min(560px,calc(100vh-7rem))]',
-              'lg:right-24',
+              'fixed bottom-44 right-5 z-50 flex w-[calc(100vw-2.5rem)] max-w-[380px] flex-col overflow-hidden rounded-2xl border border-gris-100 bg-white shadow-[0_25px_60px_rgba(15,23,42,0.2)]',
+              'h-[min(560px,calc(100vh-17rem))]',
+              'lg:bottom-24 lg:right-24',
             )}
           >
             {/* Header */}
