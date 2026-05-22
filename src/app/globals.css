@@ -849,6 +849,17 @@ p, li, blockquote {
 }
 .title-hero em { font-family: var(--serif-it); font-style: italic; color: var(--color-verde-300); font-weight: 400; }
 
+/* Ken Burns — zoom lento y cinematográfico para la foto del hero.
+   Da vida a la primera impresión sin necesidad de video. */
+@keyframes kenburns {
+  from { transform: scale(1); }
+  to   { transform: scale(1.12); }
+}
+.animate-kenburns { animation: kenburns 22s ease-out both; }
+@media (prefers-reduced-motion: reduce) {
+  .animate-kenburns { animation: none; }
+}
+
 .dek-edit {
   font-family: var(--serif-it);
   font-style: italic;
