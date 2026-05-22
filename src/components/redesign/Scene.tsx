@@ -16,6 +16,9 @@ interface SceneProps {
   tone?: 'dark' | 'light'
   image?: { src: string; alt: string }
   id?: string
+  /** Si es false, la escena no aplica el padding vertical por defecto
+   *  (el hijo controla su propia altura — p. ej. el Hero a pantalla completa). */
+  padded?: boolean
   children: React.ReactNode
 }
 
@@ -23,6 +26,7 @@ export default function Scene({
   tone = 'light',
   image,
   id,
+  padded = true,
   children,
 }: SceneProps) {
   const ref = useRef<HTMLElement>(null)
@@ -39,7 +43,7 @@ export default function Scene({
     <section
       ref={ref}
       id={id}
-      className={`relative overflow-hidden py-24 lg:py-32 ${bg}`}
+      className={`relative overflow-hidden ${padded ? 'py-24 lg:py-32' : ''} ${bg}`}
     >
       {image && (
         <motion.div

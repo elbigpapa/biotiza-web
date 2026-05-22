@@ -839,8 +839,11 @@ p, li, blockquote {
 
 .title-hero {
   font-family: var(--serif);
-  font-size: clamp(64px, 12vw, 200px);
-  line-height: 0.92;
+  /* Tamaño contenido: cabe en una pantalla sin cortarse, en cualquier
+     dispositivo. Antes 12vw/200px desbordaba verticalmente en pantallas
+     grandes. */
+  font-size: clamp(2.5rem, 8vw, 7rem);
+  line-height: 0.98;
   letter-spacing: -0.04em;
   text-wrap: balance;
 }

@@ -10,10 +10,11 @@ export default function HeroSection() {
       tone="dark"
       image={{ src: HERO_IMAGES.cultivatedField.src, alt: HERO_IMAGES.cultivatedField.alt }}
       id="hero"
+      padded={false}
     >
-      {/* Content wrapper: tall first screen */}
-      <div className="flex min-h-[88vh] flex-col justify-center pb-16 pt-32 lg:pt-40">
-        <Reveal className="flex flex-col gap-6">
+      {/* Una pantalla completa (descontando el header), contenido centrado */}
+      <div className="flex min-h-[calc(100svh-5.25rem)] flex-col py-14">
+        <Reveal className="flex flex-1 flex-col justify-center gap-5">
           {/* Eyebrow */}
           <RevealItem>
             <p className="eyebrow-edit eyebrow-light">
@@ -72,8 +73,8 @@ export default function HeroSection() {
           </RevealItem>
         </Reveal>
 
-        {/* Scroll cue — centered at bottom */}
-        <div className="mt-16 flex justify-center">
+        {/* Scroll cue — al pie de la primera pantalla */}
+        <div className="flex justify-center pt-6">
           <ScrollCue tone="dark" />
         </div>
       </div>
