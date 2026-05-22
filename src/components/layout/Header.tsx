@@ -1,15 +1,12 @@
 'use client'
 
 /**
- * Header.tsx — Sub-fase 3.2 · versión editorial
- * Reemplaza biotiza-web/src/components/layout/Header.tsx
+ * Header.tsx — versión editorial
  *
- * Cambios vs versión anterior:
- *  · Logo MÁS GRANDE (72px hero, 58px scrolled) con respiración
- *  · Navegación monospace + uppercase con tracking ancho
- *  · CTA "Cotizar" rectangular (sin rounded-xl) en naranja sólido
- *  · Estados de color editorial sobre fondo claro / oscuro
- *  · MegaMenu y MobileNav preservados intactos
+ *  · Logo grande con respiración
+ *  · Navegación monospace + uppercase
+ *  · CTA "Cotizar" rectangular naranja
+ *  · Dos menús desplegables al hover: Soluciones y Cultivos
  */
 
 import { useState, useEffect } from 'react'
@@ -20,10 +17,10 @@ import { Menu, ChevronDown, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import BiotizaLogo from '@/components/brand/BiotizaLogo'
 import MegaMenu from './MegaMenu'
+import CultivosMegaMenu from './CultivosMegaMenu'
 import MobileNav from './MobileNav'
 
 const NAV_LINKS = [
-  { label: 'Cultivos',      href: '/cultivos'     },
   { label: 'Casa y Jardín', href: '/casa-jardin'  },
   { label: 'Herramientas',  href: '/herramientas' },
   { label: 'Academia',      href: '/academia'     },
@@ -31,16 +28,15 @@ const NAV_LINKS = [
 ]
 
 export default function Header() {
-  const [scrolled,   setScrolled]   = useState(false)
-  const [megaOpen,   setMegaOpen]   = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled,     setScrolled]     = useState(false)
+  const [megaOpen,     setMegaOpen]     = useState(false)
+  const [cultivosOpen, setCultivosOpen] = useState(false)
+  const [mobileOpen,   setMobileOpen]   = useState(false)
 
   /**
    * Solo la home (`/`) tiene un hero con foto oscura que justifica el header
    * transparente con texto blanco. En el resto de páginas el fondo superior
-   * es claro (bg-paper editorial) — ahí el header debe ser SIEMPRE sólido,
-   * o el logo, la navegación y la hamburguesa se vuelven blanco-sobre-claro
-   * (ilegibles).
+   * es claro — ahí el header debe ser siempre sólido.
    */
   const pathname = usePathname()
   const isHome = pathname === '/'
@@ -57,12 +53,26 @@ export default function Header() {
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
-  const solid = scrolled || megaOpen || !isHome
+  const closeMenus = () => { setMegaOpen(false); setCultivosOpen(false) }
+  const solid = scrolled || megaOpen || cultivosOpen || !isHome
+
+  /** Clases de un botón de navegación con desplegable. */
+  const navTrigger = (active: boolean) =>
+    cn(
+      'flex items-center gap-1.5 px-3.5 py-2',
+      'font-mono text-[11px] font-semibold uppercase tracking-[0.14em]',
+      'transition-colors duration-200',
+      active
+        ? 'text-naranja-600'
+        : solid
+          ? 'text-ink-2 hover:text-verde-700'
+          : 'text-white/85 hover:text-verde-300',
+    )
 
   return (
     <>
       <header
-        onMouseLeave={() => setMegaOpen(false)}
+        onMouseLeave={closeMenus}
         className={cn(
           'fixed inset-x-0 top-0 z-40 transition-all duration-400 ease-out',
           'border-b',
@@ -73,7 +83,7 @@ export default function Header() {
       >
         <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-12">
           <div className="flex items-center justify-between gap-8 py-3.5">
-            {/* ─── LOGO grande con respiración ───────────────────────── */}
+            {/* ─── LOGO ───────────────────────────────────────────────── */}
             <Link
               href="/"
               className="group flex items-center shrink-0 transition-opacity hover:opacity-85"
@@ -91,26 +101,37 @@ export default function Header() {
               />
             </Link>
 
-            {/* ─── NAV desktop · monospace editorial ─────────────────── */}
+            {/* ─── NAV desktop ────────────────────────────────────────── */}
             <nav className="hidden lg:flex items-center" aria-label="Navegación principal">
-              <div onMouseEnter={() => setMegaOpen(true)} className="relative">
+              {/* Soluciones · desplegable */}
+              <div
+                onMouseEnter={() => { setMegaOpen(true); setCultivosOpen(false) }}
+                className="relative"
+              >
                 <button
-                  onClick={() => setMegaOpen((v) => !v)}
+                  onClick={() => { setMegaOpen((v) => !v); setCultivosOpen(false) }}
                   aria-expanded={megaOpen}
                   aria-haspopup="true"
-                  className={cn(
-                    'flex items-center gap-1.5 px-3.5 py-2',
-                    'font-mono text-[11px] font-semibold uppercase tracking-[0.14em]',
-                    'transition-colors duration-200',
-                    megaOpen
-                      ? 'text-naranja-600'
-                      : solid
-                        ? 'text-ink-2 hover:text-verde-700'
-                        : 'text-white/85 hover:text-verde-300',
-                  )}
+                  className={navTrigger(megaOpen)}
                 >
                   Soluciones
                   <ChevronDown size={11} className={cn('transition-transform', megaOpen && 'rotate-180')} />
+                </button>
+              </div>
+
+              {/* Cultivos · desplegable */}
+              <div
+                onMouseEnter={() => { setCultivosOpen(true); setMegaOpen(false) }}
+                className="relative"
+              >
+                <button
+                  onClick={() => { setCultivosOpen((v) => !v); setMegaOpen(false) }}
+                  aria-expanded={cultivosOpen}
+                  aria-haspopup="true"
+                  className={navTrigger(cultivosOpen)}
+                >
+                  Cultivos
+                  <ChevronDown size={11} className={cn('transition-transform', cultivosOpen && 'rotate-180')} />
                 </button>
               </div>
 
@@ -118,6 +139,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  onMouseEnter={closeMenus}
                   className={cn(
                     'px-3.5 py-2',
                     'font-mono text-[11px] font-semibold uppercase tracking-[0.14em]',
@@ -132,10 +154,11 @@ export default function Header() {
               ))}
             </nav>
 
-            {/* ─── CTA editorial · rectangular ───────────────────────── */}
+            {/* ─── CTA ────────────────────────────────────────────────── */}
             <div className="hidden lg:flex items-center shrink-0">
               <Link
                 href="/cotizacion"
+                onMouseEnter={closeMenus}
                 className={cn(
                   'group inline-flex items-center justify-center gap-2.5',
                   'px-6 py-3.5',
@@ -169,6 +192,9 @@ export default function Header() {
 
         <AnimatePresence>
           {megaOpen && <MegaMenu onClose={() => setMegaOpen(false)} />}
+        </AnimatePresence>
+        <AnimatePresence>
+          {cultivosOpen && <CultivosMegaMenu onClose={() => setCultivosOpen(false)} />}
         </AnimatePresence>
       </header>
 
