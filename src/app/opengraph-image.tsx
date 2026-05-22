@@ -84,7 +84,7 @@ export default async function OpengraphImage() {
               lineHeight: 1.35,
             }}
           >
-            25 años · 47 productos · 35 cultivos con protocolo · Zapopan, Jalisco
+            47 productos · 35 cultivos con protocolo · Asesoría técnica en campo
           </div>
         </div>
 

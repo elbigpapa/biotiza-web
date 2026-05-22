@@ -27,7 +27,7 @@ import CTASection            from '@/components/sections/CTASection'
 export const metadata: Metadata = {
   title: 'Biotiza — Biosoluciones agrícolas mexicanas | Fertilizantes orgánicos y bioprotección',
   description:
-    '25 años formulando bioestimulantes, fertilizantes orgánicos OMRI y bioprotección para agricultura de exportación. 47 productos · 35 cultivos con protocolo agronómico. Zapopan, Jalisco.',
+    'Bioestimulantes, fertilizantes orgánicos OMRI y bioprotección para agricultura de exportación. 47 productos · 35 cultivos con protocolo agronómico. Asesoría técnica directa. Zapopan, Jalisco.',
   alternates: { canonical: 'https://biotiza.mx' },
   openGraph: {
     type: 'website',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Biotiza — Biosoluciones agrícolas mexicanas',
-    description: '25 años · 47 productos · 35 cultivos. Asesoría técnica directa en campo.',
+    description: '47 productos · 35 cultivos con protocolo. Asesoría técnica directa en campo.',
     // images omitidas → Next usa src/app/twitter-image.tsx
   },
 }

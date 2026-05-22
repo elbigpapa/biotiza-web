@@ -27,7 +27,7 @@ const CERTIFICATIONS: Badge[] = [
   { label: 'OMRI Listed',      sub: 'Insumo agricultura orgánica', Icon: Leaf,         color: 'text-verde-600'   },
   { label: 'Hecho en México',  sub: 'Formulación nacional',        Icon: Globe2,       color: 'text-naranja-600' },
   { label: 'Apto USDA NOP',    sub: 'Programas orgánicos vía OMRI',Icon: Star,         color: 'text-amber-600'   },
-  { label: 'I+D propio',       sub: '25+ años en campo',           Icon: FlaskConical, color: 'text-verde-700'   },
+  { label: 'I+D propio',       sub: 'Experiencia en campo',        Icon: FlaskConical, color: 'text-verde-700'   },
   { label: 'Análisis por lote',sub: 'Trazabilidad de producto',    Icon: Award,        color: 'text-azul-700'    },
 ]
 

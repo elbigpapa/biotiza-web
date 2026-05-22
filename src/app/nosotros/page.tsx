@@ -8,7 +8,7 @@ import Container from '@/components/ui/Container'
 
 export const metadata: Metadata = {
   title: 'Nosotros · Servicio que nos diferencia | Biotiza',
-  description: 'Veinticinco años trabajando con productores mexicanos. Servicio técnico con agrónomo asignado por zona.',
+  description: 'Acompañamos a productores mexicanos con un servicio técnico que combina los mejores productos del mercado y un agrónomo asignado por zona.',
 }
 
 export default function NosotrosPage() {
@@ -25,15 +25,15 @@ export default function NosotrosPage() {
         <Container className="py-[110px_60px]">
           <div className="flex justify-between items-baseline font-mono text-[11px] tracking-[0.18em] uppercase text-white/70 mb-7 pb-4 border-b border-white/20">
             <span><span className="text-verde-300 font-semibold">Biotiza</span> · empresa · Zapopan, MX</span>
-            <span>25 años de I+D</span>
+            <span>I+D agrícola mexicana</span>
           </div>
           <h1 className="title-hero text-white max-w-[14ch]">
             <em style={{ fontFamily: 'var(--serif-it)' }} className="text-verde-300">Generamos</em><br />
             vida y valor<br />al campo.
           </h1>
           <p className="mt-7 max-w-[40ch] text-[clamp(16px,1.5vw,22px)] leading-[1.5] text-white/88">
-            Veinticinco años trabajando con productores mexicanos, con un servicio
-            que combina los mejores productos del mercado y la mejor asesoría técnica.
+            Acompañamos a los productores mexicanos con un servicio que combina
+            los mejores productos del mercado y la mejor asesoría técnica.
           </p>
         </Container>
       </section>
@@ -58,7 +58,7 @@ export default function NosotrosPage() {
           </h3>
           <p className="text-[17px] leading-[1.7] text-ink-2 max-w-[50ch] mb-4">
             <span className="font-serif text-[5em] leading-[0.8] float-left mr-3 -mt-1 text-verde-700">B</span>
-            iotiza nació hace 25 años con una idea sencilla: el productor mexicano
+            iotiza nació con una idea sencilla: el productor mexicano
             merece la mejor agronomía disponible — no necesariamente la marca de moda,
             sino la combinación correcta de producto y acompañamiento técnico.
           </p>

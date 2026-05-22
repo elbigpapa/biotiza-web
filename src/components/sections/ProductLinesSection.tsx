@@ -30,9 +30,9 @@ export default function ProductLinesSection() {
 
         <RevealItem>
           <p className="dek-edit text-ink-2 max-w-[52ch] mb-14">
-            De la nutrición base hasta la bioprotección: cada línea está
-            formulada para exportación, con registro COFEPRIS y ficha técnica
-            por lote.
+            Un portafolio completo que acompaña tu cultivo en cada etapa —
+            de la raíz a la cosecha — con respaldo agronómico real y un
+            asesor técnico a tu lado.
           </p>
         </RevealItem>
 

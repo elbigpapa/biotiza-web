@@ -31,7 +31,7 @@ function OrganizationJsonLd() {
     },
     "image": "https://biotiza.mx/og-image.png",
     "description": "Empresa mexicana de biosoluciones agrícolas. Fertilizantes orgánicos, bioestimulantes y bioprotección para cultivos de exportación.",
-    "foundingDate": "2001",
+    "foundingDate": "2021",
     "slogan": "Del laboratorio a tu cultivo, con un agrónomo a tu lado.",
     "priceRange": "$$",
     "address": {

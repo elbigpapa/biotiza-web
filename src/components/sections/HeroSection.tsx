@@ -74,7 +74,7 @@ export default function HeroSection() {
             <div className="flex flex-wrap gap-x-8 gap-y-2 border-t border-white/20 pt-5 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-white/75">
               <span><span className="mr-1.5 text-verde-300">47</span>productos</span>
               <span><span className="mr-1.5 text-verde-300">35</span>cultivos con protocolo</span>
-              <span><span className="mr-1.5 text-verde-300">25+</span>años de I+D</span>
+              <span><span className="mr-1.5 text-verde-300">Asesoría</span>técnica incluida</span>
             </div>
           </RevealItem>
 
