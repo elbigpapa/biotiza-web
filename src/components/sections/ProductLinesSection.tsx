@@ -1,90 +1,111 @@
 /**
- * ProductLinesSection.tsx — Lista editorial · Sub-fase 3.3b
- * Reemplaza biotiza-web/src/components/sections/ProductLinesSection.tsx
- *
- * Antes: 6 cards rectangulares idénticas con gradiente
- * Después: lista editorial estilo índice de revista con número de catálogo
+ * ProductLinesSection.tsx — Escena 4: Soluciones
+ * Cinco familias de producto presentadas como cards en grid responsivo.
+ * Server Component. Datos reales desde PRODUCT_LINES en @/data/constants.
  */
 
 import Link from 'next/link'
-import Container from '@/components/ui/Container'
-
-const LINES = [
-  { id:'organicos',       num:'01', name:'Orgánicos',       em:'quelatados', count:9,  meta:'Cert. OMRI · base de programas limpios',              color:'text-verde-700' },
-  { id:'especialidades',  num:'02', name:'Especialidades',  em:null,         count:6,  meta:'Correctores · inoculantes microbianos',              color:'text-azul-600'  },
-  { id:'bioestimulantes', num:'03', name:'Bioestimulantes', em:null,         count:6,  meta:'Floración · cuajado · engorde · sanitizantes',       color:'text-naranja-500' },
-  { id:'nutricion',       num:'04', name:'Nutrición',       em:'líquida',    count:9,  meta:'Fertirrigación · quelatos premium · micros',         color:'text-naranja-400' },
-  { id:'bioproteccion',   num:'05', name:'Bioprotección',   em:'natural',    count:17, meta:'Bioinsecticidas · biofungicidas · entomopatógenos',  color:'text-azul-500'  },
-]
+import Scene from '@/components/redesign/Scene'
+import { Reveal, RevealItem } from '@/components/redesign/ScrollReveal'
+import { PRODUCT_LINES } from '@/data/constants'
 
 export default function ProductLinesSection() {
   return (
-    <section className="bg-paper py-24 lg:py-32 border-b border-rule">
-      <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-[7fr_5fr] gap-10 lg:gap-20 mb-14">
-          <div>
-            <p className="eyebrow-edit mb-6">— 03 · Portafolio</p>
-            <h2 className="title-display max-w-[18ch] mb-7">
-              Cada etapa del cultivo,<br />
-              <em>resuelta</em>.
-            </h2>
-            <p className="dek-edit text-ink-2 max-w-[50ch]">
-              Cinco líneas que cubren desde el trasplante hasta la cosecha.
-              Cada producto con ficha técnica y certificado de análisis por lote.
-            </p>
-          </div>
-          <div className="self-end">
-            <div className="font-serif text-[clamp(60px,8vw,120px)] leading-[0.85] tracking-[-0.04em] text-ink">
-              47
-              <em className="font-serif italic text-verde-700 text-[0.4em] align-[12%] ml-1" style={{ fontFamily: 'var(--serif-it)' }}> productos</em>
-            </div>
-            <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-3 max-w-[30ch] mt-2 leading-relaxed">
-              en catálogo · cinco líneas · ficha técnica y certificado de análisis por lote
-            </p>
-          </div>
-        </div>
+    <Scene tone="light" id="soluciones">
+      <Reveal>
+        {/* Encabezado editorial */}
+        <RevealItem>
+          <p className="eyebrow-edit mb-6">— 04 · Soluciones</p>
+        </RevealItem>
 
-        {/* LISTA editorial */}
-        <div className="border-t border-ink">
-          {LINES.map(L => (
-            <Link
-              key={L.id}
-              href={`/soluciones/${L.id}`}
-              className="group grid grid-cols-[60px_1fr_120px_30px] sm:grid-cols-[80px_1fr_140px_40px] items-center gap-6 sm:gap-12 py-6 sm:py-8 border-b border-rule transition-all duration-300 hover:pl-6"
-            >
-              <span className={`font-serif text-[clamp(36px,4vw,56px)] leading-none tracking-[-0.04em] ${L.color}`}>
-                {L.num}
-              </span>
-              <div>
-                <div className="font-serif text-[clamp(28px,3.5vw,48px)] leading-tight tracking-[-0.03em] text-ink">
-                  {L.em ? (
-                    <>
-                      {L.name}{' '}
-                      <em className={`font-serif italic ${L.color}`} style={{ fontFamily: 'var(--serif-it)' }}>
-                        {L.em}
-                      </em>
-                    </>
-                  ) : (
-                    L.name
-                  )}
+        <RevealItem>
+          <h2 className="title-display max-w-[22ch] mb-5">
+            Cinco familias,{' '}
+            <em style={{ fontFamily: 'var(--serif-it)' }}>
+              un mismo criterio
+            </em>
+            .
+          </h2>
+        </RevealItem>
+
+        <RevealItem>
+          <p className="dek-edit text-ink-2 max-w-[52ch] mb-14">
+            De la nutrición base hasta la bioprotección: cada línea está
+            formulada para exportación, con registro COFEPRIS y ficha técnica
+            por lote.
+          </p>
+        </RevealItem>
+
+        {/* Grid de cards — 1 col mobile, 2 en sm, 3 en md, 5 en xl */}
+        <RevealItem>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 mb-12">
+            {PRODUCT_LINES.map((line) => (
+              <Link
+                key={line.id}
+                href={`/soluciones/${line.slug}`}
+                className="group flex flex-col rounded-2xl border border-rule bg-white hover:shadow-md transition-shadow duration-300 overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-2"
+                style={
+                  {
+                    '--line-color': line.color,
+                    focusVisibleOutlineColor: line.color,
+                  } as React.CSSProperties
+                }
+              >
+                {/* Barra de color superior */}
+                <span
+                  className="block h-1 w-full shrink-0"
+                  style={{ backgroundColor: line.color }}
+                  aria-hidden="true"
+                />
+
+                <div className="flex flex-col gap-3 p-5 flex-1">
+                  {/* Dot + nombre */}
+                  <div className="flex items-center gap-2.5">
+                    <span
+                      className="w-2.5 h-2.5 rounded-full shrink-0"
+                      style={{ backgroundColor: line.color }}
+                      aria-hidden="true"
+                    />
+                    <span className="font-serif text-[clamp(18px,2vw,22px)] leading-tight tracking-[-0.02em] text-ink">
+                      {line.name}
+                    </span>
+                  </div>
+
+                  {/* Conteo de productos */}
+                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-3">
+                    {line.productCount} productos
+                  </p>
+
+                  {/* Tagline */}
+                  <p className="text-[13px] leading-snug text-ink-2 flex-1">
+                    {line.tagline}
+                  </p>
+
+                  {/* Flecha hover */}
+                  <span
+                    className="font-serif text-[20px] text-ink-3 self-end transition-transform duration-300 group-hover:translate-x-1"
+                    style={{ color: line.color }}
+                    aria-hidden="true"
+                  >
+                    ›
+                  </span>
                 </div>
-                <div className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-ink-4 mt-1.5">
-                  {L.meta}
-                </div>
-              </div>
-              <div className="text-right hidden sm:block font-mono text-[13px] text-ink-3">
-                <span className={`font-serif text-[32px] leading-none tracking-[-0.03em] mr-1 ${L.color}`}>
-                  {L.count}
-                </span>
-                productos
-              </div>
-              <span className="font-serif text-[28px] text-ink-3 transition-all duration-300 group-hover:translate-x-2 group-hover:text-naranja-500">
-                ›
-              </span>
-            </Link>
-          ))}
-        </div>
-      </Container>
-    </section>
+              </Link>
+            ))}
+          </div>
+        </RevealItem>
+
+        {/* CTA global */}
+        <RevealItem>
+          <Link
+            href="/soluciones"
+            className="inline-flex items-center gap-2 font-mono text-[13px] font-semibold uppercase tracking-[0.14em] text-ink hover:text-verde-700 transition-colors duration-200"
+          >
+            Ver catálogo completo
+            <span aria-hidden="true" className="text-[16px]">→</span>
+          </Link>
+        </RevealItem>
+      </Reveal>
+    </Scene>
   )
 }

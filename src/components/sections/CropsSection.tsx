@@ -1,103 +1,148 @@
 /**
- * CropsSection.tsx — Grid fotográfico · Sub-fase 3.3b
- * Reemplaza biotiza-web/src/components/sections/CropsSection.tsx
- *
- * Antes: grid 2x4 con emoji + gradiente
- * Después: 8 expedientes fotográficos macro · nombre serif sobre foto cinematográfica
+ * CropsSection.tsx — Escena 05 · Cultivos
+ * Redesign Phase 2: invitación medular al expediente por cultivo.
+ * Server Component — usa Scene (dark), Reveal/RevealItem, next/image, next/link.
  */
 
 import Link from 'next/link'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
-import Container from '@/components/ui/Container'
+import Image from 'next/image'
+import Scene from '@/components/redesign/Scene'
+import { Reveal, RevealItem } from '@/components/redesign/ScrollReveal'
 import { getCropImage } from '@/data/crop-images'
+import { CROPS_DATA } from '@/data/constants'
 
-const FEATURED_CROPS = [
-  { slug:'tomate',     num:'01', name:'Tomate',     family:'Solanácea', stages:6, cycle:120 },
-  { slug:'fresa',      num:'02', name:'Fresa',      family:'Rosácea',   stages:5, cycle:180 },
-  { slug:'arandano',   num:'03', name:'Arándano',   family:'Ericácea',  stages:5, cycle:150 },
-  { slug:'frambuesa',  num:'04', name:'Frambuesa',  family:'Rosácea',   stages:4, cycle:160 },
-  { slug:'zarzamora',  num:'05', name:'Zarzamora',  family:'Rosácea',   stages:3, cycle:180 },
-  { slug:'aguacate',   num:'06', name:'Aguacate',   family:'Laurácea',  stages:5, cycle:365 },
-  { slug:'chile',      num:'07', name:'Chile',      family:'Solanácea', stages:5, cycle:150 },
-  { slug:'citricos',   num:'08', name:'Cítricos',   family:'Rutácea',   stages:4, cycle:365 },
+// 8 featured crops pulled from CROPS_DATA by real slug
+const FEATURED_SLUGS = [
+  'tomate',
+  'fresa',
+  'arandano',
+  'aguacate',
+  'chile',
+  'citricos',
+  'maiz',
+  'uva',
 ]
+
+const featuredCrops = FEATURED_SLUGS.map(slug => {
+  const crop = CROPS_DATA.find(c => c.slug === slug)!
+  const photo = getCropImage(slug)
+  return { ...crop, photo }
+})
 
 export default function CropsSection() {
   return (
-    <section className="bg-paper py-24 lg:py-32 border-b border-rule">
-      <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-[7fr_5fr] gap-10 lg:gap-20 items-end mb-14 lg:mb-16">
-          <div>
-            <p className="eyebrow-edit mb-6">— 05 · Cultivos</p>
-            <h2 className="title-display max-w-[16ch] mb-7">
-              35 expedientes,<br />
-              con <em>protocolo completo</em>.
-            </h2>
-            <p className="dek-edit text-ink-2 max-w-[60ch]">
-              Por cultivo, por etapa fenológica, por problema. Cada expediente
-              lleva los productos, las dosis y el calendario que nuestros agrónomos
-              calibran después con tu zona, tu agua y tu objetivo.
-            </p>
-          </div>
-          <Link
-            href="/cultivos"
-            className="self-end inline-flex items-center gap-2.5 px-6 py-3.5 border border-ink text-ink font-mono text-[11px] font-semibold uppercase tracking-[0.16em] hover:bg-ink hover:text-white transition-all duration-300"
-          >
-            Ver los 35 expedientes
-            <ArrowRight size={14} />
-          </Link>
-        </div>
+    <Scene tone="dark" id="cultivos">
+      <Reveal className="space-y-12 lg:space-y-16">
 
-        {/* Grid fotográfico 4×2 */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-paper-3 border border-paper-3">
-          {FEATURED_CROPS.map(crop => {
-            const photo = getCropImage(crop.slug)
-            return (
+        {/* ── Header ── */}
+        <RevealItem className="max-w-3xl">
+          <p className="eyebrow-edit eyebrow-light mb-5">— 05 · Cultivos</p>
+          <h2 className="title-display text-white mb-5 max-w-[18ch]">
+            ¿Qué le doy a{' '}
+            <em style={{ fontFamily: 'var(--serif-it)' }} className="text-verde-300">
+              mi cultivo
+            </em>
+            ?
+          </h2>
+          <p className="dek-edit text-white/85 max-w-[56ch]">
+            Elige tu cultivo y ve exactamente qué productos Biotiza aplican,
+            con protocolo completo por etapa fenológica.
+          </p>
+        </RevealItem>
+
+        {/* ── Grid fotográfico 4×2 ── */}
+        <RevealItem>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5">
+            {featuredCrops.map(crop => (
               <Link
                 key={crop.slug}
                 href={`/cultivos/${crop.slug}`}
-                className="group relative aspect-[3/4] overflow-hidden flex flex-col justify-end p-5 lg:p-6 transition-all duration-500"
-                style={{
-                  backgroundImage: photo
-                    ? `url(${photo.src})`
-                    : 'linear-gradient(135deg, #115e43, #082e21)',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
+                className="group relative aspect-[3/4] overflow-hidden rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-verde-300 focus-visible:outline-offset-2"
               >
-                {/* Gradiente legibilidad */}
+                {/* Photo or gradient fallback */}
+                {crop.photo ? (
+                  <Image
+                    src={crop.photo.src}
+                    alt={crop.photo.alt}
+                    fill
+                    sizes="(max-width: 640px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                ) : (
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-b ${crop.gradientFrom} ${crop.gradientTo}`}
+                    aria-hidden="true"
+                  />
+                )}
+
+                {/* Legibility gradient */}
                 <div
-                  className="absolute inset-0 transition-all duration-500 group-hover:opacity-90"
+                  className="absolute inset-0 transition-opacity duration-500 group-hover:opacity-90"
                   style={{
                     background:
-                      'linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(8,46,33,0.65) 70%, rgba(8,46,33,0.96) 100%)',
+                      'linear-gradient(180deg, rgba(3,26,17,0) 30%, rgba(3,26,17,0.55) 65%, rgba(3,26,17,0.92) 100%)',
                   }}
                   aria-hidden="true"
                 />
 
-                {/* Top labels */}
-                <span className="absolute top-5 left-5 z-10 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-white/70">
-                  N° {crop.num} · {crop.family}
-                </span>
-                <ArrowUpRight
-                  size={20}
-                  className="absolute top-5 right-5 z-10 text-white/0 group-hover:text-naranja-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-400"
+                {/* Hover ring accent */}
+                <div
+                  className="absolute inset-0 ring-inset ring-0 group-hover:ring-2 group-hover:ring-verde-400/60 transition-all duration-300 rounded-sm"
+                  aria-hidden="true"
                 />
 
-                {/* Content */}
-                <div className="relative z-10">
-                  <h3 className="font-serif text-[clamp(28px,3vw,42px)] leading-[0.95] tracking-[-0.03em] text-white">
+                {/* Crop name */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 z-10">
+                  <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-verde-300/80 mb-1 leading-none">
+                    {crop.description}
+                  </p>
+                  <h3 className="font-serif text-[clamp(20px,2.4vw,30px)] leading-none tracking-tight text-white">
                     {crop.name}
                   </h3>
-                  <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70 mt-2">
-                    {crop.stages} etapas · {crop.cycle} días
-                  </p>
                 </div>
               </Link>
-            )
-          })}
-        </div>
-      </Container>
-    </section>
+            ))}
+          </div>
+        </RevealItem>
+
+        {/* ── Big CTA ── */}
+        <RevealItem className="flex justify-center sm:justify-start">
+          <Link
+            href="/cultivos"
+            className="
+              inline-flex items-center gap-3
+              bg-naranja-500 hover:bg-naranja-400
+              text-white font-sans font-semibold
+              text-base sm:text-lg
+              px-8 py-4 sm:px-10 sm:py-5
+              rounded-sm
+              shadow-lg shadow-naranja-500/25
+              transition-all duration-300
+              hover:-translate-y-0.5
+              focus-visible:outline focus-visible:outline-2 focus-visible:outline-naranja-400 focus-visible:outline-offset-2
+            "
+          >
+            Ver los 35 expedientes
+            <svg
+              aria-hidden="true"
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            >
+              <path
+                d="M3 9h12M10 4l5 5-5 5"
+                stroke="currentColor"
+                strokeWidth="1.75"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </Link>
+        </RevealItem>
+
+      </Reveal>
+    </Scene>
   )
 }
