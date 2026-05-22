@@ -32,9 +32,9 @@ export default function TestimonialsSection() {
 
         {/* Editorial pull-quote */}
         <RevealItem>
-          <blockquote className="max-w-[22ch] pl-6 border-l-[3px] border-verde-700 mb-16">
+          <blockquote className="max-w-5xl border-l-[3px] border-verde-700 pl-6 sm:pl-8 mb-16">
             <p
-              className="font-serif italic text-[clamp(28px,4.5vw,58px)] leading-[1.1] tracking-[-0.025em] text-ink"
+              className="font-serif italic text-[clamp(30px,4.2vw,62px)] leading-[1.12] tracking-[-0.025em] text-ink text-balance"
               style={{ fontFamily: 'var(--serif-it)' }}
             >
               Un buen protocolo en el papel no sirve si nadie está contigo
