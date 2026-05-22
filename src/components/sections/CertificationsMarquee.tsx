@@ -50,7 +50,10 @@ function BadgeCard({ badge }: { badge: Badge }) {
 
 export default function CertificationsMarquee() {
   return (
-    <section className="relative bg-white py-12 lg:py-16 overflow-hidden">
+    <section
+      id="certificaciones"
+      className="relative bg-white py-12 lg:py-16 overflow-hidden scroll-mt-24"
+    >
       <Container>
         <p className="mb-6 text-center text-[10px] font-bold uppercase tracking-[0.25em] text-gris-400">
           Certificaciones y reconocimientos

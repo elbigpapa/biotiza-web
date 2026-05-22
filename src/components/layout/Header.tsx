@@ -157,7 +157,7 @@ export default function Header() {
               aria-label="Abrir menú de navegación"
               aria-expanded={mobileOpen}
               className={cn(
-                'lg:hidden flex h-11 w-11 items-center justify-center -mr-2',
+                'lg:hidden flex h-11 w-11 shrink-0 items-center justify-center -mr-2',
                 'transition-colors duration-200',
                 solid ? 'text-ink-2 hover:text-verde-700' : 'text-white/85 hover:text-verde-300',
               )}

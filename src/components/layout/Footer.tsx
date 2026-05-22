@@ -39,7 +39,7 @@ const COL_RECURSOS = [
 ]
 const COL_EMPRESA = [
   { label: 'Nosotros',              href: '/nosotros'                      },
-  { label: 'Certificaciones',       href: '/nosotros'                      },
+  { label: 'Certificaciones',       href: '/#certificaciones'              },
   { label: 'Contacto',              href: '/contacto'                      },
   { label: 'Solicitar cotización',  href: '/cotizacion'                    },
   { label: 'Política de privacidad',href: '/politica-privacidad'           },
@@ -275,10 +275,10 @@ function FooterColumn({
       </h3>
       <ul className="space-y-3">
         {links.map(({ label, href }) => (
-          <li key={href}>
+          <li key={label}>
             <Link
               href={href}
-              className="text-sm text-white hover:text-verde-300 transition-colors duration-200"
+              className="block py-1 text-sm text-white hover:text-verde-300 transition-colors duration-200"
             >
               {label}
             </Link>

@@ -48,7 +48,7 @@ type FormData = z.infer<typeof schema>
 // Shared input class
 // ---------------------------------------------------------------------------
 const inputClass =
-  'border border-gris-200 rounded-lg px-4 py-2.5 text-sm w-full focus:border-verde-400 focus:outline-none focus:ring-2 focus:ring-verde-500/20 transition-colors bg-white'
+  'border border-gris-200 rounded-lg px-4 py-3 text-sm w-full min-h-[44px] focus:border-verde-400 focus:outline-none focus:ring-2 focus:ring-verde-500/20 transition-colors bg-white'
 const errorClass = 'text-xs text-red-500 mt-1'
 const labelClass = 'block text-sm font-medium text-gris-700 mb-1'
 

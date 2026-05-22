@@ -48,15 +48,22 @@ export default async function LineaPage({ params }: { params: Promise<{ linea: s
 
   return (
     <div className="bg-white">
-      {/* Hero con color de línea */}
-      <div
-        className="relative overflow-hidden py-20 lg:py-24"
-        style={{ background: `linear-gradient(135deg, ${lineConfig.color}ee, ${lineConfig.color}99)` }}
-      >
-        {/* Círculo decorativo */}
+      {/* Hero editorial oscuro — el color de la línea se usa como acento
+          (barra superior, glow, badge, tagline) en vez de un lavado de
+          color brillante: garantiza texto blanco legible (14.7:1 sobre
+          verde-950) en las 5 líneas y unifica el hero con el resto del
+          sistema editorial. */}
+      <div className="relative overflow-hidden py-20 lg:py-24 bg-verde-950">
+        {/* Barra de acento en el color de la línea */}
         <div
-          className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full opacity-20"
-          style={{ backgroundColor: 'white' }}
+          className="absolute inset-x-0 top-0 h-1.5"
+          style={{ backgroundColor: lineConfig.color }}
+          aria-hidden="true"
+        />
+        {/* Glow decorativo en el color de la línea */}
+        <div
+          className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full opacity-30 blur-3xl"
+          style={{ backgroundColor: lineConfig.color }}
           aria-hidden="true"
         />
 
@@ -74,10 +81,10 @@ export default async function LineaPage({ params }: { params: Promise<{ linea: s
           </nav>
 
           <div className="max-w-2xl">
-            <Badge line={lineConfig.id} size="md" className="mb-4 bg-white/20 text-white border border-white/30" />
+            <Badge line={lineConfig.id} size="md" className="mb-4 bg-white/10 text-white border border-white/25" />
             <h1 className="font-serif text-4xl text-white lg:text-5xl">{lineConfig.name}</h1>
-            <p className="mt-4 text-base text-white/80 leading-relaxed">{lineConfig.description}</p>
-            <p className="mt-2 text-sm font-semibold text-white/60 uppercase tracking-wider">
+            <p className="mt-4 text-base text-white/85 leading-relaxed">{lineConfig.description}</p>
+            <p className="mt-3 text-sm font-semibold uppercase tracking-wider text-white/70">
               {lineConfig.tagline}
             </p>
           </div>
