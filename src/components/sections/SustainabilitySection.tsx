@@ -43,9 +43,9 @@ export default function SustainabilitySection() {
           <div className="self-end">
             <div className="font-serif text-[clamp(48px,6vw,80px)] leading-[0.85] tracking-[-0.04em] text-ink">
               ≈2.6
-              <em className="font-serif italic text-ink-3 text-[0.32em] align-[36%] ml-1" style={{ fontFamily: 'var(--serif-it)' }}>
-                {' '}kg CO₂e
-              </em>
+              <span className="font-mono font-medium text-ink-3 text-[0.26em] align-[42%] ml-2 tracking-[0.02em]">
+                kg CO₂e
+              </span>
             </div>
             <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-3 mt-2 max-w-[30ch] leading-relaxed">
               por kg de N sintético fabricado.{' '}
@@ -58,14 +58,13 @@ export default function SustainabilitySection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-rule mt-12 mb-16">
           {STATS.map(s => (
             <div key={s.ref + s.value} className="bg-paper p-7 lg:p-9 flex flex-col gap-3 min-h-[240px]">
-              <div className="font-serif text-[clamp(40px,5vw,64px)] leading-[0.9] tracking-[-0.04em] text-verde-700">
-                {s.value}
-                <em
-                  className="font-serif italic text-ink-3 text-[0.32em] align-[36%] ml-1.5 inline-block max-w-[12ch] leading-tight"
-                  style={{ fontFamily: 'var(--serif-it)' }}
-                >
-                  {' '}{s.unit}
-                </em>
+              <div className="flex items-baseline gap-2 flex-wrap">
+                <span className="font-serif text-[clamp(40px,5vw,64px)] leading-[0.9] tracking-[-0.04em] text-verde-700">
+                  {s.value}
+                </span>
+                <span className="font-mono font-medium text-ink-3 text-[12px] lg:text-[13px] tracking-[0.02em] leading-snug max-w-[18ch]">
+                  {s.unit}
+                </span>
               </div>
               <p className="text-[13px] leading-relaxed text-ink-2 flex-1">{s.label}</p>
               <a
