@@ -1,0 +1,47 @@
+# ───────────────────────────────────────────────────────────────────
+# Dependabot — actualización automática de dependencias
+#
+# Requiere que el repositorio esté alojado en GitHub.
+#
+# · Actualizaciones de SEGURIDAD: GitHub las abre solas, en automático,
+#   en cuanto se publica una vulnerabilidad — no dependen de este archivo
+#   (solo requieren tener el repo en GitHub con las alertas activadas,
+#   que vienen activadas por defecto).
+#
+# · Actualizaciones de VERSIÓN: este archivo programa una revisión
+#   semanal y agrupa los cambios menores en un solo Pull Request, para
+#   que el sitio nunca se quede con versiones viejas.
+#
+# Docs: https://docs.github.com/code-security/dependabot
+# ───────────────────────────────────────────────────────────────────
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "07:00"
+      timezone: "America/Mexico_City"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencias"
+    commit-message:
+      prefix: "deps"
+      include: "scope"
+    # Agrupa todas las actualizaciones menores y de parche en UN solo
+    # Pull Request semanal (menos ruido). Las versiones MAYORES llegan
+    # por separado, para revisarlas con calma antes de aplicarlas.
+    groups:
+      actualizaciones-menores:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Mantiene al día los flujos de GitHub Actions, si en el futuro se agregan.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"

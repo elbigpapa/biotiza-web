@@ -39,6 +39,9 @@ yarn-error.log*
 # Claude local helpers (preview server config, not for deploy)
 .claude/
 
+# Superpowers brainstorming visual companion (local only)
+.superpowers/
+
 # Windows PowerShell helpers (local only)
 run-build.ps1
 *.ps1
