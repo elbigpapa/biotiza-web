@@ -14,7 +14,7 @@ const PINS = [
   { x:26, y:22, region:'Sonora',          city:'Hermosillo',  focus:'Hortalizas · espárrago · cítricos',  type:'Asesoría' },
   { x:31, y:33, region:'Sinaloa',         city:'Culiacán',    focus:'Tomate · chile · pepino',            type:'Asesoría' },
   { x:18, y:50, region:'Baja California', city:'San Quintín', focus:'Berries · fresa · hortalizas',       type:'Asesoría' },
-  { x:41, y:50, region:'Jalisco',         city:'Zapopan',     focus:'Sede · I+D · todos los cultivos',    type:'Sede + asesores' },
+  { x:41, y:56, region:'Jalisco',         city:'Ciudad Guzmán',     focus:'Sede · I+D · todos los cultivos',    type:'Sede + asesores' },
   { x:48, y:58, region:'Michoacán',       city:'Uruapan',     focus:'Aguacate · zarzamora',                type:'Asesoría' },
   { x:43, y:60, region:'Colima',          city:'Tecomán',     focus:'Cítricos · limón',                    type:'Asesoría' },
   { x:56, y:50, region:'Guanajuato',      city:'Irapuato',    focus:'Lechuga · brócoli · papa · cebolla',  type:'Asesoría' },

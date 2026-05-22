@@ -240,7 +240,7 @@ export const CONTACT_INFO = {
   whatsappUrl: 'https://wa.me/523316022708',
   instagram:  '@biotiza',
   instagramUrl: 'https://www.instagram.com/biotiza.mx/',
-  address:    'Zapopan, Jalisco, México',
+  address:    'Ciudad Guzmán, Jalisco, México',
   website:    'https://biotiza.mx',
   schedule: {
     weekdays: 'Lunes a Viernes: 9:00 – 18:00',

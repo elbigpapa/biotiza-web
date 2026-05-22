@@ -251,7 +251,7 @@ export default function MobileNav({ onClose }: MobileNavProps) {
           </Link>
 
           <p className="text-center text-xs text-gris-400">
-            ventas@biotiza.mx · Zapopan, Jalisco
+            ventas@biotiza.mx · Ciudad Guzmán, Jalisco
           </p>
         </div>
       </motion.div>

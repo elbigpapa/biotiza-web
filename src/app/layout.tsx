@@ -36,7 +36,7 @@ function OrganizationJsonLd() {
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Zapopan",
+      "addressLocality": "Ciudad Guzmán",
       "addressRegion": "Jalisco",
       "addressCountry": "MX"
     },
@@ -118,7 +118,7 @@ export const metadata: Metadata = {
     template: '%s | Biotiza',
   },
   description:
-    'Fertilizantes orgánicos, bioestimulantes y bioprotección para cultivos de exportación. Directo de laboratorio a tu campo. Zapopan, Jalisco.',
+    'Fertilizantes orgánicos, bioestimulantes y bioprotección para cultivos de exportación. Directo de laboratorio a tu campo. Ciudad Guzmán, Jalisco.',
   keywords: [
     'bioestimulantes México',
     'fertilizantes orgánicos',
