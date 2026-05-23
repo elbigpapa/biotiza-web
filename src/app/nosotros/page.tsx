@@ -43,12 +43,12 @@ export default function NosotrosPage() {
         <div
           className="min-h-[70vh] relative"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=1600&q=80&auto=format&fit=crop')`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1566218246241-934ad8b38ea6?w=1600&q=80&auto=format&fit=crop')`,
             backgroundSize: 'cover', backgroundPosition: 'center',
           }}
         >
           <div className="absolute bottom-5 left-5 right-5 font-mono text-[10px] tracking-[0.16em] uppercase text-white/85 bg-black/45 backdrop-blur-sm px-3 py-2">
-            N° 01 · Laboratorio · Zapotiltic, Jalisco
+            N° 01 · Productor tecnificado · agricultura de exportación
           </div>
         </div>
         <div className="p-12 lg:p-20 flex flex-col justify-center bg-paper">
