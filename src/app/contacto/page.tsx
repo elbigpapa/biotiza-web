@@ -21,6 +21,7 @@ function InstagramIcon({ size = 20 }: { size?: number }) {
     </svg>
   )
 }
+import { track } from '@vercel/analytics'
 import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
 import { whatsappLink } from '@/lib/utils'
@@ -116,6 +117,7 @@ export default function ContactoPage() {
     ].filter(Boolean) as string[]
 
     const url = whatsappLink(lines.join('\n'))
+    track('form_submitted', { source: 'contacto', asunto: data.asunto })
     window.open(url, '_blank', 'noopener,noreferrer')
     setWaUrl(url)
     setSubmitted(true)

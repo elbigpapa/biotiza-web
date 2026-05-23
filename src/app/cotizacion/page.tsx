@@ -23,6 +23,7 @@ import {
   ArrowLeft,
   Package,
 } from 'lucide-react'
+import { track } from '@vercel/analytics'
 import { QuotationCartProvider, useQuotationCart } from '@/hooks/useQuotationCart'
 import { CONTACT_INFO, PRODUCT_LINES } from '@/data/constants'
 import { whatsappLink } from '@/lib/utils'
@@ -139,6 +140,7 @@ function QuotationPageContent() {
     ].filter(Boolean) as string[]
 
     const url = whatsappLink(lines.join('\n'))
+    track('form_submitted', { source: 'cotizacion', items: items.length, estado: data.estado })
     window.open(url, '_blank', 'noopener,noreferrer')
     setWaUrl(url)
     setSubmitted(true)

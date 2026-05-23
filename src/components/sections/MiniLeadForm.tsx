@@ -12,6 +12,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { MessageCircle, CheckCircle } from 'lucide-react'
+import { track } from '@vercel/analytics'
 import { whatsappLink } from '@/lib/utils'
 
 const schema = z.object({
@@ -56,6 +57,7 @@ export default function MiniLeadForm() {
     ].filter(Boolean) as string[]
 
     const url = whatsappLink(lines.join('\n'))
+    track('form_submitted', { source: 'home-cta' })
     window.open(url, '_blank', 'noopener,noreferrer')
     setWaUrl(url)
     setSubmitted(true)

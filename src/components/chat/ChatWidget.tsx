@@ -11,6 +11,7 @@
 import { useState, useRef, useEffect, type FormEvent } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { Send, X, Sparkles, Loader2 } from 'lucide-react'
+import { track } from '@vercel/analytics'
 import { cn } from '@/lib/utils'
 import BiotizaLogo from '@/components/brand/BiotizaLogo'
 
@@ -40,6 +41,7 @@ export default function ChatWidget() {
 
   const scrollRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  const hasTrackedOpen = useRef(false)
 
   // Auto-scroll al último mensaje
   useEffect(() => {
@@ -47,10 +49,14 @@ export default function ChatWidget() {
     scrollRef.current.scrollTop = scrollRef.current.scrollHeight
   }, [messages, loading])
 
-  // Focus input al abrir
+  // Focus input al abrir + tracking del primer open por sesión
   useEffect(() => {
     if (open) {
       setUnread(false)
+      if (!hasTrackedOpen.current) {
+        hasTrackedOpen.current = true
+        track('chat_opened')
+      }
       setTimeout(() => inputRef.current?.focus(), 180)
     }
   }, [open])
@@ -88,6 +94,9 @@ export default function ChatWidget() {
           ...m,
           { role: 'assistant', content: json.reply, suggestions: json.suggestions },
         ])
+        if (json.lead && typeof json.lead === 'object') {
+          track('chat_lead_captured', { fieldsCount: Object.keys(json.lead).length })
+        }
       }
     } catch {
       setMessages((m) => [

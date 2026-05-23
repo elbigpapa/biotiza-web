@@ -13,6 +13,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { MessageCircle } from 'lucide-react'
+import { track } from '@vercel/analytics'
 
 const WA_URL =
   'https://wa.me/523316022708?text=Hola%20Biotiza%2C%20necesito%20asesor%C3%ADa%20sobre%20sus%20productos%20%F0%9F%8C%B1'
@@ -21,6 +22,7 @@ export default function WhatsAppFloat() {
   const [hovered, setHovered] = useState(false)
 
   const handleClick = () => {
+    track('whatsapp_float_clicked')
     window.open(WA_URL, '_blank', 'noopener,noreferrer')
   }
 

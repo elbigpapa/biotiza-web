@@ -13,6 +13,7 @@ import { PRODUCTS, getProductBySlug, getRelatedProducts } from '@/data/products'
 import { PRODUCT_LINES } from '@/data/constants'
 import { getProductImage } from '@/data/product-images'
 import Container from '@/components/ui/Container'
+import TrackProductView from '@/components/analytics/TrackProductView'
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ linea: p.line, slug: p.slug }))
@@ -113,6 +114,7 @@ export default async function ProductoPage({
 
   return (
     <main className="bg-white">
+      <TrackProductView productId={product.id} line={product.line} name={product.name} />
       {/* SEO · datos estructurados (invisible — no afecta el diseño editorial) */}
       <ProductJsonLd product={product} lineName={lineConfig.name} />
 

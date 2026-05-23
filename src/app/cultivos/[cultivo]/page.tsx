@@ -25,6 +25,7 @@ import { getCropImage } from '@/data/crop-images'
 import { getProductImage } from '@/data/product-images'
 import Container from '@/components/ui/Container'
 import PrintFichaButton from '@/components/crops/PrintFichaButton'
+import TrackCultivoView from '@/components/analytics/TrackCultivoView'
 
 export function generateStaticParams() {
   return CROP_PROTOCOLS.map((c) => ({ cultivo: c.slug }))
@@ -141,6 +142,7 @@ export default async function CultivoDetailPage({
 
   return (
     <main className="bg-white">
+      <TrackCultivoView slug={crop.slug} name={crop.name} hasProtocol={(crop.stages?.length ?? 0) > 0} />
       {/* ─── HERO editorial cinematográfico ─────────────────────────── */}
       <section
         className="relative min-h-[78vh] overflow-hidden flex flex-col justify-end"
