@@ -167,7 +167,7 @@ export default function Footer() {
             </p>
 
             <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/55">
-              Ciudad Guzmán, Jalisco · Hecho en México
+              Zapotiltic, Jalisco · Hecho en México
             </p>
 
             <ul className="space-y-2.5 text-sm">
@@ -203,7 +203,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2 text-white/65">
                 <MapPin size={13} className="text-verde-300 mt-0.5" />
-                <span>Ciudad Guzmán, Jalisco, México</span>
+                <span>Zapotiltic, Jalisco, México</span>
               </li>
             </ul>
 

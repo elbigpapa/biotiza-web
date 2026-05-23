@@ -24,7 +24,7 @@ export default function NosotrosPage() {
       >
         <Container className="py-[110px_60px]">
           <div className="flex justify-between items-baseline font-mono text-[11px] tracking-[0.18em] uppercase text-white/70 mb-7 pb-4 border-b border-white/20">
-            <span><span className="text-verde-300 font-semibold">Biotiza</span> · empresa · Ciudad Guzmán, MX</span>
+            <span><span className="text-verde-300 font-semibold">Biotiza</span> · empresa · Zapotiltic, MX</span>
             <span>I+D agrícola mexicana</span>
           </div>
           <h1 className="title-hero text-white max-w-[14ch]">
@@ -48,7 +48,7 @@ export default function NosotrosPage() {
           }}
         >
           <div className="absolute bottom-5 left-5 right-5 font-mono text-[10px] tracking-[0.16em] uppercase text-white/85 bg-black/45 backdrop-blur-sm px-3 py-2">
-            N° 01 · Laboratorio · Ciudad Guzmán, Jalisco
+            N° 01 · Laboratorio · Zapotiltic, Jalisco
           </div>
         </div>
         <div className="p-12 lg:p-20 flex flex-col justify-center bg-paper">

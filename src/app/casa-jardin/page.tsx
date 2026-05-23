@@ -349,7 +349,7 @@ export default function CasaJardinPage() {
                 },
                 {
                   q: '¿Cómo recibo el paquete?',
-                  a: 'Enviamos a todo México por paquetería (2–4 días hábiles). Desde $500 MXN envío gratis. Pago por transferencia, tarjeta o contra-entrega en Ciudad Guzmán.',
+                  a: 'Enviamos a todo México por paquetería (2–4 días hábiles). Desde $500 MXN envío gratis. Pago por transferencia, tarjeta o contra-entrega en Zapotiltic.',
                 },
                 {
                   q: '¿Hay soporte post-compra?',

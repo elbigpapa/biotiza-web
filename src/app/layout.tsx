@@ -36,9 +36,16 @@ function OrganizationJsonLd() {
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Ciudad Guzmán",
+      "streetAddress": "Carretera Cd. Guzmán - Zapotiltic KM 8",
+      "addressLocality": "Zapotiltic",
       "addressRegion": "Jalisco",
+      "postalCode": "49000",
       "addressCountry": "MX"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 19.6538185,
+      "longitude": -103.4744823
     },
     "areaServed": [
       { "@type": "Country", "name": "México" },
@@ -118,7 +125,7 @@ export const metadata: Metadata = {
     template: '%s | Biotiza',
   },
   description:
-    'Fertilizantes orgánicos, bioestimulantes y bioprotección para cultivos de exportación. Directo de laboratorio a tu campo. Ciudad Guzmán, Jalisco.',
+    'Fertilizantes orgánicos, bioestimulantes y bioprotección para cultivos de exportación. Directo de laboratorio a tu campo. Zapotiltic, Jalisco.',
   keywords: [
     'bioestimulantes México',
     'fertilizantes orgánicos',

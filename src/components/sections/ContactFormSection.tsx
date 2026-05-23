@@ -119,7 +119,7 @@ export default function ContactFormSection() {
               {[
                 { icon: Mail,          label: 'Email',     value: 'ventas@biotiza.mx',              href: 'mailto:ventas@biotiza.mx' },
                 { icon: Phone,         label: 'WhatsApp',  value: '+52 33 1602 2708',               href: 'https://wa.me/523316022708' },
-                { icon: MapPin,        label: 'Dirección', value: 'Ciudad Guzmán, Jalisco, México', href: '' },
+                { icon: MapPin,        label: 'Dirección', value: 'Carretera Cd. Guzmán - Zapotiltic KM 8, 49000 Zapotiltic, Jal.', href: '' },
                 { icon: InstagramIcon, label: 'Instagram', value: '@biotiza.mx',                    href: 'https://www.instagram.com/biotiza.mx/' },
               ].map(({ icon: Icon, label, value, href }) => (
                 <li key={label} className="flex items-start gap-4">

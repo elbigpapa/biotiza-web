@@ -58,7 +58,7 @@ export default function PoliticaPrivacidadPage() {
         </h2>
         <p className="text-sm text-gris-600 leading-relaxed">
           <strong className="text-gris-800">Biotiza</strong>, con domicilio en
-          Ciudad Guzmán, Jalisco, México, es responsable del tratamiento de tus datos
+          Carretera Cd. Guzmán - Zapotiltic KM 8, 49000 Zapotiltic, Jalisco, México, es responsable del tratamiento de tus datos
           personales. Para cualquier consulta relacionada con este aviso, puedes
           escribirnos a{' '}
           <a href="mailto:ventas@biotiza.mx" className="text-verde-600 underline">
@@ -191,7 +191,7 @@ export default function PoliticaPrivacidadPage() {
               privacidad@biotiza.mx
             </a>
           </li>
-          <li>Ubicación: Ciudad Guzmán, Jalisco, México</li>
+          <li>Ubicación: Carretera Cd. Guzmán - Zapotiltic KM 8, 49000 Zapotiltic, Jalisco, México</li>
         </ul>
 
         {/* Navegación inferior */}

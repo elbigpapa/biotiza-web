@@ -71,7 +71,7 @@ const contactItems = [
   {
     icon: MapPin,
     label: 'Ubicación',
-    value: 'Ciudad Guzmán, Jalisco, México',
+    value: 'Carretera Cd. Guzmán - Zapotiltic KM 8, 49000 Zapotiltic, Jal.',
     href: null,
   },
   {
@@ -199,7 +199,7 @@ export default function ContactoPage() {
               {/* Mapa de ubicación — embebido */}
               <div className="mt-6 rounded-2xl overflow-hidden border border-gris-200 bg-gris-100">
                 <iframe
-                  title="Ubicación de Biotiza en Ciudad Guzmán, Jalisco, México"
+                  title="Ubicación de Biotiza en Zapotiltic, Jalisco, México"
                   src="https://www.google.com/maps?q=19.6538185,-103.4744823&z=16&output=embed"
                   width="100%"
                   height="240"
@@ -211,7 +211,7 @@ export default function ContactoPage() {
                 <div className="flex items-center justify-between gap-3 bg-white px-4 py-3 border-t border-gris-200">
                   <span className="inline-flex items-center gap-2 text-sm font-medium text-gris-700">
                     <MapPin size={16} className="text-verde-500" />
-                    Ciudad Guzmán, Jalisco, México
+                    Carretera Cd. Guzmán - Zapotiltic KM 8, 49000 Zapotiltic, Jal.
                   </span>
                   <a
                     href="https://www.google.com/maps/dir/?api=1&destination=19.6538185,-103.4744823"
