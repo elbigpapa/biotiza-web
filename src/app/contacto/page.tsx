@@ -10,7 +10,6 @@ import {
   MapPin,
   Clock,
   MessageCircle,
-  Send,
   CheckCircle,
 } from 'lucide-react'
 
@@ -24,6 +23,7 @@ function InstagramIcon({ size = 20 }: { size?: number }) {
 }
 import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
+import { whatsappLink } from '@/lib/utils'
 
 // ---------------------------------------------------------------------------
 // Zod schema
@@ -87,12 +87,12 @@ const contactItems = [
 // ---------------------------------------------------------------------------
 export default function ContactoPage() {
   const [submitted, setSubmitted] = useState(false)
-  const [serverError, setServerError] = useState<string | null>(null)
+  const [waUrl, setWaUrl] = useState<string | null>(null)
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -100,23 +100,25 @@ export default function ContactoPage() {
     },
   })
 
-  const onSubmit = async (data: FormData) => {
-    setServerError(null)
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(data),
-      })
-      if (!res.ok) {
-        const json = await res.json().catch(() => ({}))
-        setServerError(json?.error ?? 'No pudimos enviar tu mensaje.')
-        return
-      }
-      setSubmitted(true)
-    } catch {
-      setServerError('Error de red. Intenta de nuevo.')
-    }
+  const onSubmit = (data: FormData) => {
+    const lines = [
+      'Hola Biotiza, te escribo desde el formulario de contacto del sitio.',
+      '',
+      `Nombre: ${data.nombre}`,
+      `Correo: ${data.email}`,
+      data.telefono ? `Teléfono: ${data.telefono}` : null,
+      `Asunto: ${data.asunto}`,
+      '',
+      'Mi mensaje:',
+      data.mensaje,
+      '',
+      '(Enviado desde biotiza.mx/contacto)',
+    ].filter(Boolean) as string[]
+
+    const url = whatsappLink(lines.join('\n'))
+    window.open(url, '_blank', 'noopener,noreferrer')
+    setWaUrl(url)
+    setSubmitted(true)
   }
 
   return (
@@ -250,14 +252,30 @@ export default function ContactoPage() {
               </h2>
 
               {submitted ? (
-                /* Success state */
+                /* Success state — WhatsApp abierto */
                 <div className="flex flex-col items-center justify-center py-12 text-center gap-4">
                   <CheckCircle size={48} className="text-verde-500" />
                   <div>
-                    <p className="font-serif text-xl text-gris-900 mb-2">¡Mensaje enviado!</p>
-                    <p className="text-sm text-gris-500">
-                      Te responderemos a tu correo en menos de 24 horas hábiles.
+                    <p className="font-serif text-xl text-gris-900 mb-2">
+                      ¡Listo! Te abrimos WhatsApp.
                     </p>
+                    <p className="text-sm text-gris-500">
+                      Solo dale &ldquo;Enviar&rdquo; en tu app para que recibamos
+                      tu mensaje. Te respondemos en menos de 24 h hábiles.
+                    </p>
+                    {waUrl && (
+                      <p className="text-xs text-gris-400 mt-4">
+                        ¿No se abrió WhatsApp?{' '}
+                        <a
+                          href={waUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-verde-600 underline underline-offset-2 hover:text-verde-700"
+                        >
+                          Ábrelo manualmente
+                        </a>
+                      </p>
+                    )}
                   </div>
                 </div>
               ) : (
@@ -349,30 +367,19 @@ export default function ContactoPage() {
                     )}
                   </div>
 
-                  {/* Submit */}
+                  {/* Submit — abre WhatsApp con el mensaje pre-llenado */}
                   <button
                     type="submit"
-                    disabled={isSubmitting}
-                    className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-verde-500 px-6 py-3 text-sm font-semibold text-white hover:bg-verde-600 active:bg-verde-700 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+                    className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-verde-500 px-6 py-3 text-sm font-semibold text-white hover:bg-verde-600 active:bg-verde-700 transition-colors"
                   >
-                    {isSubmitting ? (
-                      <>
-                        <span className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        Enviando...
-                      </>
-                    ) : (
-                      <>
-                        <Send size={16} />
-                        Enviar mensaje
-                      </>
-                    )}
+                    <MessageCircle size={16} />
+                    Enviar por WhatsApp
                   </button>
 
-                  {serverError && (
-                    <p className="text-center text-sm text-red-500" role="alert">
-                      {serverError}
-                    </p>
-                  )}
+                  <p className="text-center text-xs text-gris-400">
+                    Te abrimos WhatsApp con tu mensaje listo — solo dale
+                    &ldquo;Enviar&rdquo;.
+                  </p>
                 </form>
               )}
             </div>

@@ -19,13 +19,13 @@ import {
   Plus,
   Minus,
   MessageCircle,
-  Send,
   CheckCircle,
   ArrowLeft,
   Package,
 } from 'lucide-react'
 import { QuotationCartProvider, useQuotationCart } from '@/hooks/useQuotationCart'
 import { CONTACT_INFO, PRODUCT_LINES } from '@/data/constants'
+import { whatsappLink } from '@/lib/utils'
 import Container from '@/components/ui/Container'
 import Badge from '@/components/ui/Badge'
 import type { ProductLine } from '@/types'
@@ -97,48 +97,52 @@ function QuotationPageContent() {
   const { items, removeItem, updateQuantity, clearCart, totalItems } =
     useQuotationCart()
   const [submitted, setSubmitted] = useState(false)
-  const [serverError, setServerError] = useState<string | null>(null)
-  const [reference, setReference] = useState<string | null>(null)
+  const [waUrl, setWaUrl] = useState<string | null>(null)
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   })
 
   // ── Submit ─────────────────────────────────────────────────────────────────
 
-  const onSubmit = async (data: FormData) => {
-    setServerError(null)
-    try {
-      const res = await fetch('/api/cotizacion', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({
-          ...data,
-          items: items.map((i) => ({
-            productId: i.productId,
-            name: i.productName,
-            line: i.productLine,
-            quantity: i.quantity,
-            unit: i.unit,
-          })),
-        }),
-      })
-      if (!res.ok) {
-        const json = await res.json().catch(() => ({}))
-        setServerError(json?.error ?? 'No pudimos enviar tu cotización.')
-        return
-      }
-      const json = await res.json()
-      if (json?.reference) setReference(json.reference)
-      setSubmitted(true)
-      clearCart()
-    } catch {
-      setServerError('Error de red. Intenta de nuevo.')
-    }
+  const onSubmit = (data: FormData) => {
+    const productLines =
+      items.length > 0
+        ? items
+            .map((i) => `• ${i.productName} — ${i.quantity} ${i.unit}`)
+            .join('\n')
+        : '(sin productos seleccionados — me gustaría asesoría primero)'
+
+    const lines = [
+      'Hola Biotiza, quisiera una cotización.',
+      '',
+      '— Datos de contacto —',
+      `Nombre: ${data.nombre}`,
+      data.empresa ? `Empresa: ${data.empresa}` : null,
+      `Correo: ${data.email}`,
+      `Teléfono: ${data.telefono}`,
+      `Estado: ${data.estado}`,
+      '',
+      '— Cultivo —',
+      `Cultivo: ${data.cultivo || '—'}`,
+      `Superficie: ${data.superficie || '—'}`,
+      '',
+      '— Productos solicitados —',
+      productLines,
+      '',
+      data.comentarios ? `— Comentarios —\n${data.comentarios}` : null,
+      '(Enviado desde biotiza.mx/cotizacion)',
+    ].filter(Boolean) as string[]
+
+    const url = whatsappLink(lines.join('\n'))
+    window.open(url, '_blank', 'noopener,noreferrer')
+    setWaUrl(url)
+    setSubmitted(true)
+    clearCart()
   }
 
   // ── Mensaje de WhatsApp pre-llenado ────────────────────────────────────────
@@ -169,39 +173,32 @@ function QuotationPageContent() {
             <CheckCircle className="h-20 w-20 text-verde-500" strokeWidth={1.5} />
           </div>
           <h1 className="font-serif text-3xl font-bold text-gris-900 mb-3">
-            ¡Cotización enviada exitosamente!
+            ¡Listo! Te abrimos WhatsApp.
           </h1>
-          <p className="text-gris-600 mb-2 text-base">
-            Nuestro equipo se pondrá en contacto contigo en menos de 24 horas
-            hábiles.
+          <p className="text-gris-600 mb-3 text-base">
+            Solo dale &ldquo;Enviar&rdquo; en tu app para que recibamos tu
+            solicitud. Te respondemos en menos de 24 h hábiles.
           </p>
-          <p className="text-gris-500 text-sm mb-3">
-            También puedes escribirnos directamente por WhatsApp para una
-            respuesta inmediata.
-          </p>
-          {reference && (
-            <p className="mb-6 inline-block rounded-lg bg-verde-50 px-4 py-2 text-xs font-mono font-semibold text-verde-700">
-              Folio: {reference}
+          {waUrl && (
+            <p className="text-gris-500 text-sm mb-6">
+              ¿No se abrió WhatsApp?{' '}
+              <a
+                href={waUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-verde-600 underline underline-offset-2 hover:text-verde-700"
+              >
+                Ábrelo manualmente
+              </a>
             </p>
           )}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-[#25d366] px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#1ebe5c] transition-colors"
-            >
-              <MessageCircle className="h-4 w-4" />
-              Escribir por WhatsApp
-            </a>
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 rounded-lg border border-gris-200 px-5 py-2.5 text-sm font-semibold text-gris-700 hover:bg-gris-50 transition-colors"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Volver al inicio
-            </Link>
-          </div>
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 rounded-lg border border-gris-200 px-5 py-2.5 text-sm font-semibold text-gris-700 hover:bg-gris-50 transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Volver al inicio
+          </Link>
         </div>
       </div>
     )
@@ -390,53 +387,17 @@ function QuotationPageContent() {
               {/* Botón de envío */}
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-naranja-500 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-naranja-600 focus:outline-none focus:ring-2 focus:ring-naranja-500/30 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-naranja-500 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-naranja-600 focus:outline-none focus:ring-2 focus:ring-naranja-500/30 focus:ring-offset-2 transition-colors"
               >
-                {isSubmitting ? (
-                  <>
-                    <svg
-                      className="h-4 w-4 animate-spin"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      />
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8v8H4z"
-                      />
-                    </svg>
-                    Enviando…
-                  </>
-                ) : (
-                  <>
-                    <Send className="h-4 w-4" />
-                    Enviar solicitud de cotización
-                  </>
-                )}
+                <MessageCircle className="h-4 w-4" />
+                Enviar cotización por WhatsApp
               </button>
 
-              {/* Aviso de privacidad */}
+              {/* Aviso */}
               <p className="text-center text-xs text-gris-400">
-                🔒 Tu información está protegida. No compartimos tus datos con
-                terceros.
+                Te abrimos WhatsApp con tu solicitud lista — solo dale
+                &ldquo;Enviar&rdquo;. Tus datos no se comparten con terceros.
               </p>
-
-              {serverError && (
-                <p className="text-center text-sm text-red-500" role="alert">
-                  {serverError}
-                </p>
-              )}
             </form>
           </div>
 
