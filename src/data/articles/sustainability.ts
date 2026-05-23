@@ -164,7 +164,7 @@ export const SUSTAINABILITY_ARTICLES: Article[] = [
     publishedAt: '2026-04-19',
     author: { name: 'Lic. Mariana Cruz', role: 'Consultora regulatoria' },
     emoji: '🚫',
-    imageGradient: 'from-rose-700 to-rojo-500',
+    imageGradient: 'from-rose-700 to-red-500',
     tags: ['LMR', 'EU', 'exportación', 'residuos'],
     blocks: [
       { type: 'p', text: 'EU MRL (Maximum Residue Levels) regula la cantidad máxima de residuo de pesticidas permitida en alimentos importados a la Unión Europea. Cada año, el panel científico de EFSA elimina o reduce 12-15 ingredientes activos. Lo que ayer era estándar, hoy puede ser rechazo automático en aduana — sin reembolso, sin segunda oportunidad.' },

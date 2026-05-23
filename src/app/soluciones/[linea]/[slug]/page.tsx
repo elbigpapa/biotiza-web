@@ -152,7 +152,7 @@ export default async function ProductoPage({
               <div className="font-mono text-[11px] font-semibold tracking-[0.16em] uppercase text-ink-4 mb-6">
                 <Link href="/soluciones" className="hover:text-naranja-600">Soluciones</Link>
                 <span className="mx-2.5 text-ink-5">/</span>
-                <Link href={`/soluciones?linea=${product.line}`} className="hover:text-naranja-600">{lineConfig.name}</Link>
+                <Link href={`/soluciones/${product.line}`} className="hover:text-naranja-600">{lineConfig.name}</Link>
                 <span className="mx-2.5 text-ink-5">/</span>
                 <span className="text-ink">{product.name}</span>
               </div>

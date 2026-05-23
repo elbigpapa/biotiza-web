@@ -152,7 +152,7 @@ export const BIOPROTECTION_ARTICLES: Article[] = [
     publishedAt: '2026-03-17',
     author: { name: 'M.C. Andrea Figueroa', role: 'Especialista en MIP · Bioprotección' },
     emoji: '⚔️',
-    imageGradient: 'from-naranja-600 to-rojo-500',
+    imageGradient: 'from-naranja-600 to-red-500',
     tags: ['MIP', 'control integrado', 'rotación', 'estrategia'],
     blocks: [
       { type: 'p', text: 'La pregunta correcta no es "químico o biológico" — es "qué combinación en qué momento". Productores de exportación de élite usan típicamente 70% biológico + 30% químico selectivo. El biológico es la base; el químico es el rescate quirúrgico.' },
@@ -201,7 +201,7 @@ export const BIOPROTECTION_ARTICLES: Article[] = [
     publishedAt: '2026-03-21',
     author: { name: 'Dra. Laura Méndez', role: 'Agrónoma · I+D Biotiza' },
     emoji: '⚠️',
-    imageGradient: 'from-rose-700 to-rojo-500',
+    imageGradient: 'from-rose-700 to-red-500',
     tags: ['resistencia', 'IRAC', 'FRAC', 'rotación'],
     blocks: [
       { type: 'p', text: 'El Insecticide Resistance Action Committee (IRAC) documenta 619 especies de insectos con resistencia comprobada a 1,159 ingredientes activos diferentes. En hongos, FRAC reporta 200+ casos de resistencia a fungicidas sistémicos. En México, la resistencia de Tuta absoluta a piretroides está documentada desde 2014.' },

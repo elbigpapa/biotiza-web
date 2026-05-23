@@ -12,8 +12,11 @@ import {
 import { cn } from '@/lib/utils'
 
 export function generateStaticParams() {
-  // incluye también "todos" y "paquete" → se manejan como casos especiales
-  return GARDEN_CATEGORIES.map((c) => ({ categoria: c.slug }))
+  // categorías reales + "todos" (rama especial manejada en CategoryPage)
+  return [
+    ...GARDEN_CATEGORIES.map((c) => ({ categoria: c.slug })),
+    { categoria: 'todos' },
+  ]
 }
 
 export async function generateMetadata({
