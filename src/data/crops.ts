@@ -62,6 +62,8 @@ const TOMATE: FullCropProtocol = {
         { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Al trasplante, días 7 y 14', notes: 'Aplicar en la tarde para evitar fotodegradación del AIB' },
         { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '1 L/ha', method: 'Fertirrigación', frequency: 'Días 1, 7, 14', notes: 'El P estimula el crecimiento radicular' },
         { productId: 'zen-chrys', productName: 'Zen-Chrys', line: 'bioproteccion', dose: '1.5 mL/L', method: 'Aspersión', frequency: 'Preventivo cada 7 días', notes: 'Prevenir mosca blanca vectora de virosis', isProtection: true },
+        { productId: 'max-kill-plus', productName: 'Max-Kill Plus', line: 'bioproteccion', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Cada 5-7 días en pico de infestación', notes: 'Rotación de modo de acción contra mosca blanca: 5 activos en sinergia (piretro + ajo + canela + neem + mostaza) · per catálogo Bioinsecticida Multiacción', isProtection: true },
+        { productId: 'agb-lilac', productName: 'LILAC®', line: 'bioproteccion', dose: '360 g/ha', method: 'Drench', frequency: '2 aplicaciones a intervalo de 14-28 días', notes: 'Bionematicida (Paecilomyces lilacinus) que parasita huevos y hembras de Meloidogyne · per catálogo recommended_dose drench 240-480 g/ha', isProtection: true },
       ],
     },
     {
@@ -75,6 +77,7 @@ const TOMATE: FullCropProtocol = {
         { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '1 L/ha', method: 'Fertirrigación', frequency: 'Cada 14 días', notes: 'Paquete completo de microelementos' },
         { productId: 'vgn-brotanic', productName: 'BROTANIC', line: 'nutricion', dose: '1.0 → 1.5 → 2.0 L / 200 L agua (foliar) · 1–3 L/ha (riego)', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas en el ciclo vegetativo y reproductivo', notes: 'Genera nuevos haces vasculares → mayor flujo de savia y mejor asimilación de nutrientes y fitosanitarios; brotación sin hormonas' },
         { productId: 'zen-fungi', productName: 'Zen-Fungi', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 10 días', notes: 'Prevención de Botrytis y Alternaria', isProtection: true },
+        { productId: 'agb-entomotri', productName: 'ENTOMOTRI®', line: 'bioproteccion', dose: '420 g / 200 L de agua', method: 'Foliar', frequency: '2 aplicaciones a intervalos de 5 días', notes: 'Triple sinergia entomopatógena (Metarhizium + Beauveria + Paecilomyces) específica contra paratrioza (Bactericera cockerelli) — vector de punta morada · per catálogo recommended_dose foliar 360-480 g / 200 L de agua', isProtection: true },
       ],
     },
     {
@@ -86,6 +89,7 @@ const TOMATE: FullCropProtocol = {
         { productId: 'bp-boro', productName: 'BP Boro', line: 'especialidades', dose: '0.4 mL/L', method: 'Foliar', frequency: 'Inicio y plena flor', notes: 'Esencial para la germinación del tubo polínico' },
         { productId: 'bp-vit', productName: 'BP Vit', line: 'especialidades', dose: '1 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'Activa enzimas clave del metabolismo floral' },
         { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Alta en floración', notes: 'El P es clave en la energía para la floración' },
+        { productId: 'bp-cu-agro', productName: 'BP Cu Agro Organic', line: 'organicos', dose: '0.75 mL/L', method: 'Foliar', frequency: 'Cada 14-21 días como preventivo', notes: 'Cobre orgánico quelado: doble función nutrición + protección preventiva contra mildiu, bacteriosis y antracnosis · per catálogo recommended_dose foliar 0.5-1 mL/L', isProtection: true },
       ],
     },
     {
@@ -108,6 +112,7 @@ const TOMATE: FullCropProtocol = {
         { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'Aumenta Brix y coloración' },
         { productId: 'ae-calcium', productName: 'AE Calcium', line: 'organicos', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Cada 7 días', notes: 'Máxima absorción de calcio en etapa crítica' },
         { productId: 'zen-spider', productName: 'Zen-Spider', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 7 días si hay presión', notes: 'Control de araña roja en envés', isProtection: true },
+        { productId: 'enhancer', productName: 'Enhancer', line: 'bioproteccion', dose: '0.75 mL/L', method: 'Foliar', frequency: 'Adicionar al caldo de aspersión cuando se requiera mayor eficiencia', notes: 'Potenciador con sulfonatos al 26%: aumenta eficiencia de bioprotección hasta 3× y mejora penetración cuticular · per catálogo recommended_dose foliar 0.5-1 mL/L (adicionar al caldo)' },
       ],
     },
     {
@@ -146,6 +151,7 @@ const FRESA: FullCropProtocol = {
         { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Días 1, 10, 20', notes: 'Esencial para el arraigo en camas elevadas' },
         { productId: 'biotiza-lactobacillus', productName: 'Lactobacillus', line: 'especialidades', dose: '1 g/L', method: 'Drench', frequency: 'Días 1 y 14', notes: 'Establece microbiota benéfica en sustrato' },
         { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '1.5 L/ha', method: 'Fertirrigación', frequency: 'Alta en arraigo', notes: 'El P es clave para el desarrollo radicular inicial' },
+        { productId: 'agb-lilac', productName: 'LILAC®', line: 'bioproteccion', dose: '360 g/ha', method: 'Drench', frequency: '2 aplicaciones a intervalo de 14-28 días', notes: 'Bionematicida (Paecilomyces lilacinus) que parasita huevos y hembras de Meloidogyne · per catálogo recommended_dose drench 240-480 g/ha', isProtection: true },
       ],
     },
     {
@@ -180,6 +186,7 @@ const FRESA: FullCropProtocol = {
         { productId: 'bp-gross', productName: 'BP Gross', line: 'bioestimulantes', dose: '0.8 g/L', method: 'Foliar', frequency: 'Al inicio del engorde', notes: 'Aumenta el calibre comercial del fruto' },
         { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '4 L/ha', method: 'Fertirrigación', frequency: 'Alta en engorde', notes: 'K para Brix, color y firmeza' },
         { productId: 'zen-spider', productName: 'Zen-Spider', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 7 días en temporada cálida', notes: 'Araña roja afecta el calibre del fruto', isProtection: true },
+        { productId: 'enhancer', productName: 'Enhancer', line: 'bioproteccion', dose: '0.75 mL/L', method: 'Foliar', frequency: 'Adicionar al caldo de aspersión cuando se requiera mayor eficiencia', notes: 'Potenciador con sulfonatos al 26%: aumenta eficiencia de bioprotección hasta 3× y mejora penetración cuticular · per catálogo recommended_dose foliar 0.5-1 mL/L (adicionar al caldo)' },
       ],
     },
     {
@@ -218,6 +225,8 @@ const ARANDANO: FullCropProtocol = {
         { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '1.5 mL/L', method: 'Drench', frequency: 'Días 1, 15, 30', notes: 'Alta concentración de AIB para establecimiento en sustrato' },
         { productId: 'biotiza-lactobacillus', productName: 'Lactobacillus', line: 'especialidades', dose: '1 g/L', method: 'Drench', frequency: 'Días 1 y 21', notes: 'Mejora la disponibilidad de nutrientes en pH ácido' },
         { productId: 'bp-ferrum', productName: 'BP Ferrum', line: 'nutricion', dose: '1 L/ha', method: 'Fertirrigación', frequency: 'Semanal', notes: 'El arándano es muy sensible a la deficiencia de hierro' },
+        { productId: 'bp-oxyagro', productName: 'BP Oxyagro', line: 'organicos', dose: '1.5 mL/L', method: 'Drench', frequency: 'Cada 15-21 días como preventivo', notes: 'Preventivo contra Phytophthora en corona — oxigena zona radicular en sustrato ácido · per catálogo recommended_dose drench 1-2 mL/L (preventivo)', isProtection: true },
+        { productId: 'agb-lilac', productName: 'LILAC®', line: 'bioproteccion', dose: '360 g/ha', method: 'Drench', frequency: '2 aplicaciones a intervalo de 14-28 días', notes: 'Bionematicida (Paecilomyces lilacinus) que parasita huevos y hembras de Meloidogyne · per catálogo recommended_dose drench 240-480 g/ha', isProtection: true },
       ],
     },
     {
@@ -230,6 +239,7 @@ const ARANDANO: FullCropProtocol = {
         { productId: 'mg-ultra', productName: 'Mg-Ultra', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Semanal', notes: 'Frecuente deficiencia de Mg en sustratos ácidos' },
         { productId: 'vgn-brotanic', productName: 'BROTANIC', line: 'nutricion', dose: '1.5 → 2.0 → 2.5 L / 200 L agua (foliar) · 2–3 L/ha (riego)', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Genera nuevos haces vasculares → mayor flujo de savia y mejor asimilación de nutrientes y fitosanitarios; brotación sin hormonas' },
         { productId: 'zen-chrys', productName: 'Zen-Chrys', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 7 días', notes: 'Trips californiano es el mayor problema en arándano', isProtection: true },
+        { productId: 'bp-cu-agro', productName: 'BP Cu Agro Organic', line: 'organicos', dose: '0.75 mL/L', method: 'Foliar', frequency: 'Cada 14-21 días como preventivo', notes: 'Cobre orgánico quelado: doble función nutrición + protección preventiva contra bacteriosis y antracnosis · per catálogo recommended_dose foliar 0.5-1 mL/L', isProtection: true },
       ],
     },
     {
@@ -243,15 +253,15 @@ const ARANDANO: FullCropProtocol = {
       ],
     },
     {
-      id: 'engorde', name: 'Engorde de Baya', emoji: '🫐',
-      durationDays: 35, objective: 'Maximizar calibre de baya, Brix y reducción de bacterias superficiales.',
+      id: 'engorde', name: 'Engorde de Fruto', emoji: '🫐',
+      durationDays: 35, objective: 'Maximizar calibre de fruto, Brix y reducción de bacterias superficiales.',
       color: 'bg-indigo-100', textColor: 'text-indigo-700',
       products: [
-        { productId: 'bp-gibb', productName: 'BP Gibb', line: 'bioestimulantes', dose: '0.3 mL/L', method: 'Foliar', frequency: 'Inicio del engorde', notes: 'AG3 aumenta el calibre de la baya hasta 15%' },
-        { productId: 'bp-gross', productName: 'BP Gross', line: 'bioestimulantes', dose: '0.8 g/L', method: 'Foliar', frequency: '2 aplicaciones en engorde', notes: 'Las expansinas promueven la elongación celular de la baya' },
+        { productId: 'bp-gross', productName: 'BP Gross', line: 'bioestimulantes', dose: '0.8 g/L', method: 'Foliar', frequency: '2 aplicaciones en inicio de engorde', notes: 'Expansinas + B + K aceleran elongación celular y engorde de fruto · per catálogo recommended_dose foliar 0.5-1 g/L' },
         { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '4 L/ha', method: 'Fertirrigación', frequency: 'Alta en engorde', notes: 'K para Brix y color azul uniforme' },
-        { productId: 'ae-calcium', productName: 'AE Calcium', line: 'organicos', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'Firmeza de la baya para resistir el transporte' },
+        { productId: 'ae-calcium', productName: 'AE Calcium', line: 'organicos', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'Firmeza del fruto para resistir el transporte' },
         { productId: 'zen-fungi', productName: 'Zen-Fungi', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 10 días', notes: 'Prevención de Mummy berry y Botrytis', isProtection: true },
+        { productId: 'enhancer', productName: 'Enhancer', line: 'bioproteccion', dose: '0.75 mL/L', method: 'Foliar', frequency: 'Adicionar al caldo de aspersión cuando se requiera mayor eficiencia', notes: 'Potenciador con sulfonatos al 26%: aumenta eficiencia de bioprotección hasta 3× y mejora penetración cuticular · per catálogo recommended_dose foliar 0.5-1 mL/L (adicionar al caldo)' },
       ],
     },
     {
@@ -289,6 +299,7 @@ const AGUACATE: FullCropProtocol = {
         { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '1.5 L/ha', method: 'Fertirrigación', frequency: 'Cada 21 días', notes: 'Microelementos para hojas de exportación' },
         { productId: 'vgn-brotanic', productName: 'BROTANIC', line: 'nutricion', dose: '1.5 → 2.0 → 2.5 L / 200 L agua (foliar) · 2–3 L/ha (riego)', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas por flujo vegetativo', notes: 'Acelera el flujo de savia ascendente y descendente: más translocación hacia flor y mejor asimilación de lo aplicado' },
         { productId: 'bp-oxyagro', productName: 'BP Oxyagro', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Cada 21 días', notes: 'Prevención y control de Phytophthora cinnamomi', isProtection: true },
+        { productId: 'bp-cu-agro', productName: 'BP Cu Agro Organic', line: 'organicos', dose: '0.75 mL/L', method: 'Foliar', frequency: 'Cada 14-21 días como preventivo', notes: 'Cobre orgánico quelado: doble función nutrición + protección preventiva contra bacteriosis y antracnosis foliar · per catálogo recommended_dose foliar 0.5-1 mL/L', isProtection: true },
       ],
     },
     {
@@ -309,7 +320,7 @@ const AGUACATE: FullCropProtocol = {
       products: [
         { productId: 'bp-cuaje', productName: 'BP Cuaje', line: 'bioestimulantes', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Plena flor y fruto chícharo', notes: 'Crítico reducir la caída de fruto chícharo' },
         { productId: 'biotiza-calcio-boro', productName: 'Calcio Boro', line: 'especialidades', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 14 días', notes: 'Prevenir corcho interno desde el inicio del fruto' },
-        { productId: 'bp-gibb', productName: 'BP Gibb', line: 'bioestimulantes', dose: '0.3 mL/L', method: 'Foliar', frequency: 'Fruto chícharo (3–5 mm)', notes: 'AG3 ayuda a retener frutos recién cuajados' },
+        { productId: 'bp-gross', productName: 'BP Gross', line: 'bioestimulantes', dose: '0.8 g/L', method: 'Foliar', frequency: '2 aplicaciones en inicio de engorde', notes: 'Expansinas + B + K aceleran elongación celular y engorde de fruto · per catálogo recommended_dose foliar 0.5-1 g/L' },
       ],
     },
     {
@@ -321,6 +332,7 @@ const AGUACATE: FullCropProtocol = {
         { productId: 'bp-calcio', productName: 'BP Calcio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Cada 14 días', notes: 'Prevenir corcho y paredes blandas' },
         { productId: 'ca-ultra', productName: 'Ca-Ultra', line: 'nutricion', dose: '4 L/ha', method: 'Fertirrigación', frequency: 'Cada 14 días', notes: 'Ca continuo durante el largo período de llenado' },
         { productId: 'zen-chrys', productName: 'Zen-Chrys', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 14 días', notes: 'Control de trips del aguacate (Heliothrips haemorrhoidalis)', isProtection: true },
+        { productId: 'biotiza-coadyuvante', productName: 'Biotiza Coadyuvante', line: 'especialidades', dose: '0.75 mL/L', method: 'Foliar', frequency: 'Adicionar al caldo en aplicaciones foliares clave', notes: 'Aceite parafinado: mejora adhesión foliar hasta 3× y aumenta penetración cuticular — clave en hojas cerosas de aguacate · per catálogo recommended_dose foliar 0.5-1 mL/L (adicionar al caldo)' },
       ],
     },
     {
@@ -357,6 +369,7 @@ const CHILE: FullCropProtocol = {
         { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Días 1, 7, 14', notes: 'Reducir el estrés de trasplante al mínimo' },
         { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '1.5 L/ha', method: 'Fertirrigación', frequency: 'Primera semana', notes: 'Alta demanda de P en establecimiento' },
         { productId: 'zen-chrys', productName: 'Zen-Chrys', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Preventivo semanal', notes: 'Trips vectores de TSWV desde trasplante', isProtection: true },
+        { productId: 'agb-lilac', productName: 'LILAC®', line: 'bioproteccion', dose: '360 g/ha', method: 'Drench', frequency: '2 aplicaciones a intervalo de 14-28 días', notes: 'Bionematicida (Paecilomyces lilacinus) que parasita huevos y hembras de Meloidogyne · per catálogo recommended_dose drench 240-480 g/ha', isProtection: true },
       ],
     },
     {
@@ -368,6 +381,8 @@ const CHILE: FullCropProtocol = {
         { productId: 'mg-ultra', productName: 'Mg-Ultra', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Semanal', notes: 'Frecuente deficiencia en suelos arenosos del norte' },
         { productId: 'bp-nutri', productName: 'BP Nutri', line: 'organicos', dose: '1.5 mL/L', method: 'Foliar', frequency: 'Cada 14 días', notes: 'Vigor y resistencia al estrés térmico' },
         { productId: 'vgn-brotanic', productName: 'BROTANIC', line: 'nutricion', dose: '1.0 → 1.5 → 2.0 L / 200 L agua (foliar) · 1–3 L/ha (riego)', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Genera nuevos haces vasculares → mayor flujo de savia y mejor asimilación de nutrientes y fitosanitarios; brotación sin hormonas' },
+        { productId: 'agb-paecilom', productName: 'PAECILOM®', line: 'bioproteccion', dose: '360 g / 200 L de agua', method: 'Foliar', frequency: '2 aplicaciones foliares a intervalos de 7 días', notes: 'Bioinsecticida específico contra mosquita blanca (Bemisia tabaci) — Paecilomyces fumosoroseus controla huevos, ninfas y adultos · per catálogo recommended_dose foliar 240-480 g / 200 L de agua', isProtection: true },
+        { productId: 'agb-entomotri', productName: 'ENTOMOTRI®', line: 'bioproteccion', dose: '420 g / 200 L de agua', method: 'Foliar', frequency: '2 aplicaciones a intervalos de 5 días', notes: 'Triple sinergia entomopatógena (Metarhizium + Beauveria + Paecilomyces) específica contra paratrioza (Bactericera cockerelli) — vector de punta morada · per catálogo recommended_dose foliar 360-480 g / 200 L de agua', isProtection: true },
       ],
     },
     {
@@ -378,6 +393,7 @@ const CHILE: FullCropProtocol = {
         { productId: 'bp-fiore', productName: 'BP Fioré', line: 'bioestimulantes', dose: '0.8 g/L', method: 'Foliar', frequency: 'Pre-flor y plena flor', notes: 'Homogeneizar la apertura en todo el invernadero' },
         { productId: 'biotiza-calcio-boro', productName: 'Calcio Boro', line: 'especialidades', dose: '2 mL/L', method: 'Foliar', frequency: 'Plena flor y cuaje', notes: 'Combinación ideal para cuaja de chile' },
         { productId: 'bp-cuaje', productName: 'BP Cuaje', line: 'bioestimulantes', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 10 días en flor', notes: 'Reduce el aborto por altas temperaturas nocturnas' },
+        { productId: 'bp-cu-agro', productName: 'BP Cu Agro Organic', line: 'organicos', dose: '0.75 mL/L', method: 'Foliar', frequency: 'Cada 14-21 días como preventivo', notes: 'Cobre orgánico quelado: doble función nutrición + protección preventiva contra mildiu, bacteriosis y antracnosis · per catálogo recommended_dose foliar 0.5-1 mL/L', isProtection: true },
       ],
     },
     {
@@ -389,6 +405,9 @@ const CHILE: FullCropProtocol = {
         { productId: 'bp-gross', productName: 'BP Gross', line: 'bioestimulantes', dose: '0.8 g/L', method: 'Foliar', frequency: 'Inicio engorde y 7 días', notes: 'Aumentar calibre del fruto' },
         { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '5 L/ha', method: 'Fertirrigación', frequency: 'Alta en engorde', notes: 'K para color rojo uniforme en pimiento' },
         { productId: 'zen-spider', productName: 'Zen-Spider', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Cada 7 días', notes: 'Araña roja en envés durante temporada cálida', isProtection: true },
+        { productId: 'max-kill-plus', productName: 'Max-Kill Plus', line: 'bioproteccion', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Cada 5-7 días en pico de infestación', notes: 'Rotación de modo de acción contra picudo del chile (Anthonomus eugenii): 5 activos en sinergia (piretro + ajo + canela + neem + mostaza) · per catálogo Bioinsecticida Multiacción', isProtection: true },
+        { productId: 'agb-dextrux', productName: 'DEXTRUX®', line: 'bioproteccion', dose: '420 g / 200 L de agua', method: 'Foliar', frequency: '2 aplicaciones a intervalos de 5 días', notes: 'Bioinsecticida específico contra picudo del chile (Anthonomus eugenii) — Metarhizium anisopliae penetra cutícula y momifica el insecto · per catálogo recommended_dose foliar 360-480 g / 200 L de agua', isProtection: true },
+        { productId: 'enhancer', productName: 'Enhancer', line: 'bioproteccion', dose: '0.75 mL/L', method: 'Foliar', frequency: 'Adicionar al caldo de aspersión cuando se requiera mayor eficiencia', notes: 'Potenciador con sulfonatos al 26%: aumenta eficiencia de bioprotección hasta 3× y mejora penetración cuticular · per catálogo recommended_dose foliar 0.5-1 mL/L (adicionar al caldo)' },
       ],
     },
     {
@@ -425,6 +444,8 @@ const FRAMBUESA: FullCropProtocol = {
         { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Días 1, 10, 21', notes: 'Arraigo en sistema de camas o maceta' },
         { productId: 'biotiza-lactobacillus', productName: 'Lactobacillus', line: 'especialidades', dose: '1 g/L', method: 'Drench', frequency: 'Días 1 y 14', notes: 'Inocular microbiota benéfica desde inicio' },
         { productId: 'zen-chrys', productName: 'Zen-Chrys', line: 'bioproteccion', dose: '1.5 mL/L', method: 'Aspersión', frequency: 'Preventivo semanal', notes: 'Trips desde el inicio del ciclo', isProtection: true },
+        { productId: 'bp-oxyagro', productName: 'BP Oxyagro', line: 'organicos', dose: '1.5 mL/L', method: 'Drench', frequency: 'Cada 15-21 días como preventivo', notes: 'Preventivo contra Phytophthora en corona — oxigena zona radicular en camas y maceta · per catálogo recommended_dose drench 1-2 mL/L (preventivo)', isProtection: true },
+        { productId: 'agb-lilac', productName: 'LILAC®', line: 'bioproteccion', dose: '360 g/ha', method: 'Drench', frequency: '2 aplicaciones a intervalo de 14-28 días', notes: 'Bionematicida (Paecilomyces lilacinus) que parasita huevos y hembras de Meloidogyne · per catálogo recommended_dose drench 240-480 g/ha', isProtection: true },
       ],
     },
     {
@@ -481,6 +502,8 @@ const ZARZAMORA: FullCropProtocol = {
         { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '4 L/ha', method: 'Fertirrigación', frequency: 'Alta en brotación', notes: 'N para elongación vigorosa de canes' },
         { productId: 'vgn-brotanic', productName: 'BROTANIC', line: 'nutricion', dose: '1.5 → 2.0 → 2.5 L / 200 L agua (foliar) · 2–3 L/ha (riego)', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Genera nuevos haces vasculares → mayor flujo de savia y mejor asimilación de nutrientes y fitosanitarios; brotación sin hormonas' },
         { productId: 'zen-can', productName: 'Zen-Can', line: 'bioproteccion', dose: '1.5 mL/L', method: 'Aspersión', frequency: 'Cada 10 días', notes: 'Antracnosis y oídio desde brotación', isProtection: true },
+        { productId: 'bp-oxyagro', productName: 'BP Oxyagro', line: 'organicos', dose: '1.5 mL/L', method: 'Drench', frequency: 'Cada 15-21 días como preventivo', notes: 'Preventivo contra Phytophthora en corona — oxigena zona radicular · per catálogo recommended_dose drench 1-2 mL/L (preventivo)', isProtection: true },
+        { productId: 'agb-lilac', productName: 'LILAC®', line: 'bioproteccion', dose: '360 g/ha', method: 'Drench', frequency: '2 aplicaciones a intervalo de 14-28 días', notes: 'Bionematicida (Paecilomyces lilacinus) que parasita huevos y hembras de Meloidogyne · per catálogo recommended_dose drench 240-480 g/ha', isProtection: true },
       ],
     },
     {
@@ -547,6 +570,8 @@ const CITRICOS: FullCropProtocol = {
         { productId: 'bp-ferrum', productName: 'BP Ferrum', line: 'nutricion', dose: '1 L/ha', method: 'Fertirrigación', frequency: 'Cada 21 días', notes: 'Corrección de clorosis férrica en suelos calizos' },
         { productId: 'vgn-brotanic', productName: 'BROTANIC', line: 'nutricion', dose: '1.5 → 2.0 → 2.5 L / 200 L agua (foliar) · 2–3 L/ha (riego)', method: 'Foliar / Fertirrigación', frequency: '3 aplicaciones escalonadas', notes: 'Genera nuevos haces vasculares → mayor flujo de savia y mejor asimilación de nutrientes y fitosanitarios; brotación sin hormonas' },
         { productId: 'bp-oxyagro', productName: 'BP Oxyagro', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Cada 30 días', notes: 'Prevención de Phytophthora en suelos pesados', isProtection: true },
+        { productId: 'bp-cu-agro', productName: 'BP Cu Agro Organic', line: 'organicos', dose: '0.75 mL/L', method: 'Foliar', frequency: 'Cada 14-21 días como preventivo', notes: 'Cobre orgánico quelado: doble función nutrición + protección preventiva contra cancrosis (Xanthomonas), mancha grasienta y antracnosis · per catálogo recommended_dose foliar 0.5-1 mL/L', isProtection: true },
+        { productId: 'biotiza-coadyuvante', productName: 'Biotiza Coadyuvante', line: 'especialidades', dose: '0.75 mL/L', method: 'Foliar', frequency: 'Adicionar al caldo en aplicaciones foliares clave', notes: 'Aceite parafinado: mejora adhesión foliar hasta 3× y aumenta penetración cuticular en hojas cerosas de cítricos · per catálogo recommended_dose foliar 0.5-1 mL/L (adicionar al caldo)' },
       ],
     },
     {
@@ -594,6 +619,7 @@ const TOMATE_CHERRY: FullCropProtocol = {
         { productId: 'mg-ultra', productName: 'Mg-Ultra', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Semanal', notes: 'Clorofila activa = mayor tasa fotosintética = más Brix' },
         { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '1 L/ha', method: 'Fertirrigación', frequency: 'Cada 14 días', notes: 'Micros completos para metabolismo de azúcares' },
         { productId: 'vgn-brotanic', productName: 'BROTANIC', line: 'nutricion', dose: '1.0 → 1.5 → 2.0 L / 200 L agua', method: 'Foliar', frequency: '3 aplicaciones escalonadas', notes: 'Genera nuevos haces vasculares → mayor flujo de savia y mejor asimilación de nutrientes y fitosanitarios; brotación sin hormonas' },
+        { productId: 'agb-entomotri', productName: 'ENTOMOTRI®', line: 'bioproteccion', dose: '420 g / 200 L de agua', method: 'Foliar', frequency: '2 aplicaciones a intervalos de 5 días', notes: 'Triple sinergia entomopatógena (Metarhizium + Beauveria + Paecilomyces) específica contra paratrioza (Bactericera cockerelli) — vector de punta morada · per catálogo recommended_dose foliar 360-480 g / 200 L de agua', isProtection: true },
       ],
     },
     {
@@ -605,6 +631,7 @@ const TOMATE_CHERRY: FullCropProtocol = {
         { productId: 'biotiza-calcio-boro', productName: 'Calcio Boro', line: 'especialidades', dose: '2 mL/L', method: 'Foliar', frequency: 'Plena flor', notes: 'Boro crítico para viabilidad de polen en racimos largos' },
         { productId: 'bp-cuaje', productName: 'BP Cuaje', line: 'bioestimulantes', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 10 días en flor', notes: 'Reducir aborto floral — en cherry cada flor cuenta por el alto número por planta' },
         { productId: 'zen-chrys', productName: 'Zen-Chrys', line: 'bioproteccion', dose: '1.5 mL/L', method: 'Aspersión', frequency: 'Preventivo cada 7 días', notes: 'Mosca blanca vectora de TYLCV — crítico en invernaderos', isProtection: true },
+        { productId: 'max-kill-plus', productName: 'Max-Kill Plus', line: 'bioproteccion', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Cada 5-7 días en pico de infestación', notes: 'Rotación de modo de acción contra mosca blanca: 5 activos en sinergia (piretro + ajo + canela + neem + mostaza) · per catálogo Bioinsecticida Multiacción', isProtection: true },
       ],
     },
     {
