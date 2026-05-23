@@ -91,7 +91,7 @@ const PAPAYA: FullCropProtocol = {
       products: [
         { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Al trasplante + días 10, 20', notes: 'Arraigo rápido reduce el shock y acorta el ciclo a primera flor' },
         { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '1 L/ha', method: 'Fertirrigación', frequency: 'Días 1, 15, 30', notes: 'P crítico para volumen radicular inicial' },
-        { productId: 'elicitor-sin', productName: 'ELICITOR-SIN®', line: 'bioproteccion', dose: '2 g/L', method: 'Drench', frequency: 'Al trasplante + 30 días', notes: 'Trichoderma antagonista de Phytophthora en suelo húmedo', isProtection: true },
+        { productId: 'agb-elicitor-sin', productName: 'ELICITOR-SIN®', line: 'bioproteccion', dose: '2 g/L', method: 'Drench', frequency: 'Al trasplante + 30 días', notes: 'Trichoderma antagonista de Phytophthora en suelo húmedo', isProtection: true },
       ],
     },
     {
@@ -101,7 +101,7 @@ const PAPAYA: FullCropProtocol = {
       products: [
         { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '5 L/ha', method: 'Fertirrigación', frequency: 'Semanal', notes: 'Crecimiento muy rápido: alta demanda de N en esta fase' },
         { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '1.5 L/ha', method: 'Fertirrigación', frequency: 'Cada 14 días', notes: 'Micros completos para metabolismo acelerado' },
-        { productId: 'lecanii-green', productName: 'LECANII GREEN®', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Preventivo cada 10 días', notes: 'Control de áfidos vectores del PRSV — clave: el virus no tiene cura, solo prevención', isProtection: true },
+        { productId: 'agb-lecanii-green', productName: 'LECANII GREEN®', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Preventivo cada 10 días', notes: 'Control de áfidos vectores del PRSV — clave: el virus no tiene cura, solo prevención', isProtection: true },
       ],
     },
     {
@@ -396,7 +396,7 @@ const TRIGO: FullCropProtocol = {
       color: 'bg-yellow-100', textColor: 'text-yellow-700',
       products: [
         { productId: 'zen-fungi', productName: 'Zen-Fungi', line: 'bioproteccion', dose: '2.5 mL/L', method: 'Aspersión', frequency: 'Hoja bandera y espigamiento', notes: 'Proteger hoja bandera de roya = mayor llenado de grano', isProtection: true },
-        { productId: 'lecanii-green', productName: 'LECANII GREEN®', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Al detectar pulgón', notes: 'Pulgón de la espiga reduce peso de grano y transmite virus', isProtection: true },
+        { productId: 'agb-lecanii-green', productName: 'LECANII GREEN®', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Al detectar pulgón', notes: 'Pulgón de la espiga reduce peso de grano y transmite virus', isProtection: true },
         { productId: 'bp-boro', productName: 'BP Boro', line: 'especialidades', dose: '0.4 mL/L', method: 'Foliar', frequency: 'Pre-floración', notes: 'B mejora fecundación y reduce esterilidad de espiguillas' },
       ],
     },
@@ -443,7 +443,7 @@ const SORGO: FullCropProtocol = {
       products: [
         { productId: 'n-ultra', productName: 'N-Ultra', line: 'nutricion', dose: '5 L/ha', method: 'Fertirrigación', frequency: 'A los 30 días', notes: 'N para construir el dosel que llenará la panoja' },
         { productId: 'bp-nutri', productName: 'BP Nutri', line: 'organicos', dose: '1.5 mL/L', method: 'Foliar', frequency: 'Cada 15 días', notes: 'Algas: vigor y tolerancia a estrés hídrico' },
-        { productId: 'lecanii-green', productName: 'LECANII GREEN®', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión dirigida al envés', frequency: 'Al umbral de pulgón amarillo', notes: 'El pulgón amarillo es la plaga #1 del sorgo desde 2014: monitoreo semanal del envés', isProtection: true },
+        { productId: 'agb-lecanii-green', productName: 'LECANII GREEN®', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión dirigida al envés', frequency: 'Al umbral de pulgón amarillo', notes: 'El pulgón amarillo es la plaga #1 del sorgo desde 2014: monitoreo semanal del envés', isProtection: true },
       ],
     },
     {
@@ -678,7 +678,7 @@ const NUEZ: FullCropProtocol = {
       products: [
         { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '12 L/ha', method: 'Fertirrigación', frequency: 'Semanal en llenado', notes: 'K es decisivo en el llenado de almendra: define el % de pulpa' },
         { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '4 mL/L', method: 'Foliar', frequency: 'Cada 12 días', notes: 'Refuerzo de K orgánico para almendra densa y completa' },
-        { productId: 'lecanii-green', productName: 'LECANII GREEN®', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Al umbral de pulgón amarillo', notes: 'El pulgón amarillo defolia y reduce el llenado: monitoreo semanal', isProtection: true },
+        { productId: 'agb-lecanii-green', productName: 'LECANII GREEN®', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión', frequency: 'Al umbral de pulgón amarillo', notes: 'El pulgón amarillo defolia y reduce el llenado: monitoreo semanal', isProtection: true },
       ],
     },
     {

@@ -32,7 +32,7 @@ const AGAVE: FullCropProtocol = {
       products: [
         { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '5 mL/L', method: 'Drench', frequency: 'Al plantar + días 30, 60', notes: 'Enraizador concentrado: crítico para colonizar el suelo desde el hijuelo' },
         { productId: 'biotiza-lactobacillus', productName: 'Lactobacillus', line: 'especialidades', dose: '2 g/L', method: 'Drench', frequency: 'Al plantar + 90 días', notes: 'Inhibe Erwinia que causa pudrición del cogollo en hijuelos jóvenes' },
-        { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'bioproteccion', dose: '2 g/L', method: 'Drench', frequency: 'Cada 90 días', notes: 'Trichoderma antagonista de Fusarium, principal patógeno radicular del agave', isProtection: true },
+        { productId: 'agb-elicitor-sin', productName: 'ELICITOR-SIN®', line: 'bioproteccion', dose: '2 g/L', method: 'Drench', frequency: 'Cada 90 días', notes: 'Trichoderma antagonista de Fusarium, principal patógeno radicular del agave', isProtection: true },
       ],
     },
     {
@@ -53,7 +53,7 @@ const AGAVE: FullCropProtocol = {
       products: [
         { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '20 L/ha', method: 'Fertirrigación / Aplicación al cogollo', frequency: '2 veces/año', notes: 'K es EL nutriente crítico del agave: define cantidad y calidad de fructanos para destilación' },
         { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '4 mL/L', method: 'Foliar al cogollo', frequency: 'Cada 6 meses', notes: 'K foliar complementa fertirrigación' },
-        { productId: 'beauver', productName: 'BEAUVER', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión a base de pencas', frequency: 'Cada 6 meses', notes: 'Beauveria controla picudo en larvas dentro del cogollo', isProtection: true },
+        { productId: 'agb-beauver', productName: 'BEAUVER®', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión a base de pencas', frequency: 'Cada 6 meses', notes: 'Beauveria controla picudo en larvas dentro del cogollo', isProtection: true },
       ],
     },
     {
@@ -90,7 +90,7 @@ const CEBOLLA: FullCropProtocol = {
       products: [
         { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Días 1, 7, 14', notes: 'Enraizador esencial para cebolla — raíz fibrosa = bulbo grande' },
         { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '2 L/ha', method: 'Fertirrigación', frequency: 'Alta en establecimiento', notes: 'P arranca el sistema radicular y prepara la planta para crecimiento foliar' },
-        { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'bioproteccion', dose: '2 g/L', method: 'Drench', frequency: 'Días 5 y 20', notes: 'Trichoderma protege contra Pythium y Fusarium en suelos húmedos', isProtection: true },
+        { productId: 'agb-elicitor-sin', productName: 'ELICITOR-SIN®', line: 'bioproteccion', dose: '2 g/L', method: 'Drench', frequency: 'Días 5 y 20', notes: 'Trichoderma protege contra Pythium y Fusarium en suelos húmedos', isProtection: true },
       ],
     },
     {
@@ -188,7 +188,7 @@ const ESPARRAGO: FullCropProtocol = {
       products: [
         { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '10 L/ha', method: 'Fertirrigación', frequency: 'Alta en fin de helecho', notes: 'K dispara translocación de fotoasimilados a corona — define cosecha próxima' },
         { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'K foliar complementa fertirrigación en pre-descanso' },
-        { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'bioproteccion', dose: '2 g/L', method: 'Drench mensual', frequency: 'Durante todo helecho', notes: 'Trichoderma antagoniza Fusarium en corona — declinación es enemigo a largo plazo', isProtection: true },
+        { productId: 'agb-elicitor-sin', productName: 'ELICITOR-SIN®', line: 'bioproteccion', dose: '2 g/L', method: 'Drench mensual', frequency: 'Durante todo helecho', notes: 'Trichoderma antagoniza Fusarium en corona — declinación es enemigo a largo plazo', isProtection: true },
       ],
     },
   ],
@@ -249,7 +249,7 @@ const PEPINO: FullCropProtocol = {
         { productId: 'ae-calcium', productName: 'AE Calcium', line: 'organicos', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Cada 7 días', notes: 'Ca evita "cuello blanco" y prolonga vida post-cosecha' },
         { productId: 'bp-calcio', productName: 'BP Calcio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Cada 10 días', notes: 'Ca foliar para firmeza al transporte' },
         { productId: 'bp-gross', productName: 'BP Gross', line: 'bioestimulantes', dose: '0.8 g/L', method: 'Foliar', frequency: 'Cada 14 días', notes: 'Engordador: mantiene calibre comercial en producción larga' },
-        { productId: 'beauver', productName: 'BEAUVER', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión envés', frequency: 'Cada 7 días', notes: 'Control de mosquita blanca y trips sin afectar polinizadores ni dejar residuo', isProtection: true },
+        { productId: 'agb-beauver', productName: 'BEAUVER®', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión envés', frequency: 'Cada 7 días', notes: 'Control de mosquita blanca y trips sin afectar polinizadores ni dejar residuo', isProtection: true },
       ],
     },
   ],
@@ -276,7 +276,7 @@ const PAPA: FullCropProtocol = {
       products: [
         { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '3 mL/L', method: 'Drench al surco', frequency: 'Aplicación al sembrar', notes: 'Activa raíces y estolones — base de la futura cosecha' },
         { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '3 L/ha', method: 'Fertirrigación / banda al sembrar', frequency: 'Toda al inicio', notes: 'P se mueve poco en suelo — ponerlo en banda cerca del tubérculo-semilla' },
-        { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'bioproteccion', dose: '3 g/L', method: 'Drench al sembrar', frequency: 'Aplicación al surco', notes: 'Trichoderma protege contra Rhizoctonia (canchro) y Fusarium en estolones', isProtection: true },
+        { productId: 'agb-elicitor-sin', productName: 'ELICITOR-SIN®', line: 'bioproteccion', dose: '3 g/L', method: 'Drench al sembrar', frequency: 'Aplicación al surco', notes: 'Trichoderma protege contra Rhizoctonia (canchro) y Fusarium en estolones', isProtection: true },
       ],
     },
     {
@@ -344,7 +344,7 @@ const LECHUGA: FullCropProtocol = {
       products: [
         { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Días 1 y 5', notes: 'Reduce estrés de trasplante en plántula tierna' },
         { productId: 'biotiza-coadyuvante', productName: 'Coadyuvante', line: 'bioestimulantes', dose: '0.5 mL/L', method: 'Foliar', frequency: 'Día 3', notes: 'Mejora absorción y reduce estrés osmótico inicial' },
-        { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'bioproteccion', dose: '2 g/L', method: 'Drench', frequency: 'Día 1', notes: 'Trichoderma contra Pythium en plántula recién trasplantada', isProtection: true },
+        { productId: 'agb-elicitor-sin', productName: 'ELICITOR-SIN®', line: 'bioproteccion', dose: '2 g/L', method: 'Drench', frequency: 'Día 1', notes: 'Trichoderma contra Pythium en plántula recién trasplantada', isProtection: true },
       ],
     },
     {
@@ -403,7 +403,7 @@ const PINA: FullCropProtocol = {
       products: [
         { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '4 mL/L', method: 'Inmersión + drench', frequency: 'Antes de plantar + día 30', notes: 'Inmersión del hijuelo en solución activa raíces antes de plantar' },
         { productId: 'biotiza-lactobacillus', productName: 'Lactobacillus', line: 'especialidades', dose: '3 g/L', method: 'Drench', frequency: 'Día 1 + 60', notes: 'Inhibe Erwinia y bacterias que pudren cogollo' },
-        { productId: 'elicitor-sin', productName: 'Elicitor-Sin', line: 'bioproteccion', dose: '3 g/L', method: 'Drench', frequency: 'Día 1 + 45', notes: 'Trichoderma vs Phytophthora — patógeno radicular crítico en zonas húmedas', isProtection: true },
+        { productId: 'agb-elicitor-sin', productName: 'ELICITOR-SIN®', line: 'bioproteccion', dose: '3 g/L', method: 'Drench', frequency: 'Día 1 + 45', notes: 'Trichoderma vs Phytophthora — patógeno radicular crítico en zonas húmedas', isProtection: true },
         { productId: 'max-kill-plus', productName: 'Max-Kill Plus', line: 'bioproteccion', dose: '2.5 mL/L', method: 'Aspersión a axilas de hojas', frequency: 'Mensual', notes: 'Control biológico de cochinilla desde inicio — vector del wilt de piña', isProtection: true },
       ],
     },
@@ -437,7 +437,7 @@ const PINA: FullCropProtocol = {
         { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Cada 30 días', notes: 'K orgánico complementa fertirrigación — Brix > 14° para exportación' },
         { productId: 'bp-calcio', productName: 'BP Calcio', line: 'organicos', dose: '3 mL/L', method: 'Foliar al fruto', frequency: 'Cada 30 días', notes: 'Ca evita translucencia de pulpa y mejora vida post-cosecha' },
         { productId: 'bp-gross', productName: 'BP Gross', line: 'bioestimulantes', dose: '1 g/L', method: 'Foliar al fruto', frequency: 'Mes 3 y 4 post-inducción', notes: 'Engordador para alcanzar 1.6-2 kg por fruto en MD-2' },
-        { productId: 'beauver', productName: 'BEAUVER', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión axilas', frequency: 'Mensual', notes: 'Mantener control biológico de cochinilla durante fructificación', isProtection: true },
+        { productId: 'agb-beauver', productName: 'BEAUVER®', line: 'bioproteccion', dose: '2 mL/L', method: 'Aspersión axilas', frequency: 'Mensual', notes: 'Mantener control biológico de cochinilla durante fructificación', isProtection: true },
       ],
     },
     {
