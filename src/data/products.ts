@@ -1223,7 +1223,7 @@ const BIOPROTECCION: Product[] = [
       'La azadiractina actúa como IGR (regulador de crecimiento de insectos)',
       'Ideal para rotaciones en programas de MIP',
     ],
-    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol', 'agave', 'alfalfa', 'mango', 'papa', 'pina', 'platano', 'sorgo'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol', 'agave', 'alfalfa', 'mango', 'papa', 'pina', 'platano', 'sorgo', 'sandia', 'calabaza', 'calabacin'],
     compatibility: {
       compatible:   ['biotiza-coadyuvante'],
       incompatible: [],
@@ -1631,7 +1631,7 @@ const AGROBIONSA: Product[] = [
       'OMRI · apto orgánico',
       'Compatible con fauna benéfica',
     ],
-    crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora'],
+    crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'citricos'],
     compatibility: {
       compatible:   ['agb-beauver', 'agb-entomotri', 'funbac-plus'],
       incompatible: [],
@@ -1745,7 +1745,7 @@ const AGROBIONSA: Product[] = [
       'Sin residuos · Sin intervalo de seguridad',
       'Compatible con polinizadores',
     ],
-    crops: ['tomate', 'chile', 'nuez', 'papaya', 'sorgo', 'trigo'],
+    crops: ['tomate', 'chile', 'nuez', 'papaya', 'sorgo', 'trigo', 'citricos'],
     compatibility: {
       compatible:   ['agb-beauver', 'agb-paecilom', 'funbac-plus'],
       incompatible: [],

@@ -149,6 +149,7 @@ const SANDIA: FullCropProtocol = {
         { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Al trasplante y a los 10 días', notes: 'Sistema radicular profundo es seguro contra estrés hídrico de verano' },
         { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '1.5 L/ha', method: 'Fertirrigación', frequency: 'Días 1, 7, 14', notes: 'P arranca el desarrollo radicular y de guía' },
         { productId: 'zen-chrys', productName: 'Zen-Chrys', line: 'bioproteccion', dose: '1.5 mL/L', method: 'Aspersión', frequency: 'Preventivo cada 7 días', notes: 'Mosca blanca temprana = virus: prevención desde plántula', isProtection: true },
+        { productId: 'max-kill-plus', productName: 'Max-Kill Plus', line: 'bioproteccion', dose: '2.5 mL/L', method: 'Aspersión', frequency: 'Cada 5-7 días en pico de infestación', notes: 'Rotación de modo de acción contra mosca blanca: 5 activos en sinergia (piretro + ajo + canela + neem + mostaza) · per catálogo recommended_dose foliar 2-3 mL/L · máx 3 aplicaciones consecutivas', isProtection: true },
       ],
     },
     {
@@ -262,6 +263,7 @@ const CALABAZA: FullCropProtocol = {
         { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Emergencia y a los 12 días', notes: 'Raíz profunda: la calabaza de fruto grande demanda mucha agua y nutrición' },
         { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '1.5 L/ha', method: 'Fertirrigación', frequency: 'Días 1, 10, 18', notes: 'P para volumen radicular y arranque vegetativo' },
         { productId: 'zen-chrys', productName: 'Zen-Chrys', line: 'bioproteccion', dose: '1.5 mL/L', method: 'Aspersión', frequency: 'Preventivo desde emergencia', notes: 'Mosca blanca y pulgón temprano transmiten virus que arruinan el ciclo', isProtection: true },
+        { productId: 'max-kill-plus', productName: 'Max-Kill Plus', line: 'bioproteccion', dose: '2.5 mL/L', method: 'Aspersión', frequency: 'Cada 5-7 días en pico de infestación', notes: 'Rotación de modo de acción contra mosca blanca y pulgón: 5 activos en sinergia (piretro + ajo + canela + neem + mostaza) · per catálogo recommended_dose foliar 2-3 mL/L · máx 3 aplicaciones consecutivas', isProtection: true },
       ],
     },
     {
@@ -320,6 +322,7 @@ const CALABACIN: FullCropProtocol = {
         { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Emergencia y a los 8 días', notes: 'Arranque radicular crítico — cada día cuenta en un cultivo de 70 días' },
         { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '1 L/ha', method: 'Fertirrigación', frequency: 'Días 1, 6, 12', notes: 'P para volumen radicular y arranque vegetativo veloz' },
         { productId: 'zen-chrys', productName: 'Zen-Chrys', line: 'bioproteccion', dose: '1.5 mL/L', method: 'Aspersión', frequency: 'Preventivo desde emergencia', notes: 'Mosca blanca temprana = virosis que colapsa el ciclo: prevenir desde plántula', isProtection: true },
+        { productId: 'max-kill-plus', productName: 'Max-Kill Plus', line: 'bioproteccion', dose: '2.5 mL/L', method: 'Aspersión', frequency: 'Cada 5-7 días en pico de infestación', notes: 'Rotación de modo de acción contra mosca blanca y pulgón: 5 activos en sinergia (piretro + ajo + canela + neem + mostaza) · per catálogo recommended_dose foliar 2-3 mL/L · máx 3 aplicaciones consecutivas', isProtection: true },
       ],
     },
     {
