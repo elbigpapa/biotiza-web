@@ -53,7 +53,7 @@ const STAGES: Stage[] = [
     title: 'Cosecha medible',
     em: true,
     description:
-      'Indicadores objetivos: calibre, Brix, firmeza, vida de anaquel, residuos. Datos en cada visita.',
+      'Indicadores objetivos: calibre, peso, Brix y firmeza. Datos en cada visita técnica.',
     dot: 'bg-naranja-500',
   },
 ]
