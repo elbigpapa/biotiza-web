@@ -153,20 +153,13 @@ export default function AcademiaPage() {
       {/* Últimos artículos */}
       <section className="bg-gris-50 py-16 lg:py-24">
         <Container>
-          <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
+          <div className="mb-10">
             <SectionHeading
               tag="Últimas publicaciones"
               title="Artículos recientes"
               align="left"
               animate={false}
             />
-            <Link
-              href="/academia/blog"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-verde-600 hover:text-verde-700 transition-colors"
-            >
-              Ver todos
-              <ArrowRight size={14} />
-            </Link>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-3">
@@ -201,6 +194,52 @@ export default function AcademiaPage() {
                 </Link>
               )
             })}
+          </div>
+        </Container>
+      </section>
+
+      {/* Biblioteca completa — los 33 artículos publicados */}
+      <section className="bg-white py-16 lg:py-24 border-t border-gris-100">
+        <Container>
+          <SectionHeading
+            tag={`${ARTICLES.length} artículos publicados`}
+            title="Toda la biblioteca"
+            subtitle="Toda la documentación técnica de Academia Biotiza. Del más reciente al más antiguo."
+            align="left"
+            animate={false}
+          />
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {[...ARTICLES]
+              .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+              .map((article) => {
+                const cat = getCategoryStyle(article.category)
+                return (
+                  <Link
+                    key={article.slug}
+                    href={`/academia/blog/${article.slug}`}
+                    className="group flex flex-col gap-2.5 rounded-xl border border-gris-100 bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-gris-200 hover:shadow-[0_8px_24px_rgba(15,23,42,0.06)]"
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className={cn('rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ring-1', cat.bg, cat.text, cat.ring)}>
+                        {article.categoryLabel}
+                      </span>
+                      <span className="text-base" aria-hidden="true">{article.emoji}</span>
+                    </div>
+                    <h3 className="font-sans text-[15px] font-semibold leading-snug text-gris-900 group-hover:text-verde-700 transition-colors line-clamp-3">
+                      {article.title}
+                    </h3>
+                    <p className="text-xs text-gris-500 line-clamp-2 flex-1">
+                      {article.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between gap-2 pt-1 mt-auto text-[11px] text-gris-400">
+                      <span>{article.readTime} min de lectura</span>
+                      <span>
+                        {new Date(article.publishedAt).toLocaleDateString('es-MX', { day: 'numeric', month: 'short', year: 'numeric' })}
+                      </span>
+                    </div>
+                  </Link>
+                )
+              })}
           </div>
         </Container>
       </section>
