@@ -13,8 +13,6 @@ const INCLUDED = [
 const MEASURED = [
   'Calibre y peso de fruto',
   'Grados Brix y firmeza',
-  'Vida de anaquel post-cosecha',
-  'Cumplimiento de límites de residuos',
 ]
 
 export default function ServiceSection() {
