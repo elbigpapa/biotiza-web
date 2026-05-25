@@ -10,6 +10,7 @@
  */
 
 import type { CompatibilityEntry, CompatibilityStatus } from '@/types'
+import { PRODUCTS } from './products'
 
 // ─── Matriz de Compatibilidad ─────────────────────────────────────────────
 
@@ -353,51 +354,132 @@ export const COMPATIBILITY_MATRIX: CompatibilityEntry[] = [
   },
 ]
 
+// ─── Fallback desde las fichas de producto ────────────────────────────────
+//
+// La matriz curada (`COMPATIBILITY_MATRIX`) cubre las combinaciones más
+// críticas, pero no es exhaustiva: con 49 productos hay >1100 pares posibles.
+// Cada producto declara en su ficha (`products.ts → compatibility`) qué
+// otros productos considera compatible/conditional/incompatible.
+//
+// Cuando el par no está en la matriz curada, consultamos esas dos fichas:
+//  - Si las dos coinciden → se usa ese estado.
+//  - Si difieren → gana el "peor" (incompatible > conditional > compatible).
+//  - Si ninguna ficha lo menciona → 'unknown'.
+//
+// Esto evita que el verificador muestre "?" en la mayoría de cruces.
+
+const STATUS_PRIORITY: Record<CompatibilityStatus, number> = {
+  unknown: 0,
+  compatible: 1,
+  conditional: 2,
+  incompatible: 3,
+}
+
+const FALLBACK_NOTES: Record<Exclude<CompatibilityStatus, 'unknown'>, string> = {
+  compatible:
+    'Compatibles según las fichas de producto. Aplicar a dosis recomendadas y agitar bien la mezcla.',
+  conditional:
+    'Marcada como condicional en la ficha del producto. Realizar prueba de jarrita antes de aplicar en campo.',
+  incompatible:
+    'Marcada como incompatible en la ficha del producto. No mezclar en tanque — aplicar en días alternos.',
+}
+
+function compatibilityFromProductLists(
+  idA: string,
+  idB: string,
+): CompatibilityStatus {
+  const a = PRODUCTS.find((p) => p.id === idA)
+  const b = PRODUCTS.find((p) => p.id === idB)
+  if (!a || !b) return 'unknown'
+
+  const lookup = (
+    source: typeof a,
+    target: string,
+  ): CompatibilityStatus => {
+    if (source.compatibility.incompatible?.includes(target)) return 'incompatible'
+    if (source.compatibility.conditional?.includes(target)) return 'conditional'
+    if (source.compatibility.compatible?.includes(target)) return 'compatible'
+    return 'unknown'
+  }
+
+  const aSaysB = lookup(a, idB)
+  const bSaysA = lookup(b, idA)
+
+  if (aSaysB === 'unknown' && bSaysA === 'unknown') return 'unknown'
+
+  // El peor estado gana (regla de seguridad agronómica)
+  return STATUS_PRIORITY[aSaysB] >= STATUS_PRIORITY[bSaysA] ? aSaysB : bSaysA
+}
+
 // ─── Función de consulta ──────────────────────────────────────────────────
 
 /**
  * Busca el estado de compatibilidad entre dos productos.
- * La búsqueda es bidireccional (A,B) = (B,A).
+ * La búsqueda es bidireccional (A,B) = (B,A) y consulta primero la matriz
+ * curada; si no hay entrada, cae en las fichas de cada producto.
  *
- * @returns CompatibilityStatus — 'unknown' si no existe el par en la matriz
+ * @returns CompatibilityStatus — 'unknown' solo si ninguna fuente lo declara
  */
 export function getCompatibility(
   idA: string,
   idB: string,
 ): CompatibilityStatus {
-  // Normalizar orden para búsqueda bidireccional
+  // 1. Matriz curada (tiene notas técnicas explícitas)
   const entry = COMPATIBILITY_MATRIX.find(
     (e) =>
       (e.productA === idA && e.productB === idB) ||
       (e.productA === idB && e.productB === idA),
   )
-  return entry?.status ?? 'unknown'
+  if (entry) return entry.status
+
+  // 2. Fallback a las fichas de producto
+  return compatibilityFromProductLists(idA, idB)
 }
 
 /**
  * Devuelve la entrada completa de compatibilidad entre dos productos,
  * incluyendo notas. Útil para mostrar la justificación técnica.
  *
- * @returns CompatibilityEntry | undefined
+ * Si el par no está en la matriz curada, sintetiza una entrada con notas
+ * genéricas a partir de las fichas de producto.
+ *
+ * @returns CompatibilityEntry | undefined  (undefined solo si es 'unknown')
  */
 export function getCompatibilityEntry(
   idA: string,
   idB: string,
 ): CompatibilityEntry | undefined {
-  return COMPATIBILITY_MATRIX.find(
+  const entry = COMPATIBILITY_MATRIX.find(
     (e) =>
       (e.productA === idA && e.productB === idB) ||
       (e.productA === idB && e.productB === idA),
   )
+  if (entry) return entry
+
+  const status = compatibilityFromProductLists(idA, idB)
+  if (status === 'unknown') return undefined
+
+  return {
+    productA: idA,
+    productB: idB,
+    status,
+    notes: FALLBACK_NOTES[status],
+  }
 }
 
 /**
  * Devuelve todos los productos incompatibles con un producto dado.
+ * Consulta la matriz curada Y la ficha del producto.
  */
 export function getIncompatibleProducts(productId: string): string[] {
-  return COMPATIBILITY_MATRIX.filter(
+  const fromMatrix = COMPATIBILITY_MATRIX.filter(
     (e) =>
       e.status === 'incompatible' &&
       (e.productA === productId || e.productB === productId),
   ).map((e) => (e.productA === productId ? e.productB : e.productA))
+
+  const fromCard = PRODUCTS.find((p) => p.id === productId)
+    ?.compatibility.incompatible ?? []
+
+  return Array.from(new Set([...fromMatrix, ...fromCard]))
 }

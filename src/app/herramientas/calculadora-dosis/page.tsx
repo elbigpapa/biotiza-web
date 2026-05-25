@@ -279,7 +279,11 @@ export default function CalculadoraDosisPage() {
             </div>
 
             {/* Grouped list */}
-            <div className="space-y-6 max-h-[60vh] overflow-y-auto pr-1">
+            {/* data-lenis-prevent: evita que Lenis (scroll suave global) intercepte la rueda dentro de este contenedor */}
+            <div
+              data-lenis-prevent
+              className="space-y-6 max-h-[60vh] overflow-y-auto overscroll-contain pr-1"
+            >
               {PRODUCT_LINES.map((line) => {
                 const products = grouped[line.id]
                 if (!products?.length) return null

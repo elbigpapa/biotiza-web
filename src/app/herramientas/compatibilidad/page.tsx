@@ -81,7 +81,11 @@ export default function CompatibilidadPage() {
   const pairs = showResults && selectedIds.length >= 2 ? getPairs(selectedIds) : []
   const incompatiblePairs = pairs.filter((p) => p.status === 'incompatible')
   const conditionalPairs = pairs.filter((p) => p.status === 'conditional')
-  const allCompatible = pairs.length > 0 && incompatiblePairs.length === 0 && conditionalPairs.length === 0
+  const unknownPairs = pairs.filter((p) => p.status === 'unknown')
+  const compatiblePairs = pairs.filter((p) => p.status === 'compatible')
+  // "Todos compatibles" SOLO cuando cada par está explícitamente marcado como
+  // compatible. Antes el banner mentía si todos los pares eran 'unknown'.
+  const allCompatible = pairs.length > 0 && compatiblePairs.length === pairs.length
 
   function toggleProduct(id: string) {
     setShowResults(false)
@@ -165,7 +169,11 @@ export default function CompatibilidadPage() {
             </div>
 
             {/* Product list */}
-            <div className="space-y-4 max-h-[55vh] overflow-y-auto pr-1">
+            {/* data-lenis-prevent: evita que Lenis (scroll suave global) intercepte la rueda dentro de este contenedor */}
+            <div
+              data-lenis-prevent
+              className="space-y-4 max-h-[55vh] overflow-y-auto overscroll-contain pr-1"
+            >
               {PRODUCT_LINES.map((line) => {
                 const products = grouped[line.id]
                 if (!products?.length) return null
@@ -244,12 +252,16 @@ export default function CompatibilidadPage() {
                     ? 'border-verde-200 bg-verde-50 text-verde-700'
                     : incompatiblePairs.length > 0
                     ? 'border-red-200 bg-red-50 text-red-700'
-                    : 'border-naranja-200 bg-naranja-50 text-naranja-600'}`}>
+                    : conditionalPairs.length > 0
+                    ? 'border-naranja-200 bg-naranja-50 text-naranja-600'
+                    : 'border-gris-200 bg-gris-50 text-gris-600'}`}>
                   {allCompatible
                     ? '✅ Todos los productos son compatibles para mezclar'
                     : incompatiblePairs.length > 0
                     ? `❌ Hay ${incompatiblePairs.length} par(es) incompatible(s). No mezclar.`
-                    : `⚠️ Existen mezclas condicionales. Realizar prueba de jarrita.`}
+                    : conditionalPairs.length > 0
+                    ? `⚠️ Existen ${conditionalPairs.length} mezcla(s) condicional(es). Realizar prueba de jarrita.`
+                    : `❓ ${unknownPairs.length} par(es) sin datos en la matriz. Realizar prueba de jarrita antes de aplicar.`}
                 </div>
 
                 {/* Matrix table */}
@@ -345,6 +357,27 @@ export default function CompatibilidadPage() {
                         <li key={`${p.a}-${p.b}`} className="text-xs text-naranja-600">
                           <strong>{productName(p.a)}</strong> + <strong>{productName(p.b)}</strong>
                           {p.notes && <span className="text-naranja-400 ml-1">— {p.notes}</span>}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Unknown pairs detail */}
+                {unknownPairs.length > 0 && (
+                  <div className="mt-3 rounded-xl border border-gris-200 bg-gris-50 px-4 py-3">
+                    <h3 className="text-xs font-semibold text-gris-600 uppercase tracking-wide mb-2">
+                      ❓ Sin datos en la matriz
+                    </h3>
+                    <p className="text-[11px] text-gris-500 mb-2">
+                      Estos pares aún no están documentados en nuestra matriz curada ni en las
+                      fichas de producto. Realiza prueba de jarrita antes de aplicar en campo o
+                      consulta a tu asesor Biotiza por WhatsApp.
+                    </p>
+                    <ul className="space-y-1.5">
+                      {unknownPairs.map((p) => (
+                        <li key={`${p.a}-${p.b}`} className="text-xs text-gris-600">
+                          <strong>{productName(p.a)}</strong> + <strong>{productName(p.b)}</strong>
                         </li>
                       ))}
                     </ul>
