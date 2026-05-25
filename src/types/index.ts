@@ -40,11 +40,14 @@ export type Certification = 'COFEPRIS' | 'OMRI' | 'Hecho en México' | string
 
 // ─── Métodos de Aplicación ────────────────────────────────────────────────
 
+// Las claves coinciden con `recommended_dose` (sin acento) para que el
+// lookup `recommended_dose[method]` funcione sin normalización adicional.
+// La presentación visual (con acento) se maneja en METHOD_META.
 export type ApplicationMethod =
-  | 'fertirrigación'
+  | 'fertirrigacion'
   | 'drench'
   | 'foliar'
-  | 'aspersión'
+  | 'aspersion'
   | 'drench radicular'
   | 'inyección al suelo'
   | string

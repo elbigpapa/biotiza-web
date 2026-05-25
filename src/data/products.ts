@@ -28,7 +28,7 @@ const ORGANICOS: Product[] = [
       { size: '20 L', unit: 'L' },
     ],
     certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['foliar', 'fertirrigación', 'drench'],
+    application_methods: ['foliar', 'fertirrigacion', 'drench'],
     recommended_dose: {
       foliar:        '2–3 mL/L',
       fertirrigacion:'2–4 L/ha',
@@ -70,7 +70,7 @@ const ORGANICOS: Product[] = [
       { size: '20 L', unit: 'L' },
     ],
     certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['foliar', 'fertirrigación'],
+    application_methods: ['foliar', 'fertirrigacion'],
     recommended_dose: {
       foliar:        '1.5–2.5 mL/L',
       fertirrigacion:'2–3 L/ha',
@@ -110,7 +110,7 @@ const ORGANICOS: Product[] = [
       { size: '20 L', unit: 'L' },
     ],
     certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['foliar', 'fertirrigación'],
+    application_methods: ['foliar', 'fertirrigacion'],
     recommended_dose: {
       foliar:        '2–3 mL/L',
       fertirrigacion:'3–5 L/ha',
@@ -146,7 +146,7 @@ const ORGANICOS: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['drench', 'fertirrigación'],
+    application_methods: ['drench', 'fertirrigacion'],
     recommended_dose: {
       drench:        '1–1.5 mL/L',
       fertirrigacion:'0.5–1 L/ha',
@@ -184,7 +184,7 @@ const ORGANICOS: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }, { size: '20 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['foliar', 'fertirrigación'],
+    application_methods: ['foliar', 'fertirrigacion'],
     recommended_dose: {
       foliar:        '1.5–2 mL/L',
       fertirrigacion:'2–3 L/ha',
@@ -220,7 +220,7 @@ const ORGANICOS: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }, { size: '20 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['drench', 'fertirrigación'],
+    application_methods: ['drench', 'fertirrigacion'],
     recommended_dose: {
       drench:        '1–2 mL/L (preventivo); 3–5 mL/L (curativo)',
       fertirrigacion:'3–5 L/ha',
@@ -256,7 +256,7 @@ const ORGANICOS: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }, { size: '20 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['foliar', 'fertirrigación'],
+    application_methods: ['foliar', 'fertirrigacion'],
     recommended_dose: {
       foliar:        '0.5–1 mL/L',
       fertirrigacion:'0.5–1 L/ha',
@@ -295,7 +295,7 @@ const ORGANICOS: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }, { size: '20 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['foliar', 'fertirrigación', 'drench'],
+    application_methods: ['foliar', 'fertirrigacion', 'drench'],
     recommended_dose: {
       foliar:        '1.5–2 mL/L',
       fertirrigacion:'1.5–2.5 L/ha',
@@ -334,7 +334,7 @@ const ORGANICOS: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }, { size: '20 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['foliar', 'fertirrigación'],
+    application_methods: ['foliar', 'fertirrigacion'],
     recommended_dose: {
       foliar:        '2–3 mL/L',
       fertirrigacion:'2–4 L/ha',
@@ -380,7 +380,7 @@ const ESPECIALIDADES: Product[] = [
     ],
     presentations: [{ size: '1 kg', unit: 'kg' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'fertirrigación'],
+    application_methods: ['foliar', 'fertirrigacion'],
     recommended_dose: {
       foliar:        '0.5–1 g/L',
       fertirrigacion:'0.5–1 kg/ha',
@@ -417,7 +417,7 @@ const ESPECIALIDADES: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }, { size: '20 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'fertirrigación'],
+    application_methods: ['foliar', 'fertirrigacion'],
     recommended_dose: {
       foliar:        '0.3–0.5 mL/L',
       fertirrigacion:'0.3–0.5 L/ha',
@@ -491,7 +491,7 @@ const ESPECIALIDADES: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }, { size: '20 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersión'],
+    application_methods: ['foliar', 'aspersion'],
     recommended_dose: {
       foliar: '0.5–1 mL/L (adicionar al caldo)',
     },
@@ -527,7 +527,7 @@ const ESPECIALIDADES: Product[] = [
     ],
     presentations: [{ size: '1 kg', unit: 'kg' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['drench', 'fertirrigación'],
+    application_methods: ['drench', 'fertirrigacion'],
     recommended_dose: {
       drench:        '1–2 g/L de solución',
       fertirrigacion:'0.5–1 kg/ha',
@@ -564,7 +564,7 @@ const ESPECIALIDADES: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }, { size: '20 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'fertirrigación'],
+    application_methods: ['foliar', 'fertirrigacion'],
     recommended_dose: {
       foliar:        '1.5–2.5 mL/L',
       fertirrigacion:'2–3 L/ha',
@@ -755,7 +755,7 @@ const BIOESTIMULANTES: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['fertirrigación'],
+    application_methods: ['fertirrigacion'],
     recommended_dose: {
       fertirrigacion: '0.5–1 mL/L en agua de riego',
     },
@@ -791,7 +791,7 @@ const BIOESTIMULANTES: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['aspersión', 'foliar'],
+    application_methods: ['aspersion', 'foliar'],
     recommended_dose: {
       aspersion: '2–3 mL/L en superficies y herramientas',
       foliar:    '1 mL/L preventivo foliar',
@@ -834,7 +834,7 @@ const NUTRICION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }, { size: '20 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['fertirrigación'],
+    application_methods: ['fertirrigacion'],
     recommended_dose: {
       fertirrigacion: '3–8 L/ha según demanda del cultivo',
     },
@@ -869,7 +869,7 @@ const NUTRICION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }, { size: '20 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['fertirrigación'],
+    application_methods: ['fertirrigacion'],
     recommended_dose: {
       fertirrigacion: '1–3 L/ha',
     },
@@ -904,7 +904,7 @@ const NUTRICION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }, { size: '20 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['fertirrigación'],
+    application_methods: ['fertirrigacion'],
     recommended_dose: {
       fertirrigacion: '3–6 L/ha en engorde y maduración',
     },
@@ -940,7 +940,7 @@ const NUTRICION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }, { size: '20 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['fertirrigación', 'foliar'],
+    application_methods: ['fertirrigacion', 'foliar'],
     recommended_dose: {
       fertirrigacion: '3–5 L/ha',
       foliar:         '3–4 mL/L',
@@ -977,7 +977,7 @@ const NUTRICION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }, { size: '20 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['fertirrigación', 'foliar'],
+    application_methods: ['fertirrigacion', 'foliar'],
     recommended_dose: {
       fertirrigacion: '2–4 L/ha',
       foliar:         '2–3 mL/L',
@@ -1013,7 +1013,7 @@ const NUTRICION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }, { size: '20 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['fertirrigación', 'foliar'],
+    application_methods: ['fertirrigacion', 'foliar'],
     recommended_dose: {
       fertirrigacion: '1–2 L/ha',
       foliar:         '0.5–1 mL/L',
@@ -1049,7 +1049,7 @@ const NUTRICION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }, { size: '20 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['fertirrigación', 'foliar'],
+    application_methods: ['fertirrigacion', 'foliar'],
     recommended_dose: {
       fertirrigacion: '0.5–1 L/ha',
       foliar:         '0.5 mL/L',
@@ -1091,7 +1091,7 @@ const NUTRICION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }, { size: '20 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['fertirrigación', 'foliar'],
+    application_methods: ['fertirrigacion', 'foliar'],
     recommended_dose: {
       fertirrigacion: '1–2 L/ha',
       foliar:         '1–1.5 mL/L',
@@ -1136,7 +1136,7 @@ const BIOPROTECCION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersión'],
+    application_methods: ['foliar', 'aspersion'],
     recommended_dose: {
       foliar:    '1.5–2.5 mL/L',
       aspersion: '1.5–2.5 L/ha',
@@ -1172,7 +1172,7 @@ const BIOPROTECCION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersión'],
+    application_methods: ['foliar', 'aspersion'],
     recommended_dose: {
       foliar: '1–2 mL/L',
     },
@@ -1211,7 +1211,7 @@ const BIOPROTECCION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersión'],
+    application_methods: ['foliar', 'aspersion'],
     recommended_dose: {
       foliar: '2–3 mL/L en presión alta',
     },
@@ -1246,7 +1246,7 @@ const BIOPROTECCION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersión'],
+    application_methods: ['foliar', 'aspersion'],
     recommended_dose: {
       foliar: '1.5–2.5 mL/L; cubrir envés de hoja',
     },
@@ -1281,7 +1281,7 @@ const BIOPROTECCION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersión'],
+    application_methods: ['foliar', 'aspersion'],
     recommended_dose: {
       foliar: '1–2 mL/L preventivo; 2–3 mL/L curativo',
     },
@@ -1316,7 +1316,7 @@ const BIOPROTECCION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['aspersión', 'foliar'],
+    application_methods: ['aspersion', 'foliar'],
     recommended_dose: {
       aspersion: '1–2 mL/L en heridas y zonas de poda',
       foliar:    '1 mL/L preventivo',
@@ -1352,7 +1352,7 @@ const BIOPROTECCION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersión'],
+    application_methods: ['foliar', 'aspersion'],
     recommended_dose: {
       foliar: '1.5–2.5 mL/L',
     },
@@ -1389,7 +1389,7 @@ const BIOPROTECCION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersión'],
+    application_methods: ['foliar', 'aspersion'],
     recommended_dose: {
       foliar: '1.5–2 mL/L',
     },
@@ -1424,7 +1424,7 @@ const BIOPROTECCION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['drench', 'fertirrigación'],
+    application_methods: ['drench', 'fertirrigacion'],
     recommended_dose: {
       drench: 'Consultar ficha técnica',
     },
@@ -1458,7 +1458,7 @@ const BIOPROTECCION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersión'],
+    application_methods: ['foliar', 'aspersion'],
     recommended_dose: {
       foliar: '0.5–1 mL/L (adicionar al caldo insecticida o fungicida)',
     },
@@ -1503,7 +1503,7 @@ const AGROBIONSA: Product[] = [
       { size: '240 g', unit: 'g' },
     ],
     certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['drench', 'fertirrigación', 'drench radicular'],
+    application_methods: ['drench', 'fertirrigacion', 'drench radicular'],
     recommended_dose: {
       drench:         '240–480 g/ha',
       fertirrigacion: '240–480 g/ha',
@@ -1542,7 +1542,7 @@ const AGROBIONSA: Product[] = [
       { size: '240 g', unit: 'g' },
     ],
     certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['drench', 'fertirrigación'],
+    application_methods: ['drench', 'fertirrigacion'],
     recommended_dose: {
       drench:         '240–480 g/ha',
       fertirrigacion: '240–480 g/ha',
@@ -1581,7 +1581,7 @@ const AGROBIONSA: Product[] = [
       { size: '240 g', unit: 'g' },
     ],
     certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersión'],
+    application_methods: ['foliar', 'aspersion'],
     recommended_dose: {
       foliar: '360–480 g / 200 L de agua',
     },
@@ -1619,7 +1619,7 @@ const AGROBIONSA: Product[] = [
       { size: '240 g', unit: 'g' },
     ],
     certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersión'],
+    application_methods: ['foliar', 'aspersion'],
     recommended_dose: {
       foliar: '240–480 g / 200 L de agua',
     },
@@ -1657,7 +1657,7 @@ const AGROBIONSA: Product[] = [
       { size: '240 g', unit: 'g' },
     ],
     certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersión'],
+    application_methods: ['foliar', 'aspersion'],
     recommended_dose: {
       foliar: '360–480 g / 200 L de agua',
     },
@@ -1695,7 +1695,7 @@ const AGROBIONSA: Product[] = [
       { size: '240 g', unit: 'g' },
     ],
     certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersión'],
+    application_methods: ['foliar', 'aspersion'],
     recommended_dose: {
       foliar: '480 g / 200 L de agua',
     },
@@ -1733,7 +1733,7 @@ const AGROBIONSA: Product[] = [
       { size: '1 L', unit: 'L' },
     ],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersión'],
+    application_methods: ['foliar', 'aspersion'],
     recommended_dose: {
       foliar: '1.0–2.0 L/ha',
     },
@@ -1786,7 +1786,7 @@ const VEGANIC: Product[] = [
       { size: '1 000 L', unit: 'L' },
     ],
     certifications: ['COFEPRIS'],
-    application_methods: ['foliar', 'fertirrigación'],
+    application_methods: ['foliar', 'fertirrigacion'],
     recommended_dose: {
       foliar:         '0,5 – 2,5 L / 200 L de agua (según cultivo)',
       fertirrigacion: '1,0 – 3,0 L/ha (según cultivo)',
