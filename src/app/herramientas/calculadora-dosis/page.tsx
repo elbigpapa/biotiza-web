@@ -28,6 +28,14 @@ const METHOD_META: Record<string, { label: string; icon: string; emoji: string }
   'drench radicular': { label: 'Drench Radicular', icon: '🪣', emoji: '🪣' },
 }
 
+// Normaliza la clave del método para hacer match con recommended_dose.
+// products.ts usa 'fertirrigación'/'aspersión' en application_methods (con
+// acento) pero 'fertirrigacion'/'aspersion' en recommended_dose (sin acento).
+// Esta función elimina los acentos para que el lookup funcione consistentemente.
+function methodKey(m: string): string {
+  return m.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+}
+
 // ─── Line color config ────────────────────────────────────────────────────────
 
 const LINE_COLORS: Record<string, { dot: string; badge: string }> = {
@@ -205,8 +213,8 @@ export default function CalculadoraDosisPage() {
     return map
   }, [filteredProducts])
 
-  // Dose string for selected method
-  const doseStr = selectedProduct?.recommended_dose?.[selectedMethod] ?? ''
+  // Dose string for selected method (normalize key to match catalog format)
+  const doseStr = selectedProduct?.recommended_dose?.[methodKey(selectedMethod)] ?? ''
   const doseResult = doseStr ? calculateTotal(doseStr, surfaceHa, selectedMethod) : null
 
   // WhatsApp message
@@ -419,9 +427,9 @@ export default function CalculadoraDosisPage() {
                     <span className="text-2xl">{meta.emoji}</span>
                     <div>
                       <p className="font-semibold text-gris-800">{meta.label}</p>
-                      {selectedProduct.recommended_dose?.[method] && (
+                      {selectedProduct.recommended_dose?.[methodKey(method)] && (
                         <p className="text-xs text-gris-400 mt-0.5">
-                          Dosis: {selectedProduct.recommended_dose[method]}
+                          Dosis: {selectedProduct.recommended_dose[methodKey(method)]}
                         </p>
                       )}
                     </div>
