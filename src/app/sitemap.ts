@@ -19,33 +19,37 @@ import { GARDEN_CATEGORIES, GARDEN_PACKAGES } from '@/data/home-garden'
 const SITE = 'https://biotiza.mx'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date()
+  // NOTA SEO: NO se fija `lastModified` con la fecha de build (`new Date()`).
+  // Una fecha que cambia en cada build es una señal falsa de "contenido
+  // actualizado" y Google la interpreta como baja calidad. Para contenido
+  // estático cuya fecha real desconocemos, es preferible OMITIR `lastModified`.
+  // Solo los artículos del blog, que SÍ tienen fecha real de publicación/
+  // actualización en los datos, llevan `lastModified`.
 
   // ─── Estáticas de alta prioridad ──────────────────────────────────────────
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: `${SITE}/`,                        lastModified: now, changeFrequency: 'weekly',  priority: 1.0 },
-    { url: `${SITE}/soluciones`,              lastModified: now, changeFrequency: 'weekly',  priority: 0.9 },
-    { url: `${SITE}/cultivos`,                lastModified: now, changeFrequency: 'weekly',  priority: 0.9 },
-    { url: `${SITE}/casa-jardin`,             lastModified: now, changeFrequency: 'weekly',  priority: 0.85 },
-    { url: `${SITE}/nosotros`,                lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${SITE}/contacto`,                lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${SITE}/cotizacion`,              lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${SITE}/herramientas`,            lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${SITE}/herramientas/calculadora-dosis`,   lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${SITE}/herramientas/diagnostico`,         lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${SITE}/herramientas/compatibilidad`,      lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${SITE}/herramientas/calculadora-roi`,     lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${SITE}/academia`,                lastModified: now, changeFrequency: 'weekly',  priority: 0.7 },
-    { url: `${SITE}/academia/blog`,           lastModified: now, changeFrequency: 'weekly',  priority: 0.7 },
-    { url: `${SITE}/academia/guias`,          lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${SITE}/huella-de-carbono`,       lastModified: now, changeFrequency: 'yearly',  priority: 0.5 },
-    { url: `${SITE}/politica-privacidad`,     lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
+    { url: `${SITE}/`,                        changeFrequency: 'weekly',  priority: 1.0 },
+    { url: `${SITE}/soluciones`,              changeFrequency: 'weekly',  priority: 0.9 },
+    { url: `${SITE}/cultivos`,                changeFrequency: 'weekly',  priority: 0.9 },
+    { url: `${SITE}/casa-jardin`,             changeFrequency: 'weekly',  priority: 0.85 },
+    { url: `${SITE}/nosotros`,                changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE}/contacto`,                changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE}/cotizacion`,              changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE}/herramientas`,            changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE}/herramientas/calculadora-dosis`,   changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${SITE}/herramientas/diagnostico`,         changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${SITE}/herramientas/compatibilidad`,      changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${SITE}/herramientas/calculadora-roi`,     changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${SITE}/academia`,                changeFrequency: 'weekly',  priority: 0.7 },
+    { url: `${SITE}/academia/blog`,           changeFrequency: 'weekly',  priority: 0.7 },
+    { url: `${SITE}/academia/guias`,          changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${SITE}/huella-de-carbono`,       changeFrequency: 'yearly',  priority: 0.5 },
+    { url: `${SITE}/politica-privacidad`,     changeFrequency: 'yearly',  priority: 0.3 },
   ]
 
   // ─── Líneas de producto ──────────────────────────────────────────────────
   const lineRoutes: MetadataRoute.Sitemap = PRODUCT_LINES.map((line) => ({
     url: `${SITE}/soluciones/${line.slug}`,
-    lastModified: now,
     changeFrequency: 'weekly' as const,
     priority: 0.85,
   }))
@@ -53,7 +57,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ─── Fichas de producto (47) ──────────────────────────────────────────────
   const productRoutes: MetadataRoute.Sitemap = PRODUCTS.map((p) => ({
     url: `${SITE}/soluciones/${p.line}/${p.slug}`,
-    lastModified: now,
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }))
@@ -62,33 +65,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const cropRoutes: MetadataRoute.Sitemap = CROPS_DATA.flatMap((c) => [
     {
       url: `${SITE}/cultivos/${c.slug}`,
-      lastModified: now,
       changeFrequency: 'monthly' as const,
       priority: 0.75,
     },
     {
       url: `${SITE}/cultivos/${c.slug}/ficha`,
-      lastModified: now,
       changeFrequency: 'monthly' as const,
       priority: 0.5,
     },
   ])
 
-  // ─── Casa y Jardín — categorías y paquetes ────────────────────────────────
-  const gardenCategoryRoutes: MetadataRoute.Sitemap = GARDEN_CATEGORIES.map((c) => ({
-    url: `${SITE}/casa-jardin/${c.slug}`,
-    lastModified: now,
+  // ─── Casa y Jardín — categorías (incluye "todos") y paquetes ──────────────
+  const gardenCategoryRoutes: MetadataRoute.Sitemap = [
+    ...GARDEN_CATEGORIES.map((c) => c.slug),
+    'todos', // ruta agregada generada estáticamente en [categoria]/page.tsx
+  ].map((slug) => ({
+    url: `${SITE}/casa-jardin/${slug}`,
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))
   const gardenPackageRoutes: MetadataRoute.Sitemap = GARDEN_PACKAGES.map((p) => ({
     url: `${SITE}/casa-jardin/paquete/${p.slug}`,
-    lastModified: now,
     changeFrequency: 'monthly' as const,
     priority: 0.65,
   }))
 
-  // ─── Blog ─────────────────────────────────────────────────────────────────
+  // ─── Blog (con fecha real de publicación/actualización) ───────────────────
   const articleRoutes: MetadataRoute.Sitemap = ARTICLES.map((a) => ({
     url: `${SITE}/academia/blog/${a.slug}`,
     lastModified: new Date(a.updatedAt ?? a.publishedAt),

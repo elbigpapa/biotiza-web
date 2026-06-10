@@ -16,11 +16,38 @@ const isProd = process.env.NODE_ENV === 'production'
 // ─── Content Security Policy ────────────────────────────────────────────────
 // Nota: Next 16 + React 19 inline algunos scripts de runtime → 'unsafe-inline'
 // en script-src es inevitable sin nonces. Mantenemos 'self' + dominios conocidos.
+//
+// DEUDA TÉCNICA (XSS): 'unsafe-inline' en script-src debilita el CSP. Quitarlo
+// requiere migrar a nonces/hashes en los scripts inline de Next y GA (Consent
+// Mode). Pendiente. 'unsafe-eval' SOLO se permite en desarrollo (Turbopack/React
+// Refresh lo necesitan); en producción NO se incluye.
+const scriptSrc = [
+  "'self'",
+  "'unsafe-inline'",
+  ...(isProd ? [] : ["'unsafe-eval'"]),
+  'https://www.googletagmanager.com',
+  'https://www.google-analytics.com',
+  'https://vercel.live',
+]
+
+// img-src acotado a los orígenes realmente usados:
+//  • 'self' / data: / blob:  → logos y productos locales, imágenes optimizadas
+//  • images.unsplash.com      → fotos de cultivos/hero (ver src/data/crop-images.ts)
+//  • google-analytics / gtm   → pixeles de tracking de GA4
+const imgSrc = [
+  "'self'",
+  'data:',
+  'blob:',
+  'https://images.unsplash.com',
+  'https://www.google-analytics.com',
+  'https://www.googletagmanager.com',
+]
+
 const cspDirectives: Record<string, string[]> = {
   'default-src':  ["'self'"],
-  'script-src':   ["'self'", "'unsafe-inline'", "'unsafe-eval'", 'https://www.googletagmanager.com', 'https://www.google-analytics.com', 'https://vercel.live'],
+  'script-src':   scriptSrc,
   'style-src':    ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
-  'img-src':      ["'self'", 'data:', 'blob:', 'https:'],
+  'img-src':      imgSrc,
   'font-src':     ["'self'", 'data:', 'https://fonts.gstatic.com'],
   'connect-src':  ["'self'", 'https://www.google-analytics.com', 'https://vitals.vercel-insights.com', 'https://vercel.live', 'wss://ws-us3.pusher.com'],
   'media-src':    ["'self'", 'https:'],
@@ -45,7 +72,9 @@ const securityHeaders = [
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
   { key: 'X-DNS-Prefetch-Control', value: 'on' },
   { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(self), interest-cohort=()' },
-  { key: 'X-XSS-Protection', value: '1; mode=block' },
+  // Deprecado: el filtro XSS heredado de los navegadores puede introducir
+  // vulnerabilidades. '0' lo desactiva; la protección real la da el CSP.
+  { key: 'X-XSS-Protection', value: '0' },
   { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
   { key: 'Cross-Origin-Resource-Policy', value: 'same-origin' },
 ]
@@ -84,12 +113,8 @@ const nextConfig: NextConfig = {
         source: '/:path*',
         headers: isProd ? securityHeaders : securityHeaders.filter(h => h.key !== 'Strict-Transport-Security'),
       },
-      {
-        source: '/fonts/:path*',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-        ],
-      },
+      // Nota: no hay carpeta public/fonts (las fuentes van por next/font, que ya
+      // emite Cache-Control immutable con hash). Se eliminó la regla muerta.
     ]
   },
 

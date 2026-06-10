@@ -81,7 +81,7 @@ const PAPAYA: FullCropProtocol = {
   cycle_days: 300,
   season: 'Trasplante todo el año en trópico; cosecha desde el mes 8',
   regions: ['Chiapas', 'Veracruz', 'Oaxaca', 'Colima', 'Michoacán', 'Yucatán'],
-  featured_products: ['bp-calcio', 'biotiza-calcio-boro', 'bp-koren', 'k-ultra', 'lecanii-green'],
+  featured_products: ['bp-calcio', 'biotiza-calcio-boro', 'bp-koren', 'k-ultra', 'agb-lecanii-green'],
   common_challenges: ['Virus de la mancha anular (PRSV)', 'Ácaro blanco y araña roja', 'Antracnosis', 'Pudrición de raíz por Phytophthora', 'Deformación de fruto por deficiencia de B'],
   stages: [
     {
@@ -426,7 +426,7 @@ const SORGO: FullCropProtocol = {
   cycle_days: 120,
   season: 'Primavera-verano (temporal) y otoño-invierno (riego, Tamaulipas)',
   regions: ['Tamaulipas', 'Guanajuato', 'Sinaloa', 'Michoacán', 'Jalisco', 'Morelos'],
-  featured_products: ['n-ultra', 'k-ultra', 'bp-koren', 'lecanii-green', 'bp-zinc'],
+  featured_products: ['n-ultra', 'k-ultra', 'bp-koren', 'agb-lecanii-green', 'bp-zinc'],
   common_challenges: ['Pulgón amarillo del sorgo (Melanaphis sacchari)', 'Mosquita del sorgo (midge)', 'Gusano cogollero', 'Carbón de la panoja', 'Deficiencia de Fe/Zn en suelos calcáreos'],
   stages: [
     {

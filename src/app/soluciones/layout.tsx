@@ -1,5 +1,18 @@
 import type { Metadata } from 'next'
 
+/**
+ * Metadata del layout de /soluciones.
+ *
+ * IMPORTANTE: este es un LAYOUT, por lo que su metadata se hereda por TODAS
+ * las páginas hijas (/soluciones/[linea] y /soluciones/[linea]/[slug]).
+ * Por eso NO debe declarar `alternates.canonical` ni `openGraph.url` fijos:
+ * eso marcaría las 5 páginas de línea y las 47 fichas de producto como
+ * duplicados de /soluciones. El canonical y el og:url los define cada página
+ * hija (y la propia /soluciones) en su `generateMetadata`/`metadata`.
+ *
+ * Solo conservamos title/description/keywords genéricos como FALLBACK seguro:
+ * las hijas los sobreescriben con su propio `title` vía generateMetadata.
+ */
 export const metadata: Metadata = {
   title: 'Catálogo de soluciones agrícolas',
   description:
@@ -11,12 +24,8 @@ export const metadata: Metadata = {
     'nutrición líquida fertirrigación',
     'control biológico plagas',
   ],
-  alternates: { canonical: 'https://biotiza.mx/soluciones' },
+  // Sin `alternates.canonical` ni `openGraph.url`: se definen por página.
   openGraph: {
-    title: 'Catálogo de soluciones agrícolas · Biotiza',
-    description:
-      '47 productos de nutrición, bioestimulación y bioprotección para agricultura de exportación.',
-    url: 'https://biotiza.mx/soluciones',
     type: 'website',
   },
 }

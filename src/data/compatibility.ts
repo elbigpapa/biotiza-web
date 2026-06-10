@@ -46,6 +46,50 @@ export const COMPATIBILITY_MATRIX: CompatibilityEntry[] = [
     status: 'incompatible',
     notes: 'El H₂O₂ degrada los componentes bioactivos de Healex. Aplicar con 48 h de separación.',
   },
+  // ── bp-oxyagro × microbianos vivos de Agrobionsa (hongos/bacterias) ───
+  // El peróxido de hidrógeno inactiva cualquier microorganismo vivo.
+  {
+    productA: 'bp-oxyagro',
+    productB: 'agb-lilac',
+    status: 'incompatible',
+    notes: 'El peróxido de hidrógeno inactiva los microorganismos vivos del producto biológico (Paecilomyces lilacinus). No mezclar nunca.',
+  },
+  {
+    productA: 'bp-oxyagro',
+    productB: 'agb-elicitor-sin',
+    status: 'incompatible',
+    notes: 'El peróxido de hidrógeno inactiva los microorganismos vivos del producto biológico (Trichoderma harzianum). No mezclar nunca.',
+  },
+  {
+    productA: 'bp-oxyagro',
+    productB: 'agb-entomotri',
+    status: 'incompatible',
+    notes: 'El peróxido de hidrógeno inactiva los microorganismos vivos del producto biológico (Metarhizium + Beauveria + Paecilomyces). No mezclar nunca.',
+  },
+  {
+    productA: 'bp-oxyagro',
+    productB: 'agb-paecilom',
+    status: 'incompatible',
+    notes: 'El peróxido de hidrógeno inactiva los microorganismos vivos del producto biológico (Paecilomyces fumosoroseus). No mezclar nunca.',
+  },
+  {
+    productA: 'bp-oxyagro',
+    productB: 'agb-dextrux',
+    status: 'incompatible',
+    notes: 'El peróxido de hidrógeno inactiva los microorganismos vivos del producto biológico (Metarhizium anisopliae). No mezclar nunca.',
+  },
+  {
+    productA: 'bp-oxyagro',
+    productB: 'agb-beauver',
+    status: 'incompatible',
+    notes: 'El peróxido de hidrógeno inactiva los microorganismos vivos del producto biológico (Beauveria bassiana). No mezclar nunca.',
+  },
+  {
+    productA: 'bp-oxyagro',
+    productB: 'agb-lecanii-green',
+    status: 'incompatible',
+    notes: 'El peróxido de hidrógeno inactiva los microorganismos vivos del producto biológico (Verticillium lecanii). No mezclar nunca.',
+  },
 
   // ── bp-calcio — incompatible con boro ─────────────────────────────────
   {
@@ -321,8 +365,11 @@ export const COMPATIBILITY_MATRIX: CompatibilityEntry[] = [
   {
     productA: 'ae-calcium',
     productB: 'bp-boro',
-    status: 'conditional',
-    notes: 'Prueba de jarrita recomendada. Riesgo bajo de precipitación pero verificar en cada lote de agua.',
+    // Nota: la ficha de bp-boro declaraba 'incompatible' mientras la matriz
+    // tenía 'conditional'. Se alinea al criterio MÁS conservador (incompatible)
+    // por seguridad agronómica: el calcio y el boro pueden precipitar en tanque.
+    status: 'incompatible',
+    notes: 'El calcio premium y el boro pueden precipitar en tanque (boratos de calcio insolubles). No mezclar — aplicar en días alternos.',
   },
 
   // ── biotiza-calcio-boro con otros ──────────────────────────────────────

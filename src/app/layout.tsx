@@ -10,9 +10,13 @@ import SmoothScrollProvider from '@/components/redesign/SmoothScrollProvider'
 import WhatsAppFloat from '@/components/shared/WhatsAppFloat'
 import CookieConsent from '@/components/shared/CookieConsent'
 import GoogleAnalytics from '@/components/shared/GoogleAnalytics'
-import ChatWidget from '@/components/chat/ChatWidget'
 import ScrollProgress from '@/components/ui/ScrollProgress'
 import ToastProvider from '@/components/ui/Toast'
+// ChatWidget cargado de forma diferida (next/dynamic + ssr:false) vía un
+// wrapper cliente, para sacarlo del bundle JS inicial de las 186 páginas.
+// El wrapper es necesario porque este layout es Server Component y Next 16
+// no permite `ssr:false` con next/dynamic dentro de Server Components.
+import ChatWidget from '@/components/chat/ChatWidgetLazy'
 
 // ─── Organization + LocalBusiness JSON-LD ─────────────────────────────────
 function OrganizationJsonLd() {

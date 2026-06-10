@@ -1,6 +1,6 @@
 /**
  * products.ts — Base de datos completa de productos Biotiza
- * 49 productos · 5 líneas · 3 marcas · Interfaz Product de src/types/index.ts
+ * 47 productos · 5 líneas · 3 marcas · Interfaz Product de src/types/index.ts
  */
 
 import type { Product } from '@/types'
@@ -50,7 +50,6 @@ const ORGANICOS: Product[] = [
     },
     solves_problems: ['deficiencia de calcio', 'bitter pit', 'blossom end rot', 'frutos blandos', 'rajaduras de fruto'],
     featured: true,
-    image: '/images/products/bp-calcio.webp',
   },
   {
     id: 'bp-magnesio',
@@ -350,7 +349,7 @@ const ORGANICOS: Product[] = [
     crops: ['tomate', 'tomate-cherry', 'fresa', 'arandano', 'frambuesa', 'aguacate', 'brocoli', 'apio', 'calabacin', 'calabaza', 'cebolla', 'chile', 'lechuga', 'mango', 'manzana', 'nuez', 'papa', 'pepino', 'pina', 'platano', 'sandia', 'uva', 'zarzamora'],
     compatibility: {
       compatible:   [ 'bp-magnesio', 'bp-potasio' ],
-      incompatible: ['bp-calcio'],
+      incompatible: ['bp-calcio', 'bp-boro'],
       conditional:  [],
     },
     solves_problems: ['deficiencia severa de calcio', 'baja CIC del suelo', 'frutos con baja firmeza'],
@@ -491,7 +490,7 @@ const ESPECIALIDADES: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }, { size: '20 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersion'],
+    application_methods: ['foliar'],
     recommended_dose: {
       foliar: '0.5–1 mL/L (adicionar al caldo)',
     },
@@ -1172,7 +1171,7 @@ const BIOPROTECCION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersion'],
+    application_methods: ['foliar'],
     recommended_dose: {
       foliar: '1–2 mL/L',
     },
@@ -1211,7 +1210,7 @@ const BIOPROTECCION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersion'],
+    application_methods: ['foliar'],
     recommended_dose: {
       foliar: '2–3 mL/L en presión alta',
     },
@@ -1246,7 +1245,7 @@ const BIOPROTECCION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersion'],
+    application_methods: ['foliar'],
     recommended_dose: {
       foliar: '1.5–2.5 mL/L; cubrir envés de hoja',
     },
@@ -1281,7 +1280,7 @@ const BIOPROTECCION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersion'],
+    application_methods: ['foliar'],
     recommended_dose: {
       foliar: '1–2 mL/L preventivo; 2–3 mL/L curativo',
     },
@@ -1331,8 +1330,8 @@ const BIOPROTECCION: Product[] = [
     ],
     crops: ['arandano', 'frambuesa', 'zarzamora', 'fresa', 'aguacate', 'tomate', 'tomate-cherry'],
     compatibility: {
-      compatible:   ['zen-fungi', 'biotiza-coadyuvante'],
-      incompatible: [],
+      compatible:   ['biotiza-coadyuvante'],
+      incompatible: ['zen-fungi'],
       conditional:  [],
     },
     solves_problems: ['botrytis en heridas de poda', 'cicatrización lenta', 'infecciones post-poda'],
@@ -1352,7 +1351,7 @@ const BIOPROTECCION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersion'],
+    application_methods: ['foliar'],
     recommended_dose: {
       foliar: '1.5–2.5 mL/L',
     },
@@ -1389,7 +1388,7 @@ const BIOPROTECCION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersion'],
+    application_methods: ['foliar'],
     recommended_dose: {
       foliar: '1.5–2 mL/L',
     },
@@ -1424,7 +1423,7 @@ const BIOPROTECCION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['drench', 'fertirrigacion'],
+    application_methods: ['drench'],
     recommended_dose: {
       drench: 'Consultar ficha técnica',
     },
@@ -1458,7 +1457,7 @@ const BIOPROTECCION: Product[] = [
     ],
     presentations: [{ size: '1 L', unit: 'L' }],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersion'],
+    application_methods: ['foliar'],
     recommended_dose: {
       foliar: '0.5–1 mL/L (adicionar al caldo insecticida o fungicida)',
     },
@@ -1503,7 +1502,7 @@ const AGROBIONSA: Product[] = [
       { size: '240 g', unit: 'g' },
     ],
     certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['drench', 'fertirrigacion', 'drench radicular'],
+    application_methods: ['drench', 'fertirrigacion'],
     recommended_dose: {
       drench:         '240–480 g/ha',
       fertirrigacion: '240–480 g/ha',
@@ -1581,7 +1580,7 @@ const AGROBIONSA: Product[] = [
       { size: '240 g', unit: 'g' },
     ],
     certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersion'],
+    application_methods: ['foliar'],
     recommended_dose: {
       foliar: '360–480 g / 200 L de agua',
     },
@@ -1619,7 +1618,7 @@ const AGROBIONSA: Product[] = [
       { size: '240 g', unit: 'g' },
     ],
     certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersion'],
+    application_methods: ['foliar'],
     recommended_dose: {
       foliar: '240–480 g / 200 L de agua',
     },
@@ -1657,7 +1656,7 @@ const AGROBIONSA: Product[] = [
       { size: '240 g', unit: 'g' },
     ],
     certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersion'],
+    application_methods: ['foliar'],
     recommended_dose: {
       foliar: '360–480 g / 200 L de agua',
     },
@@ -1695,7 +1694,7 @@ const AGROBIONSA: Product[] = [
       { size: '240 g', unit: 'g' },
     ],
     certifications: ['COFEPRIS', 'OMRI', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersion'],
+    application_methods: ['foliar'],
     recommended_dose: {
       foliar: '480 g / 200 L de agua',
     },
@@ -1733,7 +1732,7 @@ const AGROBIONSA: Product[] = [
       { size: '1 L', unit: 'L' },
     ],
     certifications: ['COFEPRIS', 'Hecho en México'],
-    application_methods: ['foliar', 'aspersion'],
+    application_methods: ['foliar'],
     recommended_dose: {
       foliar: '1.0–2.0 L/ha',
     },
@@ -1823,7 +1822,6 @@ const VEGANIC: Product[] = [
       'plantas débiles con pudrición de raíz o cuello',
     ],
     featured: true,
-    image: '/images/products/brotanic.png',
     datasheet_url: '/docs/fichas-tecnicas/brotanic.pdf',
     updated_at: '2025-08-13',
     dosage_table: [

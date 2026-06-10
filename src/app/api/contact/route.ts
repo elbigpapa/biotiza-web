@@ -1,11 +1,15 @@
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
+import { rateLimit, getClientIp } from '@/lib/server/rateLimit'
+import { segmentLead, deliverLead, type Lead } from '@/lib/server/leads'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
 // ─── Schema de validación ──────────────────────────────────────────────────
-// Acepta nombres en español o inglés; normaliza a forma canónica.
+// El formulario de contacto tiene campos propios (asunto, mensaje) que no
+// existen en el leadSchema canónico, así que mantenemos un schema local y
+// mapeamos a Lead para la segmentación/persistencia compartida.
 const contactSchema = z.object({
   nombre:   z.string().min(2).max(80),
   email:    z.string().email().max(120),
@@ -13,35 +17,30 @@ const contactSchema = z.object({
   asunto:   z.enum(['información', 'cotización', 'soporte técnico', 'distribución', 'otro']).optional().default('información'),
   cultivo:  z.string().max(60).optional(),
   mensaje:  z.string().min(10).max(2000),
-  // Honeypot anti-bot
+  // Honeypot anti-bot: el form debe renderizar un input oculto llamado "website".
   website:  z.string().max(0).optional(),
 })
 
-// ─── Rate limit en memoria (best-effort por ahora) ─────────────────────────
-const attempts = new Map<string, { count: number; resetAt: number }>()
-const WINDOW_MS = 60_000 // 1 min
-const MAX = 5
+type ContactData = z.infer<typeof contactSchema>
 
-function rateLimit(key: string): boolean {
-  const now = Date.now()
-  const entry = attempts.get(key)
-  if (!entry || entry.resetAt < now) {
-    attempts.set(key, { count: 1, resetAt: now + WINDOW_MS })
-    return true
+// Mapea el contacto al Lead canónico para reutilizar segmentación/entrega.
+function contactToLead(data: ContactData): Lead {
+  return {
+    nombre:   data.nombre,
+    email:    data.email,
+    telefono: data.telefono,
+    cultivo:  data.cultivo,
+    tipo_interes: data.asunto === 'cotización' ? 'cotizacion' : 'otro',
+    fuente:   'formulario-contacto',
+    notas:    `[Asunto: ${data.asunto}] ${data.mensaje}`,
   }
-  if (entry.count >= MAX) return false
-  entry.count += 1
-  return true
 }
 
 // ─── POST /api/contact ────────────────────────────────────────────────────
 export async function POST(req: Request) {
-  const ip =
-    req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-    req.headers.get('x-real-ip') ||
-    'unknown'
+  const ip = getClientIp(req)
 
-  if (!rateLimit(ip)) {
+  if (!rateLimit(`contact:${ip}`, 5)) {
     return NextResponse.json(
       { ok: false, error: 'Demasiadas solicitudes. Intenta en un minuto.' },
       { status: 429 },
@@ -63,25 +62,25 @@ export async function POST(req: Request) {
     )
   }
 
-  // Honeypot: si llega relleno, descartamos silenciosamente.
+  // Honeypot: si llega relleno, es un bot. Respondemos ok para no darle señal,
+  // pero descartamos sin procesar.
   if (parsed.data.website && parsed.data.website.length > 0) {
     return NextResponse.json({ ok: true })
   }
 
-  // Integración con email/CRM: se lee del env (no obligatorio en dev).
-  const webhook = process.env.CONTACT_WEBHOOK_URL
-  if (webhook) {
-    try {
-      await fetch(webhook, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ type: 'contact', ...parsed.data, ip, at: new Date().toISOString() }),
-      })
-    } catch (err) {
-      console.error('[contact] webhook error', err)
-    }
-  } else if (process.env.NODE_ENV !== 'production') {
-    console.log('[contact] received', parsed.data)
+  // Segmentamos y entregamos vía la infra compartida. deliverLead registra en
+  // logs cuando no hay webhook configurado (no se pierde el lead en silencio).
+  const segmented = segmentLead(
+    contactToLead(parsed.data),
+    ip,
+    new Date().toISOString(),
+    `${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`,
+  )
+
+  const { delivered, reason } = await deliverLead(segmented)
+  if (!delivered) {
+    // No exponemos la falla del backend al usuario, pero la dejamos en logs.
+    console.warn('[contact] lead no entregado al CRM', { id: segmented.id, reason })
   }
 
   return NextResponse.json({ ok: true })

@@ -43,14 +43,13 @@ export type Certification = 'COFEPRIS' | 'OMRI' | 'Hecho en México' | string
 // Las claves coinciden con `recommended_dose` (sin acento) para que el
 // lookup `recommended_dose[method]` funcione sin normalización adicional.
 // La presentación visual (con acento) se maneja en METHOD_META.
+// Unión estricta (sin `| string`): estas 4 son las únicas claves de método
+// realmente usadas por `recommended_dose`/`application_methods` en products.ts.
 export type ApplicationMethod =
   | 'fertirrigacion'
   | 'drench'
   | 'foliar'
   | 'aspersion'
-  | 'drench radicular'
-  | 'inyección al suelo'
-  | string
 
 // ─── Presentaciones ──────────────────────────────────────────────────────
 
@@ -80,7 +79,7 @@ export interface CompositionItem {
 
 export interface RecommendedDose {
   /** Dosis para fertirrigación, ej: "2-3 L/ha" */
-  fertirigacion?: string
+  fertirrigacion?: string
   /** Dosis foliar, ej: "1-2 mL/L" */
   foliar?: string
   /** Dosis drench, ej: "3-5 mL/planta" */

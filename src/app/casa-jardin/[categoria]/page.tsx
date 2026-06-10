@@ -25,6 +25,24 @@ export async function generateMetadata({
   params: Promise<{ categoria: string }>
 }): Promise<Metadata> {
   const { categoria } = await params
+
+  // Caso especial: "todos" no es una categoría real (getGardenCategoryBySlug
+  // devuelve undefined), pero SÍ se genera estáticamente. Le damos metadata
+  // propia para que no salga sin <title>/canonical.
+  if (categoria === 'todos') {
+    const total = GARDEN_PACKAGES.length
+    const cats = GARDEN_CATEGORIES.length
+    return {
+      title: `Todos los paquetes — Biotiza Casa y Jardín`,
+      description: `Explora los ${total} paquetes de Biotiza Casa y Jardín en ${cats} categorías: plantas de interior, pasto, frutales, flores y áreas verdes.`,
+      alternates: { canonical: `https://biotiza.mx/casa-jardin/todos` },
+      openGraph: {
+        title: `Todos los paquetes · Biotiza Casa y Jardín`,
+        description: `Los ${total} paquetes de Biotiza Casa y Jardín en ${cats} categorías.`,
+      },
+    }
+  }
+
   const cat = getGardenCategoryBySlug(categoria)
   if (!cat) return {}
 

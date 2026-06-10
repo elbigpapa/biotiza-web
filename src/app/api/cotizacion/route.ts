@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
+import { rateLimit, getClientIp } from '@/lib/server/rateLimit'
+import { segmentLead, deliverLead, type Lead } from '@/lib/server/leads'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -13,6 +15,8 @@ const itemSchema = z.object({
   unit:      z.string().max(20).optional(),
 })
 
+// La cotización lleva un carrito (items) y campos propios que no existen en el
+// leadSchema canónico → schema local + mapeo a Lead para segmentar/entregar.
 const cotizacionSchema = z.object({
   nombre:     z.string().min(2).max(80),
   empresa:    z.string().max(120).optional(),
@@ -26,31 +30,40 @@ const cotizacionSchema = z.object({
   website:    z.string().max(0).optional(), // honeypot
 })
 
-// ─── Rate limit en memoria ─────────────────────────────────────────────────
-const attempts = new Map<string, { count: number; resetAt: number }>()
-const WINDOW_MS = 60_000
-const MAX = 5
+type CotizacionData = z.infer<typeof cotizacionSchema>
 
-function rateLimit(key: string) {
-  const now = Date.now()
-  const entry = attempts.get(key)
-  if (!entry || entry.resetAt < now) {
-    attempts.set(key, { count: 1, resetAt: now + WINDOW_MS })
-    return true
+// Mapea la cotización al Lead canónico. El carrito y la superficie se resumen
+// en notas para que el CRM conserve el contexto sin perder la segmentación.
+function cotizacionToLead(data: CotizacionData): Lead {
+  const itemsResumen = data.items.length
+    ? data.items.map((i) => `${i.quantity}× ${i.name} (${i.line})`).join('; ')
+    : 'sin productos en carrito'
+  const notas = [
+    data.superficie ? `Superficie: ${data.superficie}` : null,
+    `Productos: ${itemsResumen}`,
+    data.comentarios ? `Comentarios: ${data.comentarios}` : null,
+  ]
+    .filter(Boolean)
+    .join(' | ')
+
+  return {
+    nombre:   data.nombre,
+    empresa:  data.empresa,
+    email:    data.email,
+    telefono: data.telefono,
+    estado:   data.estado,
+    cultivo:  data.cultivo,
+    tipo_interes: 'cotizacion',
+    fuente:   'cotizacion',
+    notas,
   }
-  if (entry.count >= MAX) return false
-  entry.count += 1
-  return true
 }
 
 // ─── POST /api/cotizacion ─────────────────────────────────────────────────
 export async function POST(req: Request) {
-  const ip =
-    req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-    req.headers.get('x-real-ip') ||
-    'unknown'
+  const ip = getClientIp(req)
 
-  if (!rateLimit(ip)) {
+  if (!rateLimit(`cotizacion:${ip}`, 5)) {
     return NextResponse.json(
       { ok: false, error: 'Demasiadas solicitudes. Intenta en un minuto.' },
       { status: 429 },
@@ -72,24 +85,26 @@ export async function POST(req: Request) {
     )
   }
 
+  // Honeypot: bot detectado → ok sin procesar.
   if (parsed.data.website && parsed.data.website.length > 0) {
     return NextResponse.json({ ok: true })
   }
 
-  const webhook = process.env.COTIZACION_WEBHOOK_URL
-  if (webhook) {
-    try {
-      await fetch(webhook, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ type: 'cotizacion', ...parsed.data, ip, at: new Date().toISOString() }),
-      })
-    } catch (err) {
-      console.error('[cotizacion] webhook error', err)
-    }
-  } else if (process.env.NODE_ENV !== 'production') {
-    console.log('[cotizacion] received', { ...parsed.data, itemsCount: parsed.data.items.length })
+  const reference = `COT-${Date.now().toString(36).toUpperCase()}`
+
+  // Segmentamos y entregamos vía la infra compartida. deliverLead registra en
+  // logs cuando no hay webhook configurado (no se pierde la cotización).
+  const segmented = segmentLead(
+    cotizacionToLead(parsed.data),
+    ip,
+    new Date().toISOString(),
+    `${reference}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`,
+  )
+
+  const { delivered, reason } = await deliverLead(segmented)
+  if (!delivered) {
+    console.warn('[cotizacion] lead no entregado al CRM', { id: segmented.id, reference, reason })
   }
 
-  return NextResponse.json({ ok: true, reference: `COT-${Date.now().toString(36).toUpperCase()}` })
+  return NextResponse.json({ ok: true, reference })
 }

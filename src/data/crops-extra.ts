@@ -80,7 +80,7 @@ const CEBOLLA: FullCropProtocol = {
   cycle_days: 110,
   season: 'Día corto: octubre-marzo (Tamaulipas, Chihuahua). Día largo: marzo-julio (Guanajuato, B.C.)',
   regions: ['Chihuahua', 'Guanajuato', 'Tamaulipas', 'Baja California', 'Zacatecas'],
-  featured_products: ['bp-mix', 'k-ultra', 'bp-calcio', 'zen-fungi', 'beauver'],
+  featured_products: ['bp-mix', 'k-ultra', 'bp-calcio', 'zen-fungi', 'agb-beauver'],
   common_challenges: ['Trips de la cebolla (Thrips tabaci)', 'Mildiú (Peronospora destructor)', 'Botrytis del cuello', 'Bulbos divididos', 'Sin pungencia (déficit de S)'],
   stages: [
     {
@@ -147,7 +147,7 @@ const ESPARRAGO: FullCropProtocol = {
   cycle_days: 365,
   season: 'Producción de turiones: enero-abril (Sonora) y agosto-octubre (Bajío). Helecho: resto del año.',
   regions: ['Sonora', 'Baja California', 'Guanajuato', 'Jalisco'],
-  featured_products: ['k-ultra', 'bp-koren', 'bp-mix', 'elicitor-sin', 'zen-fungi'],
+  featured_products: ['k-ultra', 'bp-koren', 'bp-mix', 'agb-elicitor-sin', 'zen-fungi'],
   common_challenges: ['Stemphylium (mancha purpurea)', 'Roya (Puccinia asparagi)', 'Fusarium oxysporum (declinación)', 'Turiones delgados', 'Pudrición de corona'],
   stages: [
     {
@@ -266,7 +266,7 @@ const PAPA: FullCropProtocol = {
   cycle_days: 110,
   season: 'Ciclo otoño-invierno principal; siembras escalonadas según región',
   regions: ['Sinaloa', 'Sonora', 'Guanajuato', 'Nuevo León', 'Puebla', 'Chihuahua'],
-  featured_products: ['k-ultra', 'bp-calcio', 'bp-koren', 'elicitor-sin', 'max-kill-plus'],
+  featured_products: ['k-ultra', 'bp-calcio', 'bp-koren', 'agb-elicitor-sin', 'max-kill-plus'],
   common_challenges: ['Tizón tardío (Phytophthora infestans)', 'Tizón temprano (Alternaria)', 'Gusano blanco (Phyllophaga)', 'Sarna común (Streptomyces)', 'Tubérculos verdes', 'Hollow heart'],
   stages: [
     {
@@ -343,7 +343,7 @@ const LECHUGA: FullCropProtocol = {
       color: 'bg-emerald-100', textColor: 'text-emerald-700',
       products: [
         { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '2 mL/L', method: 'Drench', frequency: 'Días 1 y 5', notes: 'Reduce estrés de trasplante en plántula tierna' },
-        { productId: 'biotiza-coadyuvante', productName: 'Coadyuvante', line: 'bioestimulantes', dose: '0.5 mL/L', method: 'Foliar', frequency: 'Día 3', notes: 'Mejora absorción y reduce estrés osmótico inicial' },
+        { productId: 'biotiza-coadyuvante', productName: 'Coadyuvante', line: 'especialidades', dose: '0.5 mL/L', method: 'Foliar', frequency: 'Día 3', notes: 'Mejora absorción y reduce estrés osmótico inicial' },
         { productId: 'agb-elicitor-sin', productName: 'ELICITOR-SIN®', line: 'bioproteccion', dose: '2 g/L', method: 'Drench', frequency: 'Día 1', notes: 'Trichoderma contra Pythium en plántula recién trasplantada', isProtection: true },
       ],
     },

@@ -1,14 +1,22 @@
 'use client'
 
 /**
- * GoogleAnalytics.tsx — GA4 con Consent Mode v2
+ * GoogleAnalytics.tsx — GA4 con Consent Mode v2 (default-denied)
  *
- * - Carga gtag.js solo después del consentimiento de cookies (LFPDPPP-MX + GDPR)
- * - Default = todo "denied". Si el usuario acepta cookies, mandamos
- *   `gtag('consent','update', {...granted...})` y se empiezan a registrar
- *   eventos sin recargar la página.
- * - `setConsent()` se exporta para que CookieConsent lo llame cuando el
- *   usuario toma decisión.
+ * Implementación correcta de Consent Mode v2 (LFPDPPP-MX + GDPR):
+ *  - gtag.js SÍ se carga en cada visita, pero arranca con TODO el consentimiento
+ *    de analítica/ads en "denied". Mientras esté denegado, GA no escribe cookies
+ *    ni envía hits identificables (a lo sumo pings sin cookies / cookieless).
+ *  - El orden importa: el script `ga-consent-default` (que ejecuta
+ *    `gtag('consent','default', {...denied})`) se declara ANTES del `<Script src>`
+ *    de gtag.js, de modo que el default-denied se aplica antes de cualquier hit.
+ *  - Si el usuario acepta cookies, CookieConsent llama a `setConsent('all')` →
+ *    `gtag('consent','update', {...granted})` y el tracking se activa sin recargar.
+ *  - `setConsent()` se exporta para que CookieConsent lo invoque al decidir.
+ *
+ * NOTA: el comentario anterior afirmaba que gtag.js se cargaba "solo después del
+ * consentimiento". Eso era falso (siempre se cargaba) y además NO es el patrón de
+ * Consent Mode v2. Lo correcto es cargar siempre con default-denied, como aquí.
  */
 
 import Script from 'next/script'
@@ -95,6 +103,11 @@ export default function GoogleAnalytics({ gaId }: Props) {
           `,
         }}
       />
+      {/*
+        gtag.js se carga DESPUÉS del script de consent-default (orden del DOM +
+        misma estrategia afterInteractive). Así el default-denied ya está
+        aplicado cuando la librería arranca: Consent Mode v2 correcto.
+      */}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
         strategy="afterInteractive"
