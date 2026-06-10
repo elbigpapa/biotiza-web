@@ -24,7 +24,7 @@ import {
   Package,
 } from 'lucide-react'
 import { track } from '@vercel/analytics'
-import { QuotationCartProvider, useQuotationCart } from '@/hooks/useQuotationCart'
+import { useQuotationCart } from '@/hooks/useQuotationCart'
 import { CONTACT_INFO, PRODUCT_LINES } from '@/data/constants'
 import { whatsappLink } from '@/lib/utils'
 import Container from '@/components/ui/Container'
@@ -555,12 +555,11 @@ function QuotationPageContent() {
   )
 }
 
-// ─── Página exportada (envuelve en Provider) ──────────────────────────────────
+// ─── Página exportada ─────────────────────────────────────────────────────────
+// El QuotationCartProvider ahora es GLOBAL (en app/layout.tsx), de modo que los
+// productos agregados desde sus fichas persisten hasta esta página. No se debe
+// volver a envolver aquí: un Provider anidado crearía un carrito aislado.
 
 export default function CotizacionPage() {
-  return (
-    <QuotationCartProvider>
-      <QuotationPageContent />
-    </QuotationCartProvider>
-  )
+  return <QuotationPageContent />
 }

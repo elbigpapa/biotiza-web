@@ -15,6 +15,7 @@ import { getProductImage } from '@/data/product-images'
 import { canonical } from '@/lib/seo'
 import Container from '@/components/ui/Container'
 import TrackProductView from '@/components/analytics/TrackProductView'
+import AddToQuoteButton from '@/components/products/AddToQuoteButton'
 
 export function generateStaticParams() {
   // Solo la combinación canónica linea+slug (la línea real del producto),
@@ -195,12 +196,13 @@ export default async function ProductoPage({
                 >
                   Cotizar por WhatsApp →
                 </a>
-                <Link
-                  href="/cotizacion"
-                  className="inline-flex items-center px-6 py-3.5 border border-ink text-ink font-mono text-[11px] font-semibold uppercase tracking-[0.16em] hover:bg-ink hover:text-white transition-all duration-300"
-                >
-                  Agregar a cotización
-                </Link>
+                <AddToQuoteButton
+                  productId={product.id}
+                  productName={product.name}
+                  productLine={product.line}
+                  productSlug={product.slug}
+                  unit={product.presentations?.[0]?.unit ?? 'L'}
+                />
               </div>
             </div>
           </div>

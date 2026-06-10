@@ -11,6 +11,7 @@ import WhatsAppFloat from '@/components/shared/WhatsAppFloat'
 import CookieConsent from '@/components/shared/CookieConsent'
 import GoogleAnalytics from '@/components/shared/GoogleAnalytics'
 import ScrollProgress from '@/components/ui/ScrollProgress'
+import { QuotationCartProvider } from '@/hooks/useQuotationCart'
 // ChatWidget cargado de forma diferida (next/dynamic + ssr:false) vía un
 // wrapper cliente, para sacarlo del bundle JS inicial de las 186 páginas.
 // El wrapper es necesario porque este layout es Server Component y Next 16
@@ -187,19 +188,21 @@ export default function RootLayout({
           Saltar al contenido
         </a>
         <OrganizationJsonLd />
-        <div className="no-print">
-          <ScrollProgress />
-        </div>
-        <Header />
-        <main id="main" className="flex-1">
-          <SmoothScrollProvider>{children}</SmoothScrollProvider>
-        </main>
-        <Footer />
-        <div className="no-print">
-          <WhatsAppFloat />
-          <ChatWidget />
-          <CookieConsent />
-        </div>
+        <QuotationCartProvider>
+          <div className="no-print">
+            <ScrollProgress />
+          </div>
+          <Header />
+          <main id="main" className="flex-1">
+            <SmoothScrollProvider>{children}</SmoothScrollProvider>
+          </main>
+          <Footer />
+          <div className="no-print">
+            <WhatsAppFloat />
+            <ChatWidget />
+            <CookieConsent />
+          </div>
+        </QuotationCartProvider>
         <Analytics />
         <SpeedInsights />
         <GoogleAnalytics gaId="G-VY5V5D35TB" />

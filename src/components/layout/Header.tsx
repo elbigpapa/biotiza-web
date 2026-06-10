@@ -13,10 +13,11 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence } from 'motion/react'
-import { Menu, ChevronDown, ArrowRight } from 'lucide-react'
+import { Menu, ChevronDown, ArrowRight, ShoppingCart } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { scrollToTop } from '@/lib/smoothScroll'
 import { PRIMARY_NAV } from '@/data/constants'
+import { useQuotationCart } from '@/hooks/useQuotationCart'
 import BiotizaLogo from '@/components/brand/BiotizaLogo'
 import MegaMenu from './MegaMenu'
 import CultivosMegaMenu from './CultivosMegaMenu'
@@ -32,6 +33,7 @@ export default function Header() {
   const [megaOpen,     setMegaOpen]     = useState(false)
   const [cultivosOpen, setCultivosOpen] = useState(false)
   const [mobileOpen,   setMobileOpen]   = useState(false)
+  const { totalItems } = useQuotationCart()
 
   /**
    * Solo la home (`/`) tiene un hero con foto oscura que justifica el header
@@ -162,6 +164,24 @@ export default function Header() {
                 </Link>
               ))}
             </nav>
+
+            {/* ─── Carrito de cotización (visible si hay items) ───────── */}
+            {totalItems > 0 && (
+              <Link
+                href="/cotizacion"
+                onMouseEnter={closeMenus}
+                aria-label={`Cotización: ${totalItems} producto${totalItems === 1 ? '' : 's'}`}
+                className={cn(
+                  'relative flex h-11 w-11 shrink-0 items-center justify-center transition-colors duration-200',
+                  solid ? 'text-ink-2 hover:text-verde-700' : 'text-white/85 hover:text-verde-300',
+                )}
+              >
+                <ShoppingCart size={20} strokeWidth={1.8} />
+                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-naranja-500 px-1 font-mono text-[10px] font-bold text-white">
+                  {totalItems}
+                </span>
+              </Link>
+            )}
 
             {/* ─── CTA ────────────────────────────────────────────────── */}
             <div className="hidden lg:flex items-center shrink-0">
