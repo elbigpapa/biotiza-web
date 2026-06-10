@@ -8,7 +8,7 @@
  * amigable, profesional, con micro-animaciones sutiles.
  */
 
-import { useState, useRef, useEffect, type FormEvent } from 'react'
+import { useState, useRef, useEffect, type FormEvent, type ReactNode } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { Send, X, Sparkles, Loader2 } from 'lucide-react'
 import { track } from '@vercel/analytics'
@@ -19,6 +19,63 @@ interface Message {
   role: 'user' | 'assistant'
   content: string
   suggestions?: string[]
+  degraded?: boolean
+}
+
+type CapturedLead = Record<string, string | number>
+
+// ── Render de markdown ligero (negritas, enlaces, listas) ──────────────────
+// Las respuestas de Claude llegan con markdown; sin esto el usuario vería
+// asteriscos y corchetes literales (hallazgo de auditoría). Parser acotado y
+// seguro (sin dangerouslySetInnerHTML).
+function renderInline(text: string, keyPrefix: string): ReactNode[] {
+  const nodes: ReactNode[] = []
+  // Tokeniza **negritas**, [texto](url) y URLs sueltas.
+  const regex = /(\*\*([^*]+)\*\*)|(\[([^\]]+)\]\((https?:\/\/[^)]+)\))|(https?:\/\/[^\s]+)/g
+  let last = 0
+  let m: RegExpExecArray | null
+  let i = 0
+  while ((m = regex.exec(text)) !== null) {
+    if (m.index > last) nodes.push(text.slice(last, m.index))
+    if (m[1]) {
+      nodes.push(<strong key={`${keyPrefix}-b${i}`}>{m[2]}</strong>)
+    } else if (m[3]) {
+      nodes.push(
+        <a key={`${keyPrefix}-l${i}`} href={m[5]} target={m[5].startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="font-semibold text-verde-600 underline">{m[4]}</a>,
+      )
+    } else if (m[6]) {
+      nodes.push(
+        <a key={`${keyPrefix}-u${i}`} href={m[6]} target="_blank" rel="noopener noreferrer" className="font-semibold text-verde-600 underline break-all">{m[6]}</a>,
+      )
+    }
+    last = m.index + m[0].length
+    i++
+  }
+  if (last < text.length) nodes.push(text.slice(last))
+  return nodes
+}
+
+function MessageContent({ content, index }: { content: string; index: number }) {
+  const lines = content.split('\n').filter((l) => l.trim() !== '')
+  const out: ReactNode[] = []
+  let bullets: ReactNode[] = []
+  const flush = () => {
+    if (bullets.length) {
+      out.push(<ul key={`ul-${out.length}`} className="ml-1 list-disc space-y-0.5 pl-4">{bullets}</ul>)
+      bullets = []
+    }
+  }
+  lines.forEach((line, li) => {
+    const bullet = line.match(/^\s*[-*]\s+(.*)$/)
+    if (bullet) {
+      bullets.push(<li key={`li-${index}-${li}`}>{renderInline(bullet[1], `${index}-${li}`)}</li>)
+    } else {
+      flush()
+      out.push(<p key={`p-${index}-${li}`} className={out.length ? 'mt-1.5' : ''}>{renderInline(line, `${index}-${li}`)}</p>)
+    }
+  })
+  flush()
+  return <>{out}</>
 }
 
 const INITIAL_MESSAGE: Message = {
@@ -41,7 +98,9 @@ export default function ChatWidget() {
 
   const scrollRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  const panelRef = useRef<HTMLElement>(null)
   const hasTrackedOpen = useRef(false)
+  const leadRef = useRef<CapturedLead>({})
 
   // Auto-scroll al último mensaje
   useEffect(() => {
@@ -61,6 +120,34 @@ export default function ChatWidget() {
     }
   }, [open])
 
+  // Cerrar con Escape y mantener el foco dentro del panel mientras está abierto
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setOpen(false)
+        return
+      }
+      if (e.key === 'Tab' && panelRef.current) {
+        const focusables = panelRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, textarea, [tabindex]:not([tabindex="-1"])',
+        )
+        if (focusables.length === 0) return
+        const first = focusables[0]
+        const last = focusables[focusables.length - 1]
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault()
+          last.focus()
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault()
+          first.focus()
+        }
+      }
+    }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [open])
+
   const sendMessage = async (text: string) => {
     const trimmed = text.trim()
     if (!trimmed || loading) return
@@ -69,13 +156,25 @@ export default function ChatWidget() {
     setInput('')
     setLoading(true)
 
+    // Historial sin el saludo inicial 'assistant': Anthropic exige que la
+    // conversación empiece en 'user' (el backend también lo sanea).
+    const priorHistory = messages
+      .filter((m, i) => !(i === 0 && m.role === 'assistant'))
+      .slice(-8)
+      .map((m) => ({ role: m.role, content: m.content }))
+
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 28000)
+
     try {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
+        signal: controller.signal,
         body: JSON.stringify({
           message: trimmed,
-          history: messages.slice(-6).map((m) => ({ role: m.role, content: m.content })),
+          history: priorHistory,
+          lead: Object.keys(leadRef.current).length > 0 ? leadRef.current : undefined,
         }),
       })
       const json = await res.json()
@@ -92,21 +191,26 @@ export default function ChatWidget() {
       } else {
         setMessages((m) => [
           ...m,
-          { role: 'assistant', content: json.reply, suggestions: json.suggestions },
+          { role: 'assistant', content: json.reply, suggestions: json.suggestions, degraded: json.mode === 'degraded' },
         ])
         if (json.lead && typeof json.lead === 'object') {
+          leadRef.current = { ...leadRef.current, ...json.lead }
           track('chat_lead_captured', { fieldsCount: Object.keys(json.lead).length })
         }
       }
-    } catch {
+    } catch (err) {
+      const aborted = err instanceof DOMException && err.name === 'AbortError'
       setMessages((m) => [
         ...m,
         {
           role: 'assistant',
-          content: 'No logré conectarme. Revisa tu conexión o escríbenos por WhatsApp.',
+          content: aborted
+            ? 'La respuesta tardó demasiado. Intenta de nuevo o escríbenos por WhatsApp.'
+            : 'No logré conectarme. Revisa tu conexión o escríbenos por WhatsApp.',
         },
       ])
     } finally {
+      clearTimeout(timeout)
       setLoading(false)
     }
   }
@@ -149,7 +253,9 @@ export default function ChatWidget() {
       <AnimatePresence>
         {open && (
           <motion.aside
+            ref={panelRef}
             role="dialog"
+            aria-modal="true"
             aria-label="Chat con Asesora Biotiza"
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -187,6 +293,8 @@ export default function ChatWidget() {
             {/* Mensajes */}
             <div
               ref={scrollRef}
+              aria-live="polite"
+              aria-atomic="false"
               className="flex-1 space-y-4 overflow-y-auto bg-gradient-to-b from-verde-50/30 to-white px-4 py-4"
             >
               {messages.map((m, i) => (
@@ -205,7 +313,14 @@ export default function ChatWidget() {
                         : 'rounded-bl-sm border border-gris-100 bg-white text-gris-800',
                     )}
                   >
-                    {m.content}
+                    {m.role === 'assistant'
+                      ? <MessageContent content={m.content} index={i} />
+                      : m.content}
+                    {m.degraded && (
+                      <span className="mt-1.5 block text-[10px] font-medium text-naranja-500">
+                        Respuesta en modo básico (asistente avanzado no disponible)
+                      </span>
+                    )}
                   </div>
 
                   {m.role === 'assistant' && m.suggestions && m.suggestions.length > 0 && (

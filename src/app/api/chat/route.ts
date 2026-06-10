@@ -4,10 +4,16 @@ import Anthropic from '@anthropic-ai/sdk'
 import { PRODUCTS } from '@/data/products'
 import { PRODUCT_LINES, CROPS_DATA, CONTACT_INFO } from '@/data/constants'
 import { CROP_PROTOCOLS } from '@/data/crops'
+import { SCIENCE_KB, SCIENCE_KB_STATS } from '@/data/science'
+import { rateLimit, getClientIp } from '@/lib/server/rateLimit'
+import { leadSchema, segmentLead, deliverLead } from '@/lib/server/leads'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 export const maxDuration = 30
+
+// Modelo configurable por env para poder actualizarlo sin redeploy de código.
+const CHAT_MODEL = process.env.CHAT_MODEL ?? 'claude-fable-5'
 
 // ─── Schema de validación ──────────────────────────────────────────────────
 const chatSchema = z.object({
@@ -16,36 +22,21 @@ const chatSchema = z.object({
     role: z.enum(['user', 'assistant']),
     content: z.string().max(1200),
   })).max(20).optional(),
+  // Datos del prospecto ya capturados en esta sesión (para que el modelo no
+  // los vuelva a pedir ni re-poste el mismo lead en cada turno).
   lead: z.object({
-    nombre: z.string().optional(),
-    email: z.string().optional(),
-    telefono: z.string().optional(),
-    estado: z.string().optional(),
-    cultivo: z.string().optional(),
+    nombre: z.string().max(80).optional(),
+    email: z.string().max(120).optional(),
+    telefono: z.string().max(30).optional(),
+    estado: z.string().max(40).optional(),
+    cultivo: z.string().max(60).optional(),
     hectareas: z.number().optional(),
-    etapa: z.string().optional(),
+    etapa: z.string().max(60).optional(),
   }).optional(),
 })
 
-// ─── Rate limit en memoria ─────────────────────────────────────────────────
-const attempts = new Map<string, { count: number; resetAt: number }>()
-const WINDOW_MS = 60_000
-const MAX = 15
-
-function rateLimit(key: string) {
-  const now = Date.now()
-  const entry = attempts.get(key)
-  if (!entry || entry.resetAt < now) {
-    attempts.set(key, { count: 1, resetAt: now + WINDOW_MS })
-    return true
-  }
-  if (entry.count >= MAX) return false
-  entry.count += 1
-  return true
-}
-
-// ─── System prompt CACHEABLE con catálogo completo ────────────────────────
-// Este bloque cambia raramente (solo cuando agregamos productos/cultivos).
+// ─── System prompt CACHEABLE con catálogo + base científica ────────────────
+// Este bloque cambia raramente (solo al actualizar catálogo o evidencia).
 // Se aprovecha prompt caching: lectura ~90% más barata desde el segundo hit.
 function buildCatalogContext(): string {
   const linesText = PRODUCT_LINES.map((l) =>
@@ -59,7 +50,7 @@ function buildCatalogContext(): string {
       .join(' · ')
     const solves = (p.solves_problems ?? []).slice(0, 5).join(', ')
     const crops = (p.crops ?? []).slice(0, 8).join(', ')
-    return `- [${p.line}] **${p.name}** (${p.slug}) — ${p.description.slice(0, 160)}${doseEntries ? ` · Dosis: ${doseEntries}` : ''}${crops ? ` · Cultivos: ${crops}` : ''}${solves ? ` · Resuelve: ${solves}` : ''}`
+    return `- [${p.line}] **${p.name}** (${p.slug}) [id:${p.id}] — ${p.description.slice(0, 160)}${doseEntries ? ` · Dosis: ${doseEntries}` : ''}${crops ? ` · Cultivos: ${crops}` : ''}${solves ? ` · Resuelve: ${solves}` : ''}`
   }).join('\n')
 
   const cropsText = CROP_PROTOCOLS.map((c) =>
@@ -70,7 +61,7 @@ function buildCatalogContext(): string {
 
   return `# Catálogo Biotiza (referencia para responder al usuario)
 
-## Líneas de producto (5 totales)
+## Líneas de producto (${PRODUCT_LINES.length} totales)
 ${linesText}
 
 ## Catálogo de productos (${PRODUCTS.length} productos)
@@ -79,49 +70,79 @@ ${productsText}
 ## Protocolos fenológicos disponibles (${CROP_PROTOCOLS.length} cultivos con etapas detalladas)
 ${cropsText}
 
-## Cultivos adicionales en catálogo (sin protocolo detallado todavía)
+## Cultivos adicionales en catálogo
 ${cropBasic}
 
 ## Datos de contacto oficial
-Email: ${CONTACT_INFO.email} · WhatsApp: +52 33 1602 2708 · Web: ${CONTACT_INFO.website}
-Ubicación: ${CONTACT_INFO.address}`
+Email: ${CONTACT_INFO.email} · WhatsApp: ${CONTACT_INFO.whatsapp} (${CONTACT_INFO.whatsappUrl}) · Web: ${CONTACT_INFO.website}
+Dirección: ${CONTACT_INFO.address}
+Horario: ${CONTACT_INFO.schedule.weekdays} · ${CONTACT_INFO.schedule.saturday} · ${CONTACT_INFO.schedule.note}`
 }
 
-const SYSTEM_PERSONA = `Eres la **Asesora Biotiza**, asistente IA especializada de Biotiza (biotiza.mx), empresa mexicana de biosoluciones agrícolas con sede en Zapotiltic, Jalisco.
+// ─── Base de evidencia científica (cacheable) ──────────────────────────────
+// Estudios peer-reviewed verificados que respaldan los ingredientes activos.
+// Esto eleva a la Asesora a nivel "tesis doctoral": cita evidencia real.
+function buildScienceContext(): string {
+  const blocks = SCIENCE_KB.map((e) => {
+    const cites = e.citations.map((c) => {
+      const ref = `${c.authors} (${c.year}). "${c.title}". ${c.source}.${c.doi ? ` DOI: ${c.doi}.` : ''}`
+      return `    • ${ref}\n      Hallazgo: ${c.finding}${c.cropContext ? ` [Contexto: ${c.cropContext}]` : ''} (confianza: ${c.confidence})`
+    }).join('\n')
+    return `### ${e.ingredient} — ${e.scientificName}
+Productos: ${e.productIds.join(', ')}
+Modo de acción: ${e.mechanism}
+Estudios verificados (${e.citations.length}):
+${cites}`
+  }).join('\n\n')
+
+  return `# Base de evidencia científica Biotiza (${SCIENCE_KB_STATS.ingredients} activos · ${SCIENCE_KB_STATS.verifiedCitations} estudios peer-reviewed verificados)
+
+Cada estudio listado fue verificado contra su fuente real (DOI). Úsalos para
+respaldar tus recomendaciones con evidencia citable cuando un investigador o
+agricultor pregunte por el sustento científico de un producto o ingrediente.
+
+REGLAS AL CITAR:
+- Cita solo lo que está aquí. Si te preguntan por un ingrediente sin estudios
+  en esta base, dilo con honestidad ("la evidencia publicada que tengo a la
+  mano es limitada para este activo") y ofrece conectar con el equipo técnico.
+- No exageres: muchos estudios muestran que la eficacia en campo es menor que
+  en laboratorio (depende de cepa, dosis, clima). Refleja esa realidad.
+- Al citar, menciona autor y año de forma natural (ej: "según Barbosa et al.,
+  2022, un meta-análisis..."). No inventes DOIs ni cifras.
+
+${blocks}`
+}
+
+const SYSTEM_PERSONA = `Eres la **Asesora Biotiza**, asistente IA de nivel agronómico avanzado de Biotiza (biotiza.mx), empresa mexicana de biosoluciones agrícolas en Jalisco. Atiendes a agricultores de exportación, técnicos e investigadores.
 
 ## Tu personalidad
 - Profesional pero cercana. Usas "tú" (no "usted").
 - Emojis moderados (🌱🍅✅ — uno o dos por respuesta máximo, nunca más).
-- Respuestas concisas: 2-4 párrafos cortos, máximo. El usuario está en un chat widget, no quiere leer ensayos.
-- Recomiendas productos ESPECÍFICOS del catálogo Biotiza siempre que sea posible, con dosis y método exactos.
-- Si una pregunta requiere diagnóstico visual o está fuera del catálogo, lo dices honestamente y ofreces conectar con un agrónomo humano por WhatsApp (+52 33 1602 2708) o formulario /contacto.
-- Nunca inventas productos ni dosis: usa solo los del catálogo que te paso abajo.
+- Respuestas concisas y bien estructuradas: 2-4 párrafos cortos. Puedes usar **negritas** y listas con guiones; el chat las renderiza.
+- Recomiendas productos ESPECÍFICOS del catálogo Biotiza con dosis y método exactos.
+- Adaptas la profundidad a quien pregunta: directo y práctico para el agricultor; con respaldo científico y cifras cuando un técnico o investigador lo pide.
+
+## Rigor científico (nivel doctoral, con honestidad)
+- Cuando te pregunten por el "por qué" o el sustento de un producto/ingrediente, apóyate en la BASE DE EVIDENCIA CIENTÍFICA que se te proporciona (estudios peer-reviewed verificados con DOI). Cita autor y año de forma natural.
+- NUNCA inventes estudios, DOIs, cifras, productos ni dosis. Si no está en el catálogo o en la base de evidencia, dilo con honestidad y ofrece conectar con un agrónomo humano.
+- Sé honesto sobre los límites: la eficacia de los biológicos en campo suele ser menor y más variable que en laboratorio (depende de cepa, dosis, clima, humedad, UV). No prometas control total tipo químico.
+- Distingue entre evidencia sólida (meta-análisis, ensayos de campo) y preliminar (in vitro). Posiciona los biológicos dentro de un manejo integrado.
 
 ## Capturar datos del prospecto
-Durante la conversación, identifica y extrae estos datos sobre el usuario si los menciona:
-- **nombre** (ej: "soy Juan")
-- **email** ("juan@ejemplo.mx")
-- **telefono** ("tengo +52 33...")
-- **estado/zona** ("estoy en Sinaloa", "en Jalisco")
-- **cultivo** ("tengo tomate", "siembro fresa")
-- **hectareas** ("tengo 5 hectáreas", "50 ha")
-- **etapa** ("en floración", "acabo de trasplantar")
+Identifica y extrae datos que el usuario mencione naturalmente (nombre, email, teléfono, estado/zona, cultivo, hectáreas, etapa, tipo de interés). Cuando tengas DOS O MÁS datos NUEVOS que no estén ya en los "datos ya capturados" que se te indican, llama a \`capture_lead\` solo con los datos nuevos. No le pidas explícitamente sus datos; extráelos de lo que cuenta. Si no hay datos nuevos, NO llames a la función.
 
-Cuando tengas DOS O MÁS de estos datos nuevos, llama a la función \`capture_lead\` con los datos extraídos. No le pidas al usuario explícitamente "dame tus datos" — los capturas de lo que te cuenta naturalmente. Si no hay datos nuevos, no llames a la función.
+## Flujo ideal
+1. Entiende cultivo, etapa fenológica y problema.
+2. Recomienda 1-3 productos del catálogo con dosis y método; añade el respaldo científico si aporta valor.
+3. Si pide cotización o asesoría profunda, ofrece conectar con agrónomo humano.
+4. Cierra sugiriendo 2-3 acciones cortas (chips clicables) vía \`suggest_next_steps\`.
 
-## Flujo ideal de atención
-1. Entiende el cultivo, etapa fenológica y problema.
-2. Recomienda 1-3 productos específicos del catálogo con dosis y método.
-3. Si el usuario pide cotización o necesita asesoría más profunda, ofrece conectar con agrónomo humano.
-4. Al final de cada respuesta clave, sugiere 2-3 acciones cortas que el usuario podría tomar (aparecen como chips clicables en la UI).
+## Canales
+- WhatsApp: ${CONTACT_INFO.whatsappUrl}
+- Formulario: ${CONTACT_INFO.website}/contacto · Cotización: ${CONTACT_INFO.website}/cotizacion
+- Herramientas: /herramientas (calculadora-dosis, diagnostico, compatibilidad, calculadora-roi)
 
-## Canales externos
-- WhatsApp: https://wa.me/523316022708
-- Formulario: https://biotiza.mx/contacto
-- Cotización: https://biotiza.mx/cotizacion
-- Herramientas online: /herramientas (calculadora-dosis, diagnostico, compatibilidad, calculadora-roi)
-
-Responde siempre en español mexicano profesional. Nunca cites precios (los maneja el equipo de ventas).`
+Responde en español mexicano profesional. Nunca cites precios (los maneja ventas).`
 
 // ─── Fallback heurístico (sin API key) ─────────────────────────────────────
 function heuristicAnswer(message: string): { reply: string; suggestions: string[] } {
@@ -158,40 +179,69 @@ function heuristicAnswer(message: string): { reply: string; suggestions: string[
   }
 }
 
-// ─── Guardar lead (webhook o log) ──────────────────────────────────────────
-async function persistLead(lead: Record<string, unknown>, ip: string) {
-  const payload = {
-    type: 'lead',
-    source: 'chat-widget',
-    capturedAt: new Date().toISOString(),
-    ip,
-    ...lead,
-  }
+// ─── Tools ──────────────────────────────────────────────────────────────────
+const tools: Anthropic.Tool[] = [
+  {
+    name: 'capture_lead',
+    description:
+      'Registra datos que el usuario menciona naturalmente sobre sí mismo. Úsalo cuando detectes al menos 2 datos NUEVOS (que no estén ya capturados). Extráelos de lo que cuenta; no se los pidas explícitamente.',
+    input_schema: {
+      type: 'object',
+      properties: {
+        nombre: { type: 'string', description: 'Nombre del prospecto si lo menciona' },
+        email: { type: 'string', description: 'Correo electrónico si lo menciona' },
+        telefono: { type: 'string', description: 'Teléfono si lo menciona' },
+        estado: { type: 'string', description: 'Estado/zona de México donde cultiva' },
+        cultivo: { type: 'string', description: 'Cultivo principal' },
+        hectareas: { type: 'number', description: 'Superficie en hectáreas' },
+        etapa: { type: 'string', description: 'Etapa fenológica actual' },
+        tipo_interes: {
+          type: 'string',
+          enum: ['nutricion', 'bioestimulacion', 'bioproteccion', 'programa_integral', 'cotizacion', 'otro'],
+          description: 'Qué busca principalmente',
+        },
+        notas: { type: 'string', description: 'Observaciones relevantes en 1-2 oraciones' },
+      },
+    },
+  },
+  {
+    name: 'suggest_next_steps',
+    description:
+      'Al final de tu respuesta, SIEMPRE sugiere 2-3 acciones cortas que el usuario podría tomar. Aparecen como chips clicables en la UI.',
+    input_schema: {
+      type: 'object',
+      properties: {
+        suggestions: {
+          type: 'array',
+          items: { type: 'string' },
+          minItems: 2,
+          maxItems: 3,
+          description: 'Lista de 2 a 3 sugerencias cortas (máximo 6 palabras cada una)',
+        },
+      },
+      required: ['suggestions'],
+    },
+  },
+]
 
-  const webhook = process.env.LEADS_WEBHOOK_URL ?? process.env.CONTACT_WEBHOOK_URL
-  if (webhook) {
-    try {
-      await fetch(webhook, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(payload),
-      })
-    } catch (err) {
-      console.error('[leads] webhook error', err)
-    }
-  } else if (process.env.NODE_ENV !== 'production') {
-    console.log('[leads] captured', payload)
-  }
-}
+// Schema interno para validar lo que el modelo extrae antes de tocar el CRM.
+const captureLeadSchema = z.object({
+  nombre: z.string().min(2).max(80).optional(),
+  email: z.string().email().max(120).optional(),
+  telefono: z.string().max(30).optional(),
+  estado: z.string().max(40).optional(),
+  cultivo: z.string().max(60).optional(),
+  hectareas: z.number().min(0).max(100000).optional(),
+  etapa: z.string().max(60).optional(),
+  tipo_interes: z.enum(['nutricion', 'bioestimulacion', 'bioproteccion', 'programa_integral', 'cotizacion', 'otro']).optional(),
+  notas: z.string().max(2000).optional(),
+})
 
 // ─── POST /api/chat ────────────────────────────────────────────────────────
 export async function POST(req: Request) {
-  const ip =
-    req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-    req.headers.get('x-real-ip') ||
-    'unknown'
+  const ip = getClientIp(req)
 
-  if (!rateLimit(ip)) {
+  if (!rateLimit(`chat:${ip}`, 15)) {
     return NextResponse.json(
       { ok: false, error: 'Estás escribiendo muy rápido. Dame unos segundos.' },
       { status: 429 },
@@ -221,102 +271,92 @@ export async function POST(req: Request) {
   // ── Claude real ──────────────────────────────────────────────────────────
   const client = new Anthropic({ apiKey })
 
-  const history = parsed.data.history ?? []
+  // Saneamos el historial: Anthropic exige que la conversación empiece con un
+  // turno 'user'. El widget incluye un saludo inicial 'assistant' que, sin
+  // limpiar, hacía fallar TODA primera conversación con 400 (hallazgo crítico).
+  const rawHistory = parsed.data.history ?? []
+  const firstUserIdx = rawHistory.findIndex((h) => h.role === 'user')
+  const history = firstUserIdx === -1 ? [] : rawHistory.slice(firstUserIdx)
+
   const messages: Anthropic.MessageParam[] = [
     ...history.map((h) => ({ role: h.role, content: h.content })),
     { role: 'user', content: parsed.data.message },
   ]
 
-  // Tool para capturar datos del prospecto de forma estructurada
-  const tools: Anthropic.Tool[] = [
-    {
-      name: 'capture_lead',
-      description:
-        'Registra datos que el usuario menciona naturalmente sobre sí mismo (su cultivo, zona, hectáreas, etapa, nombre, email, teléfono). Úsalo cuando detectes al menos 2 datos nuevos durante la conversación. No le pidas explícitamente al usuario "dame tus datos"; extráelos de lo que te cuenta.',
-      input_schema: {
-        type: 'object',
-        properties: {
-          nombre: { type: 'string', description: 'Nombre del prospecto si lo menciona' },
-          email: { type: 'string', description: 'Correo electrónico si lo menciona' },
-          telefono: { type: 'string', description: 'Teléfono si lo menciona' },
-          estado: { type: 'string', description: 'Estado/zona de México donde cultiva (ej: Sinaloa, Jalisco)' },
-          cultivo: { type: 'string', description: 'Cultivo principal (ej: tomate, fresa, aguacate)' },
-          hectareas: { type: 'number', description: 'Superficie en hectáreas si la menciona' },
-          etapa: { type: 'string', description: 'Etapa fenológica actual del cultivo' },
-          tipo_interes: {
-            type: 'string',
-            enum: ['nutricion', 'bioestimulacion', 'bioproteccion', 'programa_integral', 'otro'],
-            description: 'Qué busca el prospecto principalmente',
-          },
-          notas: { type: 'string', description: 'Observaciones relevantes en 1-2 oraciones' },
-        },
-      },
-    },
-    {
-      name: 'suggest_next_steps',
-      description:
-        'Al final de tu respuesta, SIEMPRE sugiere 2-3 acciones cortas que el usuario podría tomar. Aparecen como chips clicables en la UI del chat.',
-      input_schema: {
-        type: 'object',
-        properties: {
-          suggestions: {
-            type: 'array',
-            items: { type: 'string' },
-            minItems: 2,
-            maxItems: 3,
-            description: 'Lista de 2 a 3 sugerencias cortas (máximo 6 palabras cada una)',
-          },
-        },
-        required: ['suggestions'],
-      },
-    },
-  ]
+  // Datos ya capturados → se inyectan para que el modelo no los re-pida ni
+  // re-poste el mismo lead en cada turno.
+  const known = parsed.data.lead
+  const knownText = known && Object.keys(known).length > 0
+    ? `\n\n## Datos ya capturados de este prospecto (no los vuelvas a pedir ni re-registres):\n${Object.entries(known).filter(([, v]) => v != null && v !== '').map(([k, v]) => `- ${k}: ${v}`).join('\n')}`
+    : ''
 
   try {
-    // Prompt caching: el catálogo es un prefijo estable y grande → ~90% más
-    // barato en lecturas repetidas. Se invalida solo al actualizar catálogo.
-    const response = await client.messages.create({
-      model: 'claude-opus-4-7',
-      max_tokens: 1200,
-      thinking: { type: 'adaptive' },
-      system: [
-        { type: 'text', text: SYSTEM_PERSONA },
-        {
-          type: 'text',
-          text: buildCatalogContext(),
-          cache_control: { type: 'ephemeral' }, // ← aquí el ahorro
-        },
-      ],
-      messages,
-      tools,
-    })
-
-    // Extraer texto + tool uses
     let replyText = ''
     let suggestions: string[] = []
     let capturedLead: Record<string, unknown> | null = null
+    const convo: Anthropic.MessageParam[] = [...messages]
 
-    for (const block of response.content) {
-      if (block.type === 'text') {
-        replyText += block.text
-      } else if (block.type === 'tool_use') {
-        if (block.name === 'capture_lead') {
-          capturedLead = block.input as Record<string, unknown>
-        } else if (block.name === 'suggest_next_steps') {
-          const input = block.input as { suggestions?: string[] }
-          if (Array.isArray(input.suggestions)) {
-            suggestions = input.suggestions
+    // Bucle de tool_use: continuamos la conversación enviando tool_result
+    // hasta que el modelo cierre (end_turn). Antes era de una sola vuelta y
+    // el texto/sugerencias se perdían si el modelo emitía solo tool_use.
+    for (let turn = 0; turn < 4; turn++) {
+      const response: Anthropic.Message = await client.messages.create({
+        model: CHAT_MODEL,
+        max_tokens: 2048,
+        system: [
+          { type: 'text', text: SYSTEM_PERSONA + knownText },
+          { type: 'text', text: buildCatalogContext() },
+          {
+            type: 'text',
+            text: buildScienceContext(),
+            cache_control: { type: 'ephemeral' }, // ← prefijo estable y grande = ahorro
+          },
+        ],
+        messages: convo,
+        tools,
+      })
+
+      const toolResults: Anthropic.ToolResultBlockParam[] = []
+      for (const block of response.content) {
+        if (block.type === 'text') {
+          replyText += block.text
+        } else if (block.type === 'tool_use') {
+          if (block.name === 'capture_lead') {
+            const safe = captureLeadSchema.safeParse(block.input)
+            if (safe.success && Object.keys(safe.data).length > 0) {
+              capturedLead = safe.data as Record<string, unknown>
+            }
+          } else if (block.name === 'suggest_next_steps') {
+            const input = block.input as { suggestions?: string[] }
+            if (Array.isArray(input.suggestions)) {
+              suggestions = input.suggestions.slice(0, 3).map(String)
+            }
           }
+          toolResults.push({ type: 'tool_result', tool_use_id: block.id, content: 'ok' })
         }
+      }
+
+      if (response.stop_reason !== 'tool_use' || toolResults.length === 0) break
+
+      // Continuar la conversación con los resultados de las tools.
+      convo.push({ role: 'assistant', content: response.content })
+      convo.push({ role: 'user', content: toolResults })
+    }
+
+    // Persistir lead segmentado (mismo CRM que los formularios) si se capturó.
+    if (capturedLead && Object.keys(capturedLead).length > 0) {
+      const safe = leadSchema.safeParse({ ...capturedLead, fuente: 'chat' })
+      if (safe.success) {
+        const segmented = segmentLead(
+          safe.data,
+          ip,
+          new Date().toISOString(),
+          `${Date.now().toString(36).toUpperCase()}-CHAT`,
+        )
+        await deliverLead(segmented)
       }
     }
 
-    // Persistir lead si fue capturado
-    if (capturedLead && Object.keys(capturedLead).length > 0) {
-      await persistLead(capturedLead, ip)
-    }
-
-    // Fallback de sugerencias si el modelo no las emitió
     if (suggestions.length === 0) {
       suggestions = ['Hablar con un agrónomo', 'Ver catálogo', 'Calcular dosis']
     }
@@ -327,12 +367,6 @@ export async function POST(req: Request) {
       suggestions,
       lead: capturedLead,
       mode: 'claude',
-      usage: {
-        input: response.usage.input_tokens,
-        output: response.usage.output_tokens,
-        cacheRead: response.usage.cache_read_input_tokens ?? 0,
-        cacheWrite: response.usage.cache_creation_input_tokens ?? 0,
-      },
     })
   } catch (err) {
     console.error('[chat] Claude error', err)
@@ -344,8 +378,8 @@ export async function POST(req: Request) {
       )
     }
 
-    // Caída a heurística en caso de cualquier otro error
+    // Caída a heurística en caso de cualquier otro error, señalada como degradada.
     const fallback = heuristicAnswer(parsed.data.message)
-    return NextResponse.json({ ok: true, ...fallback, mode: 'fallback' })
+    return NextResponse.json({ ok: true, ...fallback, mode: 'degraded' })
   }
 }
