@@ -205,7 +205,7 @@ export default function RootLayout({
         </QuotationCartProvider>
         <Analytics />
         <SpeedInsights />
-        <GoogleAnalytics gaId="G-VY5V5D35TB" />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? 'G-VY5V5D35TB'} />
       </body>
     </html>
   )

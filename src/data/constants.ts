@@ -275,3 +275,15 @@ export const PRIMARY_NAV: NavItem[] = [
   { label: 'Nosotros',      href: '/nosotros'     },
   { label: 'Contacto',      href: '/contacto', desktopHidden: true },
 ]
+
+// ─── Estilos de color por línea (punto + badge) ────────────────────────────
+// Fuente única para el "dot" y el "badge" Tailwind por línea de producto.
+// Lo consumen las herramientas (calculadora de dosis, compatibilidad). El
+// Badge de UI usa su propio mapa { bg, text, hex } para otro propósito.
+export const LINE_DOT_STYLES: Record<string, { dot: string; badge: string }> = {
+  organicos:       { dot: 'bg-verde-500',   badge: 'bg-verde-50 text-verde-700'     },
+  especialidades:  { dot: 'bg-azul-600',    badge: 'bg-azul-50 text-azul-700'       },
+  bioestimulantes: { dot: 'bg-naranja-500', badge: 'bg-naranja-50 text-naranja-600' },
+  nutricion:       { dot: 'bg-naranja-400', badge: 'bg-orange-50 text-orange-500'   },
+  bioproteccion:   { dot: 'bg-azul-500',    badge: 'bg-azul-50 text-azul-600'       },
+}

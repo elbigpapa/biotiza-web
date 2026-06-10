@@ -10,7 +10,7 @@ import Link from 'next/link'
 import { ChevronLeft, Search, Calculator, Droplets, Wind, Beaker } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import { PRODUCTS } from '@/data/products'
-import { PRODUCT_LINES } from '@/data/constants'
+import { PRODUCT_LINES, LINE_DOT_STYLES } from '@/data/constants'
 import type { Product } from '@/types'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -36,15 +36,9 @@ function methodKey(m: string): string {
   return m.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
 }
 
-// ─── Line color config ────────────────────────────────────────────────────────
+// ─── Line color config (fuente única en constants) ─────────────────────────────
 
-const LINE_COLORS: Record<string, { dot: string; badge: string }> = {
-  organicos:       { dot: 'bg-verde-500',   badge: 'bg-verde-50 text-verde-700'   },
-  especialidades:  { dot: 'bg-azul-600',    badge: 'bg-azul-50 text-azul-700'     },
-  bioestimulantes: { dot: 'bg-naranja-500', badge: 'bg-naranja-50 text-naranja-600' },
-  nutricion:       { dot: 'bg-naranja-400', badge: 'bg-orange-50 text-orange-500' },
-  bioproteccion:          { dot: 'bg-azul-500',    badge: 'bg-azul-50 text-azul-600'     },
-}
+const LINE_COLORS = LINE_DOT_STYLES
 
 // ─── Dose parser ──────────────────────────────────────────────────────────────
 
@@ -98,7 +92,7 @@ function calculateTotal(
   }
 
   // mL/L — foliar assumes 200 L agua/ha
-  if (unitLower === 'ml/l' || unitLower === 'ml/l') {
+  if (unitLower === 'ml/l') {
     const waterPerHa = 200
     const totalMin = (min * waterPerHa * surfaceHa) / 1000
     const totalMax = (max * waterPerHa * surfaceHa) / 1000

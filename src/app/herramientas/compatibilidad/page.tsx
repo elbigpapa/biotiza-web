@@ -10,7 +10,7 @@ import Link from 'next/link'
 import { ChevronLeft, Search, X, CheckSquare } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import { PRODUCTS } from '@/data/products'
-import { PRODUCT_LINES } from '@/data/constants'
+import { PRODUCT_LINES, LINE_DOT_STYLES } from '@/data/constants'
 import { getCompatibility, getCompatibilityEntry } from '@/data/compatibility'
 import type { CompatibilityStatus } from '@/types'
 
@@ -25,13 +25,7 @@ const STATUS_CONFIG: Record<CompatibilityStatus, { label: string; emoji: string;
   unknown:      { label: 'Sin datos',    emoji: '❓', cellBg: 'bg-gris-50',    cellText: 'text-gris-400',    badgeBg: 'bg-gris-100 text-gris-500'     },
 }
 
-const LINE_COLORS: Record<string, { dot: string; badge: string }> = {
-  organicos:       { dot: 'bg-verde-500',   badge: 'bg-verde-50 text-verde-700'     },
-  especialidades:  { dot: 'bg-azul-600',    badge: 'bg-azul-50 text-azul-700'       },
-  bioestimulantes: { dot: 'bg-naranja-500', badge: 'bg-naranja-50 text-naranja-600' },
-  nutricion:       { dot: 'bg-naranja-400', badge: 'bg-orange-50 text-orange-500'   },
-  bioproteccion:          { dot: 'bg-azul-500',    badge: 'bg-azul-50 text-azul-600'       },
-}
+const LINE_COLORS = LINE_DOT_STYLES
 
 // ─── Helper: get all pairs from selected IDs ─────────────────────────────────
 
