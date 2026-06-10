@@ -1,7 +1,7 @@
 # CLAUDE.md — Proyecto Biotiza Website + Asistente IA
 
 ## Contexto
-Biotiza (biotiza.mx) es una empresa mexicana de biosoluciones agrícolas con sede en Zapopan, Jalisco. Vende fertilizantes orgánicos, bioestimulantes, nutrición líquida y bioprotección (línea Zentia) directamente a agricultores de exportación (DTC). Distribuye productos de Veganic, Agrobionsa y Bioproductos Agrícolas. Línea adicional **Biotiza Casa y Jardín** para consumidor final (plantas de interior, pasto, frutales caseros, flores, áreas verdes institucionales y campos de golf).
+Biotiza (biotiza.mx) es una empresa mexicana de biosoluciones agrícolas con sede en Zapotiltic, Jalisco. Vende fertilizantes orgánicos, bioestimulantes, nutrición líquida y bioprotección (línea Zentia) directamente a agricultores de exportación (DTC). Distribuye productos de Veganic, Agrobionsa y Bioproductos Agrícolas. Línea adicional **Biotiza Casa y Jardín** para consumidor final (plantas de interior, pasto, frutales caseros, flores, áreas verdes institucionales y campos de golf).
 
 ## Stack real (2026-04-18)
 - **Next.js 16.2.4** App Router con Turbopack (NO es 14 — breaking changes)
@@ -88,7 +88,7 @@ src/
 - WhatsApp: **+52 33 1602 2708** (real)
 - Instagram: @biotiza
 - Web: biotiza.mx
-- Ubicación: Zapopan, Jalisco, México
+- Ubicación: Zapotiltic, Jalisco, México
 
 ## Líneas de Producto y Colores
 - Orgánicos (#22B573 verde) — 10 productos
