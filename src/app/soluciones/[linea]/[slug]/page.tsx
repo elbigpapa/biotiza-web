@@ -10,7 +10,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { PRODUCTS, getProductBySlug, getRelatedProducts } from '@/data/products'
-import { PRODUCT_LINES } from '@/data/constants'
+import { PRODUCT_LINES, CONTACT_INFO } from '@/data/constants'
 import { getProductImage } from '@/data/product-images'
 import { canonical } from '@/lib/seo'
 import Container from '@/components/ui/Container'
@@ -189,7 +189,7 @@ export default async function ProductoPage({
 
               <div className="flex gap-4 items-center flex-wrap">
                 <a
-                  href={`https://wa.me/523316022708?text=Hola%2C%20quiero%20cotizar%20${encodeURIComponent(product.name)}`}
+                  href={`https://wa.me/${CONTACT_INFO.whatsapp}?text=Hola%2C%20quiero%20cotizar%20${encodeURIComponent(product.name)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-naranja-500 text-white font-mono text-[11px] font-semibold uppercase tracking-[0.16em] hover:bg-naranja-600 hover:-translate-y-0.5 transition-all duration-300"

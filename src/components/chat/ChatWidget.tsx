@@ -13,6 +13,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { Send, X, Sparkles, Loader2, MessageCircle } from 'lucide-react'
 import { track } from '@vercel/analytics'
 import { cn } from '@/lib/utils'
+import { CONTACT_INFO } from '@/data/constants'
 import BiotizaLogo from '@/components/brand/BiotizaLogo'
 
 interface Message {
@@ -394,7 +395,7 @@ export default function ChatWidget() {
               </div>
               <p className="mt-2 text-center text-[10px] text-gris-500">
                 Para respuestas de un agrónomo humano, usa{' '}
-                <a href="https://wa.me/523316022708" target="_blank" rel="noopener noreferrer" className="font-semibold text-verde-600 hover:underline">
+                <a href={CONTACT_INFO.whatsappUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-verde-600 hover:underline">
                   WhatsApp
                 </a>
                 {' '}o{' '}

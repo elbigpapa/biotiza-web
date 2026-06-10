@@ -10,7 +10,7 @@ import Link from 'next/link'
 import { ChevronLeft, ArrowUp, ArrowDown, Minus, Circle, GitBranch } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import { PRODUCTS } from '@/data/products'
-import { CROPS_DATA } from '@/data/constants'
+import { CROPS_DATA, CONTACT_INFO } from '@/data/constants'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -534,7 +534,7 @@ export default function DiagnosticoPage() {
             {/* CTAs */}
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
               <a
-                href={`https://wa.me/523316022708?text=${waText}`}
+                href={`https://wa.me/${CONTACT_INFO.whatsapp}?text=${waText}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-verde-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-verde-600"

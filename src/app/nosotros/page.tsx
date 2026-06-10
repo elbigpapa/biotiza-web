@@ -6,6 +6,7 @@
 import type { Metadata } from 'next'
 import Container from '@/components/ui/Container'
 import { canonical } from '@/lib/seo'
+import { CONTACT_INFO } from '@/data/constants'
 
 export const metadata: Metadata = {
   title: 'Nosotros · Servicio que nos diferencia',
@@ -199,7 +200,7 @@ export default function NosotrosPage() {
               </p>
               <div className="flex items-center gap-5 flex-wrap mb-7">
                 <a
-                  href="https://wa.me/523316022708?text=Hola%20Biotiza%2C%20quiero%20conocer%20su%20servicio"
+                  href={`https://wa.me/${CONTACT_INFO.whatsapp}?text=Hola%20Biotiza%2C%20quiero%20conocer%20su%20servicio`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-naranja-500 text-white font-mono text-[11px] font-semibold uppercase tracking-[0.16em] hover:bg-naranja-600 hover:-translate-y-0.5 transition-all"

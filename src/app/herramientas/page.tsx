@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { Calculator, Stethoscope, CheckSquare, TrendingUp } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
+import { CONTACT_INFO } from '@/data/constants'
 
 export const metadata: Metadata = {
   title: 'Herramientas agronómicas',
@@ -155,7 +156,7 @@ export default function HerramientasPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
-                href="https://wa.me/523316022708?text=Hola%2C+necesito+asesoría+técnica+sobre+productos+Biotiza"
+                href={`https://wa.me/${CONTACT_INFO.whatsapp}?text=Hola%2C+necesito+asesoría+técnica+sobre+productos+Biotiza`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-verde-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-verde-600"

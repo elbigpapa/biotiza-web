@@ -22,6 +22,7 @@ import {
   getPackageBySlug,
   getPackagesByCategory,
 } from '@/data/home-garden'
+import { CONTACT_INFO } from '@/data/constants'
 import { cn } from '@/lib/utils'
 
 export function generateStaticParams() {
@@ -160,7 +161,7 @@ export default async function PackagePage({
                       {pkg.price > 0 ? 'Pedir este paquete' : 'Solicitar cotización'}
                     </Link>
                     <a
-                      href={`https://wa.me/523316022708?text=${waText}`}
+                      href={`https://wa.me/${CONTACT_INFO.whatsapp}?text=${waText}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#1ebe57]"

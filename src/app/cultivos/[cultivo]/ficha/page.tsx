@@ -260,7 +260,7 @@ export default async function FichaCultivoPage({
         <div className="no-print mt-6 flex flex-wrap items-center justify-center gap-3">
           <PrintFichaButton />
           <a
-            href={`https://wa.me/523316022708?text=${waText}`}
+            href={`https://wa.me/${CONTACT_INFO.whatsapp}?text=${waText}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-verde-600 px-5 py-2.5 text-sm font-semibold text-verde-700 transition-colors hover:bg-verde-50"

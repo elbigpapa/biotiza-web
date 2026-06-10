@@ -19,6 +19,7 @@ import Link from 'next/link'
 import { Mail, MapPin, ArrowRight, Send } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import BiotizaLogo from '@/components/brand/BiotizaLogo'
+import { CONTACT_INFO } from '@/data/constants'
 
 const COL_SOLUCIONES = [
   { label: 'Línea Orgánicos',      href: '/soluciones/organicos'       },
@@ -174,7 +175,7 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm">
               <li>
                 <a
-                  href="https://wa.me/523316022708?text=Hola%20Biotiza%2C%20quiero%20informaci%C3%B3n"
+                  href={`https://wa.me/${CONTACT_INFO.whatsapp}?text=Hola%20Biotiza%2C%20quiero%20informaci%C3%B3n`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-white hover:text-verde-300 transition-colors"

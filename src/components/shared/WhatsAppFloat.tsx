@@ -14,9 +14,10 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { MessageCircle } from 'lucide-react'
 import { track } from '@vercel/analytics'
+import { CONTACT_INFO } from '@/data/constants'
 
 const WA_URL =
-  'https://wa.me/523316022708?text=Hola%20Biotiza%2C%20necesito%20asesor%C3%ADa%20sobre%20sus%20productos%20%F0%9F%8C%B1'
+  `https://wa.me/${CONTACT_INFO.whatsapp}?text=Hola%20Biotiza%2C%20necesito%20asesor%C3%ADa%20sobre%20sus%20productos%20%F0%9F%8C%B1`
 
 export default function WhatsAppFloat() {
   const [hovered, setHovered] = useState(false)

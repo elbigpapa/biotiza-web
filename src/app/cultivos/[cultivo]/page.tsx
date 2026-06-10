@@ -21,6 +21,7 @@ import { notFound } from 'next/navigation'
 import { CROP_PROTOCOLS, getCropBySlug } from '@/data/crops'
 import type { CropStage, StageProduct } from '@/data/crops'
 import { PRODUCTS } from '@/data/products'
+import { CONTACT_INFO } from '@/data/constants'
 import { getCropImage } from '@/data/crop-images'
 import { getProductImage } from '@/data/product-images'
 import { canonical } from '@/lib/seo'
@@ -450,7 +451,7 @@ export default async function CultivoDetailPage({
           </p>
           <div className="flex items-center gap-5 flex-wrap">
             <a
-              href={`https://wa.me/523316022708?text=Hola%2C%20quiero%20el%20protocolo%20de%20${encodeURIComponent(crop.name)}`}
+              href={`https://wa.me/${CONTACT_INFO.whatsapp}?text=Hola%2C%20quiero%20el%20protocolo%20de%20${encodeURIComponent(crop.name)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-naranja-500 text-white font-mono text-[11px] font-semibold uppercase tracking-[0.16em] hover:bg-naranja-600 hover:-translate-y-0.5 transition-all duration-300"

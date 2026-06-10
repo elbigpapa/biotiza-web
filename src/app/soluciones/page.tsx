@@ -12,7 +12,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Search, X, Filter } from 'lucide-react'
 import { PRODUCTS, getProductsByLine } from '@/data/products'
-import { PRODUCT_LINES } from '@/data/constants'
+import { PRODUCT_LINES, CONTACT_INFO } from '@/data/constants'
 import { getProductImage } from '@/data/product-images'
 import { cn } from '@/lib/utils'
 import Container from '@/components/ui/Container'
@@ -213,7 +213,7 @@ export default function SolucionesPage() {
               </p>
               <div className="flex gap-4 flex-wrap">
                 <a
-                  href="https://wa.me/523316022708"
+                  href={CONTACT_INFO.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-naranja-500 text-white font-mono text-[11px] font-semibold uppercase tracking-[0.16em] hover:bg-naranja-600 hover:-translate-y-0.5 transition-all duration-300"

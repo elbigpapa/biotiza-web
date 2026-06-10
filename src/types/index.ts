@@ -298,29 +298,10 @@ export interface Quotation {
 }
 
 // ─── Blog / Academia ──────────────────────────────────────────────────────
-
-export type ArticleCategory =
-  | 'nutrición'
-  | 'bioestimulación'
-  | 'bioprotección'
-  | 'suelos'
-  | 'cultivos'
-  | 'noticias'
-
-export interface Article {
-  slug: string
-  title: string
-  excerpt: string
-  content?: string
-  category: ArticleCategory
-  tags: string[]
-  author: string
-  published_at: string
-  updated_at?: string
-  image?: string
-  reading_time?: number
-  featured: boolean
-}
+// Los tipos de artículos (Article, ArticleCategory, ArticleBlock) viven en
+// `@/data/articles.types` —fuente única— para evitar dependencias circulares
+// con los archivos modulares de artículos. NO redeclarar aquí: la versión que
+// existía antes en este archivo estaba muerta y divergía del modelo real.
 
 // ─── Testimonial ─────────────────────────────────────────────────────────
 

@@ -5,6 +5,7 @@
  */
 
 import Link from 'next/link'
+import { CONTACT_INFO } from '@/data/constants'
 import Scene from '@/components/redesign/Scene'
 import { Reveal, RevealItem } from '@/components/redesign/ScrollReveal'
 import MiniLeadForm from '@/components/sections/MiniLeadForm'
@@ -57,7 +58,7 @@ export default function CTASection() {
           <RevealItem className="flex flex-col sm:flex-row gap-4 flex-wrap">
             {/* (a) WhatsApp */}
             <a
-              href="https://wa.me/523316022708?text=Hola%20Biotiza%2C%20quiero%20dise%C3%B1ar%20mi%20programa%20nutricional"
+              href={`https://wa.me/${CONTACT_INFO.whatsapp}?text=Hola%20Biotiza%2C%20quiero%20dise%C3%B1ar%20mi%20programa%20nutricional`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 min-h-[44px] rounded-lg bg-[#25D366] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1ebe5a] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"

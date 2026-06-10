@@ -27,7 +27,7 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { PRIMARY_NAV } from '@/data/constants'
+import { PRIMARY_NAV, CONTACT_INFO } from '@/data/constants'
 
 // ─── Datos ────────────────────────────────────────────────────────────────
 
@@ -273,7 +273,7 @@ export default function MobileNav({ onClose }: MobileNavProps) {
         <div className="border-t border-gris-100 p-5 space-y-3">
           {/* WhatsApp */}
           <a
-            href="https://wa.me/523316022708?text=Hola%20Biotiza%2C%20necesito%20asesor%C3%ADa"
+            href={`https://wa.me/${CONTACT_INFO.whatsapp}?text=Hola%20Biotiza%2C%20necesito%20asesor%C3%ADa`}
             target="_blank"
             rel="noopener noreferrer"
             onClick={onClose}

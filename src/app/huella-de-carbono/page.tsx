@@ -14,6 +14,7 @@ import Link from 'next/link'
 import { Leaf, Truck, Factory, FlaskConical, Sprout, ExternalLink } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import { canonical } from '@/lib/seo'
+import { CONTACT_INFO } from '@/data/constants'
 
 export const metadata: Metadata = {
   title: 'Huella de Carbono',
@@ -288,7 +289,7 @@ export default function HuellaDeCarbonoPage() {
                 Calculadora de ROI
               </Link>
               <a
-                href="https://wa.me/523316022708?text=Hola%20Biotiza%2C%20quiero%20calcular%20el%20ahorro%20y%20la%20huella%20de%20cambiar%20a%20sus%20biosoluciones"
+                href={`https://wa.me/${CONTACT_INFO.whatsapp}?text=Hola%20Biotiza%2C%20quiero%20calcular%20el%20ahorro%20y%20la%20huella%20de%20cambiar%20a%20sus%20biosoluciones`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/20"

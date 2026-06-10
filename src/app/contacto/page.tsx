@@ -25,6 +25,7 @@ import { track } from '@vercel/analytics'
 import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
 import { whatsappLink } from '@/lib/utils'
+import { CONTACT_INFO } from '@/data/constants'
 
 // ---------------------------------------------------------------------------
 // Zod schema
@@ -67,7 +68,7 @@ const contactItems = [
     icon: MessageCircle,
     label: 'WhatsApp / Llamadas',
     value: '+52 33 1602 2708',
-    href: 'https://wa.me/523316022708',
+    href: CONTACT_INFO.whatsappUrl,
   },
   {
     icon: MapPin,
