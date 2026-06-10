@@ -164,7 +164,7 @@ export default function CompatibilidadPage() {
                 placeholder="Buscar producto..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-xl border border-gris-200 bg-white py-2.5 pl-9 pr-3 text-sm text-gris-800 placeholder:text-gris-400 focus:outline-none focus:ring-2 focus:ring-azul-300"
+                className="w-full rounded-xl border border-gris-200 bg-white py-2.5 pl-9 pr-3 text-sm text-gris-800 placeholder:text-gris-500 focus:outline-none focus:ring-2 focus:ring-azul-300"
               />
             </div>
 
@@ -182,7 +182,7 @@ export default function CompatibilidadPage() {
                   <div key={line.id}>
                     <div className="mb-1.5 flex items-center gap-2">
                       <span className={`h-2 w-2 rounded-full ${colors.dot}`} />
-                      <span className="text-[10px] font-semibold uppercase tracking-wider text-gris-400">
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-gris-500">
                         {line.name}
                       </span>
                     </div>
@@ -213,7 +213,7 @@ export default function CompatibilidadPage() {
                 )
               })}
               {filtered.length === 0 && (
-                <p className="text-center text-gris-400 py-6 text-sm">
+                <p className="text-center text-gris-500 py-6 text-sm">
                   No se encontraron productos para &quot;{searchQuery}&quot;
                 </p>
               )}
@@ -239,7 +239,7 @@ export default function CompatibilidadPage() {
                     <CheckSquare className="h-6 w-6 text-azul-400" />
                   </div>
                   <p className="text-sm font-semibold text-gris-500">Selecciona 2 o más productos</p>
-                  <p className="text-xs text-gris-400 mt-1">y pulsa &quot;Verificar compatibilidad&quot;</p>
+                  <p className="text-xs text-gris-500 mt-1">y pulsa &quot;Verificar compatibilidad&quot;</p>
                 </div>
               </div>
             )}

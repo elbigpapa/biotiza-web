@@ -294,7 +294,7 @@ export default function MobileNav({ onClose }: MobileNavProps) {
             Solicitar Cotización
           </Link>
 
-          <p className="text-center text-xs text-gris-400">
+          <p className="text-center text-xs text-gris-500">
             ventas@biotiza.mx · Zapotiltic, Jalisco
           </p>
         </div>

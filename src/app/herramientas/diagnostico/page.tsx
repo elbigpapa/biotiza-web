@@ -243,11 +243,11 @@ function StepIndicator({ current }: { current: WizardStep }) {
             <div className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold transition-colors
               ${current === s.n ? 'bg-naranja-500 text-white ring-4 ring-naranja-100' :
                 current > s.n  ? 'bg-naranja-300 text-white' :
-                'bg-gris-200 text-gris-400'}`}>
+                'bg-gris-200 text-gris-500'}`}>
               {current > s.n ? '✓' : s.n}
             </div>
             <span className={`mt-1 hidden sm:block text-[10px] font-medium
-              ${current === s.n ? 'text-naranja-600' : current > s.n ? 'text-naranja-300' : 'text-gris-400'}`}>
+              ${current === s.n ? 'text-naranja-600' : current > s.n ? 'text-naranja-300' : 'text-gris-500'}`}>
               {s.label}
             </span>
           </div>
@@ -341,7 +341,7 @@ export default function DiagnosticoPage() {
                 >
                   <span className="text-3xl mb-2">{crop.emoji}</span>
                   <span className="text-sm font-semibold text-gris-800">{crop.name}</span>
-                  <span className="text-[10px] text-gris-400 mt-0.5 italic">{crop.description}</span>
+                  <span className="text-[10px] text-gris-500 mt-0.5 italic">{crop.description}</span>
                 </button>
               ))}
             </div>
@@ -353,7 +353,7 @@ export default function DiagnosticoPage() {
           <div>
             <button
               onClick={() => setStep(1)}
-              className="mb-6 flex items-center gap-1 text-sm text-gris-400 hover:text-gris-700 transition-colors"
+              className="mb-6 flex items-center gap-1 text-sm text-gris-500 hover:text-gris-700 transition-colors"
             >
               <ChevronLeft className="h-4 w-4" /> Cambiar cultivo
             </button>
@@ -395,7 +395,7 @@ export default function DiagnosticoPage() {
           <div>
             <button
               onClick={() => setStep(2)}
-              className="mb-6 flex items-center gap-1 text-sm text-gris-400 hover:text-gris-700 transition-colors"
+              className="mb-6 flex items-center gap-1 text-sm text-gris-500 hover:text-gris-700 transition-colors"
             >
               <ChevronLeft className="h-4 w-4" /> Cambiar zona
             </button>
@@ -412,7 +412,7 @@ export default function DiagnosticoPage() {
             <h2 className="font-serif text-2xl text-gris-900 mb-2">
               ¿Qué síntomas ves?
             </h2>
-            <p className="text-sm text-gris-400 mb-6">Puedes seleccionar varios.</p>
+            <p className="text-sm text-gris-500 mb-6">Puedes seleccionar varios.</p>
 
             <div className="space-y-2 mb-8">
               {SYMPTOMS.map(({ id, label, emoji }) => {
@@ -452,7 +452,7 @@ export default function DiagnosticoPage() {
           <div>
             <button
               onClick={() => setStep(3)}
-              className="mb-6 flex items-center gap-1 text-sm text-gris-400 hover:text-gris-700 transition-colors"
+              className="mb-6 flex items-center gap-1 text-sm text-gris-500 hover:text-gris-700 transition-colors"
             >
               <ChevronLeft className="h-4 w-4" /> Cambiar síntomas
             </button>
@@ -479,7 +479,7 @@ export default function DiagnosticoPage() {
                 {/* Recommended products */}
                 {recommendedProducts.length > 0 && (
                   <div className="mb-6">
-                    <h3 className="text-xs font-semibold uppercase tracking-widest text-gris-400 mb-3">
+                    <h3 className="text-xs font-semibold uppercase tracking-widest text-gris-500 mb-3">
                       Productos recomendados
                     </h3>
                     <div className="space-y-3">
@@ -493,7 +493,7 @@ export default function DiagnosticoPage() {
                           >
                             <div className="flex-1">
                               <p className="text-sm font-semibold text-gris-800">{product.name}</p>
-                              <p className="text-xs text-gris-400 mt-0.5 line-clamp-2">{product.description}</p>
+                              <p className="text-xs text-gris-500 mt-0.5 line-clamp-2">{product.description}</p>
                             </div>
                             <ChevronLeft className="h-4 w-4 rotate-180 text-gris-300 shrink-0" />
                           </Link>

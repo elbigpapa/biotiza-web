@@ -149,7 +149,7 @@ export default function BlogIndexPage() {
                       <span className={cn('rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wide ring-1', cat.bg, cat.text, cat.ring)}>
                         {article.categoryLabel}
                       </span>
-                      <span className="flex items-center gap-1 text-xs text-gris-400">
+                      <span className="flex items-center gap-1 text-xs text-gris-500">
                         <Clock size={11} /> {article.readTime} min
                       </span>
                     </div>

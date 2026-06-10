@@ -189,7 +189,7 @@ export default function AcademiaPage() {
                     <p className="text-xs text-gris-500 line-clamp-2 flex-1">
                       {article.excerpt}
                     </p>
-                    <span className="text-xs text-gris-400">
+                    <span className="text-xs text-gris-500">
                       {article.readTime} min · {new Date(article.publishedAt).toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' })}
                     </span>
                   </div>
@@ -233,7 +233,7 @@ export default function AcademiaPage() {
                     <p className="text-xs text-gris-500 line-clamp-2 flex-1">
                       {article.excerpt}
                     </p>
-                    <div className="flex items-center justify-between gap-2 pt-1 mt-auto text-[11px] text-gris-400">
+                    <div className="flex items-center justify-between gap-2 pt-1 mt-auto text-[11px] text-gris-500">
                       <span>{article.readTime} min de lectura</span>
                       <span>
                         {new Date(article.publishedAt).toLocaleDateString('es-MX', { day: 'numeric', month: 'short', year: 'numeric' })}

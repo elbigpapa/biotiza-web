@@ -237,7 +237,7 @@ export default function CasaJardinPage() {
                     </p>
                     <div className="flex items-center gap-2 pt-1">
                       {pkg.priceStrike && (
-                        <span className="text-xs text-gris-400 line-through">${pkg.priceStrike}</span>
+                        <span className="text-xs text-gris-500 line-through">${pkg.priceStrike}</span>
                       )}
                       <span className="text-lg font-bold text-verde-700">
                         {pkg.price > 0 ? `$${pkg.price.toLocaleString('es-MX')} MXN` : 'Cotización'}

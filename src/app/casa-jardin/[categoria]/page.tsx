@@ -195,7 +195,7 @@ export default async function CategoryPage({
                     <div className="flex items-end justify-between gap-3 border-t border-gris-100 pt-4 mt-1">
                       <div>
                         {pkg.priceStrike && (
-                          <span className="block text-xs text-gris-400 line-through">
+                          <span className="block text-xs text-gris-500 line-through">
                             ${pkg.priceStrike.toLocaleString('es-MX')}
                           </span>
                         )}

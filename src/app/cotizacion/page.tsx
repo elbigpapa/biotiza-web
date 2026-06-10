@@ -86,7 +86,7 @@ const MEXICAN_STATES = [
 // ─── Estilos de campo ────────────────────────────────────────────────────────
 
 const inputClass =
-  'border border-gris-200 rounded-lg px-4 py-3 text-sm min-h-[44px] focus:border-verde-400 focus:outline-none focus:ring-2 focus:ring-verde-500/20 w-full bg-white text-gris-900 placeholder:text-gris-400'
+  'border border-gris-200 rounded-lg px-4 py-3 text-sm min-h-[44px] focus:border-verde-400 focus:outline-none focus:ring-2 focus:ring-verde-500/20 w-full bg-white text-gris-900 placeholder:text-gris-500'
 
 const labelClass = 'block text-sm font-medium text-gris-700 mb-1'
 
@@ -396,7 +396,7 @@ function QuotationPageContent() {
               </button>
 
               {/* Aviso */}
-              <p className="text-center text-xs text-gris-400">
+              <p className="text-center text-xs text-gris-500">
                 Te abrimos WhatsApp con tu solicitud lista — solo dale
                 &ldquo;Enviar&rdquo;. Tus datos no se comparten con terceros.
               </p>
@@ -433,7 +433,7 @@ function QuotationPageContent() {
                     <p className="mb-1 text-sm font-medium text-gris-700">
                       Aún no tienes productos.
                     </p>
-                    <p className="mb-5 text-xs text-gris-400 leading-relaxed">
+                    <p className="mb-5 text-xs text-gris-500 leading-relaxed">
                       Navega el catálogo y agrega los que necesites.
                     </p>
                     <Link
@@ -543,7 +543,7 @@ function QuotationPageContent() {
               )}
 
               {/* Nota de precios */}
-              <p className="text-xs text-gris-400 leading-relaxed text-center px-2">
+              <p className="text-xs text-gris-500 leading-relaxed text-center px-2">
                 Los precios se confirman con el equipo técnico según volumen y
                 región.
               </p>

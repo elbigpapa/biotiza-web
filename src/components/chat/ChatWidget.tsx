@@ -375,7 +375,7 @@ export default function ChatWidget() {
                   maxLength={500}
                   disabled={loading}
                   aria-label="Mensaje para la Asesora Biotiza"
-                  className="min-w-0 flex-1 rounded-xl border border-gris-200 bg-gris-50 px-3.5 py-2.5 text-sm text-gris-800 placeholder:text-gris-400 focus:border-verde-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-verde-500/15 disabled:opacity-50"
+                  className="min-w-0 flex-1 rounded-xl border border-gris-200 bg-gris-50 px-3.5 py-2.5 text-sm text-gris-800 placeholder:text-gris-500 focus:border-verde-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-verde-500/15 disabled:opacity-50"
                 />
                 <button
                   type="submit"
@@ -392,7 +392,7 @@ export default function ChatWidget() {
                   <Send size={15} />
                 </button>
               </div>
-              <p className="mt-2 text-center text-[10px] text-gris-400">
+              <p className="mt-2 text-center text-[10px] text-gris-500">
                 Para respuestas de un agrónomo humano, usa{' '}
                 <a href="https://wa.me/523316022708" target="_blank" rel="noopener noreferrer" className="font-semibold text-verde-600 hover:underline">
                   WhatsApp

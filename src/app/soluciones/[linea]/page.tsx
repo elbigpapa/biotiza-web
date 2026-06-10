@@ -139,7 +139,7 @@ export default async function LineaPage({ params }: { params: Promise<{ linea: s
                     {/* Composición rápida */}
                     {product.composition.length > 0 && (
                       <div className="rounded-lg bg-gris-50 px-3 py-2">
-                        <p className="text-[10px] font-mono font-semibold uppercase tracking-widest text-gris-400 mb-1">
+                        <p className="text-[10px] font-mono font-semibold uppercase tracking-widest text-gris-500 mb-1">
                           Composición
                         </p>
                         {product.composition.slice(0, 2).map((c, i) => (
@@ -149,7 +149,7 @@ export default async function LineaPage({ params }: { params: Promise<{ linea: s
                           </p>
                         ))}
                         {product.composition.length > 2 && (
-                          <p className="text-[10px] text-gris-400 mt-0.5">+{product.composition.length - 2} más</p>
+                          <p className="text-[10px] text-gris-500 mt-0.5">+{product.composition.length - 2} más</p>
                         )}
                       </div>
                     )}
@@ -191,7 +191,7 @@ export default async function LineaPage({ params }: { params: Promise<{ linea: s
                   </span>
                   <div className="min-w-0">
                     <p className="font-semibold text-gris-800 truncate">{line.name}</p>
-                    <p className="text-xs text-gris-400 truncate">{line.tagline}</p>
+                    <p className="text-xs text-gris-500 truncate">{line.tagline}</p>
                   </div>
                   <ArrowRight size={14} className="shrink-0 text-gris-300 ml-auto" />
                 </Link>

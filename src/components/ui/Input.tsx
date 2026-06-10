@@ -36,7 +36,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 // ─── Estilos base ─────────────────────────────────────────────────────────
 
 const inputBase = [
-  'w-full rounded-lg text-sm text-gris-900 placeholder:text-gris-400',
+  'w-full rounded-lg text-sm text-gris-900 placeholder:text-gris-500',
   'transition-all duration-200',
   'focus:outline-none focus:ring-2 focus:ring-verde-500 focus:ring-offset-0 focus:border-verde-500',
   'disabled:cursor-not-allowed disabled:bg-gris-100 disabled:text-gris-400',

@@ -266,7 +266,7 @@ export default function ContactoPage() {
                       tu mensaje. Te respondemos en menos de 24 h hábiles.
                     </p>
                     {waUrl && (
-                      <p className="text-xs text-gris-400 mt-4">
+                      <p className="text-xs text-gris-500 mt-4">
                         ¿No se abrió WhatsApp?{' '}
                         <a
                           href={waUrl}
@@ -320,7 +320,7 @@ export default function ContactoPage() {
                   <div>
                     <label htmlFor="telefono" className={labelClass}>
                       Teléfono{' '}
-                      <span className="text-gris-400 font-normal">(opcional)</span>
+                      <span className="text-gris-500 font-normal">(opcional)</span>
                     </label>
                     <input
                       id="telefono"
@@ -378,7 +378,7 @@ export default function ContactoPage() {
                     Enviar por WhatsApp
                   </button>
 
-                  <p className="text-center text-xs text-gris-400">
+                  <p className="text-center text-xs text-gris-500">
                     Te abrimos WhatsApp con tu mensaje listo — solo dale
                     &ldquo;Enviar&rdquo;.
                   </p>

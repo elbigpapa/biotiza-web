@@ -157,7 +157,7 @@ export default function HuellaDeCarbonoPage() {
                 className="flex flex-col rounded-2xl border border-gris-100 bg-white p-6 shadow-sm"
               >
                 <p className="font-serif text-3xl text-verde-700">{s.value}</p>
-                <p className="mt-0.5 text-xs font-semibold uppercase tracking-wide text-gris-400">
+                <p className="mt-0.5 text-xs font-semibold uppercase tracking-wide text-gris-500">
                   {s.unit}
                 </p>
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-gris-600">

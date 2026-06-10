@@ -200,7 +200,7 @@ export default function MegaMenu({ onClose }: MegaMenuProps) {
 
                   {/* Footer */}
                   <div className="mt-auto flex items-center justify-between">
-                    <span className="text-xs text-gris-400">
+                    <span className="text-xs text-gris-500">
                       {line.productCount} productos
                     </span>
                     <span

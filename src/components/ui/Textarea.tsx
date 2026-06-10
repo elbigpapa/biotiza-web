@@ -30,7 +30,7 @@ export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
 // ─── Estilos base ─────────────────────────────────────────────────────────
 
 const textareaBase = [
-  'w-full rounded-lg text-sm text-gris-900 placeholder:text-gris-400',
+  'w-full rounded-lg text-sm text-gris-900 placeholder:text-gris-500',
   'transition-all duration-200 resize-y',
   'focus:outline-none focus:ring-2 focus:ring-verde-500 focus:ring-offset-0 focus:border-verde-500',
   'disabled:cursor-not-allowed disabled:bg-gris-100 disabled:text-gris-400',
@@ -141,7 +141,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 'shrink-0 text-xs tabular-nums',
                 currentLength >= maxLength * 0.9
                   ? 'text-naranja-500'
-                  : 'text-gris-400',
+                  : 'text-gris-500',
               )}
             >
               {currentLength}/{maxLength}

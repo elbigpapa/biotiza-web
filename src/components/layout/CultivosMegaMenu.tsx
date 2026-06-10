@@ -39,7 +39,7 @@ export default function CultivosMegaMenu({ onClose }: CultivosMegaMenuProps) {
       aria-label="Menú de cultivos"
     >
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <p className="mb-5 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-gris-400">
+        <p className="mb-5 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-gris-500">
           Elige tu cultivo · 35 expedientes con protocolo agronómico
         </p>
 

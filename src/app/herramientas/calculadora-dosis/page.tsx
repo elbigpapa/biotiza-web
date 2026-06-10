@@ -159,12 +159,12 @@ function StepIndicator({ current }: { current: WizardStep }) {
               className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold transition-colors
                 ${current === s.n ? 'bg-verde-500 text-white ring-4 ring-verde-100' :
                   current > s.n  ? 'bg-verde-300 text-white' :
-                  'bg-gris-200 text-gris-400'}`}
+                  'bg-gris-200 text-gris-500'}`}
             >
               {current > s.n ? '✓' : s.n}
             </div>
             <span className={`mt-1 hidden sm:block text-[10px] font-medium
-              ${current === s.n ? 'text-verde-600' : current > s.n ? 'text-verde-400' : 'text-gris-400'}`}>
+              ${current === s.n ? 'text-verde-600' : current > s.n ? 'text-verde-400' : 'text-gris-500'}`}>
               {s.label}
             </span>
           </div>
@@ -274,7 +274,7 @@ export default function CalculadoraDosisPage() {
                 placeholder="Buscar producto..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-xl border border-gris-200 bg-white py-3 pl-10 pr-4 text-sm text-gris-800 placeholder:text-gris-400 focus:outline-none focus:ring-2 focus:ring-verde-300"
+                className="w-full rounded-xl border border-gris-200 bg-white py-3 pl-10 pr-4 text-sm text-gris-800 placeholder:text-gris-500 focus:outline-none focus:ring-2 focus:ring-verde-300"
               />
             </div>
 
@@ -309,7 +309,7 @@ export default function CalculadoraDosisPage() {
                         >
                           <div>
                             <p className="text-sm font-semibold text-gris-800">{product.name}</p>
-                            <p className="text-xs text-gris-400 mt-0.5">{product.category}</p>
+                            <p className="text-xs text-gris-500 mt-0.5">{product.category}</p>
                           </div>
                           <span className={`ml-3 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase ${colors.badge}`}>
                             {line.name}
@@ -321,7 +321,7 @@ export default function CalculadoraDosisPage() {
                 )
               })}
               {filteredProducts.length === 0 && (
-                <p className="text-center text-gris-400 py-8">
+                <p className="text-center text-gris-500 py-8">
                   No se encontraron productos para &quot;{searchQuery}&quot;
                 </p>
               )}
@@ -334,7 +334,7 @@ export default function CalculadoraDosisPage() {
           <div>
             <button
               onClick={() => setStep(1)}
-              className="mb-6 flex items-center gap-1 text-sm text-gris-400 hover:text-gris-700 transition-colors"
+              className="mb-6 flex items-center gap-1 text-sm text-gris-500 hover:text-gris-700 transition-colors"
             >
               <ChevronLeft className="h-4 w-4" /> Cambiar producto
             </button>
@@ -371,7 +371,7 @@ export default function CalculadoraDosisPage() {
               onChange={(e) => setSurface(parseFloat(e.target.value) || 0)}
               className="w-full max-w-xs rounded-xl border border-gris-200 bg-white px-4 py-3 text-2xl font-bold text-gris-900 focus:outline-none focus:ring-2 focus:ring-verde-300"
             />
-            <p className="mt-1.5 text-sm text-gris-400">
+            <p className="mt-1.5 text-sm text-gris-500">
               {surfaceUnit === 'ha' ? 'hectáreas' : 'metros cuadrados'}
             </p>
 
@@ -396,7 +396,7 @@ export default function CalculadoraDosisPage() {
           <div>
             <button
               onClick={() => setStep(2)}
-              className="mb-6 flex items-center gap-1 text-sm text-gris-400 hover:text-gris-700 transition-colors"
+              className="mb-6 flex items-center gap-1 text-sm text-gris-500 hover:text-gris-700 transition-colors"
             >
               <ChevronLeft className="h-4 w-4" /> Cambiar superficie
             </button>
@@ -432,7 +432,7 @@ export default function CalculadoraDosisPage() {
                     <div>
                       <p className="font-semibold text-gris-800">{meta.label}</p>
                       {selectedProduct.recommended_dose?.[methodKey(method)] && (
-                        <p className="text-xs text-gris-400 mt-0.5">
+                        <p className="text-xs text-gris-500 mt-0.5">
                           Dosis: {selectedProduct.recommended_dose[methodKey(method)]}
                         </p>
                       )}
@@ -460,7 +460,7 @@ export default function CalculadoraDosisPage() {
           <div>
             <button
               onClick={() => setStep(3)}
-              className="mb-6 flex items-center gap-1 text-sm text-gris-400 hover:text-gris-700 transition-colors"
+              className="mb-6 flex items-center gap-1 text-sm text-gris-500 hover:text-gris-700 transition-colors"
             >
               <ChevronLeft className="h-4 w-4" /> Cambiar método
             </button>
@@ -487,18 +487,18 @@ export default function CalculadoraDosisPage() {
                 {/* Dose string */}
                 <div className="mb-6 grid grid-cols-2 gap-4">
                   <div className="rounded-xl bg-gris-50 px-4 py-3">
-                    <p className="text-xs text-gris-400 mb-1">Dosis recomendada</p>
+                    <p className="text-xs text-gris-500 mb-1">Dosis recomendada</p>
                     <p className="text-lg font-bold text-gris-800 font-mono">{doseStr}</p>
                   </div>
                   {doseResult && (
                     <div className="rounded-xl bg-verde-50 border border-verde-100 px-4 py-3">
-                      <p className="text-xs text-gris-400 mb-1">Cantidad total estimada</p>
+                      <p className="text-xs text-gris-500 mb-1">Cantidad total estimada</p>
                       <p className="text-lg font-bold text-verde-700 font-mono">
                         {doseResult.minTotal === doseResult.maxTotal
                           ? `${doseResult.minTotal} ${doseResult.unit}`
                           : `${doseResult.minTotal}–${doseResult.maxTotal} ${doseResult.unit}`}
                       </p>
-                      <p className="text-xs text-gris-400 mt-0.5">{doseResult.label}</p>
+                      <p className="text-xs text-gris-500 mt-0.5">{doseResult.label}</p>
                     </div>
                   )}
                 </div>
@@ -559,7 +559,7 @@ export default function CalculadoraDosisPage() {
                   setSurfaceUnit('ha')
                   setSearchQuery('')
                 }}
-                className="text-sm text-gris-400 underline underline-offset-2 hover:text-gris-600 transition-colors"
+                className="text-sm text-gris-500 underline underline-offset-2 hover:text-gris-600 transition-colors"
               >
                 Calcular otro producto
               </button>

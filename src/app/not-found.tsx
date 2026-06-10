@@ -67,7 +67,7 @@ export default function NotFound() {
           {/* Enlace inferior */}
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-sm text-gris-400 hover:text-verde-600 transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm text-gris-500 hover:text-verde-600 transition-colors"
           >
             <ArrowLeft size={14} />
             Volver al inicio

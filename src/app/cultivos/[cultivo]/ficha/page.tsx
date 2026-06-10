@@ -71,7 +71,7 @@ function ProductRows({ products }: { products: StageProduct[] }) {
           <tr key={p.productId} className="align-top">
             <td className="border border-gris-200 px-2 py-1.5">
               <span className="font-semibold text-gris-900">{p.productName}</span>
-              <span className="block text-[10px] uppercase tracking-wide text-gris-400">
+              <span className="block text-[10px] uppercase tracking-wide text-gris-500">
                 {lineName(p.line)}
                 {p.isProtection ? ' · Bioprotección' : ''}
               </span>
@@ -151,19 +151,19 @@ export default async function FichaCultivoPage({
           {/* Meta */}
           <dl className="mt-5 grid grid-cols-2 gap-x-6 gap-y-2 text-sm sm:grid-cols-4">
             <div>
-              <dt className="text-[10px] font-semibold uppercase tracking-wide text-gris-400">Ciclo</dt>
+              <dt className="text-[10px] font-semibold uppercase tracking-wide text-gris-500">Ciclo</dt>
               <dd className="text-gris-800">{crop.cycle_days} días</dd>
             </div>
             <div>
-              <dt className="text-[10px] font-semibold uppercase tracking-wide text-gris-400">Etapas</dt>
+              <dt className="text-[10px] font-semibold uppercase tracking-wide text-gris-500">Etapas</dt>
               <dd className="text-gris-800">{crop.stages.length} fenológicas</dd>
             </div>
             <div className="col-span-2">
-              <dt className="text-[10px] font-semibold uppercase tracking-wide text-gris-400">Regiones</dt>
+              <dt className="text-[10px] font-semibold uppercase tracking-wide text-gris-500">Regiones</dt>
               <dd className="text-gris-800">{crop.regions.join(' · ')}</dd>
             </div>
             <div className="col-span-2 sm:col-span-4">
-              <dt className="text-[10px] font-semibold uppercase tracking-wide text-gris-400">Temporada</dt>
+              <dt className="text-[10px] font-semibold uppercase tracking-wide text-gris-500">Temporada</dt>
               <dd className="text-gris-800">{crop.season}</dd>
             </div>
           </dl>
@@ -199,7 +199,7 @@ export default async function FichaCultivoPage({
                   <span>
                     {i + 1}. {stage.name}
                   </span>
-                  <span className="ml-auto text-xs font-normal text-gris-400">
+                  <span className="ml-auto text-xs font-normal text-gris-500">
                     {stage.durationDays} días
                   </span>
                 </h3>
@@ -218,7 +218,7 @@ export default async function FichaCultivoPage({
               {all.map((p) => (
                 <li key={p.productId}>
                   <span className="font-semibold text-gris-900">{p.productName}</span>{' '}
-                  <span className="text-gris-400">· {lineName(p.line)}</span>
+                  <span className="text-gris-500">· {lineName(p.line)}</span>
                 </li>
               ))}
             </ul>
@@ -249,7 +249,7 @@ export default async function FichaCultivoPage({
             </div>
           </section>
 
-          <footer className="mt-6 border-t border-gris-200 pt-3 text-[10px] text-gris-400">
+          <footer className="mt-6 border-t border-gris-200 pt-3 text-[10px] text-gris-500">
             Generado desde biotiza.mx · Las dosis son orientativas y deben validarse
             con análisis de suelo/agua y la supervisión de un agrónomo Biotiza ·
             Certificaciones COFEPRIS · OMRI Listed · Hecho en México.

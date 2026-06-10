@@ -137,7 +137,7 @@ export default async function PackagePage({
                 <div className="rounded-2xl border border-gris-100 bg-gradient-to-br from-verde-50 to-white p-6 shadow-[0_4px_20px_rgba(34,181,115,0.08)]">
                   <div className="flex items-end gap-3">
                     {pkg.priceStrike && (
-                      <span className="text-lg text-gris-400 line-through">
+                      <span className="text-lg text-gris-500 line-through">
                         ${pkg.priceStrike.toLocaleString('es-MX')}
                       </span>
                     )}
@@ -242,7 +242,7 @@ export default async function PackagePage({
                             {p.name}
                           </Link>
                           <Badge line={p.line} size="sm" />
-                          <span className="text-xs text-gris-400">{p.sizeCasa}</span>
+                          <span className="text-xs text-gris-500">{p.sizeCasa}</span>
                         </div>
                         <p className="mt-1 text-xs text-gris-600 leading-relaxed">{p.useDescription}</p>
                       </div>

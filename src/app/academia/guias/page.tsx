@@ -271,7 +271,7 @@ export default function GuiasPage() {
                     <p className="text-xs text-gris-500 line-clamp-3 flex-1">
                       {article.excerpt}
                     </p>
-                    <span className="text-xs text-gris-400">
+                    <span className="text-xs text-gris-500">
                       {article.readTime} min de lectura
                     </span>
                   </div>

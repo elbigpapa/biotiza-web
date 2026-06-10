@@ -36,7 +36,7 @@ export default function PoliticaPrivacidadPage() {
       </div>
 
       <Container narrow className="py-12 lg:py-16">
-        <p className="mb-8 text-xs text-gris-400 uppercase tracking-wider font-semibold">
+        <p className="mb-8 text-xs text-gris-500 uppercase tracking-wider font-semibold">
           Última actualización: mayo 2026
         </p>
 

@@ -225,7 +225,7 @@ export default function CalculadoraROIPage() {
                   onChange={(e) => { setCurrentYield(parseFloat(e.target.value) || 0); setShowResults(false) }}
                   className="w-full rounded-xl border border-gris-200 bg-gris-50 px-3 py-2.5 text-sm text-gris-800 focus:outline-none focus:ring-2 focus:ring-verde-300"
                 />
-                <p className="mt-1 text-[11px] text-gris-400">
+                <p className="mt-1 text-[11px] text-gris-500">
                   Promedio industria: {CROP_DEFAULTS[crop]?.yield ?? '—'} t/ha para {cropName}
                 </p>
               </div>
@@ -260,7 +260,7 @@ export default function CalculadoraROIPage() {
                   onChange={(e) => { setCurrentInputCost(parseFloat(e.target.value) || 0); setShowResults(false) }}
                   className="w-full rounded-xl border border-gris-200 bg-gris-50 px-3 py-2.5 text-sm text-gris-800 focus:outline-none focus:ring-2 focus:ring-verde-300"
                 />
-                <p className="mt-1 text-[11px] text-gris-400">
+                <p className="mt-1 text-[11px] text-gris-500">
                   Biotiza programa estimado: {fmt(BIOTIZA_INVESTMENT_PER_HA)}/ha adicional
                 </p>
               </div>
@@ -286,7 +286,7 @@ export default function CalculadoraROIPage() {
                     <TrendingUp className="h-7 w-7 text-verde-400" />
                   </div>
                   <p className="text-sm font-semibold text-gris-500">Completa el formulario</p>
-                  <p className="text-xs text-gris-400 mt-1">y pulsa &quot;Calcular ROI&quot; para ver tu proyección</p>
+                  <p className="text-xs text-gris-500 mt-1">y pulsa &quot;Calcular ROI&quot; para ver tu proyección</p>
                 </div>
               </div>
             )}
@@ -295,7 +295,7 @@ export default function CalculadoraROIPage() {
               <div className="space-y-5">
                 {/* Bar chart */}
                 <div className="rounded-2xl border border-gris-200 bg-white p-6 shadow-sm">
-                  <h3 className="text-xs font-semibold uppercase tracking-widest text-gris-400 mb-5">
+                  <h3 className="text-xs font-semibold uppercase tracking-widest text-gris-500 mb-5">
                     Ingresos proyectados ({surfaceHa} ha)
                   </h3>
                   <div className="flex items-end gap-4 justify-center">
@@ -347,7 +347,7 @@ export default function CalculadoraROIPage() {
                     <p className="text-base font-bold text-gris-800">
                       {fmtNum(yieldHa)} → {fmtNum(newYield)} t/ha
                     </p>
-                    <p className="text-[10px] text-gris-400">+15% documentado</p>
+                    <p className="text-[10px] text-gris-500">+15% documentado</p>
                   </div>
 
                   <div className="rounded-xl border border-gris-200 bg-gris-50 px-4 py-3">
@@ -357,7 +357,7 @@ export default function CalculadoraROIPage() {
                     <p className="text-base font-bold text-gris-800">
                       {fmt(biotizaTotal)}
                     </p>
-                    <p className="text-[10px] text-gris-400">total para {fmtNum(surfaceHa, 1)} ha</p>
+                    <p className="text-[10px] text-gris-500">total para {fmtNum(surfaceHa, 1)} ha</p>
                   </div>
                 </div>
 
