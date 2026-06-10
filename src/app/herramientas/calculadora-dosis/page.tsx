@@ -271,6 +271,7 @@ export default function CalculadoraDosisPage() {
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gris-400" />
               <input
                 type="text"
+                aria-label="Buscar producto"
                 placeholder="Buscar producto..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -349,10 +350,16 @@ export default function CalculadoraDosisPage() {
             </h2>
 
             {/* Unit toggle */}
-            <div className="mb-4 flex rounded-xl border border-gris-200 bg-gris-100 p-1 max-w-xs">
+            <div
+              role="radiogroup"
+              aria-label="Unidad de superficie"
+              className="mb-4 flex rounded-xl border border-gris-200 bg-gris-100 p-1 max-w-xs"
+            >
               {(['ha', 'm2'] as const).map((u) => (
                 <button
                   key={u}
+                  role="radio"
+                  aria-checked={surfaceUnit === u}
                   onClick={() => setSurfaceUnit(u)}
                   className={`flex-1 rounded-lg py-2 text-sm font-semibold transition-all
                     ${surfaceUnit === u ? 'bg-white text-verde-700 shadow-sm' : 'text-gris-500 hover:text-gris-700'}`}
@@ -365,6 +372,7 @@ export default function CalculadoraDosisPage() {
             {/* Number input */}
             <input
               type="number"
+              aria-label={surfaceUnit === 'ha' ? 'Superficie en hectáreas' : 'Superficie en metros cuadrados'}
               min={0.01}
               step={0.01}
               value={surface}
@@ -415,13 +423,20 @@ export default function CalculadoraDosisPage() {
               ¿Cómo lo vas a aplicar?
             </h2>
 
-            <div className="space-y-3">
+            <div
+              role="radiogroup"
+              aria-label="Método de aplicación"
+              className="space-y-3"
+            >
               {selectedProduct.application_methods.map((method) => {
                 const meta = METHOD_META[method] ?? { label: method, icon: '🌱', emoji: '🌱' }
                 const isSelected = selectedMethod === method
                 return (
                   <button
                     key={method}
+                    role="radio"
+                    aria-checked={isSelected}
+                    aria-label={meta.label}
                     onClick={() => setSelectedMethod(method)}
                     className={`flex w-full items-center gap-4 rounded-xl border px-5 py-4 text-left transition-all
                       ${isSelected

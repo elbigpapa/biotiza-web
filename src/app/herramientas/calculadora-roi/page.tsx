@@ -180,10 +180,11 @@ export default function CalculadoraROIPage() {
             <div className="space-y-5">
               {/* Cultivo */}
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wide text-gris-500 mb-1.5">
+                <label htmlFor="roi-cultivo" className="block text-xs font-semibold uppercase tracking-wide text-gris-500 mb-1.5">
                   Cultivo
                 </label>
                 <select
+                  id="roi-cultivo"
                   value={crop}
                   onChange={(e) => handleCropChange(e.target.value)}
                   className="w-full rounded-xl border border-gris-200 bg-gris-50 px-3 py-2.5 text-sm text-gris-800 focus:outline-none focus:ring-2 focus:ring-verde-300"
@@ -198,10 +199,11 @@ export default function CalculadoraROIPage() {
 
               {/* Superficie */}
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wide text-gris-500 mb-1.5">
+                <label htmlFor="roi-superficie" className="block text-xs font-semibold uppercase tracking-wide text-gris-500 mb-1.5">
                   Superficie (hectáreas)
                 </label>
                 <input
+                  id="roi-superficie"
                   type="number"
                   min={0.1}
                   step={0.1}
@@ -213,10 +215,11 @@ export default function CalculadoraROIPage() {
 
               {/* Rendimiento */}
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wide text-gris-500 mb-1.5">
+                <label htmlFor="roi-rendimiento" className="block text-xs font-semibold uppercase tracking-wide text-gris-500 mb-1.5">
                   Rendimiento actual (t/ha)
                 </label>
                 <input
+                  id="roi-rendimiento"
                   type="number"
                   min={0.1}
                   step={0.5}
@@ -232,10 +235,11 @@ export default function CalculadoraROIPage() {
 
               {/* Precio de venta */}
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wide text-gris-500 mb-1.5">
+                <label htmlFor="roi-precio" className="block text-xs font-semibold uppercase tracking-wide text-gris-500 mb-1.5">
                   Precio de venta ($ MXN / kg)
                 </label>
                 <input
+                  id="roi-precio"
                   type="number"
                   min={0.1}
                   step={0.5}
@@ -248,10 +252,11 @@ export default function CalculadoraROIPage() {
 
               {/* Costo insumos */}
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wide text-gris-500 mb-1.5">
+                <label htmlFor="roi-costo-insumos" className="block text-xs font-semibold uppercase tracking-wide text-gris-500 mb-1.5">
                   Costo actual de insumos ($ MXN / ha)
                 </label>
                 <input
+                  id="roi-costo-insumos"
                   type="number"
                   min={0}
                   step={500}

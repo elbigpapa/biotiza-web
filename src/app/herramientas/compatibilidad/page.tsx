@@ -161,6 +161,7 @@ export default function CompatibilidadPage() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gris-400" />
               <input
                 type="text"
+                aria-label="Buscar producto"
                 placeholder="Buscar producto..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -172,6 +173,8 @@ export default function CompatibilidadPage() {
             {/* data-lenis-prevent: evita que Lenis (scroll suave global) intercepte la rueda dentro de este contenedor */}
             <div
               data-lenis-prevent
+              role="group"
+              aria-label="Seleccionar productos para verificar compatibilidad"
               className="space-y-4 max-h-[55vh] overflow-y-auto overscroll-contain pr-1"
             >
               {PRODUCT_LINES.map((line) => {
@@ -193,6 +196,10 @@ export default function CompatibilidadPage() {
                         return (
                           <button
                             key={product.id}
+                            role="checkbox"
+                            aria-checked={isSelected}
+                            aria-disabled={isDisabled}
+                            aria-label={product.name}
                             onClick={() => !isDisabled && toggleProduct(product.id)}
                             disabled={isDisabled}
                             className={`flex w-full items-center gap-2 rounded-lg border px-3 py-2 text-left text-xs transition-all

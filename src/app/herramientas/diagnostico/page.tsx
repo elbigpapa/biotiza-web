@@ -329,10 +329,17 @@ export default function DiagnosticoPage() {
             <h2 className="text-center font-serif text-2xl text-gris-900 mb-8">
               ¿En qué cultivo ves el problema?
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div
+              role="radiogroup"
+              aria-label="Cultivo donde ves el problema"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-3"
+            >
               {CROPS_DATA.map((crop) => (
                 <button
                   key={crop.id}
+                  role="radio"
+                  aria-checked={selectedCrop === crop.name}
+                  aria-label={crop.name}
                   onClick={() => {
                     setSelectedCrop(crop.name)
                     setStep(2)
@@ -365,10 +372,17 @@ export default function DiagnosticoPage() {
             <h2 className="font-serif text-2xl text-gris-900 mb-6">
               ¿Dónde están los síntomas?
             </h2>
-            <div className="space-y-3">
+            <div
+              role="radiogroup"
+              aria-label="Zona donde están los síntomas"
+              className="space-y-3"
+            >
               {ZONES.map(({ id, label, sublabel, Icon, color, bg, border }) => (
                 <button
                   key={id}
+                  role="radio"
+                  aria-checked={selectedZone === id}
+                  aria-label={sublabel ? `${label} ${sublabel}` : label}
                   onClick={() => {
                     setSelectedZone(id)
                     setSelectedSymptoms([])
@@ -414,12 +428,19 @@ export default function DiagnosticoPage() {
             </h2>
             <p className="text-sm text-gris-500 mb-6">Puedes seleccionar varios.</p>
 
-            <div className="space-y-2 mb-8">
+            <div
+              role="group"
+              aria-label="Síntomas que ves (puedes seleccionar varios)"
+              className="space-y-2 mb-8"
+            >
               {SYMPTOMS.map(({ id, label, emoji }) => {
                 const checked = selectedSymptoms.includes(id)
                 return (
                   <button
                     key={id}
+                    role="checkbox"
+                    aria-checked={checked}
+                    aria-label={label}
                     onClick={() => toggleSymptom(id)}
                     className={`flex w-full items-center gap-3 rounded-xl border px-4 py-3 text-left transition-all
                       ${checked

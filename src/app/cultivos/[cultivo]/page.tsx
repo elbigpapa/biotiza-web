@@ -165,16 +165,29 @@ export default async function CultivoDetailPage({
       {/* ─── HERO editorial cinematográfico ─────────────────────────── */}
       <section
         className="relative min-h-[78vh] overflow-hidden flex flex-col justify-end"
-        style={{
-          backgroundImage: photo?.src
-            ? `linear-gradient(180deg, rgba(8,46,33,0.30) 0%, rgba(8,46,33,0.65) 55%, rgba(8,46,33,0.95) 100%), url(${photo.src})`
-            : undefined,
-          backgroundColor: '#082e21',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
+        style={{ backgroundColor: '#082e21' }}
       >
-        <Container className="relative z-[1] py-[160px_60px] text-white">
+        {/* Imagen de fondo optimizada (next/image · priority para LCP) */}
+        {photo?.src && (
+          <Image
+            src={photo.src}
+            alt={`Cultivo de ${crop.name}`}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center z-0"
+          />
+        )}
+        {/* Overlay/gradiente oscuro — idéntico al original */}
+        <div
+          className="pointer-events-none absolute inset-0 z-0"
+          aria-hidden="true"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(8,46,33,0.30) 0%, rgba(8,46,33,0.65) 55%, rgba(8,46,33,0.95) 100%)',
+          }}
+        />
+        <Container className="relative z-10 py-[160px_60px] text-white">
           <div className="flex justify-between items-baseline font-mono text-[11px] tracking-[0.2em] uppercase text-white/70 font-semibold mb-7 pb-4 border-b border-white/20">
             <span>
               Expediente N° {String(CROP_PROTOCOLS.indexOf(crop) + 1).padStart(2, '0')}
