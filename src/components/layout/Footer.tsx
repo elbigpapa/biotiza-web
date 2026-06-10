@@ -26,6 +26,7 @@ const COL_SOLUCIONES = [
   { label: 'Bioestimulantes',      href: '/soluciones/bioestimulantes' },
   { label: 'Nutrición Líquida',    href: '/soluciones/nutricion'       },
   { label: 'Bioprotección',        href: '/soluciones/bioproteccion'   },
+  { label: 'Casa y Jardín',        href: '/casa-jardin'                },
   { label: 'Ver catálogo completo',href: '/soluciones'                 },
 ]
 const COL_RECURSOS = [

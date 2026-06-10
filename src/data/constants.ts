@@ -249,14 +249,29 @@ export const CONTACT_INFO = {
   },
 } as const
 
-// ─── Navegación ───────────────────────────────────────────────────────────
+// ─── Navegación principal (FUENTE ÚNICA DE VERDAD) ─────────────────────────
+//
+// La consumen Header (barra desktop) y MobileNav (menú móvil) para no
+// duplicar/divergir la lista de destinos. El Footer tiene su propia IA
+// editorial más profunda (columnas con sub-páginas), pero también enlaza
+// estos mismos destinos. Los íconos del menú móvil se mapean por href DENTRO
+// de MobileNav, no aquí, para no acoplar este archivo de datos a lucide-react.
 
-export const NAV_LINKS = [
-  { label: 'Soluciones',     href: '/soluciones'     },
-  { label: 'Cultivos',       href: '/cultivos'       },
-  { label: 'Herramientas',   href: '/herramientas'   },
-  { label: 'Casos de Éxito', href: '/casos-de-exito' },
-  { label: 'Academia',       href: '/academia'       },
-  { label: 'Nosotros',       href: '/nosotros'       },
-  { label: 'Contacto',       href: '/contacto'       },
-] as const
+export interface NavItem {
+  label: string
+  href: string
+  /** En desktop se muestra como mega-menú desplegable (no como enlace plano). */
+  mega?: 'soluciones' | 'cultivos'
+  /** Si true, NO aparece en la barra desktop del Header (sí en el menú móvil). */
+  desktopHidden?: boolean
+}
+
+export const PRIMARY_NAV: NavItem[] = [
+  { label: 'Soluciones',    href: '/soluciones',  mega: 'soluciones' },
+  { label: 'Cultivos',      href: '/cultivos',    mega: 'cultivos'   },
+  { label: 'Casa y Jardín', href: '/casa-jardin'  },
+  { label: 'Herramientas',  href: '/herramientas' },
+  { label: 'Academia',      href: '/academia'     },
+  { label: 'Nosotros',      href: '/nosotros'     },
+  { label: 'Contacto',      href: '/contacto', desktopHidden: true },
+]

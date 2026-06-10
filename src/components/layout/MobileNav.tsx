@@ -17,7 +17,6 @@ import {
   Droplets,
   Shield,
   ChevronDown,
-  Home,
   Sprout,
   Wrench,
   BookOpen,
@@ -25,8 +24,10 @@ import {
   Phone,
   Flower2,
   MessageCircle,
+  type LucideIcon,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { PRIMARY_NAV } from '@/data/constants'
 
 // ─── Datos ────────────────────────────────────────────────────────────────
 
@@ -38,15 +39,20 @@ const SOLUTION_LINES = [
   { name: 'Bioprotección',     href: '/soluciones/bioproteccion',          icon: Shield,        color: 'text-azul-500',    bg: 'bg-azul-100' },
 ]
 
-const NAV_LINKS = [
-  { label: 'Inicio',         href: '/',             icon: Home },
-  { label: 'Cultivos',       href: '/cultivos',     icon: Sprout },
-  { label: 'Casa y Jardín',  href: '/casa-jardin',  icon: Flower2 },
-  { label: 'Herramientas',   href: '/herramientas', icon: Wrench },
-  { label: 'Academia',       href: '/academia',     icon: BookOpen },
-  { label: 'Nosotros',       href: '/nosotros',     icon: Users },
-  { label: 'Contacto',       href: '/contacto',     icon: Phone },
-]
+// Íconos por destino (presentación local del menú móvil). La LISTA de destinos
+// viene de PRIMARY_NAV (fuente única); aquí solo decoramos por href.
+const NAV_ICONS: Record<string, LucideIcon> = {
+  '/cultivos':    Sprout,
+  '/casa-jardin': Flower2,
+  '/herramientas': Wrench,
+  '/academia':    BookOpen,
+  '/nosotros':    Users,
+  '/contacto':    Phone,
+}
+
+// El menú móvil muestra todos los destinos salvo "Soluciones", que aquí es un
+// acordeón propio (con sus 5 líneas). Cultivos sí va como enlace plano en móvil.
+const MOBILE_LINKS = PRIMARY_NAV.filter((i) => i.mega !== 'soluciones')
 
 // ─── Animaciones ──────────────────────────────────────────────────────────
 
@@ -244,9 +250,9 @@ export default function MobileNav({ onClose }: MobileNavProps) {
               </AnimatePresence>
             </li>
 
-            {/* Resto de links */}
-            {NAV_LINKS.slice(1).map((link) => {
-              const Icon = link.icon
+            {/* Resto de links (desde PRIMARY_NAV) */}
+            {MOBILE_LINKS.map((link) => {
+              const Icon = NAV_ICONS[link.href]
               return (
                 <li key={link.href}>
                   <Link
@@ -254,7 +260,7 @@ export default function MobileNav({ onClose }: MobileNavProps) {
                     onClick={onClose}
                     className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium text-gris-700 transition-colors hover:bg-gris-50 hover:text-gris-900"
                   >
-                    <Icon size={18} className="text-gris-400" />
+                    {Icon && <Icon size={18} className="text-gris-400" />}
                     {link.label}
                   </Link>
                 </li>

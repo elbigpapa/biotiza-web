@@ -16,17 +16,16 @@ import { AnimatePresence } from 'motion/react'
 import { Menu, ChevronDown, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { scrollToTop } from '@/lib/smoothScroll'
+import { PRIMARY_NAV } from '@/data/constants'
 import BiotizaLogo from '@/components/brand/BiotizaLogo'
 import MegaMenu from './MegaMenu'
 import CultivosMegaMenu from './CultivosMegaMenu'
 import MobileNav from './MobileNav'
 
-const NAV_LINKS = [
-  { label: 'Casa y Jardín', href: '/casa-jardin'  },
-  { label: 'Herramientas',  href: '/herramientas' },
-  { label: 'Academia',      href: '/academia'     },
-  { label: 'Nosotros',      href: '/nosotros'     },
-]
+// Enlaces planos de la barra desktop: todo PRIMARY_NAV salvo los mega-menús
+// (Soluciones, Cultivos, que tienen su propio trigger) y los marcados
+// desktopHidden (p. ej. Contacto, accesible por el CTA y el footer).
+const DESKTOP_LINKS = PRIMARY_NAV.filter((i) => !i.mega && !i.desktopHidden)
 
 export default function Header() {
   const [scrolled,     setScrolled]     = useState(false)
@@ -145,7 +144,7 @@ export default function Header() {
                 </button>
               </div>
 
-              {NAV_LINKS.map((link) => (
+              {DESKTOP_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
