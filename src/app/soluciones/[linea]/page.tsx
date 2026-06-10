@@ -14,6 +14,7 @@ import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
 import ProductPhoto from '@/components/products/ProductPhoto'
 import { hasProductPhoto } from '@/data/product-images'
+import { canonical } from '@/lib/seo'
 import type { ProductLine } from '@/types'
 
 // ─── Static params ────────────────────────────────────────────────────────
@@ -29,8 +30,9 @@ export async function generateMetadata({ params }: { params: Promise<{ linea: st
   const lineConfig = PRODUCT_LINES.find(l => l.slug === linea)
   if (!lineConfig) return {}
   return {
-    title: `${lineConfig.name} — Biotiza`,
+    title: lineConfig.name,
     description: lineConfig.description,
+    ...canonical(`/soluciones/${lineConfig.slug}`),
   }
 }
 

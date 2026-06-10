@@ -8,7 +8,7 @@
  *   </Select>
  */
 
-import { forwardRef, type SelectHTMLAttributes, type ReactNode } from 'react'
+import { forwardRef, useId, type SelectHTMLAttributes } from 'react'
 import type { FieldError } from 'react-hook-form'
 import { ChevronDown, AlertCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -74,7 +74,8 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
     },
     ref,
   ) => {
-    const inputId = id ?? (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined)
+    const reactId = useId()
+    const inputId = id ?? reactId
     const errorMsg = getErrorMessage(error)
     const hasError = Boolean(errorMsg)
 
@@ -98,6 +99,8 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
           <select
             ref={ref}
             id={inputId}
+            required={required}
+            aria-required={required || undefined}
             aria-invalid={hasError}
             aria-describedby={
               errorMsg ? `${inputId}-error` : helper ? `${inputId}-helper` : undefined

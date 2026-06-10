@@ -5,7 +5,7 @@
  * Incluye overlay oscuro, accordion para Soluciones y CTA.
  */
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'motion/react'
 import BiotizaLogo from '@/components/brand/BiotizaLogo'
@@ -23,6 +23,7 @@ import {
   BookOpen,
   Users,
   Phone,
+  Flower2,
   MessageCircle,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -38,12 +39,13 @@ const SOLUTION_LINES = [
 ]
 
 const NAV_LINKS = [
-  { label: 'Inicio',       href: '/',             icon: Home },
-  { label: 'Cultivos',     href: '/cultivos',     icon: Sprout },
-  { label: 'Herramientas', href: '/herramientas', icon: Wrench },
-  { label: 'Academia',     href: '/academia',     icon: BookOpen },
-  { label: 'Nosotros',     href: '/nosotros',     icon: Users },
-  { label: 'Contacto',     href: '/contacto',     icon: Phone },
+  { label: 'Inicio',         href: '/',             icon: Home },
+  { label: 'Cultivos',       href: '/cultivos',     icon: Sprout },
+  { label: 'Casa y Jardín',  href: '/casa-jardin',  icon: Flower2 },
+  { label: 'Herramientas',   href: '/herramientas', icon: Wrench },
+  { label: 'Academia',       href: '/academia',     icon: BookOpen },
+  { label: 'Nosotros',       href: '/nosotros',     icon: Users },
+  { label: 'Contacto',       href: '/contacto',     icon: Phone },
 ]
 
 // ─── Animaciones ──────────────────────────────────────────────────────────
@@ -76,6 +78,47 @@ interface MobileNavProps {
 
 export default function MobileNav({ onClose }: MobileNavProps) {
   const [solutionsOpen, setSolutionsOpen] = useState(false)
+  const panelRef = useRef<HTMLDivElement>(null)
+
+  // Cerrar con Escape, foco inicial dentro del panel y focus-trap con Tab.
+  useEffect(() => {
+    const previouslyFocused = document.activeElement as HTMLElement | null
+    const focusFirst = () => {
+      const f = panelRef.current?.querySelector<HTMLElement>(
+        'a, button, input, [tabindex]:not([tabindex="-1"])',
+      )
+      f?.focus()
+    }
+    const t = setTimeout(focusFirst, 50)
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose()
+        return
+      }
+      if (e.key === 'Tab' && panelRef.current) {
+        const items = panelRef.current.querySelectorAll<HTMLElement>(
+          'a, button, input, [tabindex]:not([tabindex="-1"])',
+        )
+        if (items.length === 0) return
+        const first = items[0]
+        const last = items[items.length - 1]
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault()
+          last.focus()
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault()
+          first.focus()
+        }
+      }
+    }
+    document.addEventListener('keydown', onKey)
+    return () => {
+      clearTimeout(t)
+      document.removeEventListener('keydown', onKey)
+      previouslyFocused?.focus?.()
+    }
+  }, [onClose])
 
   return (
     <>
@@ -92,6 +135,7 @@ export default function MobileNav({ onClose }: MobileNavProps) {
 
       {/* ── Panel ────────────────────────────────────────────────────── */}
       <motion.div
+        ref={panelRef}
         variants={panelVariants}
         initial="hidden"
         animate="visible"

@@ -12,10 +12,13 @@ import { notFound } from 'next/navigation'
 import { PRODUCTS, getProductBySlug, getRelatedProducts } from '@/data/products'
 import { PRODUCT_LINES } from '@/data/constants'
 import { getProductImage } from '@/data/product-images'
+import { canonical } from '@/lib/seo'
 import Container from '@/components/ui/Container'
 import TrackProductView from '@/components/analytics/TrackProductView'
 
 export function generateStaticParams() {
+  // Solo la combinación canónica linea+slug (la línea real del producto),
+  // para no generar la misma ficha bajo líneas equivocadas.
   return PRODUCTS.map((p) => ({ linea: p.line, slug: p.slug }))
 }
 
@@ -24,12 +27,13 @@ export async function generateMetadata({
 }: {
   params: Promise<{ linea: string; slug: string }>
 }): Promise<Metadata> {
-  const { slug } = await params
+  const { linea, slug } = await params
   const p = getProductBySlug(slug)
-  if (!p) return { title: 'Producto no encontrado · Biotiza' }
+  if (!p || p.line !== linea) return { title: 'Producto no encontrado' }
   return {
-    title: `${p.name} | Biotiza`,
+    title: p.name,
     description: p.description,
+    ...canonical(`/soluciones/${p.line}/${p.slug}`),
   }
 }
 
@@ -51,7 +55,11 @@ function ProductJsonLd({
   lineName: string
 }) {
   const url = `https://biotiza.mx/soluciones/${product.line}/${product.slug}`
+  const photo = getProductImage(product.slug)
 
+  // Biotiza no publica precios → sin bloque `offers` (mejor omitirlo que
+  // declarar price 0, que el motor interpretaría como "gratis"). Se incluye
+  // `image` real cuando existe; si no hay foto, se omite (no se inventa).
   const productSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -59,6 +67,7 @@ function ProductJsonLd({
     alternateName: product.name,
     description: product.description,
     url,
+    ...(photo ? { image: `https://biotiza.mx${photo.src}` } : {}),
     brand: { '@type': 'Brand', name: 'Biotiza' },
     manufacturer: { '@type': 'Organization', name: 'Biotiza', url: 'https://biotiza.mx' },
     category: lineName,
@@ -66,18 +75,6 @@ function ProductJsonLd({
       '@type': 'Certification',
       name: cert,
     })),
-    offers: {
-      '@type': 'Offer',
-      availability: 'https://schema.org/InStock',
-      seller: { '@type': 'Organization', name: 'Biotiza', url: 'https://biotiza.mx' },
-      priceCurrency: 'MXN',
-      priceSpecification: {
-        '@type': 'PriceSpecification',
-        price: 0,
-        priceCurrency: 'MXN',
-        description: 'Precio bajo cotización',
-      },
-    },
   }
 
   const breadcrumbSchema = {
@@ -104,16 +101,18 @@ export default async function ProductoPage({
 }: {
   params: Promise<{ linea: string; slug: string }>
 }) {
-  const { slug } = await params
+  const { linea, slug } = await params
   const product = getProductBySlug(slug)
-  if (!product) notFound()
+  // Solo existe la URL canónica: si la línea del segmento no es la real
+  // del producto, devolvemos 404 (evita fichas duplicadas en otras líneas).
+  if (!product || product.line !== linea) notFound()
 
   const lineConfig = PRODUCT_LINES.find(l => l.id === product.line)!
   const photo = getProductImage(product.slug)
   const related = getRelatedProducts(product, 4)
 
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       <TrackProductView productId={product.id} line={product.line} name={product.name} />
       {/* SEO · datos estructurados (invisible — no afecta el diseño editorial) */}
       <ProductJsonLd product={product} lineName={lineConfig.name} />
@@ -167,7 +166,7 @@ export default async function ProductoPage({
               <p className="dek-edit text-ink-2 max-w-[34ch] mb-9">{product.description}</p>
 
               {/* Quick stats */}
-              <div className="grid grid-cols-3 gap-5 py-6 border-y border-rule mb-9">
+              <div className="grid grid-cols-2 gap-5 py-6 border-y border-rule mb-9">
                 <div>
                   <div className="font-serif text-[clamp(36px,4vw,52px)] leading-[0.9] tracking-[-0.035em] text-ink">
                     {product.composition[0]?.value || '—'}
@@ -183,15 +182,6 @@ export default async function ProductoPage({
                   </div>
                   <div className="font-mono text-[10px] font-semibold tracking-[0.16em] uppercase text-ink-3 mt-1.5">
                     {product.certifications.join(' · ')}
-                  </div>
-                </div>
-                <div>
-                  <div className="font-serif text-[clamp(36px,4vw,52px)] leading-[0.9] tracking-[-0.035em] text-ink">
-                    24
-                    <em className="font-serif italic text-ink-3 text-[0.4em] align-[24%] ml-1" style={{ fontFamily: 'var(--serif-it)' }}>meses</em>
-                  </div>
-                  <div className="font-mono text-[10px] font-semibold tracking-[0.16em] uppercase text-ink-3 mt-1.5">
-                    Vida útil declarada
                   </div>
                 </div>
               </div>
@@ -274,9 +264,9 @@ export default async function ProductoPage({
                   N° {String(i + 1).padStart(2, '0')}
                   <span className="flex-1 h-px bg-rule" />
                 </div>
-                <h4 className="font-serif text-[clamp(24px,2.5vw,36px)] leading-none tracking-[-0.03em] mb-3.5 capitalize">
+                <h3 className="font-serif text-[clamp(24px,2.5vw,36px)] leading-none tracking-[-0.03em] mb-3.5 capitalize">
                   {method === 'fertirrigacion' ? 'Fertirrigación' : method}
-                </h4>
+                </h3>
                 <p className="font-mono text-[13px] text-verde-700 font-semibold">{dose}</p>
               </div>
             ))}
@@ -375,7 +365,7 @@ export default async function ProductoPage({
                       </span>
                     </div>
                     <div className="flex flex-col flex-1 p-5 gap-2">
-                      <h4 className="font-serif text-[24px] leading-[1.05] tracking-[-0.025em] text-ink">{p.name}</h4>
+                      <h3 className="font-serif text-[24px] leading-[1.05] tracking-[-0.025em] text-ink">{p.name}</h3>
                       <p className="text-sm text-ink-3 leading-relaxed flex-1 line-clamp-2">{p.description}</p>
                       <div className="pt-3.5 border-t border-rule flex justify-between items-baseline font-mono text-[10px] tracking-[0.14em] uppercase font-semibold text-ink-4">
                         <span>{p.certifications.slice(0, 2).join(' · ')}</span>
@@ -389,6 +379,6 @@ export default async function ProductoPage({
           </Container>
         </section>
       )}
-    </main>
+    </div>
   )
 }

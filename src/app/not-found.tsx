@@ -4,7 +4,7 @@ import { Home, Search, ArrowLeft, Leaf } from 'lucide-react'
 import Container from '@/components/ui/Container'
 
 export const metadata: Metadata = {
-  title: 'Página no encontrada — Biotiza',
+  title: 'Página no encontrada',
 }
 
 export default function NotFound() {

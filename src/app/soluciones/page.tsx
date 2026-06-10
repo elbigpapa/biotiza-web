@@ -88,7 +88,7 @@ export default function SolucionesPage() {
   }, [query, activeLine, activeCert])
 
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       {/* Hero editorial */}
       <section className="bg-paper py-32 lg:py-40 border-b border-rule">
         <Container>
@@ -228,6 +228,6 @@ export default function SolucionesPage() {
           </div>
         </Container>
       </section>
-    </main>
+    </div>
   )
 }

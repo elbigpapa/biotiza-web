@@ -40,6 +40,16 @@ export default function CookieConsent() {
     setVisible(false)
   }
 
+  // Escape equivale a "solo esenciales" (la opción más conservadora).
+  useEffect(() => {
+    if (!visible) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') decide('essential')
+    }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [visible])
+
   return (
     <AnimatePresence>
       {visible && (

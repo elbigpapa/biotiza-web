@@ -7,7 +7,7 @@ import { ARTICLES, getCategoryStyle, type ArticleCategory } from '@/data/article
 import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: 'Blog Biotiza — Artículos técnicos sobre biosoluciones agrícolas',
+  title: 'Blog — Artículos técnicos sobre biosoluciones agrícolas',
   description:
     'Contenido técnico sobre bioestimulación, nutrición, bioprotección y fertirrigación. Actualizado por el equipo agronómico de Biotiza.',
   alternates: { canonical: 'https://biotiza.mx/academia/blog' },

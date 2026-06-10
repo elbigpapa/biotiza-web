@@ -5,15 +5,17 @@
 
 import type { Metadata } from 'next'
 import Container from '@/components/ui/Container'
+import { canonical } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Nosotros · Servicio que nos diferencia | Biotiza',
+  title: 'Nosotros · Servicio que nos diferencia',
   description: 'Acompañamos a productores mexicanos con un servicio técnico que combina los mejores productos del mercado y un agrónomo asignado por zona.',
+  ...canonical('/nosotros'),
 }
 
 export default function NosotrosPage() {
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       {/* Hero */}
       <section
         className="relative min-h-[70vh] flex flex-col justify-end text-white overflow-hidden"
@@ -224,6 +226,6 @@ export default function NosotrosPage() {
           </div>
         </Container>
       </section>
-    </main>
+    </div>
   )
 }

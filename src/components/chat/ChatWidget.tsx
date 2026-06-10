@@ -10,7 +10,7 @@
 
 import { useState, useRef, useEffect, type FormEvent, type ReactNode } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
-import { Send, X, Sparkles, Loader2 } from 'lucide-react'
+import { Send, X, Sparkles, Loader2, MessageCircle } from 'lucide-react'
 import { track } from '@vercel/analytics'
 import { cn } from '@/lib/utils'
 import BiotizaLogo from '@/components/brand/BiotizaLogo'
@@ -20,6 +20,7 @@ interface Message {
   content: string
   suggestions?: string[]
   degraded?: boolean
+  whatsappUrl?: string
 }
 
 type CapturedLead = Record<string, string | number>
@@ -191,7 +192,7 @@ export default function ChatWidget() {
       } else {
         setMessages((m) => [
           ...m,
-          { role: 'assistant', content: json.reply, suggestions: json.suggestions, degraded: json.mode === 'degraded' },
+          { role: 'assistant', content: json.reply, suggestions: json.suggestions, degraded: json.mode === 'degraded', whatsappUrl: json.whatsappUrl ?? undefined },
         ])
         if (json.lead && typeof json.lead === 'object') {
           leadRef.current = { ...leadRef.current, ...json.lead }
@@ -337,6 +338,19 @@ export default function ChatWidget() {
                         </button>
                       ))}
                     </div>
+                  )}
+
+                  {m.role === 'assistant' && m.whatsappUrl && (
+                    <a
+                      href={m.whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => track('chat_whatsapp_handoff')}
+                      className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-[#1ebe57]"
+                    >
+                      <MessageCircle size={14} />
+                      Continuar por WhatsApp
+                    </a>
                   )}
                 </div>
               ))}

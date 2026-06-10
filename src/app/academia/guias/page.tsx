@@ -36,7 +36,7 @@ import { getCropImage } from '@/data/crop-images'
 import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: 'Guías técnicas — Academia Biotiza',
+  title: 'Guías técnicas — Academia',
   description:
     'Guías agronómicas prácticas: protocolos por cultivo, manejo de deficiencias, bioprotección y herramientas. Conocimiento aplicable directo a tu campo.',
   alternates: { canonical: '/academia/guias' },

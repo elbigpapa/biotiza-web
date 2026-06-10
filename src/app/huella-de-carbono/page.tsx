@@ -13,11 +13,13 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Leaf, Truck, Factory, FlaskConical, Sprout, ExternalLink } from 'lucide-react'
 import Container from '@/components/ui/Container'
+import { canonical } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Huella de Carbono | Biotiza',
+  title: 'Huella de Carbono',
   description:
     'Por qué cambiar sacos de fertilizante sólido por biosoluciones líquidas Biotiza reduce emisiones, fletes, empaque y mano de obra. Datos científicos citados.',
+  ...canonical('/huella-de-carbono'),
   openGraph: {
     title: 'Huella de Carbono — Biotiza',
     description:
@@ -115,7 +117,7 @@ const OPERATIONAL = [
 
 export default function HuellaDeCarbonoPage() {
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       {/* ── Hero ──────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-gradient-to-br from-verde-900 to-verde-700">
         <div
@@ -337,6 +339,6 @@ export default function HuellaDeCarbonoPage() {
           </div>
         </Container>
       </section>
-    </main>
+    </div>
   )
 }

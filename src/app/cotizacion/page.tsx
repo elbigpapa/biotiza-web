@@ -251,7 +251,7 @@ function QuotationPageContent() {
             {/* Formulario */}
             <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
               {/* Fila 1: nombre + empresa */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="nombre" className={labelClass}>
                     Nombre <span className="text-red-500">*</span>
@@ -284,7 +284,7 @@ function QuotationPageContent() {
               </div>
 
               {/* Fila 2: email + teléfono */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="email" className={labelClass}>
                     Email <span className="text-red-500">*</span>
@@ -320,7 +320,7 @@ function QuotationPageContent() {
               </div>
 
               {/* Fila 3: cultivo + superficie */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="cultivo" className={labelClass}>
                     Cultivo principal
@@ -464,7 +464,7 @@ function QuotationPageContent() {
                           <button
                             type="button"
                             onClick={() => removeItem(item.productId)}
-                            className="shrink-0 flex h-7 w-7 items-center justify-center rounded-lg text-gris-400 hover:bg-red-50 hover:text-red-500 transition-colors"
+                            className="shrink-0 flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-gris-400 hover:bg-red-50 hover:text-red-500 transition-colors"
                             aria-label={`Eliminar ${item.productName}`}
                           >
                             <Trash2 className="h-3.5 w-3.5" />
@@ -477,11 +477,11 @@ function QuotationPageContent() {
                             onClick={() =>
                               updateQuantity(item.productId, item.quantity - 1)
                             }
-                            className="flex h-7 w-7 items-center justify-center rounded-md border border-gris-200 text-gris-600 hover:bg-gris-50 disabled:opacity-40 transition-colors"
+                            className="flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-md border border-gris-200 text-gris-600 hover:bg-gris-50 disabled:opacity-40 transition-colors"
                             disabled={item.quantity <= 1}
                             aria-label="Reducir cantidad"
                           >
-                            <Minus className="h-3 w-3" />
+                            <Minus className="h-3.5 w-3.5" />
                           </button>
                           <input
                             type="number"
@@ -493,7 +493,7 @@ function QuotationPageContent() {
                                 updateQuantity(item.productId, val)
                               }
                             }}
-                            className="h-7 w-14 rounded-md border border-gris-200 text-center text-sm font-medium text-gris-900 focus:border-verde-400 focus:outline-none focus:ring-1 focus:ring-verde-500/20"
+                            className="h-11 min-h-[44px] w-14 rounded-md border border-gris-200 text-center text-sm font-medium text-gris-900 focus:border-verde-400 focus:outline-none focus:ring-1 focus:ring-verde-500/20"
                             aria-label={`Cantidad de ${item.productName}`}
                           />
                           <button
@@ -501,10 +501,10 @@ function QuotationPageContent() {
                             onClick={() =>
                               updateQuantity(item.productId, item.quantity + 1)
                             }
-                            className="flex h-7 w-7 items-center justify-center rounded-md border border-gris-200 text-gris-600 hover:bg-gris-50 transition-colors"
+                            className="flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-md border border-gris-200 text-gris-600 hover:bg-gris-50 transition-colors"
                             aria-label="Aumentar cantidad"
                           >
-                            <Plus className="h-3 w-3" />
+                            <Plus className="h-3.5 w-3.5" />
                           </button>
                           <span className="text-xs text-gris-500 ml-1">
                             {item.unit}

@@ -15,6 +15,29 @@ export const maxDuration = 30
 // Modelo configurable por env para poder actualizarlo sin redeploy de código.
 const CHAT_MODEL = process.env.CHAT_MODEL ?? 'claude-fable-5'
 
+// Construye un enlace de WhatsApp con un resumen del prospecto pre-llenado.
+// El canal preferido de contacto de Biotiza es WhatsApp: cuando el chat capta
+// datos del prospecto, le devolvemos un enlace listo para continuar por ahí.
+function buildWhatsappHandoff(lead: Record<string, unknown>): string {
+  const labels: Record<string, string> = {
+    nombre: 'Nombre', cultivo: 'Cultivo', estado: 'Estado/zona',
+    hectareas: 'Hectáreas', etapa: 'Etapa', telefono: 'Teléfono',
+    email: 'Correo', tipo_interes: 'Interés',
+  }
+  const detail = Object.entries(lead)
+    .filter(([, v]) => v != null && v !== '')
+    .map(([k, v]) => `${labels[k] ?? k}: ${v}`)
+    .join('\n')
+  const msg = [
+    'Hola Biotiza, estuve platicando con la Asesora IA y quiero continuar por aquí.',
+    '',
+    detail,
+    '',
+    '(Vengo del chat de biotiza.mx)',
+  ].filter(Boolean).join('\n')
+  return `${CONTACT_INFO.whatsappUrl}?text=${encodeURIComponent(msg)}`
+}
+
 // ─── Schema de validación ──────────────────────────────────────────────────
 const chatSchema = z.object({
   message: z.string().min(1).max(1200),
@@ -343,8 +366,11 @@ export async function POST(req: Request) {
       convo.push({ role: 'user', content: toolResults })
     }
 
-    // Persistir lead segmentado (mismo CRM que los formularios) si se capturó.
+    // Persistir lead segmentado (mismo CRM que los formularios) y preparar el
+    // hand-off a WhatsApp (canal de contacto preferido de Biotiza).
+    let whatsappUrl: string | null = null
     if (capturedLead && Object.keys(capturedLead).length > 0) {
+      whatsappUrl = buildWhatsappHandoff(capturedLead)
       const safe = leadSchema.safeParse({ ...capturedLead, fuente: 'chat' })
       if (safe.success) {
         const segmented = segmentLead(
@@ -366,6 +392,7 @@ export async function POST(req: Request) {
       reply: replyText.trim() || '¿Podrías darme un poco más de contexto sobre tu cultivo?',
       suggestions,
       lead: capturedLead,
+      whatsappUrl,
       mode: 'claude',
     })
   } catch (err) {

@@ -124,7 +124,7 @@ export default function ContactoPage() {
   }
 
   return (
-    <main>
+    <div>
       {/* ------------------------------------------------------------------ */}
       {/* Hero                                                                */}
       {/* ------------------------------------------------------------------ */}
@@ -389,6 +389,6 @@ export default function ContactoPage() {
           </div>
         </Container>
       </section>
-    </main>
+    </div>
   )
 }

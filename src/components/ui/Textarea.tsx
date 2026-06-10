@@ -10,7 +10,7 @@
  *   />
  */
 
-import { forwardRef, type TextareaHTMLAttributes } from 'react'
+import { forwardRef, useId, type TextareaHTMLAttributes } from 'react'
 import type { FieldError } from 'react-hook-form'
 import { AlertCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -68,7 +68,8 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     },
     ref,
   ) => {
-    const inputId = id ?? (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined)
+    const reactId = useId()
+    const inputId = id ?? reactId
     const errorMsg = getErrorMessage(error)
     const hasError = Boolean(errorMsg)
 
@@ -97,6 +98,8 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             id={inputId}
             maxLength={maxLength}
             value={value}
+            required={required}
+            aria-required={required || undefined}
             aria-invalid={hasError}
             aria-describedby={
               errorMsg ? `${inputId}-error` : helper ? `${inputId}-helper` : undefined

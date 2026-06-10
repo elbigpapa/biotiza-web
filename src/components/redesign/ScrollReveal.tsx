@@ -1,12 +1,15 @@
 'use client'
 
-import { motion, type Variants } from 'motion/react'
+import { motion, type Variants, useReducedMotion } from 'motion/react'
 
 /**
  * ScrollReveal — entrada escalonada al hacer scroll.
  *
  * <Reveal> dispara la animación cuando entra al viewport; cada
  * <RevealItem> hijo aparece con un pequeño retraso secuencial.
+ *
+ * Respeta prefers-reduced-motion: si el usuario lo activa, el contenido
+ * aparece de inmediato sin desplazamiento ni fundido.
  */
 
 const containerVariants: Variants = {
@@ -23,6 +26,10 @@ const itemVariants: Variants = {
   },
 }
 
+// Variantes neutras para prefers-reduced-motion: nada se mueve ni se oculta.
+const staticContainer: Variants = { hidden: {}, show: {} }
+const staticItem: Variants = { hidden: { opacity: 1 }, show: { opacity: 1 } }
+
 export function Reveal({
   children,
   className,
@@ -30,9 +37,10 @@ export function Reveal({
   children: React.ReactNode
   className?: string
 }) {
+  const reduce = useReducedMotion()
   return (
     <motion.div
-      variants={containerVariants}
+      variants={reduce ? staticContainer : containerVariants}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
@@ -50,8 +58,9 @@ export function RevealItem({
   children: React.ReactNode
   className?: string
 }) {
+  const reduce = useReducedMotion()
   return (
-    <motion.div variants={itemVariants} className={className}>
+    <motion.div variants={reduce ? staticItem : itemVariants} className={className}>
       {children}
     </motion.div>
   )

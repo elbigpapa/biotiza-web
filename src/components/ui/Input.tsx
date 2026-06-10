@@ -9,7 +9,7 @@
  *   <Input label="Email" type="email" placeholder="tu@correo.mx" />
  */
 
-import { forwardRef, type InputHTMLAttributes, type ReactNode } from 'react'
+import { forwardRef, useId, type InputHTMLAttributes, type ReactNode } from 'react'
 import type { FieldError } from 'react-hook-form'
 import { AlertCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -75,7 +75,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref,
   ) => {
-    const inputId = id ?? (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined)
+    // useId garantiza unicidad: dos inputs con el mismo label ya no colisionan.
+    const reactId = useId()
+    const inputId = id ?? reactId
     const errorMsg = getErrorMessage(error)
     const hasError = Boolean(errorMsg)
 
@@ -105,6 +107,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           <input
             ref={ref}
             id={inputId}
+            required={required}
+            aria-required={required || undefined}
             aria-invalid={hasError}
             aria-describedby={
               errorMsg ? `${inputId}-error` : helper ? `${inputId}-helper` : undefined

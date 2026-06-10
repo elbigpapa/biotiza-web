@@ -9,16 +9,18 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CROP_PROTOCOLS } from '@/data/crops'
 import { getCropImage } from '@/data/crop-images'
+import { canonical } from '@/lib/seo'
 import Container from '@/components/ui/Container'
 
 export const metadata: Metadata = {
-  title: 'Cultivos · Programas por cultivo | Biotiza',
+  title: 'Cultivos · Programas por cultivo',
   description: 'Expedientes técnicos por cultivo con protocolo fenológico completo: tomate, fresa, arándano, aguacate, chile, cítricos y más.',
+  ...canonical('/cultivos'),
 }
 
 export default function CultivosPage() {
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       {/* Hero editorial */}
       <section className="bg-paper py-32 lg:py-40 border-b border-rule">
         <Container>
@@ -104,6 +106,6 @@ export default function CultivosPage() {
           </blockquote>
         </Container>
       </section>
-    </main>
+    </div>
   )
 }

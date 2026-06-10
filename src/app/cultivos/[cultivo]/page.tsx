@@ -23,6 +23,7 @@ import type { CropStage, StageProduct } from '@/data/crops'
 import { PRODUCTS } from '@/data/products'
 import { getCropImage } from '@/data/crop-images'
 import { getProductImage } from '@/data/product-images'
+import { canonical } from '@/lib/seo'
 import Container from '@/components/ui/Container'
 import PrintFichaButton from '@/components/crops/PrintFichaButton'
 import TrackCultivoView from '@/components/analytics/TrackCultivoView'
@@ -38,10 +39,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { cultivo } = await params
   const crop = getCropBySlug(cultivo)
-  if (!crop) return { title: 'Cultivo no encontrado · Biotiza' }
+  if (!crop) return { title: 'Cultivo no encontrado' }
   return {
-    title: `Programa de Nutrición para ${crop.name} | Biotiza`,
+    title: `Programa de Nutrición para ${crop.name}`,
     description: `Protocolo completo de nutrición para ${crop.name}: ${crop.stages.length} etapas, productos con dosis y método de aplicación.`,
+    ...canonical(`/cultivos/${crop.slug}`),
   }
 }
 
@@ -63,6 +65,22 @@ function getAllUniqueProducts(stages: CropStage[]) {
     }
   }
   return out
+}
+
+/* ── JSON-LD · BreadcrumbList (Inicio → Cultivos → {cultivo}) ─────────── */
+function CropBreadcrumbJsonLd({ name, slug }: { name: string; slug: string }) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio',   item: 'https://biotiza.mx' },
+      { '@type': 'ListItem', position: 2, name: 'Cultivos', item: 'https://biotiza.mx/cultivos' },
+      { '@type': 'ListItem', position: 3, name,             item: `https://biotiza.mx/cultivos/${slug}` },
+    ],
+  }
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+  )
 }
 
 /* ── Tabla técnica de productos por etapa ────────────────────────────── */
@@ -141,7 +159,8 @@ export default async function CultivoDetailPage({
   const photo = getCropImage(crop.slug)
 
   return (
-    <main className="bg-white">
+    <div className="bg-white">
+      <CropBreadcrumbJsonLd name={crop.name} slug={crop.slug} />
       <TrackCultivoView slug={crop.slug} name={crop.name} hasProtocol={(crop.stages?.length ?? 0) > 0} />
       {/* ─── HERO editorial cinematográfico ─────────────────────────── */}
       <section
@@ -435,6 +454,6 @@ export default async function CultivoDetailPage({
           </div>
         </Container>
       </section>
-    </main>
+    </div>
   )
 }

@@ -28,9 +28,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { cultivo } = await params
   const crop = getCropBySlug(cultivo)
-  if (!crop) return { title: 'Ficha no encontrada — Biotiza' }
+  if (!crop) return { title: 'Ficha no encontrada' }
   return {
-    title: `Ficha de manejo ${crop.name} (PDF) | Biotiza`,
+    title: `Ficha de manejo ${crop.name} (PDF)`,
     description: `Programa de manejo Biotiza para ${crop.name}: retos, productos, dosis y frecuencia por etapa fenológica. Lista para descargar o imprimir.`,
     robots: { index: false, follow: true },
   }

@@ -12,12 +12,14 @@ import {
 import Container from '@/components/ui/Container'
 import SectionHeading from '@/components/ui/SectionHeading'
 import { ARTICLES, getLatestArticles, getCategoryStyle } from '@/data/articles'
+import { canonical } from '@/lib/seo'
 import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: 'Academia Biotiza — Aprende con expertos agrícolas',
+  title: 'Academia — Aprende con expertos agrícolas',
   description:
     'Artículos, guías y herramientas gratuitas sobre bioestimulantes, nutrición, bioprotección y fertirrigación. Academia Biotiza, para productores que exigen resultados.',
+  ...canonical('/academia'),
   openGraph: {
     title: 'Academia Biotiza',
     description:
