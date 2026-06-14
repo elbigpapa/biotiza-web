@@ -12,8 +12,13 @@ export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 export const maxDuration = 30
 
-// Modelo configurable por env para poder actualizarlo sin redeploy de código.
-const CHAT_MODEL = process.env.CHAT_MODEL ?? 'claude-fable-5'
+// Modelo configurable por env. Default = claude-sonnet-4-6 porque es el modelo
+// de punta CONFIRMADO disponible para la API key de producción (la key de Vercel
+// NO tiene acceso a claude-fable-5 → daba 404 y tiraba el chat a modo básico).
+// Para usar un modelo más nuevo/potente, define CHAT_MODEL en Vercel cuando la
+// key tenga acceso (p. ej. claude-opus-4-7 o claude-fable-5); la cadena de
+// respaldo de abajo cubre el caso de que aún no lo tenga.
+const CHAT_MODEL = process.env.CHAT_MODEL ?? 'claude-sonnet-4-6'
 
 // Cadena de respaldo: la API key de producción (Vercel) es una credencial
 // distinta a la suscripción de Claude Code y puede NO tener acceso al modelo
