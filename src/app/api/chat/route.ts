@@ -41,6 +41,8 @@ async function availableModelIds(client: Anthropic): Promise<string[] | null> {
     const ids: string[] = []
     for await (const m of client.models.list({ limit: 100 })) ids.push(m.id)
     availCache = { ids, at: Date.now() }
+    const best = MODEL_PREFERENCE.find((p) => ids.some((id) => id === p || id.startsWith(p)))
+    console.log(`[chat] ${ids.length} modelos disponibles · mejor seleccionado: ${best ?? '(ninguno de la preferencia)'}`)
     return ids
   } catch {
     return null // sin info → se usa la preferencia y el respaldo por 404 cubre
