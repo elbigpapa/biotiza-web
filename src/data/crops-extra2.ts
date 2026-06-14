@@ -810,9 +810,79 @@ const FLORES: FullCropProtocol = {
   ],
 }
 
+// ════════════════════════════════════════════════════════════════════════
+// CAFÉ
+// ════════════════════════════════════════════════════════════════════════
+
+const CAFE: FullCropProtocol = {
+  id: 'cafe', slug: 'cafe', name: 'Café', scientific_name: 'Coffea arabica',
+  emoji: '☕', gradient: 'from-amber-900 to-amber-700', accentColor: '#b45309',
+  description: 'Cultivo perenne de altura (mayormente arábica en México) cuya rentabilidad se define por el rendimiento por hectárea y la calidad de taza. El programa busca raíz sana libre de nematodos, follaje vigoroso con manejo preventivo de roya, una floración pareja tras las lluvias y un llenado de grano completo con control biológico de la broca. El café es perenne: la etapa de vivero y establecimiento es de una sola vez; el resto se repite cada ciclo anual de producción.',
+  cycle_days: 365,
+  season: 'Floración tras las primeras lluvias (mar–may); cosecha sep–feb según altura',
+  regions: ['Chiapas', 'Veracruz', 'Oaxaca', 'Puebla', 'Guerrero', 'Nayarit', 'Hidalgo', 'San Luis Potosí'],
+  featured_products: ['bp-koren', 'bp-magnesio', 'zen-cu', 'agb-beauver', 'k-ultra'],
+  common_challenges: ['Roya del café (Hemileia vastatrix)', 'Broca del café (Hypothenemus hampei)', 'Nematodos (Meloidogyne, Pratylenchus)', 'Ojo de gallo / antracnosis', 'Clorosis de Mg y Fe en suelos ácidos lixiviados'],
+  stages: [
+    {
+      id: 'vivero-establecimiento', name: 'Vivero y establecimiento', emoji: '🌱',
+      durationDays: 120, objective: 'Plántula vigorosa con raíz sana y arraigo rápido al trasplante a campo, libre de nematodos.',
+      color: 'bg-emerald-100', textColor: 'text-emerald-700',
+      products: [
+        { productId: 'bp-koren', productName: 'BP Koren', line: 'organicos', dose: '1.5 mL/L', method: 'Drench', frequency: 'Al trasplante y en recuperación; máx 2 veces', notes: 'Enraizador (AIB) para colonizar el suelo rápido al pasar de vivero a campo' },
+        { productId: 'p-ultra', productName: 'P-Ultra', line: 'nutricion', dose: '1 L/ha', method: 'Fertirrigación', frequency: 'Al trasplante y a los 30 días', notes: 'El fósforo estimula el desarrollo radicular durante el establecimiento' },
+        { productId: 'agb-elicitor-sin', productName: 'ELICITOR-SIN®', line: 'bioproteccion', dose: '360 g/ha', method: 'Drench', frequency: '2–3 aplicaciones a intervalos de 7–11 días', notes: 'Trichoderma harzianum: protege la raíz de hongos del suelo e induce resistencia (meta-análisis Barbosa et al., 2022)', isProtection: true },
+      ],
+    },
+    {
+      id: 'crecimiento-vegetativo', name: 'Crecimiento vegetativo y mantenimiento', emoji: '🌿',
+      durationDays: 180, objective: 'Construir follaje sano y madera productiva (bandolas) con manejo preventivo de roya. Cada hoja sana sostiene la cosecha del año.',
+      color: 'bg-green-100', textColor: 'text-green-700',
+      products: [
+        { productId: 'bp-nitro-fx', productName: 'BP Nitro FX', line: 'organicos', dose: '2.5 L/ha', method: 'Fertirrigación', frequency: 'Cada 14 días en etapa vegetativa', notes: 'N orgánico + L-aminoácidos: empuja la brotación de bandolas sin estrés' },
+        { productId: 'bp-magnesio', productName: 'BP Magnesio', line: 'organicos', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 10–15 días o al detectar clorosis intervenal', notes: 'La clorosis de Mg es de las más comunes en café de suelos ácidos lixiviados' },
+        { productId: 'bp-mix', productName: 'BP Mix', line: 'nutricion', dose: '1.5 mL/L', method: 'Foliar', frequency: 'Cada 14 días como preventivo', notes: 'Coctel de micronutrientes para sostener la fotosíntesis y el vigor' },
+        { productId: 'zen-cu', productName: 'Zen-Cu', line: 'bioproteccion', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 10–14 días en temporada de lluvias', notes: 'Cobre preventivo contra la roya (Hemileia vastatrix), la principal enfermedad del café; aplicar antes del pico de lluvias', isProtection: true },
+        { productId: 'zen-fungi', productName: 'Zen-Fungi', line: 'bioproteccion', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 14 días preventivo; alternar con el cobre', notes: 'Biofungicida botánico para rotar modo de acción contra roya y ojo de gallo', isProtection: true },
+      ],
+    },
+    {
+      id: 'floracion', name: 'Floración', emoji: '🌸',
+      durationDays: 30, objective: 'Inducir y amarrar una floración pareja tras las lluvias para un cuajado uniforme.',
+      color: 'bg-pink-100', textColor: 'text-pink-700',
+      products: [
+        { productId: 'bp-fiore', productName: 'BP Fioré', line: 'bioestimulantes', dose: '0.5 g/L', method: 'Foliar', frequency: '3–5 días antes del inicio de floración; repetir en plena flor', notes: 'Promotor de floración para una apertura pareja de la flor' },
+        { productId: 'bp-boro', productName: 'BP Boro', line: 'especialidades', dose: '0.5 mL/L', method: 'Foliar', frequency: 'Inicio de floración; máx 3 veces por ciclo', notes: 'El boro es clave para la viabilidad del polen y el amarre del grano' },
+        { productId: 'bp-vit', productName: 'BP Vit', line: 'especialidades', dose: '1.5 mL/L', method: 'Foliar', frequency: 'En pre-floración', notes: 'Antiestrés (L-cisteína + ácido fólico) para sostener la floración en clima variable' },
+      ],
+    },
+    {
+      id: 'llenado-grano', name: 'Llenado y desarrollo del grano', emoji: '🫘',
+      durationDays: 120, objective: 'Llenar el grano por completo (peso y densidad) y proteger del barrenado de la broca.',
+      color: 'bg-amber-100', textColor: 'text-amber-700',
+      products: [
+        { productId: 'bp-cuaje', productName: 'BP Cuaje', line: 'bioestimulantes', dose: '2 mL/L', method: 'Foliar', frequency: 'En plena flor, a los 5 y 10 días del cuaje', notes: 'Reduce la caída del grano recién cuajado' },
+        { productId: 'k-ultra', productName: 'K-Ultra', line: 'nutricion', dose: '4 L/ha', method: 'Fertirrigación', frequency: 'Cada 10 días en llenado', notes: 'El potasio es el motor del llenado del grano y de la calidad de taza' },
+        { productId: 'bp-calcio', productName: 'BP Calcio', line: 'organicos', dose: '2.5 mL/L', method: 'Foliar', frequency: 'Cada 7–10 días en llenado', notes: 'Ca para grano firme y menos caída fisiológica' },
+        { productId: 'agb-beauver', productName: 'BEAUVER®', line: 'bioproteccion', dose: '480 g / 200 L de agua', method: 'Foliar dirigido al fruto', frequency: '2 aplicaciones a intervalos de 14 días', notes: 'Beauveria bassiana: control biológico clásico de la broca del café (Hypothenemus hampei); aplicar al inicio de la infestación con el fruto en estado lechoso', isProtection: true },
+      ],
+    },
+    {
+      id: 'maduracion-cosecha', name: 'Maduración y cosecha', emoji: '☕',
+      durationDays: 60, objective: 'Madurar la cereza de forma pareja con la mejor calidad de taza y sanidad para el corte.',
+      color: 'bg-red-100', textColor: 'text-red-700',
+      products: [
+        { productId: 'bp-potasio', productName: 'BP Potasio', line: 'organicos', dose: '3 mL/L', method: 'Foliar', frequency: 'Cada 10 días en maduración', notes: 'Refuerzo de K orgánico para uniformidad de maduración y perfil de taza' },
+        { productId: 'ca-ultra', productName: 'Ca-Ultra', line: 'nutricion', dose: '3 L/ha', method: 'Fertirrigación', frequency: 'En llenado y maduración', notes: 'Ca refuerza la firmeza de la cereza y la resistencia al manejo poscosecha' },
+        { productId: 'zen-cu', productName: 'Zen-Cu', line: 'bioproteccion', dose: '2 mL/L', method: 'Foliar', frequency: 'Cada 10–14 días si hay presión de roya', notes: 'Mantener la sanidad foliar hasta el corte protege la cosecha del año siguiente', isProtection: true },
+      ],
+    },
+  ],
+}
+
 // ─── Export ───────────────────────────────────────────────────────────────
 
 export const EXTRA_CROP_PROTOCOLS_2: FullCropProtocol[] = [
   PLATANO, PAPAYA, SANDIA, ARROZ, CALABAZA, CALABACIN, TRIGO, SORGO,
-  ALFALFA, MANZANA, UVA, NUEZ, MANGO, FLORES,
+  ALFALFA, MANZANA, UVA, NUEZ, MANGO, FLORES, CAFE,
 ]

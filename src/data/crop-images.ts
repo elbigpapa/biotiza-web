@@ -24,6 +24,10 @@ const CROP_IMAGES: Record<string, CropImage> = {
     src: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=1200&q=80&auto=format&fit=crop',
     alt: 'Tomates rojos en planta',
   },
+  cafe: {
+    src: 'https://images.unsplash.com/photo-1586095516671-d085ff58cdd4?w=1200&q=80&auto=format&fit=crop',
+    alt: 'Cerezas de café rojas maduras en la rama',
+  },
   'tomate-cherry': {
     src: 'https://images.unsplash.com/photo-1582284540020-8acbe03f4924?w=1200&q=80&auto=format&fit=crop',
     alt: 'Tomates cherry maduros en racimo',

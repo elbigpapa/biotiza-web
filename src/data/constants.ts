@@ -213,6 +213,7 @@ export const CROPS_DATA: CropConfig[] = [
   { id: 'nuez',         name: 'Nuez',            slug: 'nuez',         emoji: '🌰', gradientFrom: 'from-amber-800',   gradientTo: 'to-yellow-600',  description: 'Carya illinoinensis' },
   { id: 'mango',        name: 'Mango',           slug: 'mango',        emoji: '🥭', gradientFrom: 'from-orange-600',  gradientTo: 'to-yellow-500',  description: 'Mangifera indica' },
   { id: 'flores',       name: 'Flores',          slug: 'flores',       emoji: '🌹', gradientFrom: 'from-pink-600',    gradientTo: 'to-rose-500',    description: 'Floricultura ornamental' },
+  { id: 'cafe',         name: 'Café',            slug: 'cafe',         emoji: '☕', gradientFrom: 'from-amber-900',   gradientTo: 'to-amber-700',   description: 'Coffea arabica' },
 ]
 
 // ─── Certificaciones ──────────────────────────────────────────────────────
