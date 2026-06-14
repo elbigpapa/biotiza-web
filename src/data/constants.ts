@@ -216,6 +216,15 @@ export const CROPS_DATA: CropConfig[] = [
   { id: 'cafe',         name: 'Café',            slug: 'cafe',         emoji: '☕', gradientFrom: 'from-amber-900',   gradientTo: 'to-amber-700',   description: 'Coffea arabica' },
 ]
 
+const CROP_NAME_BY_SLUG: Record<string, string> = Object.fromEntries(
+  CROPS_DATA.map((c) => [c.slug, c.name]),
+)
+
+/** Nombre legible del cultivo a partir de su slug (p. ej. 'cana-azucar' → 'Caña de Azúcar', 'cafe' → 'Café'). Cae al slug si no está en CROPS_DATA. */
+export function getCropName(slug: string): string {
+  return CROP_NAME_BY_SLUG[slug] ?? slug
+}
+
 // ─── Certificaciones ──────────────────────────────────────────────────────
 
 export const CERTIFICATIONS = [

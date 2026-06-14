@@ -10,7 +10,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { PRODUCTS, getProductBySlug, getRelatedProducts } from '@/data/products'
-import { PRODUCT_LINES, CONTACT_INFO } from '@/data/constants'
+import { PRODUCT_LINES, CONTACT_INFO, getCropName } from '@/data/constants'
 import { getProductImage } from '@/data/product-images'
 import { canonical } from '@/lib/seo'
 import Container from '@/components/ui/Container'
@@ -319,7 +319,7 @@ export default async function ProductoPage({
                       href={`/cultivos/${c}`}
                       className="px-3.5 py-2 border border-ink font-mono text-[11px] font-semibold tracking-[0.12em] uppercase text-ink hover:bg-ink hover:text-white transition-colors"
                     >
-                      {c}
+                      {getCropName(c)}
                     </Link>
                   ))}
                 </div>
