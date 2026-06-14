@@ -15,6 +15,43 @@ export const maxDuration = 30
 // Modelo configurable por env para poder actualizarlo sin redeploy de código.
 const CHAT_MODEL = process.env.CHAT_MODEL ?? 'claude-fable-5'
 
+// Cadena de respaldo: la API key de producción (Vercel) es una credencial
+// distinta a la suscripción de Claude Code y puede NO tener acceso al modelo
+// más nuevo. Si el modelo configurado responde 404/403 (no existe / sin acceso),
+// se reintenta con el siguiente modelo de la lista. Así el chat funciona aunque
+// la cuenta no tenga el modelo de punta. Orden: el configurado → GA conocidos.
+const MODEL_CHAIN: string[] = [
+  ...new Set([CHAT_MODEL, 'claude-sonnet-4-6', 'claude-opus-4-7', 'claude-haiku-4-5-20251001']),
+]
+
+/**
+ * Llama a la API de Anthropic probando los modelos en orden. Solo cambia de
+ * modelo ante un 404/403 (modelo no disponible para esta key); cualquier otro
+ * error (auth, saldo, rate limit) se propaga porque cambiar de modelo no ayuda.
+ */
+async function createWithModelFallback(
+  client: Anthropic,
+  buildParams: () => Omit<Anthropic.MessageCreateParamsNonStreaming, 'model'>,
+  models: string[],
+): Promise<{ message: Anthropic.Message; model: string }> {
+  let lastErr: unknown
+  for (const model of models) {
+    try {
+      const message = await client.messages.create({ ...buildParams(), model })
+      return { message, model }
+    } catch (err) {
+      lastErr = err
+      const status = (err as { status?: number })?.status
+      if (status === 404 || status === 403) {
+        console.warn(`[chat] modelo no disponible (${status}): ${model} — probando siguiente`)
+        continue
+      }
+      throw err
+    }
+  }
+  throw lastErr
+}
+
 // Construye un enlace de WhatsApp con un resumen del prospecto pre-llenado.
 // El canal preferido de contacto de Biotiza es WhatsApp: cuando el chat capta
 // datos del prospecto, le devolvemos un enlace listo para continuar por ahí.
@@ -318,26 +355,33 @@ export async function POST(req: Request) {
     let suggestions: string[] = []
     let capturedLead: Record<string, unknown> | null = null
     const convo: Anthropic.MessageParam[] = [...messages]
+    let activeModel = MODEL_CHAIN[0]
+
+    const buildParams = (): Omit<Anthropic.MessageCreateParamsNonStreaming, 'model'> => ({
+      max_tokens: 2048,
+      system: [
+        { type: 'text', text: SYSTEM_PERSONA + knownText },
+        { type: 'text', text: buildCatalogContext() },
+        {
+          type: 'text',
+          text: buildScienceContext(),
+          cache_control: { type: 'ephemeral' }, // ← prefijo estable y grande = ahorro
+        },
+      ],
+      messages: convo,
+      tools,
+    })
 
     // Bucle de tool_use: continuamos la conversación enviando tool_result
     // hasta que el modelo cierre (end_turn). Antes era de una sola vuelta y
     // el texto/sugerencias se perdían si el modelo emitía solo tool_use.
     for (let turn = 0; turn < 4; turn++) {
-      const response: Anthropic.Message = await client.messages.create({
-        model: CHAT_MODEL,
-        max_tokens: 2048,
-        system: [
-          { type: 'text', text: SYSTEM_PERSONA + knownText },
-          { type: 'text', text: buildCatalogContext() },
-          {
-            type: 'text',
-            text: buildScienceContext(),
-            cache_control: { type: 'ephemeral' }, // ← prefijo estable y grande = ahorro
-          },
-        ],
-        messages: convo,
-        tools,
-      })
+      // El primer turno resuelve el modelo accesible (con respaldo); los
+      // siguientes reutilizan el mismo modelo ya resuelto.
+      const { message: response, model: usedModel } = await createWithModelFallback(
+        client, buildParams, turn === 0 ? MODEL_CHAIN : [activeModel],
+      )
+      activeModel = usedModel
 
       const toolResults: Anthropic.ToolResultBlockParam[] = []
       for (const block of response.content) {
@@ -396,7 +440,14 @@ export async function POST(req: Request) {
       mode: 'claude',
     })
   } catch (err) {
-    console.error('[chat] Claude error', err)
+    const e = err as { status?: number; name?: string; message?: string; error?: unknown }
+    console.error('[chat] Claude error', {
+      status: e?.status,
+      name: e?.name,
+      message: typeof e?.message === 'string' ? e.message.slice(0, 400) : String(err),
+      detail: e?.error,
+      modelsTried: MODEL_CHAIN,
+    })
 
     if (err instanceof Anthropic.RateLimitError) {
       return NextResponse.json(
