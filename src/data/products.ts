@@ -42,7 +42,7 @@ const ORGANICOS: Product[] = [
       'Mejora vida de anaquel y firmeza',
       'Alta biodisponibilidad por quelación orgánica',
     ],
-    crops: ['tomate', 'tomate-cherry', 'fresa', 'arandano', 'frambuesa', 'aguacate', 'chile', 'brocoli', 'apio', 'frijol', 'cebolla', 'citricos', 'flores', 'lechuga', 'mango', 'manzana', 'papa', 'papaya', 'pepino', 'pina', 'uva'],
+    crops: ['tomate', 'tomate-cherry', 'fresa', 'arandano', 'frambuesa', 'aguacate', 'chile', 'brocoli', 'apio', 'frijol', 'cebolla', 'citricos', 'flores', 'lechuga', 'mango', 'manzana', 'papa', 'papaya', 'pepino', 'pina', 'uva', 'cafe'],
     compatibility: {
       compatible:   ['bp-magnesio', 'bp-potasio', 'bp-nutri', 'n-ultra'],
       incompatible: ['bp-boro', 'biotiza-calcio-boro'],
@@ -82,7 +82,7 @@ const ORGANICOS: Product[] = [
       'Mejora la translocación de fósforo',
       'Aumenta la calidad del fruto',
     ],
-    crops: ['tomate', 'tomate-cherry', 'chile', 'citricos', 'aguacate', 'fresa', 'brocoli', 'apio', 'cana-azucar'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'citricos', 'aguacate', 'fresa', 'brocoli', 'apio', 'cana-azucar', 'cafe'],
     compatibility: {
       compatible:   [ 'bp-calcio', 'bp-potasio', 'n-ultra' ],
       incompatible: [],
@@ -122,7 +122,7 @@ const ORGANICOS: Product[] = [
       'Fortalece resistencia al estrés hídrico',
       'Mejora la coloración del fruto',
     ],
-    crops: ['tomate', 'tomate-cherry', 'fresa', 'arandano', 'citricos', 'chile', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol', 'agave', 'aguacate', 'arroz', 'cebolla', 'esparrago', 'flores', 'manzana', 'nuez', 'papa', 'pina', 'platano', 'sorgo', 'trigo', 'uva'],
+    crops: ['tomate', 'tomate-cherry', 'fresa', 'arandano', 'citricos', 'chile', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol', 'agave', 'aguacate', 'arroz', 'cebolla', 'esparrago', 'flores', 'manzana', 'nuez', 'papa', 'pina', 'platano', 'sorgo', 'trigo', 'uva', 'cafe'],
     compatibility: {
       compatible:   ['bp-calcio', 'bp-magnesio', 'bp-gross', 'k-ultra'],
       incompatible: [],
@@ -158,7 +158,7 @@ const ORGANICOS: Product[] = [
       'Ideal para trasplantes de alta inversión (berries)',
       'Estimula raíces absorbentes en 5–7 días',
     ],
-    crops: ['arandano', 'frambuesa', 'zarzamora', 'aguacate', 'fresa', 'agave', 'alfalfa', 'apio', 'arroz', 'brocoli', 'calabacin', 'calabaza', 'cana-azucar', 'cebolla', 'chile', 'esparrago', 'flores', 'frijol', 'lechuga', 'manzana', 'nuez', 'papa', 'papaya', 'pepino', 'pina', 'platano', 'sandia', 'sorgo', 'tomate', 'tomate-cherry', 'uva'],
+    crops: ['arandano', 'frambuesa', 'zarzamora', 'aguacate', 'fresa', 'agave', 'alfalfa', 'apio', 'arroz', 'brocoli', 'calabacin', 'calabaza', 'cana-azucar', 'cebolla', 'chile', 'esparrago', 'flores', 'frijol', 'lechuga', 'manzana', 'nuez', 'papa', 'papaya', 'pepino', 'pina', 'platano', 'sandia', 'sorgo', 'tomate', 'tomate-cherry', 'uva', 'cafe'],
     compatibility: {
       compatible:   [ 'biotiza-lactobacillus' ],
       incompatible: [],
@@ -196,7 +196,7 @@ const ORGANICOS: Product[] = [
       'Activa enzimas clave del metabolismo',
       'Compatible con programas orgánicos certificados',
     ],
-    crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa'],
+    crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'cafe'],
     compatibility: {
       compatible:   [ 'bp-koren', 'bp-nutri' ],
       incompatible: [],
@@ -429,7 +429,7 @@ const ESPECIALIDADES: Product[] = [
       'Fortalece la pared celular',
       'Previene corcho interno en manzana y aguacate',
     ],
-    crops: ['tomate', 'tomate-cherry', 'aguacate', 'citricos', 'chile', 'fresa', 'brocoli', 'apio', 'maiz', 'frijol', 'alfalfa', 'arandano', 'frambuesa', 'mango', 'manzana', 'nuez', 'pepino', 'pina', 'platano', 'sandia', 'sorgo', 'trigo', 'uva'],
+    crops: ['tomate', 'tomate-cherry', 'aguacate', 'citricos', 'chile', 'fresa', 'brocoli', 'apio', 'maiz', 'frijol', 'alfalfa', 'arandano', 'frambuesa', 'mango', 'manzana', 'nuez', 'pepino', 'pina', 'platano', 'sandia', 'sorgo', 'trigo', 'uva', 'cafe'],
     compatibility: {
       compatible:   ['bp-cuaje', 'bp-fiore', 'bp-vit'],
       incompatible: ['bp-calcio', 'ae-calcium'],
@@ -467,7 +467,7 @@ const ESPECIALIDADES: Product[] = [
       'Mejora la eficiencia en la absorción de nutrientes',
       'Estimula el metabolismo energético de la planta',
     ],
-    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'citricos', 'brocoli', 'aguacate', 'cebolla'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'citricos', 'brocoli', 'aguacate', 'cebolla', 'cafe'],
     compatibility: {
       compatible:   ['bp-boro', 'bp-mol', 'bp-cuaje'],
       incompatible: [],
@@ -620,7 +620,7 @@ const BIOESTIMULANTES: Product[] = [
       'Mejora la receptividad del estigma y germinación del pólen',
       'El azufre actúa como fungistático natural',
     ],
-    crops: ['tomate', 'tomate-cherry', 'fresa', 'chile', 'aguacate', 'arandano', 'frambuesa', 'zarzamora', 'maiz', 'frijol', 'calabacin', 'calabaza', 'citricos', 'flores', 'mango', 'manzana', 'papaya', 'pepino', 'pina'],
+    crops: ['tomate', 'tomate-cherry', 'fresa', 'chile', 'aguacate', 'arandano', 'frambuesa', 'zarzamora', 'maiz', 'frijol', 'calabacin', 'calabaza', 'citricos', 'flores', 'mango', 'manzana', 'papaya', 'pepino', 'pina', 'cafe'],
     compatibility: {
       compatible:   ['bp-boro', 'bp-cuaje', 'bp-vit'],
       incompatible: [],
@@ -693,7 +693,7 @@ const BIOESTIMULANTES: Product[] = [
       'El molibdeno optimiza la enzima nitrato-reductasa',
       'Mejora la uniformidad del calibre del lote',
     ],
-    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'aguacate', 'arandano', 'maiz', 'frijol', 'calabacin', 'calabaza', 'citricos', 'frambuesa', 'mango', 'pepino', 'sandia', 'uva', 'zarzamora'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'aguacate', 'arandano', 'maiz', 'frijol', 'calabacin', 'calabaza', 'citricos', 'frambuesa', 'mango', 'pepino', 'sandia', 'uva', 'zarzamora', 'cafe'],
     compatibility: {
       compatible:   ['bp-fiore', 'bp-boro', 'bp-vit', 'bp-gibb'],
       incompatible: [],
@@ -880,7 +880,7 @@ const NUTRICION: Product[] = [
       'Activa la energía celular (ATP/ADP)',
       'Mejora la translocación de azúcares',
     ],
-    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'aguacate', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol', 'alfalfa', 'calabacin', 'calabaza', 'cebolla', 'flores', 'papa', 'papaya', 'pepino', 'sandia', 'sorgo', 'trigo'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'aguacate', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol', 'alfalfa', 'calabacin', 'calabaza', 'cebolla', 'flores', 'papa', 'papaya', 'pepino', 'sandia', 'sorgo', 'trigo', 'cafe'],
     compatibility: {
       compatible:   ['n-ultra', 'k-ultra', 'ca-ultra', 'mg-ultra'],
       incompatible: [],
@@ -915,7 +915,7 @@ const NUTRICION: Product[] = [
       'Mejora color y vida de anaquel',
       'Fortalece la resistencia al estrés hídrico',
     ],
-    crops: ['tomate', 'tomate-cherry', 'fresa', 'arandano', 'frambuesa', 'chile', 'citricos', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol', 'agave', 'aguacate', 'alfalfa', 'arroz', 'calabacin', 'calabaza', 'cebolla', 'esparrago', 'flores', 'lechuga', 'mango', 'manzana', 'nuez', 'papa', 'papaya', 'pepino', 'pina', 'platano', 'sandia', 'sorgo', 'trigo', 'uva', 'zarzamora'],
+    crops: ['tomate', 'tomate-cherry', 'fresa', 'arandano', 'frambuesa', 'chile', 'citricos', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol', 'agave', 'aguacate', 'alfalfa', 'arroz', 'calabacin', 'calabaza', 'cebolla', 'esparrago', 'flores', 'lechuga', 'mango', 'manzana', 'nuez', 'papa', 'papaya', 'pepino', 'pina', 'platano', 'sandia', 'sorgo', 'trigo', 'uva', 'zarzamora', 'cafe'],
     compatibility: {
       compatible:   ['n-ultra', 'p-ultra', 'ca-ultra', 'mg-ultra', 'bp-mix'],
       incompatible: [],
@@ -952,7 +952,7 @@ const NUTRICION: Product[] = [
       'Fortalece meristemos y tejidos nuevos',
       'Compatible con todo el programa de fertirrigación',
     ],
-    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'brocoli', 'apio', 'maiz', 'frijol', 'aguacate'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'brocoli', 'apio', 'maiz', 'frijol', 'aguacate', 'cafe'],
     compatibility: {
       compatible:   ['n-ultra', 'k-ultra', 'mg-ultra', 'bp-mix'],
       incompatible: [],
@@ -1103,7 +1103,7 @@ const NUTRICION: Product[] = [
       'Ahorra tiempo y costo de aplicaciones individuales',
       'Fórmula equilibrada para todo el ciclo del cultivo',
     ],
-    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'aguacate', 'citricos', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol', 'agave', 'alfalfa', 'arroz', 'calabacin', 'calabaza', 'esparrago', 'lechuga', 'papa', 'papaya', 'pepino', 'pina', 'sorgo', 'uva'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'aguacate', 'citricos', 'brocoli', 'apio', 'maiz', 'cana-azucar', 'frijol', 'agave', 'alfalfa', 'arroz', 'calabacin', 'calabaza', 'esparrago', 'lechuga', 'papa', 'papaya', 'pepino', 'pina', 'sorgo', 'uva', 'cafe'],
     compatibility: {
       compatible:   ['n-ultra', 'k-ultra', 'ca-ultra', 'mg-ultra'],
       incompatible: [],
@@ -1292,7 +1292,7 @@ const BIOPROTECCION: Product[] = [
       'Sin residuos en fruta en dosis preventiva',
       'Compatible con protocolos Primus/GlobalG.A.P.',
     ],
-    crops: ['tomate', 'tomate-cherry', 'chile', 'aguacate', 'citricos', 'arandano', 'brocoli', 'esparrago'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'aguacate', 'citricos', 'arandano', 'brocoli', 'esparrago', 'cafe'],
     compatibility: {
       compatible:   ['zen-fungi', 'biotiza-coadyuvante'],
       incompatible: ['bp-cu-agro', 'biotiza-lactobacillus'],
@@ -1363,7 +1363,7 @@ const BIOPROTECCION: Product[] = [
       'Compatible con liberaciones de abejorros y abejas',
       'No genera resistencias',
     ],
-    crops: ['fresa', 'arandano', 'frambuesa', 'zarzamora', 'tomate', 'tomate-cherry', 'chile', 'apio', 'arroz', 'calabacin', 'calabaza', 'esparrago', 'flores', 'lechuga', 'mango', 'manzana', 'nuez', 'papa', 'platano', 'sandia', 'trigo', 'uva'],
+    crops: ['fresa', 'arandano', 'frambuesa', 'zarzamora', 'tomate', 'tomate-cherry', 'chile', 'apio', 'arroz', 'calabacin', 'calabaza', 'esparrago', 'flores', 'lechuga', 'mango', 'manzana', 'nuez', 'papa', 'platano', 'sandia', 'trigo', 'uva', 'cafe'],
     compatibility: {
       compatible:   ['zen-cu', 'zen-chrys', 'biotiza-coadyuvante', 'bp-cu-agro'],
       incompatible: [],
@@ -1554,7 +1554,7 @@ const AGROBIONSA: Product[] = [
       'Estimula defensas naturales de la planta',
       'OMRI · compatible con orgánicos',
     ],
-    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'brocoli', 'apio', 'agave', 'cebolla', 'esparrago', 'lechuga', 'papa', 'papaya', 'pina'],
+    crops: ['tomate', 'tomate-cherry', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'brocoli', 'apio', 'agave', 'cebolla', 'esparrago', 'lechuga', 'papa', 'papaya', 'pina', 'cafe'],
     compatibility: {
       compatible:   [ 'agb-lilac', 'bp-koren' ],
       incompatible: [],
@@ -1706,7 +1706,7 @@ const AGROBIONSA: Product[] = [
       'OMRI · orgánico certificado',
       'Compatible con programas IPM',
     ],
-    crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'agave', 'pepino', 'pina'],
+    crops: ['tomate', 'chile', 'fresa', 'arandano', 'frambuesa', 'zarzamora', 'agave', 'pepino', 'pina', 'cafe'],
     compatibility: {
       compatible:   ['agb-paecilom', 'agb-entomotri', 'agb-dextrux'],
       incompatible: [],
