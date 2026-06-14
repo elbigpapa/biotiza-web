@@ -12,22 +12,60 @@ export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 export const maxDuration = 30
 
-// Modelo configurable por env. Default = claude-sonnet-4-6 porque es el modelo
-// de punta CONFIRMADO disponible para la API key de producción (la key de Vercel
-// NO tiene acceso a claude-fable-5 → daba 404 y tiraba el chat a modo básico).
-// Para usar un modelo más nuevo/potente, define CHAT_MODEL en Vercel cuando la
-// key tenga acceso (p. ej. claude-opus-4-7 o claude-fable-5); la cadena de
-// respaldo de abajo cubre el caso de que aún no lo tenga.
-const CHAT_MODEL = process.env.CHAT_MODEL ?? 'claude-sonnet-4-6'
+// ─── Selección automática del mejor modelo disponible ─────────────────────
+// El chat NO fija un modelo: usa SIEMPRE el mejor que la API key tenga
+// disponible en el momento de la consulta. Para eso se consulta el endpoint de
+// modelos de Anthropic (`client.models.list`) y se cruza con esta lista de
+// PREFERENCIA por calidad (mejor primero). Así:
+//   · Si vuelve Fable 5 (lo retiró Anthropic), se reusa solo en automático.
+//   · Mientras tanto usa el mejor disponible (Opus 4.8 → 4.7 → Sonnet → Haiku).
+//   · Si en el futuro sale un modelo mejor, basta agregarlo arriba de la lista.
+// Para forzar uno específico, define la env CHAT_MODEL (se respeta como primera
+// opción). La disponibilidad se cachea 10 min para no listar en cada request.
+const MODEL_PREFERENCE: string[] = [
+  ...(process.env.CHAT_MODEL ? [process.env.CHAT_MODEL] : []),
+  'claude-fable-5',            // el mejor — actualmente retirado por Anthropic
+  'claude-opus-4-8',           // mejor disponible hoy
+  'claude-opus-4-7',
+  'claude-sonnet-4-6',
+  'claude-haiku-4-5-20251001',
+].filter((m, i, a) => a.indexOf(m) === i)
 
-// Cadena de respaldo: la API key de producción (Vercel) es una credencial
-// distinta a la suscripción de Claude Code y puede NO tener acceso al modelo
-// más nuevo. Si el modelo configurado responde 404/403 (no existe / sin acceso),
-// se reintenta con el siguiente modelo de la lista. Así el chat funciona aunque
-// la cuenta no tenga el modelo de punta. Orden: el configurado → GA conocidos.
-const MODEL_CHAIN: string[] = [
-  ...new Set([CHAT_MODEL, 'claude-sonnet-4-6', 'claude-opus-4-7', 'claude-haiku-4-5-20251001']),
-]
+let availCache: { ids: string[]; at: number } | null = null
+const AVAIL_TTL_MS = 10 * 60 * 1000
+
+/** IDs de modelos que la API key puede usar (cacheado 10 min). null si falla el listado. */
+async function availableModelIds(client: Anthropic): Promise<string[] | null> {
+  if (availCache && Date.now() - availCache.at < AVAIL_TTL_MS) return availCache.ids
+  try {
+    const ids: string[] = []
+    for await (const m of client.models.list({ limit: 100 })) ids.push(m.id)
+    availCache = { ids, at: Date.now() }
+    return ids
+  } catch {
+    return null // sin info → se usa la preferencia y el respaldo por 404 cubre
+  }
+}
+
+/**
+ * Cadena de modelos a intentar: primero los PREFERIDOS que están DISPONIBLES
+ * (mejor calidad primero, resolviendo a su id concreto), luego el resto como
+ * red de seguridad. Si no hay info de disponibilidad, usa la preferencia tal cual.
+ */
+async function orderedModelChain(client: Anthropic): Promise<string[]> {
+  const ids = await availableModelIds(client)
+  if (!ids || ids.length === 0) return MODEL_PREFERENCE
+  const avail: string[] = []
+  for (const pref of MODEL_PREFERENCE) {
+    if (ids.includes(pref)) avail.push(pref)
+    else {
+      const concrete = ids.filter((id) => id.startsWith(pref)).sort().reverse()[0]
+      if (concrete) avail.push(concrete)
+    }
+  }
+  const rest = MODEL_PREFERENCE.filter((m) => !avail.includes(m))
+  return avail.length ? [...avail, ...rest] : MODEL_PREFERENCE
+}
 
 /**
  * Llama a la API de Anthropic probando los modelos en orden. Solo cambia de
@@ -360,7 +398,9 @@ export async function POST(req: Request) {
     let suggestions: string[] = []
     let capturedLead: Record<string, unknown> | null = null
     const convo: Anthropic.MessageParam[] = [...messages]
-    let activeModel = MODEL_CHAIN[0]
+    // Resuelve la cadena por disponibilidad real: el MEJOR modelo disponible primero.
+    const modelChain = await orderedModelChain(client)
+    let activeModel = modelChain[0]
 
     const buildParams = (): Omit<Anthropic.MessageCreateParamsNonStreaming, 'model'> => ({
       max_tokens: 2048,
@@ -384,7 +424,7 @@ export async function POST(req: Request) {
       // El primer turno resuelve el modelo accesible (con respaldo); los
       // siguientes reutilizan el mismo modelo ya resuelto.
       const { message: response, model: usedModel } = await createWithModelFallback(
-        client, buildParams, turn === 0 ? MODEL_CHAIN : [activeModel],
+        client, buildParams, turn === 0 ? modelChain : [activeModel],
       )
       activeModel = usedModel
 
@@ -451,7 +491,7 @@ export async function POST(req: Request) {
       name: e?.name,
       message: typeof e?.message === 'string' ? e.message.slice(0, 400) : String(err),
       detail: e?.error,
-      modelsTried: MODEL_CHAIN,
+      modelPreference: MODEL_PREFERENCE,
     })
 
     if (err instanceof Anthropic.RateLimitError) {
